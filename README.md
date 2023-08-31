@@ -12,6 +12,8 @@ Bem-vindo ao WeLearn - uma plataforma colaborativa e gamificada de aprendizado d
 
 - **Ranking e Competição:** Cada questionário apresenta um ranking com os 5 melhores desempenhos. Isso promove um espírito competitivo saudável entre os alunos, inspirando-os a se destacarem em sua jornada de aprendizado.
 
+- **Elos:** Os alunos terão um elo (bronze, prata, ouro ou platina) de acordo com a quantidade de acertos nos questionários.
+
 - **Dashboards Abrangentes:** A plataforma gera painéis de controle detalhados para os professores, permitindo que analisem o desempenho da turma, identifiquem tendências e adaptem suas estratégias de ensino conforme necessário.
 
 - **Motivação dos Alunos:** Através da abordagem gamificada e do sistema de recompensas, o WeLearn aumenta a motivação e o engajamento dos alunos, criando um ambiente de aprendizado positivo.
