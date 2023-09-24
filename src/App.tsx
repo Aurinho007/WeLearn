@@ -1,8 +1,19 @@
-import React from "react";
-import Logo from "./components/Logo";
+import Header from "./components/Header";
+import { GlobalStyles } from "./globalStyle";
+import { useTheme } from "../src/contexts/ThemeContext";
+import { lightTheme, darkTheme } from "./assets/theme";
 
 function App() {
-  return <Logo />;
+
+  const { theme } = useTheme();
+  const currentTheme = theme === 'light' ? lightTheme : darkTheme;
+
+  return (
+    <>
+        <GlobalStyles theme={currentTheme}/>
+        <Header />
+    </>
+  );
 }
 
 export default App;
