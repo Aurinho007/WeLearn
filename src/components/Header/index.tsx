@@ -12,9 +12,6 @@ const currentTheme = theme === 'light' ? lightTheme : darkTheme;
   return (
     <Container theme={currentTheme}>
      <Logo/>
-     <Button onClick={toggleTheme}>
-        Mudar tema
-     </Button>
     </Container>
   );
 };
