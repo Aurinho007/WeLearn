@@ -1,5 +1,5 @@
 import { ThemeType } from "../Types/ThemeType"
-import { DEFAULT_THEME, THEME_KEY } from "../constants/LocalStorageConstants"
+import { DEFAULT_THEME, THEME_KEY } from "../Constants/LocalStorageConstants"
 
 export function getSavedTheme(): ThemeType {
     const localTheme = localStorage.getItem(THEME_KEY);

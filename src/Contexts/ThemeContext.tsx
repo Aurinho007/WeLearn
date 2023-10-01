@@ -1,6 +1,6 @@
 import React, { ReactNode, createContext, useContext, useState } from 'react';
 import { ThemeType } from '../Types/ThemeType';
-import { getSavedTheme, setSavedTheme } from '../controller/ThemeController';
+import { getSavedTheme, setSavedTheme } from '../Controller/ThemeController';
 
 type ThemeContextType = {
   theme: ThemeType;

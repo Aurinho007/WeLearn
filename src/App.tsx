@@ -1,6 +1,6 @@
-import Header from "./components/Header";
+import Header from "./Components/Header";
 import { GlobalStyles } from "./globalStyle";
-import { useTheme } from "../src/contexts/ThemeContext";
+import { useTheme } from "./Contexts/ThemeContext";
 import { lightTheme, darkTheme } from "./assets/theme";
 
 function App() {

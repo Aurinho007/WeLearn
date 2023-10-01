@@ -1,4 +1,4 @@
-import { BRONZE, DIAMOUND, GOLD, SILVER, STUDENT_PROFILE, TEACHER_PROFILE } from './../constants/userProfileConstants';
+import { BRONZE, DIAMOUND, GOLD, SILVER, STUDENT_PROFILE, TEACHER_PROFILE } from '../Constants/userProfileConstants';
 
 export type UserType = {
     userName: string,
