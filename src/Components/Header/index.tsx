@@ -1,7 +1,7 @@
-import { useTheme } from "../../Contexts/ThemeContext.js";
-import { lightTheme, darkTheme } from "../../assets/theme.js";
-import { Container } from "./styles.js";
-import Logo from "../Logo/index.js";
+import { useTheme } from "../../Contexts/ThemeContext.tsx";
+import { lightTheme, darkTheme } from "../../assets/theme.ts";
+import { Container } from "./styles.ts";
+import Logo from "../Logo/index.tsx";
 
 
 const Header = () => {

@@ -1,6 +1,6 @@
-import { useTheme } from "../../Contexts/ThemeContext.js";
-import { lightTheme, darkTheme } from "../../assets/theme.js";
-import { Title } from "./styles.js";
+import { useTheme } from "../../Contexts/ThemeContext.tsx";
+import { lightTheme, darkTheme } from "../../assets/theme.ts";
+import { Title } from "./styles.ts";
 
 const Header = () => {
 
