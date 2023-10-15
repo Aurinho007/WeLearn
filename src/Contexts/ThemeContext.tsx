@@ -1,6 +1,6 @@
 import React, { ReactNode, createContext, useContext, useState } from 'react';
 import { ThemeType } from '../Types/ThemeType';
-import { getSavedTheme, setSavedTheme } from '../Controller/ThemeController';
+import * as ThemeController from '../Controller/ThemeController';
 
 type ThemeContextType = {
   theme: ThemeType;
@@ -10,12 +10,12 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState<ThemeType>(getSavedTheme()); //puxa o valor do tema no localStorage
+  const [theme, setTheme] = useState<ThemeType>(ThemeController.getSavedTheme()); //puxa o valor do tema no localStorage
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    setSavedTheme(newTheme); // Atualiza o tema no localStorage
+    ThemeController.setSavedTheme(newTheme); // Atualiza o tema no localStorage
   };
 
   return (

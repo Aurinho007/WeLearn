@@ -1,10 +1,16 @@
-import { BRONZE, DIAMOUND, GOLD, SILVER, STUDENT_PROFILE, TEACHER_PROFILE } from '../Constants/userProfileConstants';
+import * as profileConstants from '../Constants/userProfileConstants';
 
 export type UserType = {
     userName: string,
     userEmail: string,
-    userProfileType: typeof STUDENT_PROFILE | typeof TEACHER_PROFILE,
-    userRank: typeof BRONZE| typeof SILVER | typeof GOLD | typeof DIAMOUND;
+    userProfileType: 
+        typeof profileConstants.STUDENT_PROFILE |
+        typeof profileConstants.TEACHER_PROFILE,
+    userRank: 
+        typeof profileConstants.BRONZE|
+        typeof profileConstants.SILVER |
+        typeof profileConstants.GOLD |
+        typeof profileConstants.DIAMOUND;
     userXP: number;
     userWC: number;
 }

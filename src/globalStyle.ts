@@ -6,7 +6,7 @@ export const GlobalStyles = createGlobalStyle`
         width: 100%;
         display: flex;
         justify-content: center;
-        background-color: ${(props) => (props.theme.primaryBckground)};
+        background-color: ${(props) => (props.theme.primaryBackground)};
     }
 
     #root {

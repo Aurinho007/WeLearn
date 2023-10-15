@@ -1,12 +1,12 @@
 import Header from "./Components/Header";
 import { GlobalStyles } from "./globalStyle";
 import { useTheme } from "./Contexts/ThemeContext";
-import { lightTheme, darkTheme } from "./assets/theme";
+import * as themes  from "./assets/theme";
 
 function App() {
 
   const { theme } = useTheme();
-  const currentTheme = theme === 'light' ? lightTheme : darkTheme;
+  const currentTheme = theme === 'light' ? themes.lightTheme : themes.darkTheme;
 
   return (
     <>

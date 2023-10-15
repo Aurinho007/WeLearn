@@ -1,11 +1,11 @@
 import { useTheme } from "../../Contexts/ThemeContext.tsx";
-import { lightTheme, darkTheme } from "../../assets/theme.ts";
+import * as themes  from "../../assets/theme.ts";
 import { Title } from "./styles.ts";
 
 const Header = () => {
 
   const { theme } = useTheme();
-  const currentTheme = theme === 'light' ? lightTheme : darkTheme;
+  const currentTheme = theme === 'light' ? themes.lightTheme : themes.darkTheme;
 
   return (
       <Title theme={currentTheme}>
