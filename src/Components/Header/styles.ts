@@ -7,3 +7,11 @@ export const Container = styled.div`
     padding: 18px 0;
 `;    
 
+export const Title = styled.p`
+    font-family: ${fonts.roboto};
+    font-style: italic;
+    font-weight: 800;
+    font-size: 2.5rem;
+    margin: 0;
+    color: ${(props) => (props.theme.primaryText)}
+`;

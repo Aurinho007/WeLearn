@@ -4,7 +4,8 @@ export const lightTheme = {
     primaryText: 'rgba(7, 6, 0, 1)',
     secondaryText: 'rgba(181, 181, 181, 1)',
     accentColor: 'rgba(17, 181, 228, 1)',
-    secundaryAccentColor: 'rgba(227, 23, 10, 1)'
+    secundaryAccentColor: 'rgba(227, 23, 10, 1)',
+    accentColorFooter: 'rgba(17, 181, 228, .5)',
   };  
 
 export const darkTheme = {

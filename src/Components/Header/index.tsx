@@ -1,7 +1,6 @@
 import { useTheme } from "../../Contexts/ThemeContext.tsx";
 import * as themes  from "../../assets/theme.ts";
-import { Container } from "./styles.ts";
-import Logo from "../Logo/index.tsx";
+import { Container, Title } from "./styles.ts";
 
 const Header = () => {
 
@@ -10,7 +9,9 @@ const currentTheme = theme === 'light' ? themes.lightTheme : themes.darkTheme;
 
   return (
     <Container theme={currentTheme}>
-     <Logo />
+     <Title theme={currentTheme}>
+        WeLearn
+      </Title>
     </Container>
   );
 };
