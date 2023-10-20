@@ -1,6 +1,7 @@
+import { Profiler } from "react";
 import { useTheme } from "../../Contexts/ThemeContext.tsx";
 import * as themes  from "../../assets/theme.ts";
-import { Container, Title } from "./styles.ts";
+import { Container, NavConteiner, NavItem, NavSeparator, ProfileConteiner, Title } from "./styles.ts";
 
 const Header = () => {
 
@@ -10,8 +11,19 @@ const currentTheme = theme === 'light' ? themes.lightTheme : themes.darkTheme;
   return (
     <Container theme={currentTheme}>
      <Title theme={currentTheme}>
-        WeLearn
+        WeLearn 
       </Title>
+
+      <NavConteiner>
+        <NavItem> Home </NavItem>
+        <NavSeparator> • </NavSeparator>
+        <NavItem> Salas </NavItem>
+        <NavSeparator> • </NavSeparator>
+        <NavItem> Sobre </NavItem>
+      </NavConteiner>
+
+      <ProfileConteiner>
+      </ProfileConteiner>
     </Container>
   );
 };
