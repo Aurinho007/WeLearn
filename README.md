@@ -1,6 +1,6 @@
 # WeLearn
 
-Bem-vindo ao WeLearn - uma plataforma colaborativa e gamificada de aprendizado desenvolvida por alunos do CEUB (Centro Universitário de Brasília). O WeLearn tem como objetivo revolucionar a experiência de aprendizado, combinando gamificação, análise de dados e motivação para melhorar tanto o engajamento dos alunos quanto os insights dos professores.
+Bem-vindo ao WeLearn - uma plataforma colaborativa e gamificada de aprendizado desenvolvida por alunos do Centro Universitário de Brasília (CEUB). O WeLearn tem como objetivo revolucionar a experiência de aprendizado, combinando gamificação, análise de dados e motivação para melhorar tanto o engajamento dos alunos quanto os insights dos professores.
 
 ![Alt text](/public/LoginReadMe.png)
 
