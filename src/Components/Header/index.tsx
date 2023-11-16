@@ -1,7 +1,7 @@
-import { Profiler } from "react";
 import { useTheme } from "../../Contexts/ThemeContext.tsx";
 import * as themes  from "../../assets/theme.ts";
-import { Container, NavConteiner, NavItem, NavSeparator, ProfileConteiner, Title } from "./styles.ts";
+import { Container, NavConteiner, NavItem, NavSeparator, ProfileConteiner, Image, ImageContainer, WeCoin, WeCoinContainer, WeCoinLabel, Title } from "./styles.ts";
+import defaultProfilePic from "../../assets/images/default-profile-pic.svg";
 
 const Header = () => {
 
@@ -14,15 +14,30 @@ const currentTheme = theme === 'light' ? themes.lightTheme : themes.darkTheme;
         WeLearn 
       </Title>
 
-      <NavConteiner>
+      <NavConteiner theme={currentTheme}>
         <NavItem> Home </NavItem>
-        <NavSeparator> • </NavSeparator>
+        <NavSeparator theme={currentTheme}> • </NavSeparator>
         <NavItem> Salas </NavItem>
-        <NavSeparator> • </NavSeparator>
+        <NavSeparator theme={currentTheme}> • </NavSeparator>
         <NavItem> Sobre </NavItem>
       </NavConteiner>
 
-      <ProfileConteiner>
+      <ProfileConteiner theme={currentTheme}>
+        <WeCoinContainer>
+          <WeCoinLabel>
+            WeCoins
+          </WeCoinLabel>
+          <WeCoin>
+            525
+          </WeCoin>
+        </WeCoinContainer>
+
+        <ImageContainer>
+          <Image
+            src={defaultProfilePic}
+          />
+        </ImageContainer>
+
       </ProfileConteiner>
     </Container>
   );
