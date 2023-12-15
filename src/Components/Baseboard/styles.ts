@@ -1,5 +1,5 @@
-import { styled } from "styled-components";
-import fonts from "../../assets/fonts/fonts"
+import { styled } from 'styled-components';
+import fonts from '../../assets/fonts/fonts';
 
 export const Content = styled.div`
     width: 100%;

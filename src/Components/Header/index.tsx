@@ -1,28 +1,23 @@
-import { useTheme } from "../../Contexts/ThemeContext.tsx";
-import * as themes  from "../../assets/theme.ts";
-import { Container, NavConteiner, NavItem, NavSeparator, ProfileConteiner, Image, ImageContainer, WeCoin, WeCoinContainer, WeCoinLabel, Title } from "./styles.ts";
-import defaultProfilePic from "../../assets/images/default-profile-pic.svg";
-
+import { Container, NavConteiner, NavItem, NavSeparator, ProfileConteiner, Image, ImageContainer, WeCoin, WeCoinContainer, WeCoinLabel, Title } from './styles.ts';
+import defaultProfilePic from '../../assets/images/default-profile-pic.svg';
 const Header = () => {
 
-const { theme } = useTheme();
-const currentTheme = theme === 'light' ? themes.lightTheme : themes.darkTheme;
 
   return (
-    <Container theme={currentTheme}>
-     <Title theme={currentTheme}>
+    <Container >
+      <Title>
         WeLearn 
       </Title>
 
-      <NavConteiner theme={currentTheme}>
+      <NavConteiner>
         <NavItem> Home </NavItem>
-        <NavSeparator theme={currentTheme}> • </NavSeparator>
+        <NavSeparator> • </NavSeparator>
         <NavItem> Salas </NavItem>
-        <NavSeparator theme={currentTheme}> • </NavSeparator>
+        <NavSeparator> • </NavSeparator>
         <NavItem> Sobre </NavItem>
       </NavConteiner>
 
-      <ProfileConteiner theme={currentTheme}>
+      <ProfileConteiner>
         <WeCoinContainer>
           <WeCoinLabel>
             WeCoins
