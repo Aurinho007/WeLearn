@@ -1,8 +1,10 @@
 import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 import fonts from '../../assets/fonts/fonts';
+import theme from '../../assets/theme';
 
 export const Container = styled.div`
-    border-bottom: ${(props) => (props.theme.accentColor)} 5px solid;
+    border-bottom: ${theme.accentColor} 5px solid;
     width: 100%;
     height: 50px;
     padding: 2vh 0;
@@ -10,7 +12,7 @@ export const Container = styled.div`
     grid-template-columns: auto auto auto;
     flex-direction: row;
     align-items: center;
-`;    
+`;
 
 export const Title = styled.p`
     font-family: ${fonts.roboto};
@@ -18,7 +20,7 @@ export const Title = styled.p`
     font-weight: 800;
     font-size: 2.5rem;
     margin: 0;
-    color: ${(props) => (props.theme.primaryText)};
+    color: ${theme.primaryText};
     justify-self: left;
 `;
 
@@ -28,11 +30,13 @@ export const NavConteiner = styled.div`
     flex-direction: row; 
     align-items: center;
     justify-self: center;
-    color: ${(props) => (props.theme.primaryText)};
+    color: ${theme.primaryText};
 `;
 
-export const NavItem = styled.p`
+export const NavItem = styled(Link)`
+    text-decoration: none; 
     font-family: ${fonts.montserrat};
+    color: ${theme.primaryText};
     font-weight: 600;
     font-size: 1.5rem;
     margin: 0;
@@ -48,15 +52,16 @@ export const NavSeparator = styled.p`
     font-weight: 700;
     padding: 0 3vh;
     margin: 0;
-    color: ${(props) => (props.theme.accentColor)}
+    color: ${theme.accentColor}
 `;
 
-export const ProfileConteiner = styled.div`
+export const ProfileConteiner = styled(Link)`
+    text-decoration: none; 
     width: auto;
     height: auto;
-    border: ${(props) => (props.theme.primaryText)} solid 2px;
+    border: ${theme.primaryText} solid 2px;
     border-radius: 10px;
-    color: ${(props) => (props.theme.primaryText)};
+    color: ${theme.primaryText};
     justify-self: right;
     display: flex;
     flex-direction: row;
@@ -64,7 +69,6 @@ export const ProfileConteiner = styled.div`
     align-items: center;
     padding: 3px 0;
 `;
-
 
 
 export const WeCoinContainer = styled.div`

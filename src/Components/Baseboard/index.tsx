@@ -1,12 +1,10 @@
 /* eslint-disable react/react-in-jsx-scope */
-import * as themes from '../../assets/theme.ts';
 import {  Content, Description, Title } from './styles.ts';
 
 const Baseboard = () => {
   return (
-    //O footer não é afetado de acordo com o tema
-    <Content theme={themes.lightTheme}>
-      <Title theme={themes.lightTheme}>
+    <Content>
+      <Title>
           WeLearn
       </Title>
       <Description>

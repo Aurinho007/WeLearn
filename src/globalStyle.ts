@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import theme from '../src/assets/theme';
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -6,7 +7,7 @@ export const GlobalStyles = createGlobalStyle`
         width: 100%;
         display: flex;
         justify-content: center;
-        background-color: ${(props) => (props.theme.primaryBackground)};
+        background-color: ${theme.primaryBackground};
     }
 
     #root {

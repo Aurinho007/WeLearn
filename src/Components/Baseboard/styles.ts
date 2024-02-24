@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
 import fonts from '../../assets/fonts/fonts';
+import theme from '../../assets/theme'
 
 export const Content = styled.div`
     width: 100%;
@@ -11,7 +12,7 @@ export const Content = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 5px;
-    background-color: ${(props) => (props.theme.accentColorFooter)};
+    background-color: ${theme.accentColorFooter};
 `;
 
 export const Title = styled.p`
@@ -20,7 +21,7 @@ export const Title = styled.p`
     font-weight: 800;
     font-size: 2.5rem;
     margin: 15px 0;
-    color: ${(props) => (props.theme.primaryText)}
+    color: ${theme.primaryText}
 `;
 
 export const Description = styled.p`
@@ -30,5 +31,5 @@ export const Description = styled.p`
     position: fixed;
     bottom: 0;
     margin-bottom: 10px;
-    color: ${(props) => (props.theme.primaryText)};
+    color: ${theme.primaryText};
 `;

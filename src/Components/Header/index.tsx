@@ -1,5 +1,6 @@
 import { Container, NavConteiner, NavItem, NavSeparator, ProfileConteiner, Image, ImageContainer, WeCoin, WeCoinContainer, WeCoinLabel, Title } from './styles.ts';
 import defaultProfilePic from '../../assets/images/default-profile-pic.svg';
+
 const Header = () => {
 
 
@@ -10,14 +11,14 @@ const Header = () => {
       </Title>
 
       <NavConteiner>
-        <NavItem> Home </NavItem>
+        <NavItem to="/"> Home </NavItem>
         <NavSeparator> • </NavSeparator>
-        <NavItem> Salas </NavItem>
+        <NavItem to="/salas"> Salas </NavItem>
         <NavSeparator> • </NavSeparator>
-        <NavItem> Sobre </NavItem>
+        <NavItem to="/sobre"> Sobre </NavItem>
       </NavConteiner>
 
-      <ProfileConteiner>
+      <ProfileConteiner to="/meu-perfil">
         <WeCoinContainer>
           <WeCoinLabel>
             WeCoins

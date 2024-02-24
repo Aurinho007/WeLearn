@@ -1,14 +1,12 @@
-import Header from './Components/Header';
-import Baseboard from './Components/Baseboard';
-import { GlobalStyles } from './globalStyle';
+import Home from "./Pages/Home";
+import { GlobalStyles } from "./globalStyle";
+import  Router  from './routes';
 
 function App() {
-
   return (
     <>
       <GlobalStyles />
-      <Header />
-      <Baseboard />
+      <Router />
     </>
   );
 }
