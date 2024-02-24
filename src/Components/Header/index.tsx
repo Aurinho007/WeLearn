@@ -6,7 +6,7 @@ const Header = () => {
 
   return (
     <Container >
-      <Title>
+      <Title to="/">
         WeLearn 
       </Title>
 

@@ -14,7 +14,8 @@ export const Container = styled.div`
     align-items: center;
 `;
 
-export const Title = styled.p`
+export const Title = styled(Link)`
+    text-decoration: none;
     font-family: ${fonts.roboto};
     font-style: italic;
     font-weight: 800;
