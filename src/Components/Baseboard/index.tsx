@@ -8,7 +8,7 @@ const Baseboard = () => {
           WeLearn
       </Title>
       <Description>
-          Copyright © 2023 | Todos os direitos reservados
+          Copyright © 2024 | Todos os direitos reservados
       </Description>
     </Content>
   );

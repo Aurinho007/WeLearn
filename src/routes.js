@@ -9,11 +9,13 @@ import Questionary from './Pages/Questionary/index';
 import CreateQuestionary from './Pages/CreateQuestionary/index';
 import NotFound from './Pages/NotFound/index';
 import Header from './Components/Header';
+import Baseboard from './Components/Baseboard';
 
 export default function AppRouter()  {
   return(
     <Router>
       <Header/>
+      <Baseboard/>
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/login' element={<Login />}/>
