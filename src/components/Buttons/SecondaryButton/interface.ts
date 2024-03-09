@@ -2,9 +2,9 @@ interface ISecondaryButton {
   onClick: () => void,
   text: string,
   outside: 'blue' | 'black',
-  fontFamily: 'montserrat' | 'roboto'
-  fontWeight: 300 | 400
-  fontSize: number
+  Ffamily: 'montserrat' | 'roboto'
+  Fweight: 300 | 400
+  Fsize: number
 }
 
 export default ISecondaryButton;

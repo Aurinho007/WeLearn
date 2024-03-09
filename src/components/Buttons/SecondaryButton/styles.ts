@@ -21,12 +21,10 @@ export const Button = styled.button<{style: ISecondaryButton}>`
   }
 `;
 
-
-
 export const Text = styled.p<{style: ISecondaryButton}>`
   color: ${theme.black};
-  font-family: ${props => fonts[props.style.fontFamily]};
-  font-weight: ${props => props.style.fontWeight};
-  font-size: ${props => props.style.fontSize} rem;
-  padding: 8px 25px;
+  font-family: ${props => fonts[props.style.Ffamily]};
+  font-weight: ${props => props.style.Fweight};
+  font-size: ${props => props.style.Fsize}rem;
+  padding: 6px 25px;
 `;
