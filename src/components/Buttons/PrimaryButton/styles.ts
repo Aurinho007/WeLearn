@@ -25,7 +25,6 @@ export const Button = styled.button<{style: IButton}>`
   &:active{
     filter: brightness(0.9);
   }
-
 `;
 
 export const Text = styled.p`

@@ -7,7 +7,6 @@ const SecondaryButton = (props: ISecondaryButton): React.JSX.Element => {
   const { onClick, text } = props;
   const [isActive, setIsActive] = useState<boolean>(true)
 
-
   return (
     <Container>
       <Button style={props} onClick={() => handleClick(isActive, setIsActive, onClick)}>

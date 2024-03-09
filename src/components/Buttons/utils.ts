@@ -1,7 +1,8 @@
 export const handleClick = (
   isActive: boolean,
   setIsActive: React.Dispatch<React.SetStateAction<boolean>>,
-  action: () => void) => {
+  action: () => void
+) => {
     
   if (isActive) {
     setIsActive(false);
