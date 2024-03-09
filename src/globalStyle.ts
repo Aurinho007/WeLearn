@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import theme from '../src/assets/theme';
+import theme from './assets/theme';
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -7,7 +7,7 @@ export const GlobalStyles = createGlobalStyle`
         width: 100%;
         display: flex;
         justify-content: center;
-        background-color: ${theme.primaryBackground};
+        background-color: ${theme.lightWhite};
     }
 
     #root {
@@ -15,13 +15,8 @@ export const GlobalStyles = createGlobalStyle`
         max-width: 1820px;
         padding: 0 8%;
     }
-`;
 
-export const ResetCSS = createGlobalStyle`
-  /* http://meyerweb.com/eric/tools/css/reset/
-  v2.0 | 20110126
-  License: none (public domain)
-  */
+
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -38,8 +33,6 @@ export const ResetCSS = createGlobalStyle`
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
-    font: inherit;
     vertical-align: baseline;
   }
   /* HTML5 display-role reset for older browsers */
@@ -66,4 +59,5 @@ export const ResetCSS = createGlobalStyle`
     border-spacing: 0;
   }
 `;
+
 

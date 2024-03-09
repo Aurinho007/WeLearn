@@ -1,6 +1,6 @@
-import * as profileConstants from '../Constants/userProfileConstants';
+import * as profileConstants from '../constants/userProfileConstants';
 
-export type UserType = {
+export type User = {
     userName: string,
     userEmail: string,
     userProfileType: 

@@ -3,7 +3,7 @@ import fonts from '../../assets/fonts/fonts';
 import theme from '../../assets/theme'
 
 export const Content = styled.div`
-    width: 100%;
+    width: 100vw;
     height: 100px;
     position: fixed;
     bottom: 0;
@@ -12,7 +12,7 @@ export const Content = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 5px;
-    background-color: ${theme.accentColorFooter};
+    background-color: ${theme.lightBlue};
 `;
 
 export const Title = styled.p`
@@ -21,7 +21,7 @@ export const Title = styled.p`
     font-weight: 800;
     font-size: 2.5rem;
     margin: 15px 0;
-    color: ${theme.primaryText}
+    color: ${theme.black}
 `;
 
 export const Description = styled.p`
@@ -31,5 +31,5 @@ export const Description = styled.p`
     position: fixed;
     bottom: 0;
     margin-bottom: 10px;
-    color: ${theme.primaryText};
+    color: ${theme.black};
 `;

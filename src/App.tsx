@@ -1,4 +1,3 @@
-import Home from "./Pages/Home";
 import { GlobalStyles } from "./globalStyle";
 import  Router  from './routes';
 

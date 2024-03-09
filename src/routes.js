@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './Pages/Home/index';
-import Login from './Pages/Login/index';
-import CreateAccount from './Pages/CreateAccount/index';
-import Profile from './Pages/Profile';
-import About from './Pages/About/index';
-import Classrooms from './Pages/Classrooms/index';
-import Questionary from './Pages/Questionary/index';
-import CreateQuestionary from './Pages/CreateQuestionary/index';
-import NotFound from './Pages/NotFound/index';
-import Header from './Components/Header';
-import Baseboard from './Components/Baseboard';
+import Home from './pages/Home/index';
+import Login from './pages/Login/index';
+import CreateAccount from './pages/CreateAccount/index';
+import Profile from './pages/Profile';
+import About from './pages/About/index';
+import Classrooms from './pages/Classrooms/index';
+import Questionary from './pages/Questionary/index';
+import CreateQuestionary from './pages/CreateQuestionary/index';
+import NotFound from './pages/NotFound/index';
+import Header from './components/Header';
+import Baseboard from './components/Baseboard';
 
 export default function AppRouter()  {
   return(
