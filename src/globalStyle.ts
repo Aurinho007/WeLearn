@@ -1,21 +1,7 @@
-import { createGlobalStyle } from 'styled-components';
-import theme from './assets/theme';
+import { createGlobalStyle } from "styled-components";
+import theme from "./assets/theme";
 
 export const GlobalStyles = createGlobalStyle`
-
-    body {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        background-color: ${theme.lightWhite};
-    }
-
-    #root {
-        width: 100%;
-        max-width: 1820px;
-        padding: 0 8%;
-    }
-
 
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -35,7 +21,6 @@ export const GlobalStyles = createGlobalStyle`
     border: 0;
     vertical-align: baseline;
   }
-  /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure, 
   footer, header, hgroup, menu, nav, section {
     display: block;
@@ -58,6 +43,17 @@ export const GlobalStyles = createGlobalStyle`
     border-collapse: collapse;
     border-spacing: 0;
   }
+
+  #root {
+      width: 100svw;
+      max-width: 1820px;
+      padding: 0 8%;
+  }
+  
+  body {
+      width: 100svw;
+      display: flex;
+      justify-content: center;
+      background-color: ${theme.lightWhite};
+  }
 `;
-
-

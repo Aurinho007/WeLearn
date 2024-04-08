@@ -15,14 +15,14 @@ import Classroom from "./pages/Classroom";
 import Dashboard from "./pages/Dashboard";
 
 const Layout = ({ children }: any) => {
-  return(
+  return (
     <>
-    <Header />
-    <Baseboard />
-    {children}
+      <Header />
+      <Baseboard />
+      {children}
     </>
-  )
-}
+  );
+};
 
 function App() {
   return (
@@ -30,12 +30,21 @@ function App() {
       <GlobalStyles />
       <Router>
         <Routes>
-          <Route path="/" index element={<Layout children={<Home/>} />} />
-          <Route path="/salas" element={<Layout children={<Classrooms />}/>} />
-          <Route path="/sala-de-x" element={<Layout children={<Classroom />} />}/>
-          <Route path="/sobre" element={<Layout children={<About />} />}/>
-          <Route path="/meu-perfil" element={<Layout children={<Profile />} />}/>
-          <Route path="/Dashboard" element={<Layout children={<Dashboard />}/>} />
+          <Route path="/" index element={<Layout children={<Home />} />} />
+          <Route path="/salas" element={<Layout children={<Classrooms />} />} />
+          <Route
+            path="/sala-de-x"
+            element={<Layout children={<Classroom />} />}
+          />
+          <Route path="/sobre" element={<Layout children={<About />} />} />
+          <Route
+            path="/meu-perfil"
+            element={<Layout children={<Profile />} />}
+          />
+          <Route
+            path="/Dashboard"
+            element={<Layout children={<Dashboard />} />}
+          />
           <Route path="/*" element={<Layout children={<NotFound />} />} />
 
           <Route path="/login" element={<Login />} />

@@ -11,17 +11,11 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5px;
     background-color: ${theme.lightBlue};
 `;
 
-export const Title = styled.p`
-    font-family: ${fonts.roboto};
-    font-style: italic;
-    font-weight: 800;
-    font-size: 2.5rem;
-    margin: 15px 0;
-    color: ${theme.black}
+export const Title = styled.div`
+    margin-top: 20px;
 `;
 
 export const Description = styled.p`
@@ -29,7 +23,6 @@ export const Description = styled.p`
     font-weight: 500;
     font-size: 1rem;
     position: fixed;
-    bottom: 0;
-    margin-bottom: 10px;
+    bottom: 10px;
     color: ${theme.black};
 `;

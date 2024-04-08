@@ -1,14 +1,12 @@
-import { Container, NavConteiner, NavItem, NavSeparator, ProfileConteiner, Image, ImageContainer, WeCoin, WeCoinContainer, WeCoinLabel, Title } from './styles.ts';
-import defaultProfilePic from '../../assets/images/default-profile-pic.svg';
+import { Container, NavConteiner, NavItem, NavSeparator } from './styles.ts';
+import Logo from '../Logo/index.tsx';
+import ProfileCard from './components/ProfileCard/index.tsx';
 
 const Header = () => {
 
-
   return (
     <Container >
-      <Title to="/">
-        WeLearn 
-      </Title>
+     <Logo />
 
       <NavConteiner>
         <NavItem to="/"> Home </NavItem>
@@ -17,24 +15,8 @@ const Header = () => {
         <NavSeparator> • </NavSeparator>
         <NavItem to="/sobre"> Sobre </NavItem>
       </NavConteiner>
-
-      <ProfileConteiner to="/meu-perfil">
-        <WeCoinContainer>
-          <WeCoinLabel>
-            WeCoins
-          </WeCoinLabel>
-          <WeCoin>
-            525
-          </WeCoin>
-        </WeCoinContainer>
-
-        <ImageContainer>
-          <Image
-            src={defaultProfilePic}
-          />
-        </ImageContainer>
-
-      </ProfileConteiner>
+      
+     <ProfileCard />
     </Container>
   );
 };
