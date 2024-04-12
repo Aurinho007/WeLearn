@@ -33,7 +33,7 @@ export const WeCoin = styled.p`
     margin: 0;
     text-align: center;
     font-family: ${fonts.montserrat};
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1.7rem;
 `;
 

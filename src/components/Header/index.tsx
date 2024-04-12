@@ -1,22 +1,14 @@
-import { Container, NavConteiner, NavItem, NavSeparator } from './styles.ts';
-import Logo from '../Logo/index.tsx';
-import ProfileCard from './components/ProfileCard/index.tsx';
+import { Container } from "./styles.ts";
+import Logo from "../Logo/index.tsx";
+import ProfileCard from "./components/ProfileCard/index.tsx";
+import Nav from "./components/Nav/index.tsx";
 
 const Header = () => {
-
   return (
-    <Container >
-     <Logo />
-
-      <NavConteiner>
-        <NavItem to="/"> Home </NavItem>
-        <NavSeparator> • </NavSeparator>
-        <NavItem to="/salas"> Salas </NavItem>
-        <NavSeparator> • </NavSeparator>
-        <NavItem to="/sobre"> Sobre </NavItem>
-      </NavConteiner>
-      
-     <ProfileCard />
+    <Container>
+      <Logo />
+      <Nav />
+      <ProfileCard />
     </Container>
   );
 };
