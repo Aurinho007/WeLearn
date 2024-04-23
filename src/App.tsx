@@ -33,7 +33,7 @@ function App() {
           <Route path="/" index element={<Layout children={<Home />} />} />
           <Route path="/salas" element={<Layout children={<Classrooms />} />} />
           <Route
-            path="/sala-de-x"
+            path="/sala"
             element={<Layout children={<Classroom />} />}
           />
           <Route path="/sobre" element={<Layout children={<About />} />} />
