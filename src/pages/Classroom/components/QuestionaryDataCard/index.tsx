@@ -1,19 +1,22 @@
 import { Card, Description, Line, Value } from "./styles";
+import QuestionaryDataCardProps from "./types";
 
-const QuestionaryDataCard = () => {
+const QuestionaryDataCard = (props: QuestionaryDataCardProps): JSX.Element => {
+  const { teacherName, classroomId, studentRanking } = props
+
   return (
     <Card>
       <Line>
         <Description>Professor</Description>
-        <Value>Maria</Value>
+        <Value>{teacherName}</Value>
       </Line>
       <Line>
         <Description>Código</Description>
-        <Value>1563</Value>
+        <Value>{classroomId}</Value>
       </Line>
       <Line>
         <Description>Ranking</Description>
-        <Value>Ouro</Value>
+        <Value>{studentRanking}</Value>
       </Line>
     </Card>
   );

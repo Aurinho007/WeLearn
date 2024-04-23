@@ -11,6 +11,7 @@ margin-top: 20px;
   border-radius: 8px;
   padding: 5px 16px;
   width: 20%;
+  min-width: 300px;
   color: ${theme.black};
 `;
 
@@ -25,10 +26,12 @@ export const Description = styled.p`
   font-family: ${fonts.montserrat};
   font-weight: 300;
   font-size: 1.3rem;
-`;
+  text-align: left;
+  `;
 
 export const Value = styled.p`
   font-family: ${fonts.montserrat};
   font-weight: 500;
   font-size: 1.3rem;
+  text-align: right;
 `;
