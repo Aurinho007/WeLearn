@@ -7,7 +7,7 @@ import Login from "./pages/Login/index";
 import CreateAccount from "./pages/CreateAccount/index";
 import Profile from "./pages/Profile";
 import About from "./pages/About/index";
-import Classrooms from "./pages/Classrooms/index";
+import MyClassrooms from "./pages/MyClassrooms/index";
 import Questionary from "./pages/Questionary/index";
 import FormQuestionary from "./pages/FormQuestionary/index";
 import NotFound from "./pages/NotFound/index";
@@ -31,7 +31,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" index element={<Layout children={<Home />} />} />
-          <Route path="/salas" element={<Layout children={<Classrooms />} />} />
+          <Route path="/salas" element={<Layout children={<MyClassrooms />} />} />
           <Route
             path="/sala"
             element={<Layout children={<Classroom />} />}

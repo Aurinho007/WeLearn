@@ -20,6 +20,7 @@ const TitleContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  padding-top: 8px;
 `;
 
 const Title = styled.div`
