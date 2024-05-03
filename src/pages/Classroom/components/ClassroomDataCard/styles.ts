@@ -3,13 +3,13 @@ import fonts from '../../../../assets/fonts/fonts';
 import theme from '../../../../assets/theme';
 
 export const Card = styled.div`
-margin-top: 20px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   background-color: ${theme.white};
-  border: solid 3px ${theme.blue};
+  border: solid 2px ${theme.blue};
   border-radius: 8px;
-  padding: 5px 16px;
+  padding: 8px 16px;
   width: 20%;
   min-width: 300px;
   color: ${theme.black};
@@ -27,7 +27,7 @@ export const Description = styled.p`
   font-weight: 300;
   font-size: 1.3rem;
   text-align: left;
-  `;
+`;
 
 export const Value = styled.p`
   font-family: ${fonts.montserrat};
