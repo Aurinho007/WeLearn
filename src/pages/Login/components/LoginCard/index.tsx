@@ -5,6 +5,7 @@ import {
   CheckBox,
   Container,
   Content,
+  Divider,
   Division,
   ForgetPassword,
   Form,
@@ -15,6 +16,7 @@ import {
   RememberMe,
   RememberMeLabel,
   SubTitle,
+  TextBtn,
   TextInput,
   Title,
 } from "./styles";
@@ -63,7 +65,8 @@ const LoginCard = (props: LoginCardProps) => {
         <Division>
           <Buttons>
             <PrimaryButton text="Entrar" onClick={() => alert("")} />
-            <SubTitle>Não possui uma conta?</SubTitle>
+            <Divider />
+            <TextBtn>Não possui uma conta?</TextBtn>
             <TerciaryButton
               text="Criar conta"
               Fsize={2}

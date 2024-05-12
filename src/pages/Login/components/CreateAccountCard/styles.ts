@@ -111,4 +111,15 @@ export const Buttons = styled.div`
   text-align: center;
 `;
 
+export const Divider = styled.div`
+  height: 30px;
+`;
+
+export const TextBtn = styled.p`
+  font-family: ${Fonts.montserrat};
+  font-weight: 500;
+  font-size: 2rem;
+  color: ${theme.grey};
+`;
+
 

@@ -5,6 +5,7 @@ import {
   CheckBox,
   Container,
   Content,
+  Divider,
   Division,
   Form,
   Header,
@@ -13,6 +14,7 @@ import {
   RememberMe,
   RememberMeLabel,
   SubTitle,
+  TextBtn,
   TextInput,
   Title,
 } from "./styles";
@@ -34,7 +36,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
         <Division>
           <Header>
             <Title>Criar Conta</Title>
-            <SubTitle>Bem-vindo(a) so WeLearn!</SubTitle>
+            <SubTitle>Bem-vindo(a) ao WeLearn!</SubTitle>
           </Header>
         </Division>
 
@@ -62,7 +64,8 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
         <Division>
           <Buttons>
             <PrimaryButton text="Criar conta" onClick={() => alert("")} />
-            <SubTitle>Já possui uma conta?</SubTitle>
+            <Divider />
+            <TextBtn>Já possui uma conta?</TextBtn>
             <TerciaryButton
               text="Faça Login"
               Fsize={2}
