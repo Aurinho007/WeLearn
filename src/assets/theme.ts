@@ -4,7 +4,7 @@ const theme = {
   black: 'rgba(7, 6, 0, 1)',
   grey: 'rgba(181, 181, 181, 1)',
   blue: 'rgba(17, 181, 228, 1)',
-  lightBlue: 'rgba(17, 181, 228, .5)'
+  lightBlue: '#54c8ec'
   //falta vermelho
 };  
 

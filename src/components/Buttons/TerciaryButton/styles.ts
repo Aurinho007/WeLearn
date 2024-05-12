@@ -18,6 +18,7 @@ export const Button = styled.button<{style: ISecondaryButton}>`
   &:active{
     filter: brightness(0.8);
   }
+
 `;
 
 export const Text = styled.p<{style: ISecondaryButton}>`

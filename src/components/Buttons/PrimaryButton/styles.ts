@@ -12,13 +12,13 @@ export const Container = styled.div`
 `;
 
 export const Button = styled.button<{style: IButton}>`
-  width: 80%;
-  height: auto;
+  width: 100%;
+  height: 4rem;
   font-family: ${fonts.roboto};
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 2rem;
   color: ${theme.white};
-  border-radius: 5px;
+  border-radius: 8px;
   border: none;
   background-color: ${theme.blue};
 
