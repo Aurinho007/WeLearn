@@ -33,8 +33,8 @@ const LoginCard = (props: LoginCardProps) => {
 
   const { setIsLogin } = props;
 
-  const [email, setEmail] = useState<string>('aureo@gmail.com');
-  const [password, setPassword] = useState<string>('1234');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   const changeCard = () => {
     setIsLogin(false);
@@ -106,7 +106,7 @@ const LoginCard = (props: LoginCardProps) => {
             <TextBtn>Não possui uma conta?</TextBtn>
             <TerciaryButton
               text="Criar conta"
-              Fsize={2}
+              Fsize={1.4}
               colored
               onClick={() => changeCard()}
             />

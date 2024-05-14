@@ -12,8 +12,8 @@ export const Box = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 1000px;
-  width: 1600px;
+  height: 800px;
+  width: 1200px;
   box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.1);
   margin-top: -50px;
   border-radius: 20px;

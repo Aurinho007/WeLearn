@@ -1,12 +1,13 @@
 const BASE_URL = "http://localhost:3000/api";
 const LOGIN_URL = `${BASE_URL}/users/auth`;
+const CREATE_ACCOUNT_URL = `${BASE_URL}/users/`;
 
-export const login = async (params: any): Promise<string | void> => {
+const doRequest = async (url: string, params: any, method: "POST" | "GET", token?: string) => {
   try {
-    const data = await fetch(LOGIN_URL, {
-      method: 'POST',
+    const data = await fetch(url, {
+      method,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(params)
     });
@@ -15,11 +16,23 @@ export const login = async (params: any): Promise<string | void> => {
       .then(data => data)
       .catch(error => error);
 
+    if(response.error){
+      alert(response.error)
+      return
+    }
 
     return response;
 
   } catch (error) {
-    console.error('Error during login:', error);
+    console.error('Erro', error);
     return;
   }
+}
+
+export const login =  async (params: any): Promise<any> => {
+  return doRequest(LOGIN_URL, params, 'POST');
+};
+
+export const createAccount = async (params: any): Promise<any> => {
+  return doRequest(CREATE_ACCOUNT_URL, params, 'POST');
 };
