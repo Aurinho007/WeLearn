@@ -1,3 +1,4 @@
+import { useState } from "react";
 import PrimaryButton from "../../../../components/Buttons/PrimaryButton";
 import TerciaryButton from "../../../../components/Buttons/TerciaryButton";
 import {
@@ -20,16 +21,42 @@ import {
   TextInput,
   Title,
 } from "./styles";
+import { callLogin } from "./utils";
+import { useNavigate } from "react-router-dom";
 
 type LoginCardProps = {
-  setIsLogin: React.Dispatch<React.SetStateAction<boolean>>
-}
+  setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 const LoginCard = (props: LoginCardProps) => {
-  const { setIsLogin } = props
+  const navigate = useNavigate();
+
+  const { setIsLogin } = props;
+
+  const [email, setEmail] = useState<string>('aureo@gmail.com');
+  const [password, setPassword] = useState<string>('1234');
 
   const changeCard = () => {
     setIsLogin(false);
+  };
+
+  const handleChangeEmail = (event: any) => {
+    setEmail(event.target.value);
+  };
+
+  const handleChangePassword = (event: any) => {
+    setPassword(event.target.value);
+  };
+
+  const handleClick  = async () => {
+    const data = await callLogin(email, password);
+
+    if(data.token){ 
+      navigate("/salas");
+    } else {
+      alert("Erro: " + data.error)
+    }
+
   }
 
   return (
@@ -46,14 +73,24 @@ const LoginCard = (props: LoginCardProps) => {
           <Form>
             <Item>
               <Label>E-mail</Label>
-              <TextInput type="text" placeholder="  nome@exemplo.com" />
+              <TextInput
+                type="text"
+                placeholder="  nome@exemplo.com"
+                value={email}
+                onChange={handleChangeEmail}
+              />
             </Item>
             <Item>
               <PasswordLabelContainer>
                 <Label>Senha</Label>
                 <ForgetPassword>Esqueceu sua senha?</ForgetPassword>
               </PasswordLabelContainer>
-              <TextInput type="password" placeholder="  digite sua senha" />
+              <TextInput
+                type="password"
+                placeholder="  digite sua senha"
+                value={password}
+                onChange={handleChangePassword}
+              />
             </Item>
             <RememberMe>
               <CheckBox type="checkbox" />
@@ -64,7 +101,7 @@ const LoginCard = (props: LoginCardProps) => {
 
         <Division>
           <Buttons>
-            <PrimaryButton text="Entrar" onClick={() => alert("")} />
+            <PrimaryButton text="Entrar" onClick={() => handleClick()} />
             <Divider />
             <TextBtn>Não possui uma conta?</TextBtn>
             <TerciaryButton

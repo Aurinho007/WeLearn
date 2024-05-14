@@ -59,7 +59,7 @@ export const TextInput = styled.input`
   width: 100%;
   background-color: transparent;
   height: 3.5rem;
-  border: solid 5px ${theme.black};
+  border: solid 2px ${theme.black};
   border-radius: 10px;
   font-family: ${Fonts.montserrat};
   font-size: 1.6rem;

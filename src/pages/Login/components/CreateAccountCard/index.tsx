@@ -54,10 +54,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
                 <Label>Senha</Label>
               <TextInput type="password" placeholder="  crie sua senha" />
             </Item>
-            <RememberMe>
-              <CheckBox type="checkbox" />
-              <RememberMeLabel>Lembrar de mim</RememberMeLabel>
-            </RememberMe>
+
           </Form>
         </Division>
 
