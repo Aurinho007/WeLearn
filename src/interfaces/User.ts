@@ -4,12 +4,15 @@ export interface IUser {
   wecoins?: string;
   xp?: number;
   ranking?: string;
+  perfil?: 'Aluno' | 'Professor' | '',
   token: string
-  isLogged?: boolean;
-  isProfessor?: boolean;
 };
 
 export interface IUserContextType {
   user: IUser;
   setUser: React.Dispatch<React.SetStateAction<IUser>>;
+  isLoged: () => boolean;
+  isTeacher: () => boolean;
+  isStudent: () => boolean;
+
 };
