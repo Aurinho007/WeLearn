@@ -37,31 +37,32 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
   );
   const [password, setPassword] = useState<string>("");
 
-  const handleChangeName = (event: any) => {
+  const handleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
   };
 
-  const handleChangeEmail = (event: any) => {
+  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
 
-  const handleChangeProfileType = (event: any) => {
-    setProfileType(event.target.value);
+  const handleChangeProfileType = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    setProfileType(event.target.value as "Aluno" | "Professor");
   };
 
-  const handleChangePassword = (event: any) => {
+  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
 
-  const handleClick = async () => {
-      const data = await callCreateAccount(name, email, profileType, password);
-
-      if(data.error){
-        alert(data.error);
-      } else{
-        changeCard()
-      }
+  const handleClickCreateAccountButton = async () => {
+    try{
+      await callCreateAccount(name, email, profileType, password);
+    } catch(e){
+      return
     }
+    changeCard();
+  };
 
   return (
     <Container>
@@ -107,14 +108,14 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
                 placeholder="  crie sua senha"
                 value={password}
                 onChange={handleChangePassword}
-                />
+              />
             </Item>
           </Form>
         </Division>
 
         <Division>
           <Buttons>
-            <PrimaryButton text="Criar conta" onClick={() => handleClick()} />
+            <PrimaryButton text="Criar conta" onClick={handleClickCreateAccountButton} />
             <Divider />
             <TextBtn>Já possui uma conta?</TextBtn>
             <TerciaryButton

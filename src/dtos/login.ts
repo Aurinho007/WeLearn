@@ -1,6 +1,6 @@
 type loginDto = {
   email: string,
-  password: string
+  senha: string
 }
 
 export default loginDto

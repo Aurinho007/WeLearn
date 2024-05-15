@@ -1,8 +1,8 @@
 type CreateAccountDto = {
-  name: string,
+  nome: string,
   email: string,
-  profileType: 'Professor' | 'Aluno',
-  password: string
+  perfil: 'Professor' | 'Aluno',
+  senha: string
 }
 
 export default CreateAccountDto;

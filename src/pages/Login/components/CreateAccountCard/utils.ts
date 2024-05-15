@@ -1,20 +1,19 @@
 import { createAccount } from "../../../../api"
+import CreateAccountDto from "../../../../dtos/createAccount";
 
 export const callCreateAccount = async (
-  nome: string,
+  name: string,
   email: string,
-  perfil: 'Aluno' | 'Professor',
-  senha: string
-): Promise<any> => {
-  const createUser = {
-    nome,
+  profileType: 'Aluno' | 'Professor',
+  password: string
+): Promise<void> => {
+  const createUser: CreateAccountDto = {
+    nome: name,
     email,
-    perfil,
-    senha
+    perfil: profileType,
+    senha: password
   }
 
-  const response = await createAccount(createUser);
-
-  return response;
+  await createAccount(createUser);
 
 }

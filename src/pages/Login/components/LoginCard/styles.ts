@@ -29,7 +29,7 @@ export const Header = styled.div`
 export const Title = styled.p`
   font-family: ${Fonts.roboto};
   font-weight: 600;
-  font-size: 3rem;
+  font-size: 2.5rem;
   letter-spacing: -1px;
 `;
 

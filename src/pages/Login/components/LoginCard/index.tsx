@@ -23,6 +23,9 @@ import {
 } from "./styles";
 import { callLogin } from "./utils";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../../../../contexts/userContext";
+import { saveToken } from "../../../../localStorageControllers/tokenController";
+import { IUser } from "../../../../interfaces/User";
 
 type LoginCardProps = {
   setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;
@@ -30,6 +33,7 @@ type LoginCardProps = {
 
 const LoginCard = (props: LoginCardProps) => {
   const navigate = useNavigate();
+  const { setUser } = useUser();
 
   const { setIsLogin } = props;
 
@@ -40,23 +44,23 @@ const LoginCard = (props: LoginCardProps) => {
     setIsLogin(false);
   };
 
-  const handleChangeEmail = (event: any) => {
+  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
   };
 
-  const handleChangePassword = (event: any) => {
+  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
 
-  const handleClick  = async () => {
-    const data = await callLogin(email, password);
-
-    if(data.token){ 
-      navigate("/salas");
-    } else {
-      alert("Erro: " + data.error)
+  const handleClickLoginButton  = async () => {
+    try{
+      const response: IUser = await callLogin(email, password);
+      setUser(response);
+      saveToken(response.token);
+    } catch(e){
+      return
     }
-
+    navigate("/salas");
   }
 
   return (
@@ -101,14 +105,14 @@ const LoginCard = (props: LoginCardProps) => {
 
         <Division>
           <Buttons>
-            <PrimaryButton text="Entrar" onClick={() => handleClick()} />
+            <PrimaryButton text="Entrar" onClick={handleClickLoginButton} />
             <Divider />
             <TextBtn>Não possui uma conta?</TextBtn>
             <TerciaryButton
               text="Criar conta"
               Fsize={1.4}
               colored
-              onClick={() => changeCard()}
+              onClick={changeCard}
             />
           </Buttons>
         </Division>
