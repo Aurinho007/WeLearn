@@ -1,3 +1,4 @@
+import { useUser } from "../../../../contexts/userContext";
 import {
   ProfileConteiner,
   Image,
@@ -9,11 +10,12 @@ import {
 import defaultProfilePic from '../../../../assets/images/default-profile-pic.svg';
 
 const ProfileCard = () => {
+  const { user } = useUser();
   return (
     <ProfileConteiner to="/meu-perfil">
       <WeCoinContainer>
         <WeCoinLabel>WeCoins</WeCoinLabel>
-        <WeCoin>525</WeCoin>
+        <WeCoin>{user.weCoin}</WeCoin>
       </WeCoinContainer>
       <ImageContainer>
         <Image src={defaultProfilePic} />

@@ -3,7 +3,7 @@ interface ISecondaryButton {
   text: string,
   outside: 'blue' | 'black',
   Ffamily: 'montserrat' | 'roboto'
-  Fweight: 300 | 400
+  Fweight: 400 | 500
   Fsize: number
 }
 

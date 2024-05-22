@@ -8,7 +8,7 @@ const initialUserState: IUser = {
   xp: 0,
   ranking: '',
   perfil: '',
-  token: ''
+  token: '',
 };
 
 const UserContext = createContext<IUserContextType>({

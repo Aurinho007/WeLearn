@@ -11,7 +11,7 @@ const Nav = () => {
         <NavSeparator> • </NavSeparator>
         <NavItem to="/salas"> Salas </NavItem>
         <NavSeparator> • </NavSeparator>
-        <NavItem to="/login"> Sobre </NavItem>
+        <NavItem to="/sobre"> Sobre </NavItem>
       </NavConteiner>
   );
 };

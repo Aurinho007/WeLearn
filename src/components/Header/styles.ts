@@ -4,14 +4,13 @@ import fonts from '../../assets/fonts/fonts';
 import theme from '../../assets/theme';
 
 export const Container = styled.div`
-    border-bottom: ${theme.blue} 5px solid;
+    border-bottom: ${theme.blue} 5px solid; 
     width: 100%;
-    height: 50px;
-    padding: 2vh 0;
-    display: grid;
-    grid-template-columns: auto auto auto;
+    display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    padding: 20px 0;
 `;
 
 export const Title = styled(Link)`
