@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { UserProvider } from "./contexts/userContext";
+import { UserProvider } from "./contexts/UserContext";
+import { ToastProvider } from "./contexts/ToastContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -10,7 +11,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <UserProvider>
-      <App />
+      <ToastProvider>
+        <App />
+      </ToastProvider>
     </UserProvider>
   </React.StrictMode>
 );

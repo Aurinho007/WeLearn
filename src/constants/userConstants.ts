@@ -1,5 +1,3 @@
-const userConstants = {
-  LOCAL_STORAGE_TOKEN_KEY: '@USER_TOKEN'
-}
+const LOCAL_STORAGE_USER_KEY = '@USER_TOKEN';
 
-export default userConstants;
+export default LOCAL_STORAGE_USER_KEY;

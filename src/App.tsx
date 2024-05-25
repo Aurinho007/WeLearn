@@ -17,8 +17,8 @@ const Layout = ({ children }: any) => {
   return (
     <>
       <Header />
-      <Baseboard />
       {children}
+      <Baseboard />
     </>
   );
 };

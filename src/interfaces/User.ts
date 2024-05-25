@@ -1,7 +1,7 @@
 export interface IUser {
   name: string;
   email: string;
-  weCoin: string;
+  weCoin: number;
   xp: number;
   ranking: string;
   perfil: 'Aluno' | 'Professor' | '',

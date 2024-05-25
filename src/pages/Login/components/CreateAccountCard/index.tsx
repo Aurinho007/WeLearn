@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useToast } from "../../../../contexts/ToastContext";
 import PrimaryButton from "../../../../components/Buttons/PrimaryButton";
 import TerciaryButton from "../../../../components/Buttons/TerciaryButton";
 import {
@@ -17,7 +18,10 @@ import {
   TextInput,
   Title,
 } from "./styles";
-import { callCreateAccount } from "./utils";
+import { createAccount } from "../../../../api";
+import CreateAccountDto from "../../../../dtos/createAccount";
+import { isValidEmail, isValidName, isValidPassword } from "../../utils";
+
 
 type CreateAccountCardProps = {
   setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,6 +29,7 @@ type CreateAccountCardProps = {
 
 const CreateAccountCard = (props: CreateAccountCardProps) => {
   const { setIsLogin } = props;
+  const { showToast } = useToast();
 
   const changeCard = () => {
     setIsLogin(true);
@@ -32,9 +37,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
 
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [profileType, setProfileType] = useState<"Aluno" | "Professor">(
-    "Aluno"
-  );
+  const [profileType, setProfileType] = useState<"Aluno" | "Professor">("Aluno");
   const [password, setPassword] = useState<string>("");
 
   const handleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,17 +58,50 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
     setPassword(event.target.value);
   };
 
-  const handleClickCreateAccountButton = async () => {
-    try{
-      await callCreateAccount(name, email, profileType, password);
-    } catch(e){
-      return
-    }
+  const sucessCallback = () => {
+    showToast("Conta criada com sucesso!", "sucess");
     changeCard();
+  }
+
+  const errorCallback = (error: string) => {
+    showToast(error, "error")
+  }
+
+
+  const handleClickCreateAccountButton = async () => {
+    const newUser: CreateAccountDto = {
+      email,
+      nome: name,
+      perfil: profileType,
+      senha: password
+    }
+
+    await createAccount(newUser, sucessCallback, errorCallback);
+
   };
 
+  const validateForm = () => {
+
+    if (!isValidName(name)){
+      showToast("Digite um nome válido", "error");
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      showToast("Email inválido", "error");
+      return;
+    } 
+
+    if (!isValidPassword(password)){
+      showToast("Senha inválida", "error");
+      return;
+    }
+
+    handleClickCreateAccountButton();
+  }
+
   return (
-    <Container>
+    <Container onKeyDown={(event) => event.key === 'Enter' && validateForm()} tabIndex={0}>
       <Content>
         <Division>
           <Header>
@@ -115,7 +151,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
 
         <Division>
           <Buttons>
-            <PrimaryButton text="Criar conta" onClick={handleClickCreateAccountButton} />
+            <PrimaryButton text="Criar conta" onClick={validateForm} />
             <Divider />
             <TextBtn>Já possui uma conta?</TextBtn>
             <TerciaryButton

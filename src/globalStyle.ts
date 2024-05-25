@@ -45,16 +45,17 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   #root {
-      width: 100svw;
-      max-width: 1820px;
-      padding: 0 8%;
+    width: 100svw;
+    max-width: 1820px;
+    padding: 0 8%;
   }
   
   body {
-      width: 100svw;
-      display: flex;
-      justify-content: center;
-      background-color: ${theme.lightWhite};
-      color: ${theme.black};
+    width: 100svw;
+    display: flex;
+    justify-content: center;
+    background-color: ${theme.lightWhite};
+    color: ${theme.black};
+    position: static;
   }
 `;

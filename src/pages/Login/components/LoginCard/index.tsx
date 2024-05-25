@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { isValidElement, useState } from "react";
 import PrimaryButton from "../../../../components/Buttons/PrimaryButton";
 import TerciaryButton from "../../../../components/Buttons/TerciaryButton";
 import {
@@ -21,11 +21,13 @@ import {
   TextInput,
   Title,
 } from "./styles";
-import { callLogin } from "./utils";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../../../../contexts/userContext";
-import { saveToken } from "../../../../localStorageControllers/tokenController";
+import { useUser } from "../../../../contexts/UserContext";
+import { useToast } from "../../../../contexts/ToastContext";
 import { IUser } from "../../../../interfaces/User";
+import loginDto from "../../../../dtos/login";
+import { login } from "../../../../api";
+import { isValidEmail, isValidName, isValidPassword } from "../../utils";
 
 type LoginCardProps = {
   setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;
@@ -34,6 +36,7 @@ type LoginCardProps = {
 const LoginCard = (props: LoginCardProps) => {
   const navigate = useNavigate();
   const { setUser } = useUser();
+  const { showToast } = useToast();
 
   const { setIsLogin } = props;
 
@@ -52,19 +55,43 @@ const LoginCard = (props: LoginCardProps) => {
     setPassword(event.target.value);
   };
 
-  const handleClickLoginButton  = async () => {
-    try{
-      const response: IUser = await callLogin(email, password);
-      setUser(response);
-      saveToken(response.token);
-    } catch(e){
-      return
-    }
-    navigate("/salas");
+  const sucessCallback = (user: IUser) => {
+    setUser(user);
+    navigate("/");
+    showToast("Login feito com sucesso!", "sucess")
   }
 
+  const errorCallback = (error: string) => {
+    showToast(error, "error")
+  }
+
+  const handleClickLoginButton = async () => {
+    const user: loginDto = {
+      email,
+      senha: password
+    }
+
+    await login(user, sucessCallback, errorCallback);
+
+  }
+
+  const validateForm = () => {
+    if (!isValidEmail(email)) {
+      showToast("Email inválido!", "error")
+      return
+    } 
+
+    if (!isValidPassword(password)){
+      showToast("Senha inválida", "error");
+      return
+    }
+
+    handleClickLoginButton()
+  }
+
+
   return (
-    <Container>
+    <Container onKeyDown={(event) => event.key === 'Enter' && validateForm()} tabIndex={0}>
       <Content>
         <Division>
           <Header>
@@ -105,7 +132,7 @@ const LoginCard = (props: LoginCardProps) => {
 
         <Division>
           <Buttons>
-            <PrimaryButton text="Entrar" onClick={handleClickLoginButton} />
+            <PrimaryButton text="Entrar" onClick={validateForm} />
             <Divider />
             <TextBtn>Não possui uma conta?</TextBtn>
             <TerciaryButton
