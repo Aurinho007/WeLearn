@@ -58,8 +58,8 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
     setPassword(event.target.value);
   };
 
-  const sucessCallback = () => {
-    showToast("Conta criada com sucesso!", "sucess");
+  const succesCallback = () => {
+    showToast("Conta criada com succeso!", "succes");
     changeCard();
   }
 
@@ -76,7 +76,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
       senha: password
     }
 
-    await createAccount(newUser, sucessCallback, errorCallback);
+    await createAccount(newUser, succesCallback, errorCallback);
 
   };
 

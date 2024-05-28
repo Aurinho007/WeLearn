@@ -8,7 +8,7 @@ const Title = styled(Link)`
     font-family: ${fonts.roboto};
     font-style: italic;
     font-weight: 900;
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     margin: 0;
     color: ${theme.black};
     letter-spacing: -1px; 

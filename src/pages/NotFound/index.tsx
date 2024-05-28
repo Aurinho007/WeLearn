@@ -1,8 +1,11 @@
+import { Container, NotFoundImg } from "./styles";
+import notFoundImg from '../../assets/images/not-found-light.svg'
+
 const NotFound = () => {
   return (
-    <>
-      <h1>Not Found</h1>
-    </>
+    <Container>
+      <NotFoundImg src={notFoundImg}/>
+    </Container>
   );
 };
 

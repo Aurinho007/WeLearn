@@ -1,56 +1,64 @@
-import { Container, Card, Icon, Text, Content, Title } from "./styles";
-import sucessIcon from '../../assets/images/sucess.png';
+import React, { useState, useEffect } from 'react';
+import successIcon from '../../assets/images/success.png';
 import errorIcon from '../../assets/images/error.png';
 import warningIcon from '../../assets/images/warning.png';
 import infoIcon from '../../assets/images/info.png';
 import { IToast } from "./interface";
+import { Container, Card, Icon, Text, Content, Title } from "./styles";
 
 const Toast = (props: IToast): JSX.Element => {
-  const { message, type } = props
- 
+  const { message, type } = props;
+  const [animationClass, setAnimationClass] = useState('enter');
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimationClass('exit');
+    }, 3000)
+    return () => clearTimeout(timer);
+  }, []);
+
+
   const getIcon = (): string => {
-    if (type === 'sucess')
-      return sucessIcon;
-
-    if (type === 'error')
-      return errorIcon;
-
-    if (type === 'warning')
-      return warningIcon;
-
-    if (type === 'info')
-      return infoIcon;
-
-    return sucessIcon;
+    switch (type) {
+      case 'success':
+        return successIcon;
+      case 'error':
+        return errorIcon;
+      case 'warning':
+        return warningIcon;
+      case 'info':
+        return infoIcon;
+      default:
+        return successIcon;
+    }
   }
 
   const getTitle = (): string => {
-    if (type === 'sucess')
-      return "Sucesso";
-
-    if (type === 'error')
-      return "Erro";
-
-    if (type === 'warning')
-      return "Atenção";
-
-    if (type === 'info')
-      return "Info";
-
-    return sucessIcon;
+    switch (type) {
+      case 'success':
+        return "succeso";
+      case 'error':
+        return "Erro";
+      case 'warning':
+        return "Atenção";
+      case 'info':
+        return "Info";
+      default:
+        return "succeso";
+    }
   }
 
   return (
     <Container>
-      <Card color={type}>
+      <Card className={animationClass} color={type}>
         <Icon src={getIcon()} />
         <Content>
-        <Title>{getTitle()}</Title>
-        <Text>{message}</Text>
+          <Title>{getTitle()}</Title>
+          <Text>{message}</Text>
         </Content>
       </Card>
     </Container>
-  )
+  );
 }
 
 export default Toast;

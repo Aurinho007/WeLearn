@@ -9,14 +9,14 @@ interface ToastContextProps {
 const ToastContext = createContext<ToastContextProps | undefined>(undefined);
 
 export const ToastProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [toast, setToast] = useState({ visible: false, message: '', type: 'sucesso' as ToastType });
+  const [toast, setToast] = useState({ visible: false, message: '', type: 'succeso' as ToastType });
 
   const showToast = (message: string, type: ToastType) => {
     setToast({ visible: true, message, type });
 
     setTimeout(() => {
       setToast((prevToast) => ({ ...prevToast, visible: false }));
-    }, 3500); 
+    }, 3000); 
   };
 
   return (

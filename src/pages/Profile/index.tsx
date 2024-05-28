@@ -1,8 +1,10 @@
+import PaageHeader from "../../components/PageHeader";
+
 const Profile = () => {
 
   return (
     <>
-      <h1>Meu perfil</h1>
+      <PaageHeader title="Meu Perfil" />
     </>
   );
 

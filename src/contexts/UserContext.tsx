@@ -1,6 +1,6 @@
 import React, { createContext, useState, useContext, useEffect, ReactNode, FC } from 'react';
 import { IUser, IUserContextType } from '../interfaces/User';
-import { getUser, saveUser, logoutUser } from '../localStorageControllers/userController';
+import { getUser, saveUser, logoutUser } from '../controllers/userController';
 
 const initialUserState: IUser = {
   name: '',
@@ -15,7 +15,7 @@ const initialUserState: IUser = {
 const UserContext = createContext<IUserContextType>({
   user: initialUserState,
   setUser: () => null,
-  isLoged: () => false,
+  isLogged: () => false,
   isTeacher: () => false,
   isStudent: () => false
 });
@@ -30,14 +30,14 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
     saveUser(user);
   }, [user]);
 
-  const isLoged = (): boolean => !!user.token;
+  const isLogged = (): boolean => !!user.token;
 
   const isTeacher = (): boolean => user.perfil === "Professor";
 
   const isStudent = (): boolean => user.perfil === "Aluno";
 
   return (
-    <UserContext.Provider value={{ user, setUser, isLoged, isTeacher, isStudent }}>
+    <UserContext.Provider value={{ user, setUser, isLogged, isTeacher, isStudent }}>
       {children}
     </UserContext.Provider>
   );

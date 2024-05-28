@@ -3,4 +3,4 @@ export interface IToast {
   type: ToastType
 }
 
-export type ToastType = 'sucess' | 'info' | 'error' | 'warning';
+export type ToastType = 'success' | 'info' | 'error' | 'warning';

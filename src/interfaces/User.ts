@@ -11,7 +11,7 @@ export interface IUser {
 export interface IUserContextType {
   user: IUser;
   setUser: React.Dispatch<React.SetStateAction<IUser>>;
-  isLoged: () => boolean;
+  isLogged: () => boolean;
   isTeacher: () => boolean;
   isStudent: () => boolean;
 };

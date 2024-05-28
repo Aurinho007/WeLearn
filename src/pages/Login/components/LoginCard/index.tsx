@@ -1,4 +1,4 @@
-import { isValidElement, useState } from "react";
+import { useEffect, useState } from "react";
 import PrimaryButton from "../../../../components/Buttons/PrimaryButton";
 import TerciaryButton from "../../../../components/Buttons/TerciaryButton";
 import {
@@ -27,7 +27,7 @@ import { useToast } from "../../../../contexts/ToastContext";
 import { IUser } from "../../../../interfaces/User";
 import loginDto from "../../../../dtos/login";
 import { login } from "../../../../api";
-import { isValidEmail, isValidName, isValidPassword } from "../../utils";
+import { isValidEmail } from "../../utils";
 
 type LoginCardProps = {
   setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;
@@ -35,8 +35,15 @@ type LoginCardProps = {
 
 const LoginCard = (props: LoginCardProps) => {
   const navigate = useNavigate();
-  const { setUser } = useUser();
+  const { isLogged, setUser } = useUser();
   const { showToast } = useToast();
+
+  useEffect(() => {
+    if(isLogged()){
+      navigate("/");
+    }
+
+  }, [])
 
   const { setIsLogin } = props;
 
@@ -55,14 +62,14 @@ const LoginCard = (props: LoginCardProps) => {
     setPassword(event.target.value);
   };
 
-  const sucessCallback = (user: IUser) => {
+  const succesCallback = (user: IUser) => {
     setUser(user);
     navigate("/");
-    showToast("Login feito com sucesso!", "sucess")
+    showToast("Login feito com succeso!", "success");
   }
 
   const errorCallback = (error: string) => {
-    showToast(error, "error")
+    showToast(error, "error");
   }
 
   const handleClickLoginButton = async () => {
@@ -71,18 +78,13 @@ const LoginCard = (props: LoginCardProps) => {
       senha: password
     }
 
-    await login(user, sucessCallback, errorCallback);
+    await login(user, succesCallback, errorCallback);
 
   }
 
   const validateForm = () => {
     if (!isValidEmail(email)) {
       showToast("Email inválido!", "error")
-      return
-    } 
-
-    if (!isValidPassword(password)){
-      showToast("Senha inválida", "error");
       return
     }
 
@@ -99,7 +101,6 @@ const LoginCard = (props: LoginCardProps) => {
             <SubTitle>Bem-vindo(a) de volta!</SubTitle>
           </Header>
         </Division>
-
         <Division>
           <Form>
             <Item>
@@ -123,10 +124,10 @@ const LoginCard = (props: LoginCardProps) => {
                 onChange={handleChangePassword}
               />
             </Item>
-            <RememberMe>
+            {/* <RememberMe>
               <CheckBox type="checkbox" />
               <RememberMeLabel>Lembrar de mim</RememberMeLabel>
-            </RememberMe>
+            </RememberMe> */}
           </Form>
         </Division>
 

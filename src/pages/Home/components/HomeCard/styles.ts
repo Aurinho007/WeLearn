@@ -8,9 +8,9 @@ export const Container = styled.div`
   border-radius: 10px;
   padding: 15px 20px;
   margin: 10px;
-  height: 100px;
+  height: 80px;
   width: 100%;
-  max-width: 28%;
+  max-width: 25%;
   min-width: 315px;
   display: flex;
   flex-direction: row;
@@ -23,13 +23,13 @@ export const ContentContainer = styled.div`
 `;
 
 export const TitleContainer = styled.div`
-  padding-bottom: 15px;
+  padding-bottom: 8px;
 `;
 
 
 export const Title = styled.p`
 font-family: ${fonts.montserrat};
-font-weight: 500;
+font-weight: 600;
 font-size: 1.6rem;
 `;
 
@@ -41,7 +41,8 @@ export const TextContainer = styled.p`
 export const Text = styled.p`
 font-family: ${fonts.montserrat};
 font-size: 1.3rem;
-font-weight: 400;
+font-weight: 500;
+color: ${theme.grey};
 `;
 
 export const IconContainer = styled.div`
@@ -52,4 +53,5 @@ export const IconContainer = styled.div`
 `;
 
 export const Icon = styled.img`
+height: 70px;
 `;

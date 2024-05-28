@@ -1,7 +1,9 @@
+import PaageHeader from "../../components/PageHeader";
+
 const About = () => {
   return (
     <>
-      <h1>Sobre</h1>
+      <PaageHeader title="Sobre" />
     </>
   );
 };

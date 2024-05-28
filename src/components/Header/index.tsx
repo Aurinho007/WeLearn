@@ -8,18 +8,18 @@ import SecondaryButton from "../Buttons/SecondaryButton/index.tsx";
 
 const Header = () => {
   const navigation = useNavigate();
-  const { isLoged } = useUser();
+  const { isLogged } = useUser();
 
   return (
     <Container>
       <Logo />
       <Nav />
       {
-        isLoged() ?
+        isLogged() ?
           <ProfileCard /> :
           <SecondaryButton
             Fsize={1.1}
-            onClick={() => navigation('login')}
+            onClick={() => navigation("/login")}
             text="Login"
             Ffamily="montserrat"
             Fweight={500}
