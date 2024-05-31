@@ -37,6 +37,9 @@ const LoginCard = (props: LoginCardProps) => {
   const navigate = useNavigate();
   const { isLogged, setUser } = useUser();
   const { showToast } = useToast();
+  const { setIsLogin } = props;
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   useEffect(() => {
     if(isLogged()){
@@ -45,10 +48,6 @@ const LoginCard = (props: LoginCardProps) => {
 
   }, [])
 
-  const { setIsLogin } = props;
-
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
 
   const changeCard = () => {
     setIsLogin(false);
@@ -83,14 +82,23 @@ const LoginCard = (props: LoginCardProps) => {
   }
 
   const validateForm = () => {
+    if (email.length === 0) {
+      showToast("Digite seu email", "error")
+      return
+    }
+
     if (!isValidEmail(email)) {
-      showToast("Email inválido!", "error")
+      showToast("Email inválido", "error")
+      return
+    }
+
+    if(password.length === 0){
+      showToast("Digite sua senha", "error")
       return
     }
 
     handleClickLoginButton()
   }
-
 
   return (
     <Container onKeyDown={(event) => event.key === 'Enter' && validateForm()} tabIndex={0}>

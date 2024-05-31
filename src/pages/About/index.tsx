@@ -3,7 +3,7 @@ import PaageHeader from "../../components/PageHeader";
 const About = () => {
   return (
     <>
-      <PaageHeader title="Sobre" />
+      <PaageHeader title="Sobre Nós" />
     </>
   );
 };

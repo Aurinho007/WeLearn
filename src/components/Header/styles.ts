@@ -10,7 +10,7 @@ export const Container = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 0;
+    padding: 20px 0;
 `;
 
 export const Title = styled(Link)`

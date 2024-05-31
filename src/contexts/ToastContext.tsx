@@ -16,7 +16,7 @@ export const ToastProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
     setTimeout(() => {
       setToast((prevToast) => ({ ...prevToast, visible: false }));
-    }, 3000); 
+    }, 3500); 
   };
 
   return (

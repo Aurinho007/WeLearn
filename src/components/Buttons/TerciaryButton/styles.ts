@@ -18,6 +18,10 @@ export const Button = styled.button<{style: ISecondaryButton}>`
   &:active{
     filter: brightness(0.8);
   }
+  &:hover {
+        text-decoration: underline;
+    }
+
 
 `;
 
