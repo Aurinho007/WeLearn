@@ -59,7 +59,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
   };
 
   const succesCallback = () => {
-    showToast("Conta criada com succeso!", "succes");
+    showToast("Conta criada com succeso!", "success");
     changeCard();
   }
 
