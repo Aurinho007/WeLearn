@@ -6,7 +6,7 @@ const CARD_CONTENT = {
   },
   MOTIVATION_CARD: {
     TITLE: 'Motivação',
-    TEXT: 'Alunos motivados a estudar!',
+    TEXT: 'Alunos motivados a aprender e estudar!',
     ICON: 'hand'
   },
   LIGHT_CARD: {

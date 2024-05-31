@@ -36,7 +36,7 @@ const Toast = (props: IToast): JSX.Element => {
   const getTitle = (): string => {
     switch (type) {
       case 'success':
-        return "succeso";
+        return "Sucesso";
       case 'error':
         return "Erro";
       case 'warning':
@@ -44,7 +44,7 @@ const Toast = (props: IToast): JSX.Element => {
       case 'info':
         return "Info";
       default:
-        return "succeso";
+        return "Sucesso";
     }
   }
 

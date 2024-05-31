@@ -24,7 +24,7 @@ const doRequest = async (url: string, params: any, method: "POST" | "GET", token
 
   if (!response.ok) {
     const errorData = await response.json();
-    throw new Error(errorData.error || 'Ops! Algo deu errado...');
+    throw new Error(errorData.error ?? 'Ops! Algo deu errado...');
   }
 
   return await response.json();
@@ -34,7 +34,7 @@ const doRequest = async (url: string, params: any, method: "POST" | "GET", token
 export const login = async (user: loginDto, succesCallback: (user: IUser) => void, errorCallback: (error: string) => void): Promise<void> => {
   doRequest(LOGIN_URL, user, 'POST')
     .then(response => succesCallback(response))
-    .catch(error => errorCallback(error))
+    .catch(error => errorCallback(error.message ?? error))
 };
 
 export const createAccount = async (newUser: CreateAccountDto, succesCallback: () => void, errorCallback: (error: string) => void): Promise<void> => {

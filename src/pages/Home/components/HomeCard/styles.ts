@@ -7,7 +7,6 @@ export const Container = styled.div`
   background-color: ${theme.white};
   border-radius: 10px;
   padding: 15px 20px;
-  margin: 10px;
   height: 80px;
   width: 100%;
   max-width: 25%;
@@ -15,6 +14,18 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+`;
+
+export const IconContainer = styled.div`
+  padding: 0 20px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Icon = styled.img`
+  height: 70px;
 `;
 
 export const ContentContainer = styled.div`
@@ -45,13 +56,3 @@ font-weight: 500;
 color: ${theme.grey};
 `;
 
-export const IconContainer = styled.div`
-  padding: 0 0 0 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const Icon = styled.img`
-height: 70px;
-`;
