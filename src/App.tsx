@@ -23,6 +23,15 @@ const Layout = ({ children }: any) => {
   );
 };
 
+const LoginScreen = ({ children }: any) => {
+  return (
+    <>
+    <Header />
+    {children}
+    </>
+  );
+}
+
 function App() {
   return (
     <>
@@ -46,7 +55,7 @@ function App() {
           />
           <Route path="/*" element={<Layout children={<NotFound />} />} />
 
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginScreen children={<Login />} />  } />
           <Route path="/criar-questionario" element={<FormQuestionary />} />
           <Route path="/questionario" element={<Questionary />} />
         </Routes>

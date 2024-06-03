@@ -21,7 +21,7 @@ export const Content = styled.div`
 
 export const LogoContainer = styled.div`
   border-bottom: solid 6px ${theme.white};
-  height: 35px;
+  height: 30px;
   padding-bottom: 20px;
 `;
 
@@ -29,15 +29,15 @@ export const Logo = styled.p`
   font-family: ${fonts.roboto};
   font-weight: 900;
   font-style: italic;
-  font-size: 2.3rem;
+  font-size: 2rem;
   letter-spacing: -1px; 
 `;
 
 export const PhraseContainer = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 4rem;
-  line-height: 4.5rem;
+  font-size: 3.4rem;
+  line-height: 4rem;
   letter-spacing: -.12rem;
   padding-top: 15%;
 `;

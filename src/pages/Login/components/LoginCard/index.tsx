@@ -132,10 +132,10 @@ const LoginCard = (props: LoginCardProps) => {
                 onChange={handleChangePassword}
               />
             </Item>
-            {/* <RememberMe>
+            <RememberMe>
               <CheckBox type="checkbox" />
               <RememberMeLabel>Lembrar de mim</RememberMeLabel>
-            </RememberMe> */}
+            </RememberMe>
           </Form>
         </Division>
 

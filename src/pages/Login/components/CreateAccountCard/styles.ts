@@ -29,14 +29,14 @@ export const Header = styled.div`
 export const Title = styled.p`
   font-family: ${Fonts.roboto};
   font-weight: 600;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   letter-spacing: -1px;
 `;
 
 export const SubTitle = styled.p`
   font-family: ${Fonts.montserrat};
   font-weight: 500;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   color: ${theme.grey};
   line-height: 50px;
 `;
@@ -45,34 +45,35 @@ export const Form = styled.div`
 `;
 
 export const Item = styled.div`
-  height: 120px;
+  height: 100px;
 `;
 
 export const Label = styled.p`
   font-family: ${Fonts.montserrat};
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 40px;
 `;
 
 export const TextInput = styled.input`
   width: 100%;
   background-color: transparent;
-  height: 3rem;
+  height: 2.4rem;
   border: solid 2px ${theme.black};
   border-radius: 10px;
   font-family: ${Fonts.montserrat};
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 `;
 
 export const DropDown = styled.select`
   width: 100%;
   background-color: transparent;
-  height: 3rem;
+  height: 2.8rem;
   border: solid 2px ${theme.black};
   border-radius: 10px;
   font-family: ${Fonts.montserrat};
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  color: ${theme.black}
 `;
 
 export const PasswordLabelContainer = styled.div`
@@ -81,18 +82,6 @@ export const PasswordLabelContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   align-items: end;
-`;
-
-export const ForgetPassword = styled.p`
-  font-family: ${Fonts.montserrat};
-  font-weight: 600;
-  color: ${theme.blue};
-  font-size: 1.5rem;
-  line-height: 40px;
-
-  &:hover {
-    text-decoration: underline;
-    }
 `;
 
 export const RememberMe = styled.div`
@@ -119,6 +108,7 @@ export const RememberMeLabel = styled.p`
 export const Buttons = styled.div`
   height: 100%;
   text-align: center;
+  margin-top: 40px;
 `;
 
 export const Divider = styled.div`
