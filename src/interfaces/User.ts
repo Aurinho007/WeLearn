@@ -8,6 +8,10 @@ export interface IUser {
   token: string
 };
 
+export interface IUserLoginData {
+  email: string;
+  password: string;
+}
 export interface IUserContextType {
   user: IUser;
   setUser: React.Dispatch<React.SetStateAction<IUser>>;

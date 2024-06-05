@@ -13,10 +13,10 @@ export const Container = styled.div`
 
 export const Button = styled.button<{style: IButton}>`
   width: 100%;
-  height: 3.5rem;
+  height: 3rem;
   font-family: ${fonts.roboto};
   font-weight: 600;
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   color: ${theme.white};
   border-radius: 8px;
   border: none;

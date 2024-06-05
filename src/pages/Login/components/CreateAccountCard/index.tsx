@@ -156,7 +156,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
             <TextBtn>Já possui uma conta?</TextBtn>
             <TerciaryButton
               text="Faça Login"
-              Fsize={1.4}
+              Fsize={1.3}
               colored
               onClick={() => changeCard()}
             />

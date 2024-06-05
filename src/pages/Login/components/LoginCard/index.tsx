@@ -28,26 +28,27 @@ import { IUser } from "../../../../interfaces/User";
 import loginDto from "../../../../dtos/login";
 import { login } from "../../../../api";
 import { isValidEmail } from "../../utils";
+import { deleteUserLoginData, getUserLoginData, saveUserLoginData } from "../../../../controllers/userController";
 
 type LoginCardProps = {
   setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const LoginCard = (props: LoginCardProps) => {
+  const { setIsLogin } = props;
   const navigate = useNavigate();
   const { isLogged, setUser } = useUser();
   const { showToast } = useToast();
-  const { setIsLogin } = props;
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const savedUser = getUserLoginData()
+  const [email, setEmail] = useState<string>(savedUser?.email ?? '');
+  const [password, setPassword] = useState<string>(savedUser?.password ?? '');
+  const [saveUser, setSaveUser] = useState<boolean>(!!savedUser);
 
   useEffect(() => {
-    if(isLogged()){
+    if (isLogged()) {
       navigate("/");
     }
-
-  }, [])
-
+  })
 
   const changeCard = () => {
     setIsLogin(false);
@@ -61,8 +62,22 @@ const LoginCard = (props: LoginCardProps) => {
     setPassword(event.target.value);
   };
 
+  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSaveUser(event.target.checked);
+  };
+
+  const setRememberMe = () => {
+    if (!saveUser) {
+      deleteUserLoginData();
+      return
+    }
+
+    saveUserLoginData(email, password);
+  }
+
   const succesCallback = (user: IUser) => {
     setUser(user);
+    setRememberMe();
     navigate("/");
     showToast("Login feito com succeso!", "success");
   }
@@ -71,33 +86,37 @@ const LoginCard = (props: LoginCardProps) => {
     showToast(error, "error");
   }
 
+  const validateForm = (): boolean => {
+    if (email.length === 0) {
+      showToast("Digite seu email", "error")
+      return false;
+    }
+
+    if (!isValidEmail(email)) {
+      showToast("Email inválido", "error")
+      return false;
+    }
+
+    if (password.length === 0) {
+      showToast("Digite sua senha", "error")
+      return false;
+    }
+
+    return true;
+
+  }
+
   const handleClickLoginButton = async () => {
+    if(!validateForm()){
+      return
+    }
+
     const user: loginDto = {
       email,
       senha: password
     }
 
     await login(user, succesCallback, errorCallback);
-
-  }
-
-  const validateForm = () => {
-    if (email.length === 0) {
-      showToast("Digite seu email", "error")
-      return
-    }
-
-    if (!isValidEmail(email)) {
-      showToast("Email inválido", "error")
-      return
-    }
-
-    if(password.length === 0){
-      showToast("Digite sua senha", "error")
-      return
-    }
-
-    handleClickLoginButton()
   }
 
   return (
@@ -133,7 +152,11 @@ const LoginCard = (props: LoginCardProps) => {
               />
             </Item>
             <RememberMe>
-              <CheckBox type="checkbox" />
+              <CheckBox
+                type="checkbox"
+                checked={saveUser}
+                onChange={handleCheckboxChange}
+              />
               <RememberMeLabel>Lembrar de mim</RememberMeLabel>
             </RememberMe>
           </Form>
@@ -141,12 +164,12 @@ const LoginCard = (props: LoginCardProps) => {
 
         <Division>
           <Buttons>
-            <PrimaryButton text="Entrar" onClick={validateForm} />
+            <PrimaryButton text="Entrar" onClick={handleClickLoginButton} />
             <Divider />
             <TextBtn>Não possui uma conta?</TextBtn>
             <TerciaryButton
               text="Criar conta"
-              Fsize={1.4}
+              Fsize={1.3}
               colored
               onClick={changeCard}
             />

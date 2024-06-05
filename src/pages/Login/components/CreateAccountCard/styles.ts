@@ -38,7 +38,7 @@ export const SubTitle = styled.p`
   font-weight: 500;
   font-size: 1.4rem;
   color: ${theme.grey};
-  line-height: 50px;
+  line-height: 30px;
 `;
 
 export const Form = styled.div`
@@ -118,6 +118,6 @@ export const Divider = styled.div`
 export const TextBtn = styled.p`
   font-family: ${Fonts.montserrat};
   font-weight: 500;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: ${theme.grey};
 `;

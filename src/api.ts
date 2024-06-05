@@ -40,5 +40,5 @@ export const login = async (user: loginDto, succesCallback: (user: IUser) => voi
 export const createAccount = async (newUser: CreateAccountDto, succesCallback: () => void, errorCallback: (error: string) => void): Promise<void> => {
   doRequest(CREATE_ACCOUNT_URL, newUser, 'POST')
     .then(response => succesCallback())
-    .catch(error => errorCallback(error))
+    .catch(error => errorCallback(error.message ?? error))
 };
