@@ -67,8 +67,32 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
     showToast(error, "error")
   }
 
+  const validateForm = (): boolean => {
+    if (!isValidName(name)) {
+      showToast("Digite um nome válido", "error");
+      return false;
+    }
+
+    if (!isValidEmail(email)) {
+      showToast("Email inválido", "error");
+      return false;
+    }
+
+    if (!isValidPassword(password)) {
+      showToast("Senha inválida", "error");
+      return false;
+    }
+
+    return true;
+
+  }
 
   const handleClickCreateAccountButton = async () => {
+
+    if(!validateForm()){
+      return;
+    }
+
     const newUser: CreateAccountDto = {
       email,
       nome: name,
@@ -80,25 +104,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
 
   };
 
-  const validateForm = () => {
-
-    if (!isValidName(name)){
-      showToast("Digite um nome válido", "error");
-      return;
-    }
-
-    if (!isValidEmail(email)) {
-      showToast("Email inválido", "error");
-      return;
-    } 
-
-    if (!isValidPassword(password)){
-      showToast("Senha inválida", "error");
-      return;
-    }
-
-    handleClickCreateAccountButton();
-  }
+ 
 
   return (
     <Container onKeyDown={(event) => event.key === 'Enter' && validateForm()} tabIndex={0}>
@@ -151,7 +157,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
 
         <Division>
           <Buttons>
-            <PrimaryButton text="Criar conta" onClick={validateForm} />
+            <PrimaryButton text="Criar conta" onClick={handleClickCreateAccountButton} />
             <Divider />
             <TextBtn>Já possui uma conta?</TextBtn>
             <TerciaryButton
