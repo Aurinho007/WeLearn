@@ -1,5 +1,5 @@
 export interface IUser {
-  name: string;
+  nome: string;
   email: string;
   weCoin: number;
   xp: number;
@@ -18,4 +18,5 @@ export interface IUserContextType {
   isLogged: () => boolean;
   isTeacher: () => boolean;
   isStudent: () => boolean;
+  logout: () => void;
 };

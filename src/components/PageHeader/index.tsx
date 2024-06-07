@@ -1,7 +1,7 @@
 import { Container, Title } from "./styles";
 import PageHeaderProps from "./types";
 
-const PaageHeader = ({ title }: PageHeaderProps ) => {
+const PageHeader = ({ title }: PageHeaderProps ) => {
   return (
     <Container>
       <Title>
@@ -11,4 +11,4 @@ const PaageHeader = ({ title }: PageHeaderProps ) => {
   )
 }
 
-export default PaageHeader;
+export default PageHeader;

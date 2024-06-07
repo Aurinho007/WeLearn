@@ -1,9 +1,9 @@
 import React, { createContext, useState, useContext, useEffect, ReactNode, FC } from 'react';
 import { IUser, IUserContextType } from '../interfaces/User';
-import { getUser, saveUser, logoutUser } from '../controllers/userController';
+import { getUser, logoutUser, saveUser } from '../controllers/userController';
 
 const initialUserState: IUser = {
-  name: '',
+  nome: '',
   email: '',
   weCoin: 0,
   xp: 0,
@@ -17,7 +17,8 @@ const UserContext = createContext<IUserContextType>({
   setUser: () => null,
   isLogged: () => false,
   isTeacher: () => false,
-  isStudent: () => false
+  isStudent: () => false,
+  logout: () => null
 });
 
 export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
@@ -36,8 +37,13 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const isStudent = (): boolean => user.perfil === "Aluno";
 
+  const logout = (): void => {
+    logoutUser()
+    setUser(initialUserState);
+  }
+
   return (
-    <UserContext.Provider value={{ user, setUser, isLogged, isTeacher, isStudent }}>
+    <UserContext.Provider value={{ user, setUser, isLogged, isTeacher, isStudent, logout}}>
       {children}
     </UserContext.Provider>
   );

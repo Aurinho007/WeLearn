@@ -5,7 +5,7 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 30px 0 50px 0;
+  padding: 30px 0 60px 0;
 `;
 
 export const Title = styled.p`

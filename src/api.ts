@@ -34,11 +34,11 @@ const doRequest = async (url: string, params: any, method: "POST" | "GET", token
 export const login = async (user: loginDto, succesCallback: (user: IUser) => void, errorCallback: (error: string) => void): Promise<void> => {
   doRequest(LOGIN_URL, user, 'POST')
     .then(response => succesCallback(response))
-    .catch(error => errorCallback(error.message ?? error))
+    .catch(error => errorCallback(error.message))
 };
 
 export const createAccount = async (newUser: CreateAccountDto, succesCallback: () => void, errorCallback: (error: string) => void): Promise<void> => {
   doRequest(CREATE_ACCOUNT_URL, newUser, 'POST')
     .then(response => succesCallback())
-    .catch(error => errorCallback(error.message ?? error))
+    .catch(error => errorCallback(error.message))
 };

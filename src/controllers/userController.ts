@@ -16,6 +16,10 @@ export const getUser = (): IUser | null => {
   return JSON.parse(localUser) as IUser; 
 }
 
+export const logoutUser = (): void => {
+  sessionStorage.removeItem(SESSION_STORAGE_USER_KEY);
+}
+
 // Local Storage (lembrar usuário)
 export const saveUserLoginData = (email: string, password: string): void => {
   const userLoginData: IUserLoginData = {

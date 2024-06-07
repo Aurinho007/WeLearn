@@ -25,7 +25,6 @@ const Header = () => {
             Fweight={500}
             outside="blue"
           />
-
       }
     </Container>
   );
