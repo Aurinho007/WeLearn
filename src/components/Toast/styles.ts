@@ -38,6 +38,7 @@ export const Card = styled.div<{ color: string }>`
   background-color: ${theme.white};
   border: solid 2px ${theme.black};
   padding: 16px 26px 16px 12px;
+  min-width: 250px;
   background-color: ${props => theme.toast[props.color]};
 
   &.enter {
