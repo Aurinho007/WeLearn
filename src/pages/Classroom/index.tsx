@@ -1,4 +1,4 @@
-import PaageHeader from "../../components/PageHeader";
+import PageHeader from "../../components/PageHeader";
 import ClassroomDataCard from "./components/ClassroomDataCard";
 import QuestionaryCard from "./components/QuestionaryCard";
 
@@ -6,7 +6,7 @@ const Classroom = () => {
   const classroomName = "Aquitetura de Sofware"
   return (
     <>
-      <PaageHeader title={`Sala de ${classroomName}`} />
+      <PageHeader title={`Sala de ${classroomName}`} />
       <ClassroomDataCard
         teacherName="Amanda Borges"
         classroomId={190622}

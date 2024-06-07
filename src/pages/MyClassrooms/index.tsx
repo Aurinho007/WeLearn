@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import ClassroomCard from "./components/ClassroomCard";
-import PaageHeader from "../../components/PageHeader";
+import PageHeader from "../../components/PageHeader";
 
 const Classrooms = () => {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ const Classrooms = () => {
 
   return (
     <>
-      <PaageHeader title="Minhas Salas" />
+      <PageHeader title="Minhas Salas" />
       <ClassroomCard
         ranking="Ouro"
         title="Cálculo Computacional"

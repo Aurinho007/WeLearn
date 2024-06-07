@@ -23,9 +23,8 @@ const fadeOut = keyframes`
 export const Container = styled.div`
   position: absolute;
   display: flex;
-  width: 100%;
   top: 0; 
-  left: 0;
+  right: 8%;
   justify-content: center;
   z-index: 9999;
   margin-top: 10px;

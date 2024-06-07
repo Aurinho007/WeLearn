@@ -1,4 +1,4 @@
-import PaageHeader from "../../components/PageHeader";
+import PageHeader from "../../components/PageHeader";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/UserContext";
 import { useToast } from "../../contexts/ToastContext";
@@ -20,7 +20,7 @@ const Profile = () => {
   return (
     <Container>
       <Card>
-        <PaageHeader title="Meu Perfil" />
+        <PageHeader title="Meu Perfil" />
         <ProfileImg src={defaultProfilePic} />
         <UserDataContainer>
           <UserName>{user.nome}</UserName>
