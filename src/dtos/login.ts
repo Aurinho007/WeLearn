@@ -1,6 +1,6 @@
-type loginDto = {
+type LoginDto = {
   email: string,
   senha: string,
 }
 
-export default loginDto
+export default LoginDto;

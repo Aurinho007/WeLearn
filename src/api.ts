@@ -1,5 +1,5 @@
 import CreateAccountDto from './dtos/createAccount';
-import loginDto from './dtos/login';
+import LoginDto from './dtos/login';
 import { IUser } from './interfaces/User';
 
 const BASE_URL = "http://localhost:3001/api";
@@ -31,14 +31,14 @@ const doRequest = async (url: string, params: any, method: "POST" | "GET", token
 
 }
 
-export const login = async (user: loginDto, succesCallback: (user: IUser) => void, errorCallback: (error: string) => void): Promise<void> => {
+export const login = async (user: LoginDto, successCallback: (user: IUser) => void, errorCallback: (error: string) => void): Promise<void> => {
   doRequest(LOGIN_URL, user, 'POST')
-    .then(response => succesCallback(response))
+    .then(response => successCallback(response))
     .catch(error => errorCallback(error.message))
 };
 
-export const createAccount = async (newUser: CreateAccountDto, succesCallback: () => void, errorCallback: (error: string) => void): Promise<void> => {
+export const createAccount = async (newUser: CreateAccountDto, successCallback: () => void, errorCallback: (error: string) => void): Promise<void> => {
   doRequest(CREATE_ACCOUNT_URL, newUser, 'POST')
-    .then(response => succesCallback())
+    .then(response => successCallback())
     .catch(error => errorCallback(error.message))
 };
