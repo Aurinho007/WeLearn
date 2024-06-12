@@ -14,7 +14,7 @@ const Profile = () => {
   const handeButtonClick = (): void => {
       logout();
       navigate("/login");
-      showToast('Usuário deslogado', 'info');
+      showToast('Usuário desconectado', 'info');
   }
 
   return (
@@ -37,6 +37,10 @@ const Profile = () => {
         <LineData>
           <LineLabel>Experiência</LineLabel>
           <LineValue>{user.xp}<T>xp</T></LineValue>
+        </LineData>
+        <LineData>
+          <LineLabel>Tipo de perfil</LineLabel>
+          <LineValue>{user.perfil}</LineValue>
         </LineData>
         <ButtonContainer>
           <TerciaryButton

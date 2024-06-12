@@ -75,9 +75,15 @@ const LoginCard = (props: LoginCardProps) => {
     saveUserLoginData(email, password);
   }
 
+  const clearInputs = (): void => {
+    setEmail('');
+    setPassword('');
+  }
+
   const succesCallback = (user: IUser) => {
     setUser(user);
     setRememberMe();
+    clearInputs();
     navigate("/");
     showToast("Login feito com succeso!", "success");
   }

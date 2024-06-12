@@ -44,7 +44,7 @@ font-weight: 600;
 font-size: 1.6rem;
 `;
 
-export const TextContainer = styled.p`
+export const TextContainer = styled.div`
   height: 100%;
   width: 100%;
 `;

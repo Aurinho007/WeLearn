@@ -61,6 +61,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
   const succesCallback = () => {
     showToast("Conta criada com succeso!", "success");
     changeCard();
+    clearInputs();
   }
 
   const errorCallback = (error: string) => {
@@ -85,6 +86,13 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
 
     return true;
 
+  }
+
+  const clearInputs = (): void => {
+    setEmail('');
+    setPassword('');
+    setName('');
+    setProfileType('Aluno');
   }
 
   const handleClickCreateAccountButton = async () => {

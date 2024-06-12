@@ -1,4 +1,4 @@
-import { GlobalStyles } from "./globalStyle";
+import { GlobalStyles } from "./globalStyle.ts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Baseboard from "./components/Baseboard";
