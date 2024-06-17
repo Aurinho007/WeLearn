@@ -8,12 +8,8 @@ export const saveUser = (user: IUser): void => {
 
 export const getUser = (): IUser | null => {
   const localUser = sessionStorage.getItem(SESSION_STORAGE_USER_KEY);
-
-  if(!localUser){
-    return null
-  }
   
-  return JSON.parse(localUser) as IUser; 
+  return localUser ? JSON.parse(localUser) as IUser : null; 
 }
 
 export const logoutUser = (): void => {
@@ -32,12 +28,8 @@ export const saveUserLoginData = (email: string, password: string): void => {
 
 export const getUserLoginData = (): IUserLoginData | null => {
   const localUserLoginData = localStorage.getItem(LOCAL_STORAGE_USER_KEY);
-
-  if(!localUserLoginData){
-    return null
-  }
   
-  return JSON.parse(localUserLoginData) as IUserLoginData; 
+  return localUserLoginData ? JSON.parse(localUserLoginData) as IUserLoginData : null; 
 }
 
 export const deleteUserLoginData = (): void => {
