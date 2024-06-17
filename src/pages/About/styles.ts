@@ -22,16 +22,9 @@ export const Text = styled.p`
   margin-bottom: 40px;
 `;
 
-export const Line = styled.div`
-  width: 650px;
-  border-bottom: solid 4px ${theme.blue};
-  margin: 30px 0;
-`;
-
 export const CardsContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 200px;
 
 `;

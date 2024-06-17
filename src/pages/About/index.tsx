@@ -24,7 +24,6 @@ const About = () => {
             análise de dados e motivação
           </Text>
         </TextContainer>
-        <Line />
         <PageHeader title="Nosso Time" />
         <CardsContainer>
           <DevCard
