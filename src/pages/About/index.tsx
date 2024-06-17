@@ -16,7 +16,7 @@ const About = () => {
           <Text>
             Uma plataforma colaborativa e
             gamificada de aprendizado desenvolvida por
-            alunos do Centro Universitário de Brasília.
+            alunos do Centro Universitário de Brasília
           </Text>
           <Text>
             O WeLearn tem como objetivo  revolucionar a
