@@ -16,27 +16,19 @@ import Dashboard from "./pages/Dashboard";
 const Layout = ({ children }: any) => {
   return (
     <>
-      <Header />
       {children}
       <Baseboard />
     </>
   );
 };
 
-const LoginScreen = ({ children }: any) => {
-  return (
-    <>
-    <Header />
-    {children}
-    </>
-  );
-}
 
 function App() {
   return (
     <>
       <GlobalStyles />
       <Router>
+      <Header />
         <Routes>
           <Route path="/" index element={<Layout children={<Home />} />} />
           <Route
@@ -55,7 +47,7 @@ function App() {
           />
           <Route path="/*" element={<Layout children={<NotFound />} />} />
 
-          <Route path="/login" element={<LoginScreen children={<Login />} />  } />
+          <Route path="/login" element={<Login />} />
           <Route path="/criar-questionario" element={<FormQuestionary />} />
           <Route path="/questionario" element={<Questionary />} />
         </Routes>
