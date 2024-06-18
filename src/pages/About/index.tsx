@@ -30,21 +30,29 @@ const About = () => {
             name="Ana Luiza"
             description="Scrum Master"
             picture={anaPic}
+            link1="https://www.linkedin.com/in/ana-luiza-de-oliveira-carvalho-174049258/"
+            link2="https://www.instagram.com/analu.oliiver/"
           />
           <DevCard
             name="Áureo"
             description="Developer"
             picture={aureoPic}
+            link1="https://www.linkedin.com/in/%C3%A1ureo-rodrigues-916249206/"
+            link2="https://www.instagram.com/aureo.rdg/"
           />
           <DevCard
             name="Cavalcante"
             description="Developer"
             picture={cavasPic}
+            link1="https://www.linkedin.com/in/felipe-cavalcante-mc/"
+            link2="https://www.instagram.com/fe.cavalcanteee/"
           />
           <DevCard
             name="Vitor"
             description="Developer"
             picture={rabelloPic}
+            link1="https://www.linkedin.com/in/vitor-mendes-9b732a222/"
+            link2="https://www.instagram.com/vitor.rabello/"
           />
         </CardsContainer>
       </Container>
