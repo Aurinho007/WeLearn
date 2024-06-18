@@ -43,21 +43,21 @@ const About = () => {
             link2="https://www.instagram.com/analu.oliiver/"
           />
           <DevCard
-            name="Áureo"
+            name="Áureo Rodrigues"
             description="Developer"
             picture={aureoPic}
             link1="https://www.linkedin.com/in/%C3%A1ureo-rodrigues-916249206/"
             link2="https://www.instagram.com/aureo.rdg/"
           />
           <DevCard
-            name="Cavalcante"
+            name="Felipe Cavalcante"
             description="Developer"
             picture={cavasPic}
             link1="https://www.linkedin.com/in/felipe-cavalcante-mc/"
             link2="https://www.instagram.com/fe.cavalcanteee/"
           />
           <DevCard
-            name="Vitor"
+            name="Vitor Rabello"
             description="Developer"
             picture={rabelloPic}
             link1="https://www.linkedin.com/in/vitor-mendes-9b732a222/"
