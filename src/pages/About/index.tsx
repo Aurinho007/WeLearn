@@ -5,6 +5,8 @@ import anaPic from '../../assets/images/devs/ana 1.svg'
 import aureoPic from '../../assets/images/devs/image 9.svg'
 import cavasPic from '../../assets/images/devs/cavas 1.svg'
 import rabelloPic from '../../assets/images/devs/rabello 1.svg'
+import prof from '../../assets/images/devs/prof.svg'
+
 
 
 const About = () => {
@@ -26,6 +28,13 @@ const About = () => {
         </TextContainer>
         <PageHeader title="Nosso Time" />
         <CardsContainer>
+        <DevCard
+            name="Sérgio Cozzeti"
+            description="Product Owner"
+            picture={prof}
+            link1="https://www.linkedin.com/in/s%C3%A9rgio-cozzetti-bertoldi-de-souza-7aa83917/"
+            link2="https://www.instagram.com/sergiocozzetti/"
+          />
           <DevCard
             name="Ana Luiza"
             description="Scrum Master"
