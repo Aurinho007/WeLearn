@@ -1,11 +1,12 @@
 import PageHeader from "../../components/PageHeader";
 import DevCard from "./components/DevCard";
-import { CardsContainer, Container, Line, Text, TextContainer } from "./styles";
+import { CardsContainer, Container, ContentContainer, Image, Text, TextContainer } from "./styles";
 import anaPic from '../../assets/images/devs/ana 1.svg'
 import aureoPic from '../../assets/images/devs/image 9.svg'
 import cavasPic from '../../assets/images/devs/cavas 1.svg'
 import rabelloPic from '../../assets/images/devs/rabello 1.svg'
 import prof from '../../assets/images/devs/prof.svg'
+import img from '../../assets/images/online-test.svg'
 
 
 
@@ -14,21 +15,25 @@ const About = () => {
     <>
       <PageHeader title="Quem somos?" />
       <Container>
-        <TextContainer>
-          <Text>
-            Uma plataforma colaborativa e
-            gamificada de aprendizado desenvolvida por
-            alunos do Centro Universitário de Brasília
-          </Text>
-          <Text>
-            O WeLearn tem como objetivo  revolucionar a
-            experiência de aprendizado, combinando gamificação,
-            análise de dados e motivação
-          </Text>
-        </TextContainer>
+        <ContentContainer>
+          <Image src={img} />
+
+          <TextContainer>
+            <Text>
+              Uma plataforma colaborativa e
+              gamificada de aprendizado desenvolvida por quatro
+              alunos do Centro Universitário de Brasília
+            </Text>
+            <Text>
+              O WeLearn tem como objetivo  revolucionar a
+              experiência de aprendizado, combinando gamificação,
+              análise de dados e motivação
+            </Text>
+          </TextContainer>
+        </ContentContainer>
         <PageHeader title="Nosso Time" />
         <CardsContainer>
-        <DevCard
+          <DevCard
             name="Sérgio Cozzeti"
             description="Product Owner"
             picture={prof}

@@ -9,8 +9,14 @@ export const Container = styled.div`
   align-items: center;
 `;
 
+export const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
 export const TextContainer = styled.div`
-  text-align: center;
+  text-align: left;
   width: 600px;
 `;
 
@@ -20,6 +26,11 @@ export const Text = styled.p`
   font-weight: 600;
   font-size: 1.5rem;
   margin-bottom: 40px;
+`;
+
+export const Image = styled.img`
+  height: 250px;
+  margin-right: 80px;
 `;
 
 export const CardsContainer = styled.div`
