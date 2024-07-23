@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import successIcon from '../../assets/images/success.png';
 import errorIcon from '../../assets/images/error.png';
 import warningIcon from '../../assets/images/warning.png';

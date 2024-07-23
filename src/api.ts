@@ -7,7 +7,6 @@ const LOGIN_URL = `${BASE_URL}/users/auth`;
 const CREATE_ACCOUNT_URL = `${BASE_URL}/users/`;
 
 const doRequest = async (url: string, params: any, method: "POST" | "GET", token?: string): Promise<any> => {
-
   const headers: { [key: string]: string } = {
     'Content-Type': 'application/json',
   };

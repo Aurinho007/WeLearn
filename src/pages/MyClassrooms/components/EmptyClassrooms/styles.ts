@@ -21,9 +21,15 @@ export const Image = styled.img`
 export const ContentContainer = styled.div`
   width: 300px;
 `;
+export const Title = styled.p`
+  font-size: 2rem;
+  font-family: ${Fonts.montserrat};
+  font-weight: 700;
+  margin-bottom: 5px;
+`;
 
 export const Text = styled.p`
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-family: ${Fonts.montserrat};
   font-weight: 500;
   margin-bottom: 20px;
