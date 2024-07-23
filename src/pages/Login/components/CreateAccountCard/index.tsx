@@ -18,7 +18,7 @@ import {
   TextInput,
   Title,
 } from "./styles";
-import { createAccount } from "../../../../api";
+import { createAccount } from "../../../../service/api";
 import CreateAccountDto from "../../../../dtos/createAccount";
 import { isValidEmail, isValidName, isValidPassword } from "../../utils";
 

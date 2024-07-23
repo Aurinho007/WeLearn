@@ -1,6 +1,6 @@
-import CreateAccountDto from './dtos/createAccount';
-import LoginDto from './dtos/login';
-import { IUser } from './interfaces/User';
+import CreateAccountDto from '../dtos/createAccount';
+import LoginDto from '../dtos/login';
+import { IUser } from '../interfaces/User';
 
 const BASE_URL = "http://localhost:3001/api";
 const LOGIN_URL = `${BASE_URL}/users/auth`;
@@ -38,6 +38,6 @@ export const login = async (user: LoginDto, successCallback: (user: IUser) => vo
 
 export const createAccount = async (newUser: CreateAccountDto, successCallback: () => void, errorCallback: (error: string) => void): Promise<void> => {
   doRequest(CREATE_ACCOUNT_URL, newUser, 'POST')
-    .then(response => successCallback())
+    .then(_response => successCallback())
     .catch(error => errorCallback(error.message))
 };

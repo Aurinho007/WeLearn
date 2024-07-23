@@ -26,7 +26,7 @@ import { useUser } from "../../../../contexts/UserContext";
 import { useToast } from "../../../../contexts/ToastContext";
 import { IUser } from "../../../../interfaces/User";
 import loginDto from "../../../../dtos/login";
-import { login } from "../../../../api";
+import { login } from "../../../../service/api";
 import { isValidEmail } from "../../utils";
 import { deleteUserLoginData, getUserLoginData, saveUserLoginData } from "../../../../controllers/userController";
 
