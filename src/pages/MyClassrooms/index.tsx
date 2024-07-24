@@ -12,13 +12,13 @@ const Classrooms = () => {
   const { isLogged, isStudent } = useUser();
   const [loading, setLoading] = useState(true);
 
-  const numClassesTest: any = [{}];
+  const numClassesTest: any = [];
   const renderEmptyClasses = !isLogged() || numClassesTest.length === 0;
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
-    }, 10000)
+    }, 3000)
 
   }, []);
 
@@ -78,7 +78,7 @@ const Classrooms = () => {
       } else {
         return (
           <EmptyClassrooms
-            text="Parece que você ainda não tem em nenhuma sala"
+            text="Parece que você ainda não tem nenhuma sala"
             button={
               <SecondaryButton
                 Ffamily="montserrat"

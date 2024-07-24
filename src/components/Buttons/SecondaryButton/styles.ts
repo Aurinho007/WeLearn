@@ -7,6 +7,7 @@ export const Container = styled.div`
   width: auto;
   height: auto;
   justify-content: center;
+  cursor: pointer;
 `;
 
 export const Button = styled.button<{style: ISecondaryButton}>`

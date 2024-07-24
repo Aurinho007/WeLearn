@@ -10,6 +10,33 @@ const Home = () => {
   const navigation = useNavigate();
   const { isLogged } = useUser();
 
+  const renderIsLoggedButton = () => {
+    if (isLogged()) {
+      return (
+        <SecondaryButton
+          Fsize={1.1}
+          onClick={() => navigation("/salas")}
+          text="Minhas Salas"
+          Ffamily="montserrat"
+          Fweight={500}
+          outside="blue"
+        />
+      )
+    } else {
+      return (
+        <SecondaryButton
+          Fsize={1.1}
+          onClick={() => navigation("/login")}
+          text="Login"
+          Ffamily="montserrat"
+          Fweight={500}
+          outside="blue"
+        />
+      )
+    }
+
+  }
+
   return (
     <>
       <MainView>
@@ -18,24 +45,7 @@ const Home = () => {
             O Futuro da<br></br><Bolded>Educação</Bolded> Começa<br></br>Aqui!
           </MainPhrase>
           <NavContainer>
-            {isLogged() ?
-              <SecondaryButton
-                Fsize={1.1}
-                onClick={() => navigation("/salas")}
-                text="Minhas Salas"
-                Ffamily="montserrat"
-                Fweight={500}
-                outside="blue"
-              /> :
-              <SecondaryButton
-                Fsize={1.1}
-                onClick={() => navigation("/login")}
-                text="Login"
-                Ffamily="montserrat"
-                Fweight={500}
-                outside="blue"
-              />
-            }
+            {renderIsLoggedButton()}
             <TerciaryButton
               Fsize={1.1}
               onClick={() => navigation("/sobre")}
