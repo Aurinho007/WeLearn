@@ -21,7 +21,7 @@ Bem-vindo ao WeLearn - uma plataforma colaborativa e gamificada de aprendizado d
 
 ## Teste na sua máquina!
 
-### Configuração do Backend
+### Configurando do Backend
 `git clone  https://github.com/Felipecmc/weLearn-api.git`
 
 `cd weLearn-api`
