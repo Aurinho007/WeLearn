@@ -17,3 +17,25 @@ Bem-vindo ao WeLearn - uma plataforma colaborativa e gamificada de aprendizado d
 - **Dashboards Abrangentes:** A plataforma gera painéis de controle detalhados para os professores, permitindo que analisem o desempenho da turma, identifiquem tendências e adaptem suas estratégias de ensino conforme necessário.
 
 - **Motivação dos Alunos:** Através da abordagem gamificada e do sistema de recompensas, o WeLearn aumenta a motivação e o engajamento dos alunos, criando um ambiente de aprendizado positivo.
+
+
+## Teste na sua máquina!
+
+### Configuração do Backend
+`git clone  https://github.com/Felipecmc/weLearn-api.git`
+
+`cd weLearn-api`
+
+`npm install`
+
+`npm start`
+
+
+### Configurando o Frontend (este projeto)
+`git clone  https://github.com/Aurinho007/WeLearn.git`
+
+`cd WeLearn`
+
+`npm install` ou `yarn install`
+
+`npm start` ou `yarn start`
