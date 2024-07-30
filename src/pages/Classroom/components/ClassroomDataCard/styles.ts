@@ -3,7 +3,6 @@ import fonts from '../../../../assets/fonts/fonts';
 import theme from '../../../../assets/theme';
 
 export const Card = styled.div`
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   background-color: ${theme.white};

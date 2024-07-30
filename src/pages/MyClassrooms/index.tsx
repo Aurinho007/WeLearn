@@ -12,13 +12,13 @@ const Classrooms = () => {
   const { isLogged, isStudent } = useUser();
   const [loading, setLoading] = useState(true);
 
-  const numClassesTest: any = [];
+  const numClassesTest: any = [{}];
   const renderEmptyClasses = !isLogged() || numClassesTest.length === 0;
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
-    }, 3000)
+    }, 2000)
 
   }, []);
 
@@ -108,7 +108,7 @@ const Classrooms = () => {
             <>
               <PageHeader title="Minhas Salas" />
               <ClassroomCard
-                ranking="Ouro"
+                ranking="ouro"
                 title="Cálculo Computacional"
                 teacherName="Amanda"
                 classRoomId={1244}

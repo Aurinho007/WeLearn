@@ -6,13 +6,13 @@ import {
   FillBar,
   Line,
   PercentNumber,
-  RankingIcon,
   Title,
   TitleContainer,
   Value,
 } from "./styles";
 import { ClassroomCardProps } from "./type";
 import ouro from "../../../../assets/images/gold-medal.svg";
+import RankingIcon from "../../../Classroom/components/RankingIcon";
 
 const ClassroomCard = (props: ClassroomCardProps) => {
   const {
@@ -27,7 +27,10 @@ const ClassroomCard = (props: ClassroomCardProps) => {
   return (
     <Card onClick={onClick}>
       <TitleContainer>
-        <RankingIcon src={ouro} />
+        <RankingIcon 
+          size={40}
+          ranking="ouro"
+        />
         <Title>{title}</Title>
       </TitleContainer>
       <DataContainer>

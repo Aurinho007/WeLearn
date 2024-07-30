@@ -28,7 +28,7 @@ function App() {
     <>
       <GlobalStyles />
       <Router>
-      <Header />
+        <Header />
         <Routes>
           <Route path="/" index element={<Layout children={<Home />} />} />
           <Route

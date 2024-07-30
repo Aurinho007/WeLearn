@@ -21,11 +21,6 @@ export const TitleContainer = styled.div`
   padding: 12px 0;
 `;
 
-export const RankingIcon = styled.img`
-  height: 40px;
-  object-fit: contain;
-`;
-
 export const Title = styled.p`
   font-family: ${fonts.roboto};
   font-weight: 500;
