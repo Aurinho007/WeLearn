@@ -1,18 +1,15 @@
 import {
-  Bar,
   Card,
   DataContainer,
   Description,
-  FillBar,
   Line,
-  PercentNumber,
   Title,
   TitleContainer,
   Value,
 } from "./styles";
 import { ClassroomCardProps } from "./type";
-import ouro from "../../../../assets/images/gold-medal.svg";
 import RankingIcon from "../../../Classroom/components/RankingIcon";
+import ConclusionBar from "../../../../components/ConclusionBar";
 
 const ClassroomCard = (props: ClassroomCardProps) => {
   const {
@@ -20,7 +17,6 @@ const ClassroomCard = (props: ClassroomCardProps) => {
     title,
     teacherName,
     classRoomId,
-    conclusionPercent,
     onClick,
   } = props;
 
@@ -47,10 +43,10 @@ const ClassroomCard = (props: ClassroomCardProps) => {
           <Value>{ranking}</Value>
         </Line>
       </DataContainer>
-      <Bar>
-        <FillBar conclusionPercent={conclusionPercent} />
-        <PercentNumber>{conclusionPercent}%</PercentNumber>
-      </Bar>
+      <ConclusionBar 
+        conclusionPercent={20}
+        height={18}
+      />
     </Card>
   );
 };

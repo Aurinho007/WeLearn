@@ -1,3 +1,4 @@
+import ConclusionBar from "../../components/ConclusionBar";
 import PageHeader from "../../components/PageHeader";
 import ClassroomDataCard from "./components/ClassroomDataCard";
 import QuestionaryCard from "./components/QuestionaryCard";
@@ -29,7 +30,10 @@ const Classroom = () => {
           <Title>
             Questionários
           </Title>
-
+          <ConclusionBar
+            conclusionPercent={20}
+            height={30}
+          />
           <QuestionaryContainer>
             <QuestionaryCard
               title="Questionário 01"

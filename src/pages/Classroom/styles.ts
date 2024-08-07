@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Fonts from "../../assets/fonts/fonts";
-import Questionary from "../Questionary";
 
 export const ClassroomContainer = styled.div`
   display: flex;
@@ -29,7 +28,6 @@ export const Title = styled.p`
   font-family: ${Fonts.roboto};
   font-weight: 500;
   font-size: 2.2rem;
-  margin-bottom: 20px;
 `;
 
 export const QuestionaryContainer = styled.div`
