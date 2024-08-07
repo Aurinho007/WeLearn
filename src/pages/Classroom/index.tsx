@@ -31,7 +31,7 @@ const Classroom = () => {
             Questionários
           </Title>
           <ConclusionBar
-            conclusionPercent={20}
+            conclusionPercent={65}
             height={30}
           />
           <QuestionaryContainer>
@@ -50,7 +50,7 @@ const Classroom = () => {
             <QuestionaryCard
               title="Questionário 03"
               description="PHP e .NET"
-              isDone={true}
+              isDone={false}
             />
           </QuestionaryContainer>
 
