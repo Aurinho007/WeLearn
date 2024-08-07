@@ -33,6 +33,10 @@ export const Title = styled.p`
 export const QuestionaryContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(5, 1fr); 
   row-gap: 20px; 
   column-gap: 16px; 
+  height: 530px;
+  overflow: scroll;
+
 `;

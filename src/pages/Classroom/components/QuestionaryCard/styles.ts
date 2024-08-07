@@ -7,9 +7,9 @@ const Card = styled.div`
   flex-direction: column;
   background-color: ${theme.white};
   border: solid 2px ${theme.blue};
+  height: 100px;
   border-radius: 8px;
   padding: 8px 16px;
-  width: 16%;
   min-width: 250px;
   color: ${theme.black};
 `;
