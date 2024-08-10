@@ -10,7 +10,7 @@ const Classroom = () => {
   const classroomName = "Aquitetura de Sofware"
   return (
     <>
-      <PageHeader title={`Sala de ${classroomName}`} />
+      <PageHeader title={`Sala de ${classroomName}`} hasBackButton/>
       <ClassroomContainer>
         <Left>
           <LeftHeader>
