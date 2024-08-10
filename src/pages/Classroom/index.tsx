@@ -2,8 +2,9 @@ import ConclusionBar from "../../components/ConclusionBar";
 import PageHeader from "../../components/PageHeader";
 import ClassroomDataCard from "./components/ClassroomDataCard";
 import QuestionaryCard from "./components/QuestionaryCard";
-import RankingIcon from "./components/RankingIcon";
-import { ClassroomContainer, Left, DataHeader, Right, Title, QuestionaryContainer } from './styles';
+import RankingIcon from "../../components/RankingIcon";
+import { ClassroomContainer, Left, LeftHeader, Right, Title, QuestionaryContainer } from './styles';
+import Ranking from "./components/Ranking";
 
 const Classroom = () => {
   const classroomName = "Aquitetura de Sofware"
@@ -12,18 +13,18 @@ const Classroom = () => {
       <PageHeader title={`Sala de ${classroomName}`} />
       <ClassroomContainer>
         <Left>
-          <DataHeader>
+          <LeftHeader>
             <RankingIcon
               size={100}
-              ranking="ouro"
+              ranking="Ouro"
             />
             <ClassroomDataCard
               teacherName="Amanda Borges"
               classroomId={190622}
               studentRanking="Ouro"
             />
-          </DataHeader>
-          {/* Componente do ranking */}
+          </LeftHeader>
+          <Ranking />
         </Left>
 
         <Right>

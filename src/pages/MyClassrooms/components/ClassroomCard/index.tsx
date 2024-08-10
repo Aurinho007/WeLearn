@@ -8,7 +8,7 @@ import {
   Value,
 } from "./styles";
 import { ClassroomCardProps } from "./type";
-import RankingIcon from "../../../Classroom/components/RankingIcon";
+import RankingIcon from "../../../../components/RankingIcon";
 import ConclusionBar from "../../../../components/ConclusionBar";
 
 const ClassroomCard = (props: ClassroomCardProps) => {
@@ -17,6 +17,7 @@ const ClassroomCard = (props: ClassroomCardProps) => {
     title,
     teacherName,
     classRoomId,
+    conclusionPercent,
     onClick,
   } = props;
 
@@ -25,7 +26,7 @@ const ClassroomCard = (props: ClassroomCardProps) => {
       <TitleContainer>
         <RankingIcon 
           size={40}
-          ranking="ouro"
+          ranking="Ouro"
         />
         <Title>{title}</Title>
       </TitleContainer>
@@ -44,7 +45,7 @@ const ClassroomCard = (props: ClassroomCardProps) => {
         </Line>
       </DataContainer>
       <ConclusionBar 
-        conclusionPercent={20}
+        conclusionPercent={conclusionPercent}
         height={18}
       />
     </Card>

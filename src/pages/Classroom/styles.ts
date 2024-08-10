@@ -9,10 +9,12 @@ export const ClassroomContainer = styled.div`
 `;
 
 export const Left = styled.div`
+display: flex;
+flex-direction: column;
   margin-right: 30px;
 `;
 
-export const DataHeader = styled.div`
+export const LeftHeader = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;

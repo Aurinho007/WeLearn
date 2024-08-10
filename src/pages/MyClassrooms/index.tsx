@@ -108,7 +108,7 @@ const Classrooms = () => {
             <>
               <PageHeader title="Minhas Salas" />
               <ClassroomCard
-                ranking="ouro"
+                ranking="Ouro"
                 title="Cálculo Computacional"
                 teacherName="Amanda"
                 classRoomId={1244}

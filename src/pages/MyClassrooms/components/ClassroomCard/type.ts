@@ -3,5 +3,6 @@ export type ClassroomCardProps = {
   title: string,
   teacherName: string,
   classRoomId: number,
+  conclusionPercent: number,
   onClick: () => void
 }
