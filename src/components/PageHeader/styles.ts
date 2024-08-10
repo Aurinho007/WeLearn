@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Fonts from "../../assets/fonts/fonts";
-import theme from "../../assets/theme";
 
 export const Container = styled.div`
   width: 100%;
@@ -22,4 +21,5 @@ export const BackButton = styled.img`
   top: 0;
   left: 0;
   height: 40px;
+  cursor: pointer;
 `;

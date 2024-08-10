@@ -9,7 +9,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 `;
 
 export const Button = styled.button<{style: IButton}>`
@@ -22,6 +21,7 @@ export const Button = styled.button<{style: IButton}>`
   border-radius: 8px;
   border: none;
   background-color: ${theme.blue};
+  cursor: pointer;
 
   &:active{
     filter: brightness(0.9);

@@ -7,14 +7,14 @@ export const Container = styled.div`
   width: auto;
   height: auto;
   justify-content: center;
-  cursor: pointer;
-`;
+  `;
 
 export const Button = styled.button<{style: ISecondaryButton}>`
   border-radius: 6px;
   background-color: transparent;
   border: solid 2.8px ${props => theme[props.style.outside]};
-
+  cursor: pointer;
+  
   &:active{
     filter: brightness(0.8);
   }

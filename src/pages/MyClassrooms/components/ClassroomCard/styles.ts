@@ -13,6 +13,7 @@ export const Card = styled.div`
   min-width: 300px;
   color: ${theme.black};
   box-shadow: 0px 4px 15px -10px rgba(0,0,0,0.25);
+  cursor: pointer;
 `;
 
 export const TitleContainer = styled.div`

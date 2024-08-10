@@ -9,12 +9,12 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-`;
+  `;
 
 export const Button = styled.button<{style: ISecondaryButton}>`
   border: none;
   background-color: transparent;
+  cursor: pointer;
 
   &:active{
     filter: brightness(0.8);
