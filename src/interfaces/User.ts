@@ -4,7 +4,7 @@ export interface IUser {
   weCoin: number;
   xp: number;
   ranking: string;
-  perfil: 'Aluno' | 'Professor' | '',
+  perfil: 'aluno' | 'professor' | '',
   token: string
 };
 

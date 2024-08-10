@@ -4,13 +4,12 @@ import Fonts from "../../assets/fonts/fonts";
 export const ClassroomContainer = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100%;
   justify-content: center;
 `;
 
 export const Left = styled.div`
-display: flex;
-flex-direction: column;
+  display: flex;
+  flex-direction: column;
   margin-right: 30px;
 `;
 
@@ -26,6 +25,13 @@ export const Right = styled.div`
   margin-left: 20px;
 `;
 
+export const HeaderRight = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const Title = styled.p`
   font-family: ${Fonts.roboto};
   font-weight: 500;
@@ -33,12 +39,6 @@ export const Title = styled.p`
 `;
 
 export const QuestionaryContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(5, 1fr); 
-  row-gap: 20px; 
-  column-gap: 16px; 
-  height: 530px;
+  height: 430px;
   overflow: scroll;
-
 `;

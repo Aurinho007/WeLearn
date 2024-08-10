@@ -1,16 +1,20 @@
+import Ranking from "./components/Ranking";
+import { ClassroomContainer, Left, LeftHeader, Right, Title, QuestionaryContainer, HeaderRight } from './styles';
+import { useUser } from "../../contexts/UserContext";
 import ConclusionBar from "../../components/ConclusionBar";
 import PageHeader from "../../components/PageHeader";
 import ClassroomDataCard from "./components/ClassroomDataCard";
 import QuestionaryCard from "./components/QuestionaryCard";
 import RankingIcon from "../../components/RankingIcon";
-import { ClassroomContainer, Left, LeftHeader, Right, Title, QuestionaryContainer } from './styles';
-import Ranking from "./components/Ranking";
+import SecondaryButton from "../../components/Buttons/SecondaryButton";
 
 const Classroom = () => {
   const classroomName = "Aquitetura de Sofware"
+  const { isTeacher } = useUser();
+
   return (
     <>
-      <PageHeader title={`Sala de ${classroomName}`} hasBackButton/>
+      <PageHeader title={`Sala de ${classroomName}`} hasBackButton />
       <ClassroomContainer>
         <Left>
           <LeftHeader>
@@ -28,20 +32,32 @@ const Classroom = () => {
         </Left>
 
         <Right>
-          <Title>
-            Questionários
-          </Title>
+          <HeaderRight>
+            <Title>
+              Questionários
+            </Title>
+            { isTeacher() &&
+              <SecondaryButton
+                Ffamily="montserrat"
+                Fsize={1}
+                Fweight={400}
+                onClick={() => {alert("Em breve")}}
+                outside="black"
+                text="Adicionar"
+              />
+            }
+
+          </HeaderRight>
           <ConclusionBar
             conclusionPercent={65}
             height={30}
           />
           <QuestionaryContainer>
             <QuestionaryCard
-              title="Questionário 01"
-              description="navegador Chrome e Mozila"
-              isDone={true}
+              title="Questionário 03"
+              description="PHP e .NET"
+              isDone={false}
             />
-
             <QuestionaryCard
               title="Questionário 02"
               description="JavaScript Web"
@@ -49,9 +65,9 @@ const Classroom = () => {
             />
 
             <QuestionaryCard
-              title="Questionário 03"
-              description="PHP e .NET"
-              isDone={false}
+              title="Questionário 01"
+              description="navegador Chrome e Mozila"
+              isDone={true}
             />
 
           </QuestionaryContainer>

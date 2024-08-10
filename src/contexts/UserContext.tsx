@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect, ReactNode, FC } from 'react';
+import { createContext, useState, useContext, useEffect, ReactNode, FC } from 'react';
 import { IUser, IUserContextType } from '../interfaces/User';
 import { getUser, logoutUser, saveUser } from '../controllers/userController';
 
@@ -33,9 +33,9 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const isLogged = (): boolean => !!user.token;
 
-  const isTeacher = (): boolean => user.perfil === "Professor";
+  const isTeacher = (): boolean => user.perfil.toLowerCase() === "professor";
 
-  const isStudent = (): boolean => user.perfil === "Aluno";
+  const isStudent = (): boolean => user.perfil.toLowerCase() === "aluno";
 
   const logout = (): void => {
     logoutUser()

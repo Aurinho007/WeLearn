@@ -7,12 +7,13 @@ const Card = styled.div`
   flex-direction: column;
   background-color: ${theme.white};
   border: solid 2px ${theme.blue};
-  height: 100px;
+  height: 70px;
   border-radius: 8px;
   padding: 8px 16px;
-  min-width: 250px;
+  width: 500px;
   color: ${theme.black};
   cursor: pointer;
+  margin-bottom: 15px;
 `;
 
 const TitleContainer = styled.div`
@@ -20,7 +21,6 @@ const TitleContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  padding-top: 8px;
 `;
 
 const Title = styled.div`
@@ -44,7 +44,6 @@ const CheckIcon = styled.img`
 `;
 
 const DescriptionContainer = styled.div`
-  padding: 8px 0 24px 0;
   width: 80%;
   line-height: 20px;
 `;
