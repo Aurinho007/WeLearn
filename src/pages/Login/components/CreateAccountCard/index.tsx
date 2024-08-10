@@ -24,11 +24,12 @@ import { isValidEmail, isValidName, isValidPassword } from "../../utils";
 
 
 type CreateAccountCardProps = {
+  isLogin: boolean;
   setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const CreateAccountCard = (props: CreateAccountCardProps) => {
-  const { setIsLogin } = props;
+  const { isLogin, setIsLogin } = props;
   const { showToast } = useToast();
 
   const changeCard = () => {
@@ -115,7 +116,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
  
 
   return (
-    <Container onKeyDown={(event) => event.key === 'Enter' && validateForm()} tabIndex={0}>
+    <Container onKeyDown={(event) => event.key === 'Enter' && !isLogin &&handleClickCreateAccountButton()} tabIndex={0}>
       <Content>
         <Division>
           <Header>

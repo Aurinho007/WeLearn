@@ -11,8 +11,8 @@ const Login = () => {
     <Container>
       <Box>
         <Swipeable isLogin={isLogin} />
-        <LoginCard setIsLogin={setIsLogin} />
-        <CreateAccountCard setIsLogin={setIsLogin}/>
+        <LoginCard setIsLogin={setIsLogin} isLogin={isLogin} />
+        <CreateAccountCard setIsLogin={setIsLogin} isLogin={isLogin}/>
       </Box>
     </Container>
   );

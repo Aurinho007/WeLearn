@@ -31,11 +31,12 @@ import { isValidEmail } from "../../utils";
 import { deleteUserLoginData, getUserLoginData, saveUserLoginData } from "../../../../controllers/userController";
 
 type LoginCardProps = {
+  isLogin: boolean;
   setIsLogin: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const LoginCard = (props: LoginCardProps) => {
-  const { setIsLogin } = props;
+  const { isLogin, setIsLogin } = props;
   const navigate = useNavigate();
   const { isLogged, setUser } = useUser();
   const { showToast } = useToast();
@@ -126,7 +127,7 @@ const LoginCard = (props: LoginCardProps) => {
   }
 
   return (
-    <Container onKeyDown={(event) => event.key === 'Enter' && validateForm()} tabIndex={0}>
+    <Container onKeyDown={(event) => event.key === 'Enter' && isLogin && handleClickLoginButton()} tabIndex={0}>
       <Content>
         <Division>
           <Header>
