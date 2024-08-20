@@ -18,7 +18,7 @@ const Classrooms = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
-    }, 0)
+    }, 5000)
 
   }, []);
 

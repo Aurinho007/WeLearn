@@ -31,10 +31,6 @@ const Profile = () => {
           <LineValue>{user.weCoin}</LineValue>
         </LineData>
         <LineData>
-          <LineLabel>Elo</LineLabel>
-          <LineValue>Ouro</LineValue>
-        </LineData>
-        <LineData>
           <LineLabel>Experiência</LineLabel>
           <LineValue>{user.xp}<T>xp</T></LineValue>
         </LineData>

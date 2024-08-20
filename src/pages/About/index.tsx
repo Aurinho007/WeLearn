@@ -8,8 +8,6 @@ import rabelloPic from '../../assets/images/devs/rabello 1.svg'
 import prof from '../../assets/images/devs/prof.svg'
 import img from '../../assets/images/online-test.svg'
 
-
-
 const About = () => {
   return (
     <>

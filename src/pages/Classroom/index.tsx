@@ -9,7 +9,7 @@ import RankingIcon from "../../components/RankingIcon";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
 
 const Classroom = () => {
-  const classroomName = "Aquitetura de Sofware"
+  const classroomName = "Cálculo Computacional"
   const { isTeacher } = useUser();
 
   return (
@@ -49,7 +49,7 @@ const Classroom = () => {
 
           </HeaderRight>
           <ConclusionBar
-            conclusionPercent={65}
+            conclusionPercent={20}
             height={30}
           />
           <QuestionaryContainer>

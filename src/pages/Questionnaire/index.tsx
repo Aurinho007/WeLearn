@@ -1,4 +1,4 @@
-const Questionary = () => {
+const questionnaire = () => {
   return (
     <>
       <h1>Questionário</h1>
@@ -6,4 +6,4 @@ const Questionary = () => {
   );
 };
 
-export default Questionary;
+export default questionnaire;

@@ -7,7 +7,7 @@ import Login from "./pages/Login/index";
 import Profile from "./pages/Profile";
 import About from "./pages/About/index";
 import MyClassrooms from "./pages/MyClassrooms/index";
-import Questionary from "./pages/Questionary/index";
+import Questionary from "./pages/Questionnaire/index";
 import FormQuestionary from "./pages/FormQuestionary/index";
 import NotFound from "./pages/NotFound/index";
 import Classroom from "./pages/Classroom";

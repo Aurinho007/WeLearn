@@ -3,8 +3,7 @@ export interface IUser {
   email: string;
   weCoin: number;
   xp: number;
-  ranking: string;
-  perfil: 'aluno' | 'professor' | '',
+  perfil: string
   token: string
 };
 

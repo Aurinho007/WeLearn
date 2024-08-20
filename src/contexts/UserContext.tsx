@@ -7,7 +7,6 @@ const initialUserState: IUser = {
   email: '',
   weCoin: 0,
   xp: 0,
-  ranking: '',
   perfil: '',
   token: '',
 };

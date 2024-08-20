@@ -18,9 +18,9 @@ import {
   TextInput,
   Title,
 } from "./styles";
-import { createAccount } from "../../../../service/api";
-import CreateAccountDto from "../../../../dtos/createAccount";
+import CreateAccountDto from "../../../../dtos/auth/createAccount";
 import { isValidEmail, isValidName, isValidPassword } from "../../utils";
+import { createAccount } from "../../../../service/auth";
 
 
 type CreateAccountCardProps = {
