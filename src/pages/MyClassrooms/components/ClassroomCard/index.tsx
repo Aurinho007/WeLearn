@@ -13,10 +13,10 @@ import ConclusionBar from "../../../../components/ConclusionBar";
 
 const ClassroomCard = (props: ClassroomCardProps) => {
   const {
-    elo,
-    name,
-    teacherName,
     id,
+    name,
+    elo,
+    teacherName,
     conclusionPercent,
     onClick,
   } = props;

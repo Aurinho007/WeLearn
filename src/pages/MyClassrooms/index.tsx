@@ -133,11 +133,11 @@ const Classrooms = () => {
         classrooms.current.map(room => {
           return (
             <ClassroomCard
-              name={room.name}
-              teacherName={room.teacherName}
               id={room.id}
-              conclusionPercent={room.conclusionPercent}
+              name={room.nome}
+              teacherName={room.nomePofessor}
               elo={room.elo}
+              conclusionPercent={room.percentualConcluido}
               onClick={handleClick}
             />
           )

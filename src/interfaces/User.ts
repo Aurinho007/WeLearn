@@ -6,7 +6,6 @@ export interface IUser {
   perfil: string
   token: string
 };
-
 export interface IUserLoginData {
   email: string;
   password: string;

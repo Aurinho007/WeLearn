@@ -27,7 +27,6 @@ export const Title = styled.p`
   font-weight: 500;
   line-height: 1.2rem;
   font-size: 1.3rem;
-  margin-left: 10px;
 `;
 
 export const DataContainer = styled.div`

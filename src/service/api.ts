@@ -2,15 +2,12 @@ import { getUser } from "../controllers/userController";
 
 export const BASE_URL = "http://localhost:3001/api";
 
-export const doRequest = async (url: string, method: "POST" | "GET", params?: any, useToken?: boolean): Promise<any> => {
-  const headers: { [key: string]: string } = {
+export const doRequest = async (url: string, method: "POST" | "GET", params?: any,): Promise<any> => {
+  const headers = {
     'Content-Type': 'application/json',
+    'Authorization': `Bearer ${getUser()?.token}`
   };
-
-  if (useToken) {
-    headers['Authorization'] = `Bearer ${getUser()?.token}`;
-  }
-
+  
   const response = await fetch(url, {
     method,
     headers,

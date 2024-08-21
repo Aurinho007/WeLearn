@@ -1,9 +1,9 @@
 interface IClassroom {
   id: number,
-  name: string,
-  teacherName: string,
+  nome: string,
+  nomePofessor: string,
   elo?: string
-  conclusionPercent?: number
+  percentualConcluido?: number
 }
 
 export default IClassroom
