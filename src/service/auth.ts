@@ -1,6 +1,5 @@
 import { BASE_URL, doRequest } from "./api";
-import CreateAccountDto from "../dtos/auth/createAccount";
-import LoginDto from "../dtos/auth/login";
+import { LoginDto, CreateAccountDto }from "../dtos/auth";
 import { IUser } from "../interfaces/User";
 
 const LOGIN_URL = `${BASE_URL}/users/auth`;

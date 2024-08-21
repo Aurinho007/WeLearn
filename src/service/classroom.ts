@@ -1,10 +1,10 @@
-import ClassroomDto from "../dtos/classroom/classroom";
+import IClassroom from "../interfaces/Classroom";
 import { doRequest } from "./api";
 
-const GET_CLASSROOM_URL = "/classroom/";
+const GET_CLASSROOM_URL = "/room";
 
-export const getClassroom = (successCallback: (classroom: ClassroomDto[]) => void, errorCallback: (error: string) => void) => {
-  doRequest(GET_CLASSROOM_URL, "GET", true)
+export const getClassroom = async (successCallback: (classroom: IClassroom[]) => void, errorCallback: (error: string) => void) => {
+  await doRequest(GET_CLASSROOM_URL, "GET", true)
   .then(response => successCallback(response))
   .catch(error => errorCallback(error.message))
 }

@@ -1,5 +1,5 @@
 type RankingIconProps = {
-  ranking: string,
+  elo: string,
   size: number
 }
 

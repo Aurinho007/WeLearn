@@ -14,7 +14,7 @@ export const doRequest = async (url: string, method: "POST" | "GET", params?: an
   const response = await fetch(url, {
     method,
     headers,
-    body: JSON.stringify(params)
+    ...(method !== "GET" && { body: JSON.stringify(params) })
   });
 
   if (!response.ok) {
@@ -23,5 +23,4 @@ export const doRequest = async (url: string, method: "POST" | "GET", params?: an
   }
 
   return await response.json();
-
 }

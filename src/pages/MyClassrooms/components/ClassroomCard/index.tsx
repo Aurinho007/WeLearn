@@ -13,10 +13,10 @@ import ConclusionBar from "../../../../components/ConclusionBar";
 
 const ClassroomCard = (props: ClassroomCardProps) => {
   const {
-    ranking,
-    title,
+    elo,
+    name,
     teacherName,
-    classRoomId,
+    id,
     conclusionPercent,
     onClick,
   } = props;
@@ -24,11 +24,14 @@ const ClassroomCard = (props: ClassroomCardProps) => {
   return (
     <Card onClick={onClick}>
       <TitleContainer>
-        <RankingIcon 
-          size={40}
-          ranking="Ouro"
-        />
-        <Title>{title}</Title>
+        {
+          elo &&
+          <RankingIcon
+            size={40}
+            elo={elo}
+          />
+        }
+        <Title>{name}</Title>
       </TitleContainer>
       <DataContainer>
         <Line>
@@ -37,17 +40,20 @@ const ClassroomCard = (props: ClassroomCardProps) => {
         </Line>
         <Line>
           <Description>Código</Description>
-          <Value>{classRoomId}</Value>
+          <Value>{id}</Value>
         </Line>
         <Line>
-          <Description>Ranking</Description>
-          <Value>{ranking}</Value>
+          <Description>Elo</Description>
+          <Value>{elo}</Value>
         </Line>
       </DataContainer>
-      <ConclusionBar 
-        conclusionPercent={conclusionPercent}
-        height={18}
-      />
+      {
+        conclusionPercent &&
+        <ConclusionBar
+          conclusionPercent={conclusionPercent}
+          height={18}
+        />
+      }
     </Card>
   );
 };

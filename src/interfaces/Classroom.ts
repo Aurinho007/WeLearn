@@ -1,4 +1,4 @@
-type ClassroomDto = {
+interface IClassroom {
   id: number,
   name: string,
   teacherName: string,
@@ -6,4 +6,4 @@ type ClassroomDto = {
   conclusionPercent?: number
 }
 
-export default ClassroomDto;
+export default IClassroom

@@ -14,9 +14,9 @@ const rankingIcons: { [key: string]: string } = {
 };
 
 const RankingIcon = (props: QuestionaryDataCardProps): JSX.Element => {
-  const { ranking, size } = props;
+  const { elo, size } = props;
   
-  const icon = rankingIcons[ranking.toLowerCase()] || bronze;
+  const icon = rankingIcons[elo.toLowerCase()] || bronze;
 
   return (
     <Container>

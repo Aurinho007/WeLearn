@@ -1,8 +1,8 @@
 export type ClassroomCardProps = {
-  ranking: string,
-  title: string,
+  id: number,
+  name: string,
   teacherName: string,
-  classRoomId: number,
-  conclusionPercent: number,
+  elo?: string,
+  conclusionPercent?: number,
   onClick: () => void
 }
