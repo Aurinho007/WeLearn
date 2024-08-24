@@ -21,6 +21,7 @@ import {
   TextInput,
   Title,
 } from "./styles";
+import ErrorCard from "../../../../components/ErrorCard";
 
 
 type CreateAccountCardProps = {
@@ -96,9 +97,9 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
     setProfileType("Aluno");
   };
 
-  const handleClickCreateAccountButton = async () => {
+  const handleClickCreateAccountButton = () => {
 
-    if(!validateForm()){
+    if (!validateForm()) {
       return;
     }
 
@@ -109,14 +110,14 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
       senha: password
     };
 
-    await createAccount(newUser, succesCallback, errorCallback);
+    createAccount(newUser, succesCallback, errorCallback);
 
   };
 
- 
+
 
   return (
-    <Container onKeyDown={(event) => event.key === "Enter" && !isLogin &&handleClickCreateAccountButton()} tabIndex={0}>
+    <Container onKeyDown={(event) => event.key === "Enter" && !isLogin && handleClickCreateAccountButton()} tabIndex={0}>
       <Content>
         <Division>
           <Header>

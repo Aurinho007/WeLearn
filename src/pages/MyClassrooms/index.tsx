@@ -1,15 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ClassroomCard from "./components/ClassroomCard";
-import EmptyClassrooms from "./components/EmptyClassrooms";
 import PageHeader from "../../components/PageHeader";
 import { useUser } from "../../contexts/UserContext";
-import SecondaryButton from "../../components/Buttons/SecondaryButton";
 import Loader from "../../components/Loader";
 import IClassroom from "../../interfaces/Classroom";
 import { getClassroom } from "../../service/classroom";
 import { useToast } from "../../contexts/ToastContext";
 import { ClassrommCardContainer } from "./styles";
+import ErroCard from "../../components/ErrorCard/index";
 
 
 const Classrooms = () => {
@@ -28,20 +27,15 @@ const Classrooms = () => {
 
   const errorCallback = (error: string) => {
     setError(error);
-    showToast(error, "error");
     setLoading(false);
   };
 
   useEffect(() => {
-    const getRooms = async () => {
-      if (isLogged()) {
-        await getClassroom(successCallback, errorCallback);
-      } else {
-        setLoading(false);
-      }
-    };
-
-    getRooms();
+    if (isLogged()) {
+      getClassroom(successCallback, errorCallback);
+    } else {
+      setLoading(false);
+    }
   }, []);
 
   const handleClick = () => {
@@ -61,47 +55,30 @@ const Classrooms = () => {
   const renderErrorMessage = () => {
     if (!isLogged()) {
       return (
-        <EmptyClassrooms
+        <ErroCard
           text="Parece que você não está logado."
-          button={
-            <SecondaryButton
-              Ffamily="montserrat"
-              Fsize={1}
-              Fweight={500}
-              onClick={() => navigate("/login")}
-              outside="blue"
-              text="Login"
-            />
-          }
+          buttonText="Login"
+          onClick={() => navigate("/login")}
         />
       );
     }
 
     if (error) {
       return (
-        <>
-          <h1>Componente de erro aqui</h1>
-          <h1>{error}</h1>
-          <button onClick={() => window.location.reload()}>Recarregar</button>
-        </>
-
+        <ErroCard
+          text={error}
+          buttonText="Recarregar"
+          onClick={window.location.reload}
+        />
       );
     }
 
     if (isTeacher()) {
       return (
-        <EmptyClassrooms
+        <ErroCard
           text="Parece que você ainda não tem nenhuma sala"
-          button={
-            <SecondaryButton
-              Ffamily="montserrat"
-              Fsize={1}
-              Fweight={500}
-              onClick={createClassroom}
-              outside="blue"
-              text="Criar uma sala"
-            />
-          }
+          buttonText="Criar uma sala"
+          onClick={createClassroom}
         />
       );
 
@@ -109,18 +86,10 @@ const Classrooms = () => {
 
     if (isStudent()) {
       return (
-        <EmptyClassrooms
+        <ErroCard
           text="Parece que você ainda não está em nenhuma sala."
-          button={
-            <SecondaryButton
-              Ffamily="montserrat"
-              Fsize={1}
-              Fweight={500}
-              onClick={enterClassroom}
-              outside="blue"
-              text="Entrar em uma sala"
-            />
-          }
+          buttonText="Entrar em uma sala"
+          onClick={enterClassroom}
         />
       );
     }

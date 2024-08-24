@@ -113,8 +113,8 @@ const LoginCard = (props: LoginCardProps) => {
 
   };
 
-  const handleClickLoginButton = async () => {
-    if(!validateForm()){
+  const handleClickLoginButton = () => {
+    if (!validateForm()) {
       return;
     }
 
@@ -123,7 +123,7 @@ const LoginCard = (props: LoginCardProps) => {
       senha: password
     };
 
-    await login(user, succesCallback, errorCallback);
+    login(user, succesCallback, errorCallback);
   };
 
   return (
