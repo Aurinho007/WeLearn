@@ -6,6 +6,6 @@ export type LoginDto = {
 export type CreateAccountDto = {
   nome: string,
   email: string,
-  perfil: 'Professor' | 'Aluno',
+  perfil: "Professor" | "Aluno",
   senha: string,
 }

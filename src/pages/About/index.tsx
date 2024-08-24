@@ -1,12 +1,12 @@
 import PageHeader from "../../components/PageHeader";
 import DevCard from "./components/DevCard";
 import { CardsContainer, Container, ContentContainer, Image, Text, TextContainer } from "./styles";
-import anaPic from '../../assets/images/devs/ana 1.svg'
-import aureoPic from '../../assets/images/devs/image 9.svg'
-import cavasPic from '../../assets/images/devs/cavas 1.svg'
-import rabelloPic from '../../assets/images/devs/rabello 1.svg'
-import prof from '../../assets/images/devs/prof.svg'
-import img from '../../assets/images/online-test.svg'
+import anaPic from "../../assets/images/devs/ana 1.svg";
+import aureoPic from "../../assets/images/devs/image 9.svg";
+import cavasPic from "../../assets/images/devs/cavas 1.svg";
+import rabelloPic from "../../assets/images/devs/rabello 1.svg";
+import prof from "../../assets/images/devs/prof.svg";
+import img from "../../assets/images/online-test.svg";
 
 const About = () => {
   return (

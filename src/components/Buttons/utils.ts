@@ -9,7 +9,7 @@ export const handleClick = (
     action();
     setTimeout(() => {
       setIsActive(true);
-    }, 2000)
+    }, 2000);
 
   }
-}
+};

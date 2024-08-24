@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/UserContext";
 import { useToast } from "../../contexts/ToastContext";
 import { Container, Card, ProfileImg, UserDataContainer, UserName, UserEmail, LineData, LineLabel, LineValue, T, ButtonContainer } from "./styles";
-import defaultProfilePic from '../../assets/images/default-profile-pic.svg'
+import defaultProfilePic from "../../assets/images/default-profile-pic.svg";
 import TerciaryButton from "../../components/Buttons/TerciaryButton";
 
 const Profile = () => {
@@ -12,10 +12,10 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const handeButtonClick = (): void => {
-      logout();
-      navigate("/login");
-      showToast('Usuário desconectado', 'info');
-  }
+    logout();
+    navigate("/login");
+    showToast("Usuário desconectado", "info");
+  };
 
   return (
     <Container>
@@ -51,6 +51,6 @@ const Profile = () => {
     </Container>
   );
 
-}
+};
 
 export default Profile;

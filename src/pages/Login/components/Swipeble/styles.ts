@@ -1,6 +1,6 @@
-import { styled } from 'styled-components';
-import theme from '../../../../assets/theme';
-import fonts from '../../../../assets/fonts/fonts';
+import { styled } from "styled-components";
+import theme from "../../../../assets/theme";
+import fonts from "../../../../assets/fonts/fonts";
 
 export const Container = styled.div<{ isLogin: boolean}>`
   display: flex;
@@ -11,8 +11,8 @@ export const Container = styled.div<{ isLogin: boolean}>`
   position: absolute;
   border-radius: 20px;
   z-index: 999;
-  left: ${props => props.isLogin ? 0 : '50%'}; 
-  right: ${props => !props.isLogin ? 0 : '50%'}; 
+  left: ${props => props.isLogin ? 0 : "50%"}; 
+  right: ${props => !props.isLogin ? 0 : "50%"}; 
   transition: left 1s ease, right 1s ease; 
 `;
 export const Content = styled.div`

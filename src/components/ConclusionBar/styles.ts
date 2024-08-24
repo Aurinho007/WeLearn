@@ -1,6 +1,6 @@
-import { styled } from 'styled-components';
-import theme from '../../assets/theme';
-import fonts from '../../assets/fonts/fonts';
+import { styled } from "styled-components";
+import theme from "../../assets/theme";
+import fonts from "../../assets/fonts/fonts";
 
 export const Bar = styled.div<{ height: number; }>`  margin-top: -17px;
   position: relative;

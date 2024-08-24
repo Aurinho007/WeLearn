@@ -1,14 +1,14 @@
-import { createContext, useState, useContext, useEffect, ReactNode, FC } from 'react';
-import { IUser, IUserContextType } from '../interfaces/User';
-import { getUser, logoutUser, saveUser } from '../controllers/userController';
+import { createContext, useState, useContext, useEffect, ReactNode, FC } from "react";
+import { IUser, IUserContextType } from "../interfaces/User";
+import { getUser, logoutUser, saveUser } from "../controllers/userController";
 
 const initialUserState: IUser = {
-  nome: '',
-  email: '',
+  nome: "",
+  email: "",
   weCoin: 0,
   xp: 0,
-  perfil: '',
-  token: '',
+  perfil: "",
+  token: "",
 };
 
 const UserContext = createContext<IUserContextType>({
@@ -37,9 +37,9 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const isStudent = (): boolean => user.perfil.toLowerCase() === "aluno";
 
   const logout = (): void => {
-    logoutUser()
+    logoutUser();
     setUser(initialUserState);
-  }
+  };
 
   return (
     <UserContext.Provider value={{ user, setUser, isLogged, isTeacher, isStudent, logout}}>

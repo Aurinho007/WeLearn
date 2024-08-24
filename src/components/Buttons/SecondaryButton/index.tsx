@@ -5,7 +5,7 @@ import { Container, Button, Text } from "./styles";
 
 const SecondaryButton = (props: ISecondaryButton): React.JSX.Element => {
   const { onClick, text } = props;
-  const [isActive, setIsActive] = useState<boolean>(true)
+  const [isActive, setIsActive] = useState<boolean>(true);
 
   return (
     <Container>

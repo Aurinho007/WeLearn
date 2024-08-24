@@ -13,7 +13,7 @@ import NotFound from "./pages/NotFound/index";
 import Classroom from "./pages/Classroom";
 import Dashboard from "./pages/Dashboard";
 
-const Layout = ({ children }: any) => {
+const Layout = ({ children }: { children: JSX.Element }) => {
   return (
     <>
       {children}
@@ -30,13 +30,22 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" index element={<Layout children={<Home />} />} />
+          <Route
+            path="/" index
+            element={<Layout children={<Home />} />}
+          />
           <Route
             path="/salas"
             element={<Layout children={<MyClassrooms />} />}
           />
-          <Route path="/sala" element={<Layout children={<Classroom />} />} />
-          <Route path="/sobre" element={<Layout children={<About />} />} />
+          <Route
+            path="/sala"
+            element={<Layout children={<Classroom />} />}
+          />
+          <Route
+            path="/sobre"
+            element={<Layout children={<About />} />}
+          />
           <Route
             path="/meu-perfil"
             element={<Layout children={<Profile />} />}
@@ -45,8 +54,10 @@ function App() {
             path="/Dashboard"
             element={<Layout children={<Dashboard />} />}
           />
-          <Route path="/*" element={<Layout children={<NotFound />} />} />
-
+          <Route
+            path="/*"
+            element={<Layout children={<NotFound />} />}
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/criar-questionario" element={<FormQuestionary />} />
           <Route path="/questionario" element={<Questionary />} />

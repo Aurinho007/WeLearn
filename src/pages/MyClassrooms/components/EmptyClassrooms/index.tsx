@@ -1,5 +1,5 @@
-import EmptyClassroomsProps from "./interface"
-import image from '../../../../assets/images/empty-search.svg';
+import EmptyClassroomsProps from "./interface";
+import image from "../../../../assets/images/empty-search.svg";
 import { Container, ContentContainer, Image, ImageContainer, Title, Text } from "./styles";
 
 const EmptyClassrooms = (props: EmptyClassroomsProps): JSX.Element => {
@@ -15,7 +15,7 @@ const EmptyClassrooms = (props: EmptyClassroomsProps): JSX.Element => {
         {button}
       </ContentContainer>
     </Container>
-  )
-}
+  );
+};
 
 export default EmptyClassrooms;

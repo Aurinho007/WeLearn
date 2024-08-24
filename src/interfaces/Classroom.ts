@@ -6,4 +6,4 @@ interface IClassroom {
   percentualConcluido?: number
 }
 
-export default IClassroom
+export default IClassroom;

@@ -12,7 +12,7 @@ import {
 import getIcon from "./utils";
 
 const HomeCard = (props: IHomeCard) => {
-  const { title, text, icon } = props
+  const { title, text, icon } = props;
 
   return (
     <Container>

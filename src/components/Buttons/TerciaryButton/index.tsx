@@ -5,7 +5,7 @@ import { handleClick } from "../utils";
 
 const TerciaryButton = (props: ITerciaryButton): React.JSX.Element => {
   const { onClick, text } = props;
-  const [isActive, setIsActive] = useState<boolean>(true)
+  const [isActive, setIsActive] = useState<boolean>(true);
 
   return (
     <Container>

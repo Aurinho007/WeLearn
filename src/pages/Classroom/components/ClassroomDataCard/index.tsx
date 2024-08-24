@@ -2,7 +2,7 @@ import { Card, Description, Line, Value } from "./styles";
 import QuestionaryDataCardProps from "./types";
 
 const ClassroomDataCard = (props: QuestionaryDataCardProps): JSX.Element => {
-  const { teacherName, classroomId, studentRanking } = props
+  const { teacherName, classroomId, studentRanking } = props;
 
   return (
     <Card>

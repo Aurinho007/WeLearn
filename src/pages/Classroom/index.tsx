@@ -1,5 +1,5 @@
 import Ranking from "./components/Ranking";
-import { ClassroomContainer, Left, LeftHeader, Right, Title, QuestionaryContainer, HeaderRight } from './styles';
+import { ClassroomContainer, Left, LeftHeader, Right, Title, QuestionaryContainer, HeaderRight } from "./styles";
 import { useUser } from "../../contexts/UserContext";
 import ConclusionBar from "../../components/ConclusionBar";
 import PageHeader from "../../components/PageHeader";
@@ -9,7 +9,7 @@ import RankingIcon from "../../components/RankingIcon";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
 
 const Classroom = () => {
-  const classroomName = "Cálculo Computacional"
+  const classroomName = "Cálculo Computacional";
   const { isTeacher } = useUser();
 
   return (
@@ -20,7 +20,7 @@ const Classroom = () => {
           <LeftHeader>
             <RankingIcon
               size={100}
-              ranking="Ouro"
+              elo="Ouro"
             />
             <ClassroomDataCard
               teacherName="Amanda Borges"
@@ -41,7 +41,7 @@ const Classroom = () => {
                 Ffamily="montserrat"
                 Fsize={1}
                 Fweight={400}
-                onClick={() => {alert("Em breve")}}
+                onClick={() => {alert("Em breve");}}
                 outside="black"
                 text="Adicionar"
               />

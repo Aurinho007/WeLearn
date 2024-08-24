@@ -1,7 +1,7 @@
-import { styled } from 'styled-components';
-import { Link } from 'react-router-dom';
-import fonts from '../../assets/fonts/fonts';
-import theme from '../../assets/theme';
+import { styled } from "styled-components";
+import { Link } from "react-router-dom";
+import fonts from "../../assets/fonts/fonts";
+import theme from "../../assets/theme";
 
 const Title = styled(Link)`
     text-decoration: none;

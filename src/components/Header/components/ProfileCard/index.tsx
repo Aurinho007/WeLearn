@@ -6,8 +6,8 @@ import {
   WeCoin,
   WeCoinContainer,
   WeCoinLabel,
-} from './styles.ts';
-import defaultProfilePic from '../../../../assets/images/default-profile-pic.svg';
+} from "./styles.ts";
+import defaultProfilePic from "../../../../assets/images/default-profile-pic.svg";
 
 const ProfileCard = () => {
   const { user } = useUser();

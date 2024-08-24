@@ -1,12 +1,12 @@
 import { Container, Elo } from "./styles";
 import QuestionaryDataCardProps from "./types";
 
-import diamante from '../../assets/images/diamond-medal.svg'
-import ouro from '../../assets/images/gold-medal.svg'
-import prata from '../../assets/images/silver-medal.svg'
-import bronze from '../../assets/images/bronze-medal.svg'
+import diamante from "../../assets/images/diamond-medal.svg";
+import ouro from "../../assets/images/gold-medal.svg";
+import prata from "../../assets/images/silver-medal.svg";
+import bronze from "../../assets/images/bronze-medal.svg";
 
-const rankingIcons: { [key: string]: string } = {
+const eloIcons: { [key: string]: string } = {
   diamante,
   ouro,
   prata,
@@ -16,7 +16,7 @@ const rankingIcons: { [key: string]: string } = {
 const RankingIcon = (props: QuestionaryDataCardProps): JSX.Element => {
   const { elo, size } = props;
   
-  const icon = rankingIcons[elo.toLowerCase()] || bronze;
+  const icon = eloIcons[elo.toLowerCase()] || bronze;
 
   return (
     <Container>

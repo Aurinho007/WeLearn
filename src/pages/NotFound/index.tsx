@@ -1,5 +1,5 @@
 import { Container, NotFoundImg } from "./styles";
-import notFoundImg from '../../assets/images/not-found-light.svg'
+import notFoundImg from "../../assets/images/not-found-light.svg";
 
 const NotFound = () => {
   return (

@@ -1,6 +1,6 @@
-import { styled } from 'styled-components';
-import fonts from '../../../../assets/fonts/fonts';
-import theme from '../../../../assets/theme';
+import { styled } from "styled-components";
+import fonts from "../../../../assets/fonts/fonts";
+import theme from "../../../../assets/theme";
 
 export const Container = styled.div`
   box-shadow: 0px 4px 15px -10px rgba(0,0,0,0.25);

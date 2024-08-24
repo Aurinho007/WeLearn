@@ -1,6 +1,6 @@
-import styled, { keyframes } from 'styled-components';
-import Fonts from '../../assets/fonts/fonts';
-import theme from '../../assets/theme';
+import styled, { keyframes } from "styled-components";
+import Fonts from "../../assets/fonts/fonts";
+import theme from "../../assets/theme";
 
 const fadeIn = keyframes`
   from {

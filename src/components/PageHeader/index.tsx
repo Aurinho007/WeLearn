@@ -1,6 +1,6 @@
 import { BackButton, Container, Title } from "./styles";
 import PageHeaderProps from "./types";
-import arrowBack from '../../assets/images/arrowBack.svg'
+import arrowBack from "../../assets/images/arrowBack.svg";
 import { useNavigate } from "react-router-dom";
 
 const PageHeader = ({ title, hasBackButton }: PageHeaderProps) => {
@@ -16,7 +16,7 @@ const PageHeader = ({ title, hasBackButton }: PageHeaderProps) => {
         {title}
       </Title>
     </Container>
-  )
-}
+  );
+};
 
 export default PageHeader;

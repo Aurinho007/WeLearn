@@ -5,35 +5,40 @@ import EmptyClassrooms from "./components/EmptyClassrooms";
 import PageHeader from "../../components/PageHeader";
 import { useUser } from "../../contexts/UserContext";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
-import Loader from "../../components/Loader";
+import Loader from "../../components/Loaer";
 import IClassroom from "../../interfaces/Classroom";
 import { getClassroom } from "../../service/classroom";
 import { useToast } from "../../contexts/ToastContext";
 
 const Classrooms = () => {
   const navigate = useNavigate();
-  const { showToast } = useToast()
+  const { showToast } = useToast();
   const { isLogged, isTeacher, isStudent } = useUser();
 
-  const classrooms = useRef<IClassroom[]>([])
+  const classrooms = useRef<IClassroom[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('')
+  const [error, setError] = useState("");
 
   const successCallback = (response: IClassroom[]) => {
     classrooms.current = response;
     setLoading(false);
-  }
+  };
 
   const errorCallback = (error: string) => {
     setError(error);
-    showToast(error, 'error');
+    showToast(error, "error");
     setLoading(false);
-  }
+  };
 
   useEffect(() => {
     const getRooms = async () => {
-      await getClassroom(successCallback, errorCallback)
-    }
+      if (isLogged()) {
+        await getClassroom(successCallback, errorCallback);
+      } else {
+        setLoading(false);
+      }
+    };
+
     getRooms();
   }, []);
 
@@ -44,11 +49,11 @@ const Classrooms = () => {
 
   const enterClassroom = () => {
     alert("Em breve!");
-  }
+  };
 
   const createClassroom = () => {
     alert("Em breve!");
-  }
+  };
 
 
   const renderErrorMessage = () => {
@@ -67,7 +72,7 @@ const Classrooms = () => {
             />
           }
         />
-      )
+      );
     }
 
     if (error) {
@@ -78,7 +83,7 @@ const Classrooms = () => {
           <button onClick={() => window.location.reload()}>Recarregar</button>
         </>
 
-      )
+      );
     }
 
     if (isTeacher()) {
@@ -96,7 +101,7 @@ const Classrooms = () => {
             />
           }
         />
-      )
+      );
 
     }
 
@@ -115,24 +120,25 @@ const Classrooms = () => {
             />
           }
         />
-      )
+      );
     }
 
-  }
+  };
 
-  if (loading) return <Loader height={130} width={130} />
+  if (loading) return <Loader height={130} width={130} />;
 
 
-  if (error || classrooms.current.length === 0) return renderErrorMessage()
+  if (error || classrooms.current.length === 0) return renderErrorMessage();
 
   return (
     <>
       <PageHeader title="Minhas Salas" />
 
       {
-        classrooms.current.map(room => {
+        classrooms.current.map((room, index) => {
           return (
             <ClassroomCard
+              key={index}
               id={room.id}
               name={room.nome}
               teacherName={room.nomePofessor}
@@ -140,7 +146,7 @@ const Classrooms = () => {
               conclusionPercent={room.percentualConcluido}
               onClick={handleClick}
             />
-          )
+          );
         })
       }
 

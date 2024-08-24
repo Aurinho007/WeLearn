@@ -1,6 +1,6 @@
-import { styled } from 'styled-components';
-import theme from '../../../../assets/theme';
-import Fonts from '../../../../assets/fonts/fonts';
+import { styled } from "styled-components";
+import theme from "../../../../assets/theme";
+import Fonts from "../../../../assets/fonts/fonts";
 
 export const Container = styled.div`
   display: flex;

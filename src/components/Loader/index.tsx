@@ -1,10 +1,10 @@
-import { Triangle } from 'react-loader-spinner'
-import theme from '../../assets/theme';
-import LoaderProps from './interface';
-import { Container, LoaderContainer } from './styles';
+import { Triangle } from "react-loader-spinner";
+import theme from "../../assets/theme";
+import LoaderProps from "./interface";
+import { Container, LoaderContainer } from "./styles";
 
 const Loader = (props: LoaderProps) => {
-  const { height, width } = props
+  const { height, width } = props;
 
   return (
     <Container>
@@ -19,7 +19,7 @@ const Loader = (props: LoaderProps) => {
       </LoaderContainer>
     </Container>
 
-  )
-}
+  );
+};
 
 export default Loader;

@@ -1,6 +1,6 @@
-import { styled } from 'styled-components';
-import fonts from '../../../../assets/fonts/fonts';
-import theme from '../../../../assets/theme';
+import { styled } from "styled-components";
+import fonts from "../../../../assets/fonts/fonts";
+import theme from "../../../../assets/theme";
 
 const Card = styled.div`
   display: flex;

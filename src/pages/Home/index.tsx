@@ -2,7 +2,7 @@ import HomeCardList from "./components/HomeCardList";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/UserContext.tsx";
 import { Bolded, LeftContentContainer, MainPhrase, MainView, Image, NavContainer } from "./styles";
-import studingGirl from '../../assets/images/studing-girl.svg';
+import studingGirl from "../../assets/images/studing-girl.svg";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
 import TerciaryButton from "../../components/Buttons/TerciaryButton";
 
@@ -21,7 +21,7 @@ const Home = () => {
           Fweight={500}
           outside="blue"
         />
-      )
+      );
     } else {
       return (
         <SecondaryButton
@@ -32,10 +32,10 @@ const Home = () => {
           Fweight={500}
           outside="blue"
         />
-      )
+      );
     }
 
-  }
+  };
 
   return (
     <>

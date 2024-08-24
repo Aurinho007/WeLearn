@@ -1,7 +1,7 @@
-import { styled } from 'styled-components';
-import ISecondaryButton from './interface';
-import fonts from '../../../assets/fonts/fonts';
-import theme from '../../../assets/theme';
+import { styled } from "styled-components";
+import ISecondaryButton from "./interface";
+import fonts from "../../../assets/fonts/fonts";
+import theme from "../../../assets/theme";
 
 export const Container = styled.div`
   width: auto;

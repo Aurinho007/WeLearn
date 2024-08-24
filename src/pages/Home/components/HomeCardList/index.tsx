@@ -15,13 +15,13 @@ const HomeCardList = () => {
         title={CARD_CONTENT.MOTIVATION_CARD.TITLE}
         text={CARD_CONTENT.MOTIVATION_CARD.TEXT}
       />
-       <HomeCard
+      <HomeCard
         icon={CARD_CONTENT.LIGHT_CARD.ICON}
         title={CARD_CONTENT.LIGHT_CARD.TITLE}
         text={CARD_CONTENT.LIGHT_CARD.TEXT}
       />
     </Container>
   );
-}
+};
 
 export default HomeCardList;

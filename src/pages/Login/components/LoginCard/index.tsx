@@ -25,7 +25,7 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../../../../contexts/UserContext";
 import { useToast } from "../../../../contexts/ToastContext";
 import { IUser } from "../../../../interfaces/User";
-import loginDto from "../../../../dtos/auth/login";
+import { LoginDto } from "../../../../dtos/auth";
 import { login } from "../../../../service/auth";
 import { isValidEmail } from "../../utils";
 import { deleteUserLoginData, getUserLoginData, saveUserLoginData } from "../../../../controllers/userController";
@@ -40,16 +40,16 @@ const LoginCard = (props: LoginCardProps) => {
   const navigate = useNavigate();
   const { isLogged, setUser } = useUser();
   const { showToast } = useToast();
-  const savedUser = getUserLoginData()
-  const [email, setEmail] = useState<string>(savedUser?.email ?? '');
-  const [password, setPassword] = useState<string>(savedUser?.password ?? '');
+  const savedUser = getUserLoginData();
+  const [email, setEmail] = useState<string>(savedUser?.email ?? "");
+  const [password, setPassword] = useState<string>(savedUser?.password ?? "");
   const [saveUser, setSaveUser] = useState<boolean>(!!savedUser);
 
   useEffect(() => {
     if (isLogged()) {
       navigate("/");
     }
-  })
+  });
 
   const changeCard = () => {
     setIsLogin(false);
@@ -70,16 +70,16 @@ const LoginCard = (props: LoginCardProps) => {
   const setRememberMe = () => {
     if (!saveUser) {
       deleteUserLoginData();
-      return
+      return;
     }
 
     saveUserLoginData(email, password);
-  }
+  };
 
   const clearInputs = (): void => {
-    setEmail('');
-    setPassword('');
-  }
+    setEmail("");
+    setPassword("");
+  };
 
   const succesCallback = (user: IUser) => {
     setUser(user);
@@ -87,47 +87,47 @@ const LoginCard = (props: LoginCardProps) => {
     clearInputs();
     navigate("/");
     showToast("Login feito com succeso!", "success");
-  }
+  };
 
   const errorCallback = (error: string) => {
     showToast(error, "error");
-  }
+  };
 
   const validateForm = (): boolean => {
     if (email.length === 0) {
-      showToast("Digite seu email", "error")
+      showToast("Digite seu email", "error");
       return false;
     }
 
     if (!isValidEmail(email)) {
-      showToast("Email inválido", "error")
+      showToast("Email inválido", "error");
       return false;
     }
 
     if (password.length === 0) {
-      showToast("Digite sua senha", "error")
+      showToast("Digite sua senha", "error");
       return false;
     }
 
     return true;
 
-  }
+  };
 
   const handleClickLoginButton = async () => {
     if(!validateForm()){
-      return
+      return;
     }
 
-    const user: loginDto = {
+    const user: LoginDto = {
       email,
       senha: password
-    }
+    };
 
     await login(user, succesCallback, errorCallback);
-  }
+  };
 
   return (
-    <Container onKeyDown={(event) => event.key === 'Enter' && isLogin && handleClickLoginButton()} tabIndex={0}>
+    <Container onKeyDown={(event) => event.key === "Enter" && isLogin && handleClickLoginButton()} tabIndex={0}>
       <Content>
         <Division>
           <Header>

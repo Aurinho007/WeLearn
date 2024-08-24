@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useToast } from "../../../../contexts/ToastContext";
 import PrimaryButton from "../../../../components/Buttons/PrimaryButton";
 import TerciaryButton from "../../../../components/Buttons/TerciaryButton";
+import { isValidEmail, isValidName, isValidPassword } from "../../utils";
+import { createAccount } from "../../../../service/auth";
+import { CreateAccountDto } from "../../../../dtos/auth";
 import {
   Buttons,
   Container,
@@ -18,9 +21,6 @@ import {
   TextInput,
   Title,
 } from "./styles";
-import CreateAccountDto from "../../../../dtos/auth/createAccount";
-import { isValidEmail, isValidName, isValidPassword } from "../../utils";
-import { createAccount } from "../../../../service/auth";
 
 
 type CreateAccountCardProps = {
@@ -63,11 +63,11 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
     showToast("Conta criada com succeso!", "success");
     changeCard();
     clearInputs();
-  }
+  };
 
   const errorCallback = (error: string) => {
-    showToast(error, "error")
-  }
+    showToast(error, "error");
+  };
 
   const validateForm = (): boolean => {
     if (!isValidName(name)) {
@@ -87,14 +87,14 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
 
     return true;
 
-  }
+  };
 
   const clearInputs = (): void => {
-    setEmail('');
-    setPassword('');
-    setName('');
-    setProfileType('Aluno');
-  }
+    setEmail("");
+    setPassword("");
+    setName("");
+    setProfileType("Aluno");
+  };
 
   const handleClickCreateAccountButton = async () => {
 
@@ -107,7 +107,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
       nome: name,
       perfil: profileType,
       senha: password
-    }
+    };
 
     await createAccount(newUser, succesCallback, errorCallback);
 
@@ -116,7 +116,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
  
 
   return (
-    <Container onKeyDown={(event) => event.key === 'Enter' && !isLogin &&handleClickCreateAccountButton()} tabIndex={0}>
+    <Container onKeyDown={(event) => event.key === "Enter" && !isLogin &&handleClickCreateAccountButton()} tabIndex={0}>
       <Content>
         <Division>
           <Header>

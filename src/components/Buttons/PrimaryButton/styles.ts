@@ -1,7 +1,7 @@
-import { styled } from 'styled-components';
-import fonts from '../../../assets/fonts/fonts';
-import theme from '../../../assets/theme';
-import IButton from './interface';
+import { styled } from "styled-components";
+import fonts from "../../../assets/fonts/fonts";
+import theme from "../../../assets/theme";
+import IButton from "./interface";
 
 export const Container = styled.div`
   width: 100%;
