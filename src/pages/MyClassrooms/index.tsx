@@ -5,10 +5,12 @@ import EmptyClassrooms from "./components/EmptyClassrooms";
 import PageHeader from "../../components/PageHeader";
 import { useUser } from "../../contexts/UserContext";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
-import Loader from "../../components/Loaer";
+import Loader from "../../components/Loader";
 import IClassroom from "../../interfaces/Classroom";
 import { getClassroom } from "../../service/classroom";
 import { useToast } from "../../contexts/ToastContext";
+import { ClassrommCardContainer } from "./styles";
+
 
 const Classrooms = () => {
   const navigate = useNavigate();
@@ -133,23 +135,23 @@ const Classrooms = () => {
   return (
     <>
       <PageHeader title="Minhas Salas" />
-
-      {
-        classrooms.current.map((room, index) => {
-          return (
-            <ClassroomCard
-              key={index}
-              id={room.id}
-              name={room.nome}
-              teacherName={room.nomePofessor}
-              elo={room.elo}
-              conclusionPercent={room.percentualConcluido}
-              onClick={handleClick}
-            />
-          );
-        })
-      }
-
+      <ClassrommCardContainer>
+        {
+          classrooms.current.map((room, index) => {
+            return (
+              <ClassroomCard
+                key={index}
+                id={room.id}
+                name={room.nome}
+                teacherName={room.nomePofessor}
+                elo={room.elo}
+                conclusionPercent={room.percentualConcluido}
+                onClick={handleClick}
+              />
+            );
+          })
+        }
+      </ClassrommCardContainer>
     </>
   );
 };

@@ -27,6 +27,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     line-height: 1;
+    padding-bottom: 150px;
   }
   ol, ul {
     list-style: none;
