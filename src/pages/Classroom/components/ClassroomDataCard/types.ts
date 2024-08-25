@@ -1,7 +1,7 @@
 type QuestionaryDataCardProps = {
   teacherName: string,
   classroomId: number,
-  studentRanking: string
+  elo: string
 }
 
 export default QuestionaryDataCardProps;

@@ -6,14 +6,13 @@ import { useUser } from "../../contexts/UserContext";
 import Loader from "../../components/Loader";
 import IClassroom from "../../interfaces/Classroom";
 import { getClassroom } from "../../service/classroom";
-import { useToast } from "../../contexts/ToastContext";
 import { ClassrommCardContainer } from "./styles";
 import ErroCard from "../../components/ErrorCard/index";
+import ROUTES from "../../constants/routesConstants";
 
 
 const Classrooms = () => {
   const navigate = useNavigate();
-  const { showToast } = useToast();
   const { isLogged, isTeacher, isStudent } = useUser();
 
   const classrooms = useRef<IClassroom[]>([]);
@@ -38,9 +37,8 @@ const Classrooms = () => {
     }
   }, []);
 
-  const handleClick = () => {
-    // parametros da sala
-    navigate("/sala");
+  const navigateToClassroom = (room: IClassroom) => {
+    navigate(ROUTES.CLASSROOM, {state : { room }});
   };
 
   const enterClassroom = () => {
@@ -58,7 +56,7 @@ const Classrooms = () => {
         <ErroCard
           text="Parece que você não está logado."
           buttonText="Login"
-          onClick={() => navigate("/login")}
+          onClick={() => navigate(ROUTES.LOGIN)}
         />
       );
     }
@@ -68,7 +66,7 @@ const Classrooms = () => {
         <ErroCard
           text={error}
           buttonText="Recarregar"
-          onClick={window.location.reload}
+          onClick={() => window.location.reload()}
         />
       );
     }
@@ -115,7 +113,7 @@ const Classrooms = () => {
                 teacherName={room.nomePofessor}
                 elo={room.elo}
                 conclusionPercent={room.percentualConcluido}
-                onClick={handleClick}
+                onClick={() => navigateToClassroom(room)}
               />
             );
           })

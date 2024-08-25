@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import Ranking from "./components/Ranking";
 import { ClassroomContainer, Left, LeftHeader, Right, Title, QuestionaryContainer, HeaderRight } from "./styles";
 import { useUser } from "../../contexts/UserContext";
@@ -7,25 +8,28 @@ import ClassroomDataCard from "./components/ClassroomDataCard";
 import QuestionaryCard from "./components/QuestionaryCard";
 import RankingIcon from "../../components/RankingIcon";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
+import IClassroom from "../../interfaces/Classroom";
 
 const Classroom = () => {
-  const classroomName = "Cálculo Computacional";
+  const location = useLocation();
+  const { room }: {room: IClassroom} = location.state || {};
+
   const { isTeacher } = useUser();
 
   return (
     <>
-      <PageHeader title={`Sala de ${classroomName}`} hasBackButton />
+      <PageHeader title={`Sala de ${room.nome}`} hasBackButton />
       <ClassroomContainer>
         <Left>
           <LeftHeader>
             <RankingIcon
               size={100}
-              elo="Ouro"
+              elo={room.elo as string}
             />
             <ClassroomDataCard
-              teacherName="Amanda Borges"
-              classroomId={190622}
-              studentRanking="Ouro"
+              teacherName={room.nomePofessor}
+              classroomId={room.id}
+              elo={room.elo as string}
             />
           </LeftHeader>
           <Ranking />

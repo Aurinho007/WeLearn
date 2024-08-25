@@ -1,3 +1,4 @@
+import ROUTES from "../../../../constants/routesConstants.ts";
 import {
   NavConteiner,
   NavItem,
@@ -7,11 +8,11 @@ import {
 const Nav = () => {
   return (
     <NavConteiner>
-      <NavItem to="/"> Home </NavItem>
+      <NavItem to={ROUTES.HOME}> Home </NavItem>
       <NavSeparator> • </NavSeparator>
-      <NavItem to="/salas"> Salas </NavItem>
+      <NavItem to={ROUTES.MY_CLASSROOMS}> Salas </NavItem>
       <NavSeparator> • </NavSeparator>
-      <NavItem to="/sobre"> Sobre </NavItem>
+      <NavItem to={ROUTES.ABOUT}> Sobre </NavItem>
     </NavConteiner>
   );
 };

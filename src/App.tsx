@@ -8,10 +8,10 @@ import Profile from "./pages/Profile";
 import About from "./pages/About/index";
 import MyClassrooms from "./pages/MyClassrooms/index";
 import Questionary from "./pages/Questionnaire/index";
-import FormQuestionary from "./pages/FormQuestionary/index";
 import NotFound from "./pages/NotFound/index";
 import Classroom from "./pages/Classroom";
 import Dashboard from "./pages/Dashboard";
+import ROUTES from "./constants/routesConstants.ts";
 
 const Layout = ({ children }: { children: JSX.Element }) => {
   return (
@@ -31,36 +31,35 @@ function App() {
         <Header />
         <Routes>
           <Route
-            path="/" index
+            path={ROUTES.HOME} index
             element={<Layout children={<Home />} />}
           />
           <Route
-            path="/salas"
+            path={ROUTES.MY_CLASSROOMS}
             element={<Layout children={<MyClassrooms />} />}
           />
           <Route
-            path="/sala"
+            path={ROUTES.CLASSROOM}
             element={<Layout children={<Classroom />} />}
           />
           <Route
-            path="/sobre"
+            path={ROUTES.ABOUT}
             element={<Layout children={<About />} />}
           />
           <Route
-            path="/meu-perfil"
+            path={ROUTES.PROFILE}
             element={<Layout children={<Profile />} />}
           />
           <Route
-            path="/Dashboard"
+            path={ROUTES.DASHBOARD}
             element={<Layout children={<Dashboard />} />}
           />
           <Route
-            path="/*"
+            path={ROUTES.NOT_FOUND}
             element={<Layout children={<NotFound />} />}
           />
-          <Route path="/login" element={<Login />} />
-          <Route path="/criar-questionario" element={<FormQuestionary />} />
-          <Route path="/questionario" element={<Questionary />} />
+          <Route path={ROUTES.LOGIN}element={<Login />} />
+          <Route path={ROUTES.QUESTIONNARIE} element={<Questionary />} />
         </Routes>
       </Router>
     </>

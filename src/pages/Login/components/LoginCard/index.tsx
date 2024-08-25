@@ -29,6 +29,7 @@ import { LoginDto } from "../../../../dtos/auth";
 import { login } from "../../../../service/auth";
 import { isValidEmail } from "../../utils";
 import { deleteUserLoginData, getUserLoginData, saveUserLoginData } from "../../../../controllers/userController";
+import ROUTES from "../../../../constants/routesConstants";
 
 type LoginCardProps = {
   isLogin: boolean;
@@ -47,7 +48,7 @@ const LoginCard = (props: LoginCardProps) => {
 
   useEffect(() => {
     if (isLogged()) {
-      navigate("/");
+      navigate(ROUTES.HOME);
     }
   });
 
@@ -85,7 +86,7 @@ const LoginCard = (props: LoginCardProps) => {
     setUser(user);
     setRememberMe();
     clearInputs();
-    navigate("/");
+    navigate(ROUTES.HOME);
     showToast("Login feito com succeso!", "success");
   };
 

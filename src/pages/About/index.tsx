@@ -23,7 +23,7 @@ const About = () => {
               alunos do Centro Universitário de Brasília
             </Text>
             <Text>
-              O WeLearn tem como objetivo  revolucionar a
+              O <i><b>WeLearn</b> </i>tem como objetivo  revolucionar a
               experiência de aprendizado, combinando gamificação,
               análise de dados e motivação
             </Text>

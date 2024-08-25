@@ -5,9 +5,10 @@ import Logo from "../Logo/index.tsx";
 import ProfileCard from "./components/ProfileCard/index.tsx";
 import Nav from "./components/Nav/index.tsx";
 import SecondaryButton from "../Buttons/SecondaryButton/index.tsx";
+import ROUTES from "../../constants/routesConstants.ts";
 
 const Header = () => {
-  const navigation = useNavigate();
+  const navigate = useNavigate();
   const { isLogged } = useUser();
 
   return (
@@ -19,7 +20,7 @@ const Header = () => {
           <ProfileCard /> :
           <SecondaryButton
             Fsize={1.1}
-            onClick={() => navigation("/login")}
+            onClick={() => navigate(ROUTES.LOGIN)}
             text="Login"
             Ffamily="montserrat"
             Fweight={500}

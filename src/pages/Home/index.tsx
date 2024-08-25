@@ -5,9 +5,10 @@ import { Bolded, LeftContentContainer, MainPhrase, MainView, Image, NavContainer
 import studingGirl from "../../assets/images/studing-girl.svg";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
 import TerciaryButton from "../../components/Buttons/TerciaryButton";
+import ROUTES from "../../constants/routesConstants.ts";
 
 const Home = () => {
-  const navigation = useNavigate();
+  const navigate = useNavigate();
   const { isLogged } = useUser();
 
   const renderIsLoggedButton = () => {
@@ -15,7 +16,7 @@ const Home = () => {
       return (
         <SecondaryButton
           Fsize={1.1}
-          onClick={() => navigation("/salas")}
+          onClick={() => navigate(ROUTES.MY_CLASSROOMS)}
           text="Minhas Salas"
           Ffamily="montserrat"
           Fweight={500}
@@ -26,7 +27,7 @@ const Home = () => {
       return (
         <SecondaryButton
           Fsize={1.1}
-          onClick={() => navigation("/login")}
+          onClick={() => navigate(ROUTES.LOGIN)}
           text="Login"
           Ffamily="montserrat"
           Fweight={500}
@@ -48,7 +49,7 @@ const Home = () => {
             {renderIsLoggedButton()}
             <TerciaryButton
               Fsize={1.1}
-              onClick={() => navigation("/sobre")}
+              onClick={() => navigate(ROUTES.ABOUT)}
               colored={false}
               text="Saiba Mais"
             />

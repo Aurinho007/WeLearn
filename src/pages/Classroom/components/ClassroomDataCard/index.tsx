@@ -2,7 +2,7 @@ import { Card, Description, Line, Value } from "./styles";
 import QuestionaryDataCardProps from "./types";
 
 const ClassroomDataCard = (props: QuestionaryDataCardProps): JSX.Element => {
-  const { teacherName, classroomId, studentRanking } = props;
+  const { teacherName, classroomId, elo } = props;
 
   return (
     <Card>
@@ -16,7 +16,7 @@ const ClassroomDataCard = (props: QuestionaryDataCardProps): JSX.Element => {
       </Line>
       <Line>
         <Description>Ranking</Description>
-        <Value>{studentRanking}</Value>
+        <Value>{elo}</Value>
       </Line>
     </Card>
   );

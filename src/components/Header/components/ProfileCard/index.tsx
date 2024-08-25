@@ -8,11 +8,12 @@ import {
   WeCoinLabel,
 } from "./styles.ts";
 import defaultProfilePic from "../../../../assets/images/default-profile-pic.svg";
+import ROUTES from "../../../../constants/routesConstants.ts";
 
 const ProfileCard = () => {
   const { user } = useUser();
   return (
-    <ProfileConteiner to="/meu-perfil">
+    <ProfileConteiner to={ROUTES.PROFILE}>
       <WeCoinContainer>
         <WeCoinLabel>WeCoins</WeCoinLabel>
         <WeCoin>{user.weCoin}</WeCoin>

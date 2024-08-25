@@ -16,7 +16,9 @@ const eloIcons: { [key: string]: string } = {
 const RankingIcon = (props: QuestionaryDataCardProps): JSX.Element => {
   const { elo, size } = props;
   
-  const icon = eloIcons[elo.toLowerCase()] || bronze;
+
+  const icon = eloIcons[elo ? elo.toLowerCase() : "bronze"];
+  
 
   return (
     <Container>

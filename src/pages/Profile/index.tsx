@@ -5,6 +5,7 @@ import { useToast } from "../../contexts/ToastContext";
 import { Container, Card, ProfileImg, UserDataContainer, UserName, UserEmail, LineData, LineLabel, LineValue, T, ButtonContainer } from "./styles";
 import defaultProfilePic from "../../assets/images/default-profile-pic.svg";
 import TerciaryButton from "../../components/Buttons/TerciaryButton";
+import ROUTES from "../../constants/routesConstants";
 
 const Profile = () => {
   const { user, logout} = useUser();
@@ -13,7 +14,7 @@ const Profile = () => {
 
   const handeButtonClick = (): void => {
     logout();
-    navigate("/login");
+    navigate(ROUTES.LOGIN);
     showToast("Usuário desconectado", "info");
   };
 
