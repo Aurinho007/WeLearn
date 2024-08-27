@@ -109,8 +109,8 @@ const Classrooms = () => {
               <ClassroomCard
                 key={index}
                 id={room.id}
-                name={room.nome}
-                teacherName={room.nomePofessor}
+                name={room.nomeSala}
+                teacherName={room.nomeProfessor}
                 elo={room.elo}
                 conclusionPercent={room.percentualConcluido}
                 onClick={() => navigateToClassroom(room)}

@@ -10,6 +10,7 @@ import {
 import { ClassroomCardProps } from "./type";
 import RankingIcon from "../../../../components/RankingIcon";
 import ConclusionBar from "../../../../components/ConclusionBar";
+import { useUser } from "../../../../contexts/UserContext";
 
 const ClassroomCard = (props: ClassroomCardProps) => {
   const {
@@ -21,6 +22,8 @@ const ClassroomCard = (props: ClassroomCardProps) => {
     onClick,
   } = props;
 
+  const { isStudent } = useUser();
+
   return (
     <Card onClick={onClick}>
       <TitleContainer>
@@ -31,7 +34,7 @@ const ClassroomCard = (props: ClassroomCardProps) => {
             elo={elo}
           />
         }
-        <Title>{name}</Title>
+        <Title style={isStudent() ? { marginLeft: "10px" } : {}}>{name}</Title>
       </TitleContainer>
       <DataContainer>
         <Line>
@@ -42,10 +45,17 @@ const ClassroomCard = (props: ClassroomCardProps) => {
           <Description>Código</Description>
           <Value>{id}</Value>
         </Line>
-        <Line>
-          <Description>Elo</Description>
-          <Value>{elo}</Value>
-        </Line>
+        {
+          elo &&
+          <Line>
+            <Description>Elo</Description>
+            <Value>{elo}</Value>
+          </Line>
+        }
+        {
+          !elo &&
+          <div style={{height: 10}}></div>
+        }
       </DataContainer>
       {
         conclusionPercent &&

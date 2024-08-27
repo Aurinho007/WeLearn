@@ -1,7 +1,7 @@
 interface IClassroom {
   id: number,
-  nome: string,
-  nomePofessor: string,
+  nomeSala: string,
+  nomeProfessor: string,
   elo?: string
   percentualConcluido?: number
 }

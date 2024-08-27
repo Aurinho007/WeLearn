@@ -32,7 +32,7 @@ const About = () => {
         <PageHeader title="Nosso Time" />
         <CardsContainer>
           <DevCard
-            name="Sérgio Cozzeti"
+            name="Sérgio Cozzetti"
             description="Product Owner"
             picture={prof}
             link1="https://www.linkedin.com/in/s%C3%A9rgio-cozzetti-bertoldi-de-souza-7aa83917/"

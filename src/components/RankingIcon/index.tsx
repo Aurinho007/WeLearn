@@ -21,7 +21,7 @@ const RankingIcon = (props: QuestionaryDataCardProps): JSX.Element => {
   
 
   return (
-    <Container>
+    <Container size={size}>
       <Elo src={icon} size={size} />
     </Container>
   );

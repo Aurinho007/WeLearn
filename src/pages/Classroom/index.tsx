@@ -18,7 +18,7 @@ const Classroom = () => {
 
   return (
     <>
-      <PageHeader title={`Sala de ${room.nome}`} hasBackButton />
+      <PageHeader title={`Sala de ${room.nomeSala}`} hasBackButton />
       <ClassroomContainer>
         <Left>
           <LeftHeader>
@@ -27,7 +27,7 @@ const Classroom = () => {
               elo={room.elo as string}
             />
             <ClassroomDataCard
-              teacherName={room.nomePofessor}
+              teacherName={room.nomeProfessor}
               classroomId={room.id}
               elo={room.elo as string}
             />

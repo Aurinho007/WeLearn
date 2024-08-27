@@ -1,10 +1,10 @@
 import { styled } from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{size: number}>`
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 120px;
+  max-width: ${props => props.size}px;
 `;
 
 export const Elo = styled.img<{size: number}>`
