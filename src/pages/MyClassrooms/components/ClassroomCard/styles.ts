@@ -37,7 +37,7 @@ export const Line = styled.div`
   display: flex;
   height: 30px;
   align-items: center;
-  width: 50%;
+  width: 100%;
 `;
 
 export const Description = styled.p`
