@@ -6,9 +6,10 @@ import { useUser } from "../../contexts/UserContext";
 import Loader from "../../components/Loader";
 import IClassroom from "../../interfaces/Classroom";
 import { getClassroom } from "../../service/classroom";
-import { ClassrommCardContainer } from "./styles";
+import { ButtonContainer, ClassrommCardContainer } from "./styles";
 import ErroCard from "../../components/ErrorCard/index";
 import ROUTES from "../../constants/routesConstants";
+import SecondaryButton from "../../components/Buttons/SecondaryButton";
 
 
 const Classrooms = () => {
@@ -38,7 +39,7 @@ const Classrooms = () => {
   }, []);
 
   const navigateToClassroom = (room: IClassroom) => {
-    navigate(ROUTES.CLASSROOM, {state : { room }});
+    navigate(ROUTES.CLASSROOM, { state: { room } });
   };
 
   const enterClassroom = () => {
@@ -94,14 +95,42 @@ const Classrooms = () => {
 
   };
 
-  if (loading) return <Loader height={130} width={130} />;
+  const renderActionButton = () => {
+    if (isStudent()) {
+      return (
+        <SecondaryButton
+          Ffamily="montserrat"
+          Fsize={1}
+          Fweight={400}
+          outside="blue"
+          text="Entrar em uma sala"
+          onClick={() => { }}
+        />
+      );
+    }
 
+    return (
+      <SecondaryButton
+        Ffamily="montserrat"
+        Fsize={1}
+        Fweight={400}
+        outside="blue"
+        text="Adicionar sala"
+        onClick={() => { }}
+      />
+    );
+  };
+
+  if (loading) return <Loader height={130} width={130} />;
 
   if (error || classrooms.current.length === 0) return renderErrorMessage();
 
   return (
     <>
       <PageHeader title="Minhas Salas" />
+      <ButtonContainer>
+        {renderActionButton()}
+      </ButtonContainer>
       <ClassrommCardContainer>
         {
           classrooms.current.map((room, index) => {
