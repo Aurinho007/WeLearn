@@ -5,16 +5,19 @@ import PageHeader from "../../components/PageHeader";
 import { useUser } from "../../contexts/UserContext";
 import Loader from "../../components/Loader";
 import IClassroom from "../../interfaces/Classroom";
-import { getClassroom } from "../../service/classroom";
+import { createClassroom, entryClassroom, getClassroom } from "../../service/classroom";
 import { ButtonContainer, ClassrommCardContainer } from "./styles";
 import ErroCard from "../../components/ErrorCard/index";
 import ROUTES from "../../constants/routesConstants";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
+import { CreateClassroomDto, EntryClassroomDto } from "../../dtos/classroom";
+import { useToast } from "../../contexts/ToastContext";
 
 
 const Classrooms = () => {
   const navigate = useNavigate();
   const { isLogged, isTeacher, isStudent } = useUser();
+  const { showToast } = useToast();
 
   const classrooms = useRef<IClassroom[]>([]);
   const [loading, setLoading] = useState(true);
@@ -42,14 +45,41 @@ const Classrooms = () => {
     navigate(ROUTES.CLASSROOM, { state: { room } });
   };
 
-  const enterClassroom = () => {
-    alert("Em breve!");
+  const handleEnterClassroom = () => {
+    const classId = parseInt(prompt("*Esse é um modal de testes*\n\nDigite o Código da sala:") as string);
+
+    const classroomId: EntryClassroomDto = {
+      idSala: classId as number
+    };
+
+    entryClassroom(
+      classroomId,
+      createRoomSucessCallback, 
+      createRoomErrorCallback
+    );
   };
 
-  const createClassroom = () => {
-    alert("Em breve!");
+  const handleCreateClassroom = () => {
+    const className = prompt("*Esse é um modal de testes*\n\nDigite o nome da sala:");
+
+    const classroomName: CreateClassroomDto = {
+      nome: className as string
+    };
+
+    createClassroom(
+      classroomName,
+      createRoomSucessCallback, 
+      createRoomErrorCallback
+    );
   };
 
+  const createRoomSucessCallback = () => {
+    window.location.reload();
+  };
+
+  const createRoomErrorCallback = (error: string) => {
+    showToast(error, "error");
+  };
 
   const renderErrorMessage = () => {
     if (!isLogged()) {
@@ -77,7 +107,7 @@ const Classrooms = () => {
         <ErroCard
           text="Parece que você ainda não tem nenhuma sala"
           buttonText="Criar uma sala"
-          onClick={createClassroom}
+          onClick={handleCreateClassroom}
         />
       );
 
@@ -88,7 +118,7 @@ const Classrooms = () => {
         <ErroCard
           text="Parece que você ainda não está em nenhuma sala."
           buttonText="Entrar em uma sala"
-          onClick={enterClassroom}
+          onClick={handleEnterClassroom}
         />
       );
     }
@@ -104,7 +134,7 @@ const Classrooms = () => {
           Fweight={400}
           outside="blue"
           text="Entrar em uma sala"
-          onClick={() => { }}
+          onClick={handleEnterClassroom}
         />
       );
     }
@@ -116,7 +146,7 @@ const Classrooms = () => {
         Fweight={400}
         outside="blue"
         text="Adicionar sala"
-        onClick={() => { }}
+        onClick={handleCreateClassroom}
       />
     );
   };
