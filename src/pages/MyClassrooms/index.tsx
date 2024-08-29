@@ -5,15 +5,18 @@ import PageHeader from "../../components/PageHeader";
 import { useUser } from "../../contexts/UserContext";
 import Loader from "../../components/Loader";
 import IClassroom from "../../interfaces/Classroom";
-import { getClassroom } from "../../service/classroom";
+import { createClassroom, entryClassroom, getClassroom } from "../../service/classroom";
 import { ButtonContainer, ClassrommCardContainer } from "./styles";
 import ErroCard from "../../components/ErrorCard/index";
 import ROUTES from "../../constants/routesConstants";
 import ClassroomAction from "./components/ClasroomAction";
+import { CreateClassroomDto, EntryClassroomDto } from "../../dtos/classroom";
+import { useToast } from "../../contexts/ToastContext";
 
 const Classrooms = () => {
   const navigate = useNavigate();
   const { isLogged, isTeacher, isStudent } = useUser();
+  const { showToast } = useToast();
 
   const classrooms = useRef<IClassroom[]>([]);
   const [loading, setLoading] = useState(true);
@@ -39,6 +42,42 @@ const Classrooms = () => {
 
   const navigateToClassroom = (room: IClassroom) => {
     navigate(ROUTES.CLASSROOM, { state: { room } });
+  };
+
+  const handleCreateClassroom = () => {
+    const className = prompt("Digite o nome da sala:");
+
+    const classroomName: CreateClassroomDto = {
+      nome: className as string
+    };
+
+    createClassroom(
+      classroomName,
+      actionRoomSucessCallback,
+      actionRoomErrorCallback
+    );
+  };
+
+  const handleEnterClassroom = () => {
+    const classId = parseInt(prompt("*Esse é um modal de testes*\n\nDigite o Código da sala:") as string);
+
+    const classroomId: EntryClassroomDto = {
+      idSala: classId as number
+    };
+
+    entryClassroom(
+      classroomId,
+      actionRoomSucessCallback,
+      actionRoomErrorCallback
+    );
+  };
+
+  const actionRoomSucessCallback = () => {
+    window.location.reload();
+  };
+
+  const actionRoomErrorCallback = (error: string) => {
+    showToast(error, "error");
   };
 
   const renderErrorMessage = () => {
@@ -93,7 +132,10 @@ const Classrooms = () => {
     <>
       <PageHeader title="Minhas Salas" />
       <ButtonContainer>
-        <ClassroomAction />
+        <ClassroomAction
+          handleCreateClassroom={handleCreateClassroom}
+          handleEnterClassroom={handleEnterClassroom}
+        />
       </ButtonContainer>
       <ClassrommCardContainer>
         {
