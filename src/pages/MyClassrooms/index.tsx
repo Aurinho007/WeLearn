@@ -9,7 +9,6 @@ import { getClassroom } from "../../service/classroom";
 import { ButtonContainer, ClassrommCardContainer } from "./styles";
 import ErroCard from "../../components/ErrorCard/index";
 import ROUTES from "../../constants/routesConstants";
-import SecondaryButton from "../../components/Buttons/SecondaryButton";
 import ClassroomAction from "./components/ClasroomAction";
 
 const Classrooms = () => {
