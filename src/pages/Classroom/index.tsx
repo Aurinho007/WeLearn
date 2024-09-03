@@ -14,7 +14,7 @@ const Classroom = () => {
   const location = useLocation();
   const { room }: {room: IClassroom} = location.state || {};
 
-  const { isTeacher } = useUser();
+  const { isTeacher, isStudent } = useUser();
 
   return (
     <>
@@ -22,10 +22,13 @@ const Classroom = () => {
       <ClassroomContainer>
         <Left>
           <LeftHeader>
-            <RankingIcon
-              size={100}
-              elo={room.elo as string}
-            />
+            {
+              isStudent() &&
+              <RankingIcon
+                size={100}
+                elo={room.elo as string}
+              />
+            }
             <ClassroomDataCard
               teacherName={room.nomeProfessor}
               classroomId={room.id}

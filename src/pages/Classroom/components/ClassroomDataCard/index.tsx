@@ -1,8 +1,10 @@
+import { useUser } from "../../../../contexts/UserContext";
 import { Card, Description, Line, Value } from "./styles";
 import QuestionaryDataCardProps from "./types";
 
 const ClassroomDataCard = (props: QuestionaryDataCardProps): JSX.Element => {
   const { teacherName, classroomId, elo } = props;
+  const { isStudent } = useUser();
 
   return (
     <Card>
@@ -15,8 +17,9 @@ const ClassroomDataCard = (props: QuestionaryDataCardProps): JSX.Element => {
         <Value>{classroomId}</Value>
       </Line>
       <Line>
+
         <Description>Ranking</Description>
-        <Value>{elo}</Value>
+        <Value>{isStudent() ? elo : "-"}</Value>
       </Line>
     </Card>
   );

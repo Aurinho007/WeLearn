@@ -9,7 +9,7 @@ export const Card = styled.div`
   border: solid 2px ${theme.blue};
   border-radius: 8px;
   padding: 8px 16px;
-  width: 20%;
+  width: 100%;
   min-width: 300px;
   color: ${theme.black};
 `;
