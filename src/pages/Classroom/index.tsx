@@ -12,7 +12,7 @@ import IClassroom from "../../interfaces/Classroom";
 
 const Classroom = () => {
   const location = useLocation();
-  const { room }: {room: IClassroom} = location.state || {};
+  const { room }: { room: IClassroom } = location.state || {};
 
   const { isTeacher, isStudent } = useUser();
 
@@ -43,22 +43,25 @@ const Classroom = () => {
             <Title>
               Questionários
             </Title>
-            { isTeacher() &&
+            {isTeacher() &&
               <SecondaryButton
                 Ffamily="montserrat"
                 Fsize={1}
                 Fweight={400}
-                onClick={() => {alert("Em breve");}}
+                onClick={() => { alert("Em breve"); }}
                 outside="black"
                 text="Adicionar"
               />
             }
 
           </HeaderRight>
-          <ConclusionBar
-            conclusionPercent={20}
-            height={30}
-          />
+          {
+            room.percentualConcluido &&
+            <ConclusionBar
+              conclusionPercent={room.percentualConcluido}
+              height={30}
+            />
+          }
           <QuestionaryContainer>
             <QuestionaryCard
               title="Questionário 03"

@@ -2,9 +2,9 @@ import { styled } from "styled-components";
 import theme from "../../assets/theme";
 import fonts from "../../assets/fonts/fonts";
 
-export const Bar = styled.div<{ height: number; }>`  margin-top: -17px;
+export const Bar = styled.div<{ height: number; }>`
+margin-bottom: 10px;
   position: relative;
-  margin: 15px 0;
   border: solid 2px ${theme.blue};
   border-radius: 6px;
   width: 100%;
