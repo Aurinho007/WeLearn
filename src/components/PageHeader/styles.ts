@@ -9,10 +9,24 @@ export const Container = styled.div`
   position: relative;
 `;
 
+export const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const Title = styled.p`
   font-family: ${Fonts.montserrat};
   font-weight: 600;
   font-size: 2.5rem;
+`;
+
+export const SubTitle = styled.p`
+  font-family: ${Fonts.montserrat};
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin-top: 12px;
 `;
 
 export const BackButton = styled.img`

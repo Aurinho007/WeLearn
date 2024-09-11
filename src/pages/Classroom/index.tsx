@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Ranking from "./components/Ranking";
 import { ClassroomContainer, Left, LeftHeader, Right, Title, QuestionaryContainer, HeaderRight } from "./styles";
 import { useUser } from "../../contexts/UserContext";
@@ -9,8 +9,10 @@ import QuestionaryCard from "./components/QuestionaryCard";
 import RankingIcon from "../../components/RankingIcon";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
 import IClassroom from "../../interfaces/Classroom";
+import ROUTES from "../../constants/routesConstants";
 
 const Classroom = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const { room }: { room: IClassroom } = location.state || {};
 
@@ -48,7 +50,7 @@ const Classroom = () => {
                 Ffamily="montserrat"
                 Fsize={1}
                 Fweight={400}
-                onClick={() => { alert("Em breve"); }}
+                onClick={() => navigate(ROUTES.CREATE_QUESTIONNARIE)}
                 outside="black"
                 text="Adicionar"
               />

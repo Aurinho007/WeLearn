@@ -8,6 +8,7 @@ const ROUTES = {
   NOT_FOUND: "/*",
   PROFILE: "/meu-perfil",
   QUESTIONNARIE: "/questionario",
+  CREATE_QUESTIONNARIE: "/novo-questionario",
   GO_BACK: -1
 
 

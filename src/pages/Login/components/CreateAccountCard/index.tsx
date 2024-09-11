@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useToast } from "../../../../contexts/ToastContext";
 import PrimaryButton from "../../../../components/Buttons/PrimaryButton";
 import TerciaryButton from "../../../../components/Buttons/TerciaryButton";
-import { isValidEmail, isValidName, isValidPassword } from "../../utils";
+import { isValidEmail, isValidName, isValidPassword, isValidProfileType } from "../../utils";
 import { createAccount } from "../../../../service/auth";
 import { CreateAccountDto } from "../../../../dtos/auth";
 import {
@@ -21,7 +21,6 @@ import {
   TextInput,
   Title,
 } from "./styles";
-import ErrorCard from "../../../../components/ErrorCard";
 
 
 type CreateAccountCardProps = {
@@ -39,7 +38,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
 
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
-  const [profileType, setProfileType] = useState<"Aluno" | "Professor">("Aluno");
+  const [profileType, setProfileType] = useState<"Aluno" | "Professor" | undefined>();
   const [password, setPassword] = useState<string>("");
 
   const handleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -78,6 +77,11 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
 
     if (!isValidEmail(email)) {
       showToast("Email inválido", "error");
+      return false;
+    }
+
+    if(!isValidProfileType(profileType)){
+      showToast("Selecione um tipo de usuário (Professor ou Aluno)", "info");
       return false;
     }
 
@@ -149,6 +153,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
             <Item>
               <Label>Tipo de perfil</Label>
               <DropDown value={profileType} onChange={handleChangeProfileType}>
+                <option value="" disabled selected>Selecione uma opção</option>
                 <option value="aluno">Aluno</option>
                 <option value="professor">Professor</option>
               </DropDown>
