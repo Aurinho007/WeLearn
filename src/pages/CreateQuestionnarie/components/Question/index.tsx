@@ -65,9 +65,9 @@ const Question = () => {
           <Label>Dificuldade</Label>
           <DropDown placeholder="Selecionar" value={dificulty} onChange={handleChangeDificulty}>
             <option value="" disabled selected>Selecione uma opção</option>
-            <option value={1}>Fácil</option>
-            <option value={2}>Médio</option>
-            <option value={3}>Difícil</option>
+            <option value="Fácil">Fácil</option>
+            <option value='Médio'>Médio</option>
+            <option value="Difícil">Difícil</option>
           </DropDown>
         </QuestionContainer>
       </div>
