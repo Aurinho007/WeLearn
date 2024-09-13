@@ -19,7 +19,8 @@ import Loader from "../../components/Loader";
 
 
 /**
- * o ID deve ser unciso apenas no contexo da sala
+ * o ID deve ser unico apenas no contexo da sala
+ * Falta o parâmetro isDone
  */
 
 const Classroom = () => {
@@ -140,6 +141,7 @@ const Classroom = () => {
                     key={index}
                     title={"Questionário " + item.id}
                     description={item.nome}
+                    // isDone={item.isDone}
                   />
                 );
               })
