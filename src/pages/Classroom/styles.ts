@@ -42,5 +42,6 @@ export const Title = styled.p`
 
 export const QuestionaryContainer = styled.div`
   height: 430px;
+  min-width: 500px;
   overflow: scroll;
 `;

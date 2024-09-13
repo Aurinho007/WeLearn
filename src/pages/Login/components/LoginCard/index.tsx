@@ -50,7 +50,7 @@ const LoginCard = (props: LoginCardProps) => {
     if (isLogged()) {
       navigate(ROUTES.HOME);
     }
-  });
+  }, []);
 
   const changeCard = () => {
     setIsLogin(false);

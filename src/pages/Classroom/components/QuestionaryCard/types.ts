@@ -1,7 +1,7 @@
 type QuestionaryCardProps = {
   title: string,
   description: string,
-  isDone: boolean
+  isDone?: boolean
 }
 
 export default QuestionaryCardProps;

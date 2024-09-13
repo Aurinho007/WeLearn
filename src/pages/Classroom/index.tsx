@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Ranking from "./components/Ranking";
 import { ClassroomContainer, Left, LeftHeader, Right, Title, QuestionaryContainer, HeaderRight } from "./styles";
 import { useUser } from "../../contexts/UserContext";
@@ -9,14 +9,82 @@ import QuestionaryCard from "./components/QuestionaryCard";
 import RankingIcon from "../../components/RankingIcon";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
 import IClassroom from "../../interfaces/Classroom";
-import ROUTES from "../../constants/routesConstants";
+import { CreateQuestionnarieDTO } from "../../dtos/questionnarie";
+import { useToast } from "../../contexts/ToastContext";
+import { createQuestionnarie, getAllQuestionnaries } from "../../service/questionnnarie";
+import { useEffect, useState } from "react";
+import IQuestionnarie from "../../interfaces/Questionnarie";
+import ErroCard from "../../components/ErrorCard/index";
+import Loader from "../../components/Loader";
+
+
+/**
+ * o ID deve ser unciso apenas no contexo da sala
+ */
 
 const Classroom = () => {
-  const navigate = useNavigate();
+  const { isTeacher, isStudent } = useUser();
+  const { showToast } = useToast();
+
   const location = useLocation();
   const { room }: { room: IClassroom } = location.state || {};
 
-  const { isTeacher, isStudent } = useUser();
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string>();
+  const [questionnaries, setQuestionnaries] = useState<IQuestionnarie[]>();
+
+  useEffect(() => {
+    getAllQuestionnaries(room.id, sucessCallback, errorCallback);
+  }, []);
+
+  const sucessCallback = (response: IQuestionnarie[]) => {
+    setLoading(false);
+    setQuestionnaries(response);
+  };
+
+  const errorCallback = (error: string) => {
+    setLoading(false);
+    setError(error);
+  };
+
+
+  const handleClickCreateQuestionnarie = () => {
+    const name = prompt("Digite a descrição do questionário:\n\nExemplo: História do Brasil");
+
+    if (!name) {
+      showToast("Digite o nome da sala", "info");
+      return;
+    }
+
+    const newQuestionnarie: CreateQuestionnarieDTO = {
+      nome: name as string,
+      idSala: room.id
+    };
+
+    const sucessCallback = () => {
+      showToast("Questionário criado com sucesso!", "success");
+      window.location.reload();
+    };
+
+    const errorCallback = (error: string) => {
+      showToast(error, "error");
+    };
+
+    createQuestionnarie(newQuestionnarie, sucessCallback, errorCallback);
+
+  };
+
+  if (error) {
+    return (
+      <ErroCard
+        text={error}
+        buttonText="Recarregar"
+        onClick={() => window.location.reload()}
+      />
+    );
+  }
+
+  if (loading) return <Loader height={130} width={130} />;
 
   return (
     <>
@@ -50,7 +118,7 @@ const Classroom = () => {
                 Ffamily="montserrat"
                 Fsize={1}
                 Fweight={400}
-                onClick={() => navigate(ROUTES.CREATE_QUESTIONNARIE)}
+                onClick={handleClickCreateQuestionnarie}
                 outside="black"
                 text="Adicionar"
               />
@@ -65,23 +133,17 @@ const Classroom = () => {
             />
           }
           <QuestionaryContainer>
-            <QuestionaryCard
-              title="Questionário 03"
-              description="PHP e .NET"
-              isDone={false}
-            />
-            <QuestionaryCard
-              title="Questionário 02"
-              description="JavaScript Web"
-              isDone={true}
-            />
-
-            <QuestionaryCard
-              title="Questionário 01"
-              description="navegador Chrome e Mozila"
-              isDone={true}
-            />
-
+            {
+              questionnaries?.map((item, index) => {
+                return (
+                  <QuestionaryCard
+                    key={index}
+                    title={"Questionário " + item.id}
+                    description={item.nome}
+                  />
+                );
+              })
+            }
           </QuestionaryContainer>
 
 
