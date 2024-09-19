@@ -57,13 +57,23 @@ const NewQuestionModal = ({ showModal, setShowModal }: NewQuestionModalProps) =>
     setShowModal(false);
   };
 
+  const addQuestion = () => {
+    alert("Em breve");
+  };
+
+  const handleCloseModal = (event: React.MouseEvent) => {
+    if (event.target === event.currentTarget) {
+      setShowModal(false);
+    }
+  };
+
   if (!showModal) {
-    return;
+    return null;
   }
 
   return (
-    <Container>
-      <Modal>
+    <Container onClick={handleCloseModal}>
+      <Modal onClick={(e) => e.stopPropagation()}>
         <Title>
           Nova questão
         </Title>
@@ -155,7 +165,7 @@ const NewQuestionModal = ({ showModal, setShowModal }: NewQuestionModalProps) =>
 
           <PrimaryButton
             text="Adicionar"
-            onClick={() => { }}
+            onClick={addQuestion}
           />
         </ButtonGroup>
 

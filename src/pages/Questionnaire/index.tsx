@@ -46,6 +46,7 @@ const questionnaire = () => {
       <PageHeader
         title={room.nomeSala}
         subTitle={`Questionário ${questionnarie.id}`}
+        hasBackButton
       />
 
       <Container>
