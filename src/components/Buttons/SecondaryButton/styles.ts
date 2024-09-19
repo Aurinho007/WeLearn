@@ -14,6 +14,7 @@ export const Button = styled.button<{style: ISecondaryButton}>`
   background-color: transparent;
   border: solid 2.8px ${props => theme[props.style.outside]};
   cursor: pointer;
+  width: ${props => props.style.width};
   
   &:active{
     filter: brightness(0.8);
@@ -25,5 +26,5 @@ export const Text = styled.p<{style: ISecondaryButton}>`
   font-family: ${props => fonts[props.style.Ffamily]};
   font-weight: ${props => props.style.Fweight};
   font-size: ${props => props.style.Fsize}rem;
-  padding: 4px 22px;
+  padding: 4px ${props => props.style.width ? 0 : "22px"}
 `;

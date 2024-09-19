@@ -5,11 +5,15 @@ import IQuestionnarie from "../../interfaces/Questionnarie";
 import { Container, Header, HeaderItem, Item, Line, QuestionsHeader, Separator, TableContainer, Title } from "./styles";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
 import IQuestion from "../../interfaces/Question";
+import NewQuestionModal from "./components/NewQuestionModal";
+import { useState } from "react";
 
 const questionnaire = () => {
 
   const location = useLocation();
   const { room, questionnarie }: { room: IClassroom, questionnarie: IQuestionnarie } = location.state || {};
+
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   const mockLines: IQuestion[] = [
     {
@@ -53,7 +57,7 @@ const questionnaire = () => {
             Fweight={400}
             outside="blue"
             text="Adicionar Questão"
-            onClick={() => { }}
+            onClick={() => setShowModal(true)}
           />
         </QuestionsHeader>
 
@@ -85,6 +89,7 @@ const questionnaire = () => {
             })
           }
         </TableContainer>
+        <NewQuestionModal showModal={showModal} setShowModal={setShowModal}/>
       </Container>
     </>
   );
