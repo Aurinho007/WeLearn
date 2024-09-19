@@ -13,12 +13,12 @@ import chevron from "../../../../assets/images/chevron.png";
 import { useUser } from "../../../../contexts/UserContext";
 
 const QuestionaryCard = (props: QuestionaryCardProps) => {
-  const { title, description, isDone } = props;
+  const { title, description, onClick, isDone } = props;
 
   const { isStudent } = useUser();
 
   return (
-    <Card>
+    <Card onClick={onClick}>
       <TitleContainer>
         <Title>{title}</Title>
         {

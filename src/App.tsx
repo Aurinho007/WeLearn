@@ -12,7 +12,6 @@ import NotFound from "./pages/NotFound/index";
 import Classroom from "./pages/Classroom";
 import Dashboard from "./pages/Dashboard";
 import ROUTES from "./constants/routesConstants.ts";
-import CreateQuestionnarie from "./pages/CreateQuestionnarie/index.tsx";
 
 const Layout = ({ children }: { children: JSX.Element }) => {
   return (
@@ -61,7 +60,6 @@ function App() {
           />
           <Route path={ROUTES.LOGIN}element={<Login />} />
           <Route path={ROUTES.QUESTIONNARIE} element={<Questionary />} />
-          <Route path={ROUTES.CREATE_QUESTIONNARIE} element={<CreateQuestionnarie />} />
         </Routes>
       </Router>
     </>

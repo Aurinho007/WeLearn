@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Ranking from "./components/Ranking";
 import { ClassroomContainer, Left, LeftHeader, Right, Title, QuestionaryContainer, HeaderRight } from "./styles";
 import { useUser } from "../../contexts/UserContext";
@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import IQuestionnarie from "../../interfaces/Questionnarie";
 import ErroCard from "../../components/ErrorCard/index";
 import Loader from "../../components/Loader";
+import ROUTES from "../../constants/routesConstants";
 
 
 /**
@@ -26,6 +27,7 @@ import Loader from "../../components/Loader";
 const Classroom = () => {
   const { isTeacher, isStudent } = useUser();
   const { showToast } = useToast();
+  const navigate  = useNavigate();
 
   const location = useLocation();
   const { room }: { room: IClassroom } = location.state || {};
@@ -141,7 +143,8 @@ const Classroom = () => {
                     key={index}
                     title={"Questionário " + item.id}
                     description={item.nome}
-                    // isDone={item.isDone}
+                    onClick={() => navigate(ROUTES.QUESTIONNARIE, { state: { room, questionnarie: item } })}
+                    isDone={item.isDone}
                   />
                 );
               })

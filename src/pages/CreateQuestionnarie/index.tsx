@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Input, Label, QuestionarrieContainer, DescriptionContainer, QuestionTitle, Buttons, ButtonsContainer } from "./styles";
 import PageHeader from "../../components/PageHeader";
-import Question from "./components/Question";
+import Question from "../Questionnaire/components/Question";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
 
