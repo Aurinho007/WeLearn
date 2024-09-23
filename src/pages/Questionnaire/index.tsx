@@ -52,14 +52,25 @@ const questionnaire = () => {
       <Container>
         <QuestionsHeader>
           <Title>Questões</Title>
-          <SecondaryButton
-            Ffamily="montserrat"
-            Fsize={1}
-            Fweight={400}
-            outside="blue"
-            text="Adicionar Questão"
-            onClick={() => setShowModal(true)}
-          />
+          <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
+            <SecondaryButton
+              Ffamily="montserrat"
+              Fsize={1}
+              Fweight={400}
+              outside="blue"
+              text="Dashboard"
+              onClick={() => alert("Em breve!")}
+            />
+            <SecondaryButton
+              Ffamily="montserrat"
+              Fsize={1}
+              Fweight={400}
+              outside="black"
+              text="Adicionar Questão"
+              onClick={() => setShowModal(true)}
+            />
+          </div>
+
         </QuestionsHeader>
 
         <TableContainer>
@@ -90,7 +101,7 @@ const questionnaire = () => {
             })
           }
         </TableContainer>
-        <NewQuestionModal showModal={showModal} setShowModal={setShowModal}/>
+        <NewQuestionModal showModal={showModal} setShowModal={setShowModal} />
       </Container>
     </>
   );

@@ -47,6 +47,8 @@ const Classrooms = () => {
   const handleCreateClassroom = () => {
     const className = prompt("Digite o nome da sala:");
 
+    if (!className) return;
+
     const classroomName: CreateClassroomDto = {
       nome: className as string
     };
@@ -59,7 +61,9 @@ const Classrooms = () => {
   };
 
   const handleEnterClassroom = () => {
-    const classId = parseInt(prompt("*Esse é um modal de testes*\n\nDigite o Código da sala:") as string);
+    const classId = parseInt(prompt("Digite o Código da sala:") as string);
+
+    if (!classId) return;
 
     const classroomId: EntryClassroomDto = {
       idSala: classId as number

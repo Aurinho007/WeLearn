@@ -27,7 +27,7 @@ import ROUTES from "../../constants/routesConstants";
 const Classroom = () => {
   const { isTeacher, isStudent } = useUser();
   const { showToast } = useToast();
-  const navigate  = useNavigate();
+  const navigate = useNavigate();
 
   const location = useLocation();
   const { room }: { room: IClassroom } = location.state || {};
@@ -77,6 +77,14 @@ const Classroom = () => {
 
   };
 
+  const handleClickQuestionnarie = (questionnaire: IQuestionnarie) => {
+    if (isTeacher()) {
+      navigate(ROUTES.QUESTIONNARIE, { state: { room, questionnarie: questionnaire } });
+    } else {
+      alert("Em breve!");
+    }
+  };
+
   if (error) {
     return (
       <ErroCard
@@ -122,7 +130,7 @@ const Classroom = () => {
                 Fsize={1}
                 Fweight={400}
                 onClick={handleClickCreateQuestionnarie}
-                outside="black"
+                outside="blue"
                 text="Adicionar"
               />
             }
@@ -143,7 +151,7 @@ const Classroom = () => {
                     key={index}
                     title={"Questionário " + item.id}
                     description={item.nome}
-                    onClick={() => navigate(ROUTES.QUESTIONNARIE, { state: { room, questionnarie: item } })}
+                    onClick={() => handleClickQuestionnarie(item)}
                     isDone={item.isDone}
                   />
                 );
