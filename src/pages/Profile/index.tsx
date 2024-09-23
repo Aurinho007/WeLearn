@@ -8,7 +8,7 @@ import TerciaryButton from "../../components/Buttons/TerciaryButton";
 import ROUTES from "../../constants/routesConstants";
 
 const Profile = () => {
-  const { user, logout} = useUser();
+  const { user, logout, isStudent } = useUser();
   const { showToast } = useToast();
   const navigate = useNavigate();
 
@@ -27,14 +27,19 @@ const Profile = () => {
           <UserName>{user.nome}</UserName>
           <UserEmail>{user.email}</UserEmail>
         </UserDataContainer>
-        <LineData>
-          <LineLabel>WeCoins</LineLabel>
-          <LineValue>{user.weCoin}</LineValue>
-        </LineData>
-        <LineData>
-          <LineLabel>Experiência</LineLabel>
-          <LineValue>{user.xp}<T>xp</T></LineValue>
-        </LineData>
+        {
+          isStudent() &&
+          <>
+            <LineData>
+              <LineLabel>WeCoins</LineLabel>
+              <LineValue>{user.weCoin}</LineValue>
+            </LineData>
+            <LineData>
+              <LineLabel>Experiência</LineLabel>
+              <LineValue>{user.xp}<T>xp</T></LineValue>
+            </LineData>
+          </>
+        }
         <LineData>
           <LineLabel>Tipo de perfil</LineLabel>
           <LineValue>{user.perfil}</LineValue>

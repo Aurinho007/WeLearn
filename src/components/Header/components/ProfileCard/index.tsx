@@ -1,4 +1,3 @@
-import { useUser } from "../../../../contexts/UserContext.tsx";
 import {
   ProfileConteiner,
   Image,
@@ -7,17 +6,22 @@ import {
   WeCoinContainer,
   WeCoinLabel,
 } from "./styles.ts";
-import defaultProfilePic from "../../../../assets/images/default-profile-pic.svg";
+import { useUser } from "../../../../contexts/UserContext.tsx";
 import ROUTES from "../../../../constants/routesConstants.ts";
+import defaultProfilePic from "../../../../assets/images/default-profile-pic.svg";
 
 const ProfileCard = () => {
-  const { user } = useUser();
+  const { user, isStudent } = useUser();
+
   return (
     <ProfileConteiner to={ROUTES.PROFILE}>
-      <WeCoinContainer>
-        <WeCoinLabel>WeCoins</WeCoinLabel>
-        <WeCoin>{user.weCoin}</WeCoin>
-      </WeCoinContainer>
+      {
+        isStudent() &&
+        <WeCoinContainer>
+          <WeCoinLabel>WeCoins</WeCoinLabel>
+          <WeCoin>{user.weCoin}</WeCoin>
+        </WeCoinContainer>
+      }
       <ImageContainer>
         <Image src={defaultProfilePic} />
       </ImageContainer>

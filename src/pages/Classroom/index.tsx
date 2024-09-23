@@ -17,6 +17,7 @@ import IQuestionnarie from "../../interfaces/Questionnarie";
 import ErroCard from "../../components/ErrorCard/index";
 import Loader from "../../components/Loader";
 import ROUTES from "../../constants/routesConstants";
+import ErrorCard from "../../components/ErrorCard/index";
 
 
 /**
@@ -145,17 +146,24 @@ const Classroom = () => {
           }
           <QuestionaryContainer>
             {
-              questionnaries?.map((item, index) => {
-                return (
-                  <QuestionaryCard
-                    key={index}
-                    title={"Questionário " + item.id}
-                    description={item.nome}
-                    onClick={() => handleClickQuestionnarie(item)}
-                    isDone={item.isDone}
-                  />
-                );
-              })
+              questionnaries?.length === 0 || !questionnaries ?
+                <ErrorCard
+                  buttonText="Adicionar questionário"
+                  onClick={handleClickCreateQuestionnarie}
+                  text="Esta sala ainda não possui questionários"
+                />
+                :
+                questionnaries.map((item, index) => {
+                  return (
+                    <QuestionaryCard
+                      key={index}
+                      title={"Questionário " + item.id}
+                      description={item.nome}
+                      onClick={() => handleClickQuestionnarie(item)}
+                      isDone={item.isDone}
+                    />
+                  );
+                })
             }
           </QuestionaryContainer>
 

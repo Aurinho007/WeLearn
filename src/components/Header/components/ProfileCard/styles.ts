@@ -7,6 +7,7 @@ export const ProfileConteiner = styled(Link)`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    align-items: center;
     flex-direction: row;
     text-decoration: none; 
     color: ${theme.black};

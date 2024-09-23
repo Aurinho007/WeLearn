@@ -6,8 +6,6 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  margin-top: 100px;
 `;
 
 export const ImageContainer = styled.div`
