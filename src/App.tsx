@@ -7,11 +7,11 @@ import Login from "./pages/Login/index";
 import Profile from "./pages/Profile";
 import About from "./pages/About/index";
 import MyClassrooms from "./pages/MyClassrooms/index";
-import Questionary from "./pages/Questionnaire/index";
 import NotFound from "./pages/NotFound/index";
 import Classroom from "./pages/Classroom";
 import Dashboard from "./pages/Dashboard";
 import ROUTES from "./constants/routesConstants.ts";
+import Questionnaire from "./pages/Questionnaire/index.tsx";
 
 const Layout = ({ children }: { children: JSX.Element }) => {
   return (
@@ -59,7 +59,7 @@ function App() {
             element={<Layout children={<NotFound />} />}
           />
           <Route path={ROUTES.LOGIN}element={<Login />} />
-          <Route path={ROUTES.QUESTIONNARIE} element={<Questionary />} />
+          <Route path={ROUTES.QUESTIONNARIE} element={ <Questionnaire />} />
         </Routes>
       </Router>
     </>

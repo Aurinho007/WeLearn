@@ -1,4 +1,5 @@
-interface IQuestion {
+type QuestionDTO = {
+  idQuestionario: number
   id: number
   enunciado: string
   dica: string
@@ -10,4 +11,4 @@ interface IQuestion {
   alternativaD: string
 }
 
-export default IQuestion;
+export default QuestionDTO;

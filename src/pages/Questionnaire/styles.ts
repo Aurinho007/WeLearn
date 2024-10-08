@@ -56,6 +56,12 @@ export const Line = styled.div`
   grid-template-columns: 1fr 2fr 1fr;
   padding: 15px 0;
   align-items: center;
+  border-radius: 10px;
+  position: relative;
+
+  &:hover {
+    background-color: ${theme.lightBlue};
+  }
 `;
 
 export const Item = styled.p`
@@ -64,3 +70,43 @@ export const Item = styled.p`
   font-size: 1.2rem;
   text-align: center;
 `;
+
+export const ItemAction = styled.div`
+  position: absolute;
+  right: 0;
+  font-family: ${Fonts.montserrat};
+  font-weight: 500;
+  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transform: rotate(90deg);
+  
+  &:hover .dropdown {
+    display: block;
+  }
+`;
+
+export const Dropdown = styled.div`
+  display: none;
+  position: absolute;
+  bottom: 20px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  z-index: 99;
+  transform: rotate(-90deg);
+
+`;
+
+export const DropdownItem = styled.div`
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  
+  
+  &:hover {
+    background-color: #f0f0f0;
+  }
+`;
+

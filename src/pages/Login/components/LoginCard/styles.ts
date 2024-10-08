@@ -79,6 +79,7 @@ export const ForgetPassword = styled.p`
   color: ${theme.blue};
   font-size: 1.2rem;
   line-height: 40px;
+  cursor: pointer;
 
   &:hover {
     text-decoration: underline;

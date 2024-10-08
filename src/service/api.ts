@@ -3,7 +3,7 @@ import { getUser } from "../controllers/userController";
 export const BASE_URL = "http://localhost:3001/api";
 export const EXPIRED_TOKEN_ERROR = "Token expirado";
 
-export const doRequest = async (url: string, method: "POST" | "GET", params?: unknown,): Promise<unknown> => {
+export const doRequest = async (url: string, method: "POST" | "GET" | "DELETE" | "PUT", params?: unknown,): Promise<unknown> => {
   const headers = {
     "Content-Type": "application/json",
     "Authorization": `Bearer ${getUser()?.token}`

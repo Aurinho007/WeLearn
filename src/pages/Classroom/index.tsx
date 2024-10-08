@@ -80,7 +80,7 @@ const Classroom = () => {
 
   const handleClickQuestionnarie = (questionnaire: IQuestionnarie) => {
     if (isTeacher()) {
-      navigate(ROUTES.QUESTIONNARIE, { state: { room, questionnarie: questionnaire } });
+      navigate(ROUTES.QUESTIONNARIE, { state: { questionnaire, room } });
     } else {
       alert("Em breve!");
     }
