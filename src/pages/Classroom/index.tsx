@@ -82,7 +82,7 @@ const Classroom = () => {
     if (isTeacher()) {
       navigate(ROUTES.QUESTIONNARIE, { state: { questionnaire, room } });
     } else {
-      alert("Em breve!");
+      navigate(ROUTES.ANSWER_QUESTIONNARIE, { state: { questionnaire, room } });
     }
   };
 

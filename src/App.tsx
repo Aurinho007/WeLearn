@@ -12,6 +12,7 @@ import Classroom from "./pages/Classroom";
 import Dashboard from "./pages/Dashboard";
 import ROUTES from "./constants/routesConstants.ts";
 import Questionnaire from "./pages/Questionnaire/index.tsx";
+import AnswerQuestionnarie from "./pages/AnswerQuestionnarie/index.tsx";
 
 const Layout = ({ children }: { children: JSX.Element }) => {
   return (
@@ -58,8 +59,22 @@ function App() {
             path={ROUTES.NOT_FOUND}
             element={<Layout children={<NotFound />} />}
           />
-          <Route path={ROUTES.LOGIN}element={<Login />} />
-          <Route path={ROUTES.QUESTIONNARIE} element={ <Questionnaire />} />
+          <Route
+            path={ROUTES.LOGIN}
+            element={<Login />}
+          />
+          <Route
+            path={ROUTES.CREATE_ACCOUT}
+            element={<Login />}
+          />
+          <Route
+            path={ROUTES.QUESTIONNARIE}
+            element={<Questionnaire />}
+          />
+          <Route
+            path={ROUTES.ANSWER_QUESTIONNARIE}
+            element={<Layout children={<AnswerQuestionnarie />} />}
+          />
         </Routes>
       </Router>
     </>

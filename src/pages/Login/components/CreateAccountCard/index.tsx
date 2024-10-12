@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useToast } from "../../../../contexts/ToastContext";
 import PrimaryButton from "../../../../components/Buttons/PrimaryButton";
 import TerciaryButton from "../../../../components/Buttons/TerciaryButton";
@@ -21,6 +21,7 @@ import {
   TextInput,
   Title,
 } from "./styles";
+import { useParams } from "react-router-dom";
 
 
 type CreateAccountCardProps = {
@@ -31,10 +32,17 @@ type CreateAccountCardProps = {
 const CreateAccountCard = (props: CreateAccountCardProps) => {
   const { isLogin, setIsLogin } = props;
   const { showToast } = useToast();
+  const { create } = useParams();
 
   const changeCard = () => {
     setIsLogin(true);
   };
+
+  useEffect(() => {
+    if (create) {
+      setIsLogin(false);
+    }
+  }, []);
 
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -80,7 +88,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
       return false;
     }
 
-    if(!isValidProfileType(profileType)){
+    if (!isValidProfileType(profileType)) {
       showToast("Selecione um tipo de usuário (Professor ou Aluno)", "info");
       return false;
     }
@@ -172,7 +180,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
 
         <Division>
           <Buttons>
-            <PrimaryButton text="Criar conta" onClick={handleClickCreateAccountButton} />
+            <PrimaryButton text="Criar Conta" onClick={handleClickCreateAccountButton} />
             <Divider />
             <TextBtn>Já possui uma conta?</TextBtn>
             <TerciaryButton

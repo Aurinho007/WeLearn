@@ -1,6 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import Fonts from "../../assets/fonts/fonts";
 import theme from "../../assets/theme";
+import { ToastType } from "./interface";
 
 const fadeIn = keyframes`
   from {
@@ -39,7 +40,7 @@ export const Card = styled.div<{ color: string }>`
   border: solid 2px ${theme.black};
   padding: 16px 26px 16px 12px;
   min-width: 250px;
-  background-color: ${props => theme.toast[props.color]};
+  background-color: ${props => theme.toast[props.color as ToastType]};
 
   &.enter {
     animation: ${fadeIn} .5s forwards;

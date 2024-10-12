@@ -142,7 +142,7 @@ const LoginCard = (props: LoginCardProps) => {
               <Label>E-mail</Label>
               <TextInput
                 type="text"
-                placeholder="  nome@exemplo.com"
+                placeholder=" Digite seu email"
                 value={email}
                 onChange={handleChangeEmail}
               />
@@ -154,7 +154,7 @@ const LoginCard = (props: LoginCardProps) => {
               </PasswordLabelContainer>
               <TextInput
                 type="password"
-                placeholder="  digite sua senha"
+                placeholder="  Digite sua senha"
                 value={password}
                 onChange={handleChangePassword}
               />
