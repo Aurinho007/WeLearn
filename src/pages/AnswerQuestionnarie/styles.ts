@@ -26,24 +26,31 @@ export const Statement = styled.p`
   width: 50%;
 `;
 
-export const OptionContainer = styled.div`
+export const Options = styled.div`
   width: 50%;
   margin-top: 20px;
 `;
 
+export const OptionContainer = styled.div<{ color: string }>`
+  margin: 5px 0;
+  border-radius: 10px;
+  background-color: ${props => props.color};
+`;
+
 export const OptionLabel = styled.p`
-position: relative;
-line-height: 4;
-font-family: ${Fonts.montserrat};
-font-size: 1.2rem;
-font-weight: 500;
+  position: relative;
+  line-height: 4;
+  font-family: ${Fonts.montserrat};
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 2px;
 `;
 
 export const Option = styled.input`
-  left: -5px;
-  bottom: 20px;
   width: 35px;
   height: 35px;
+  left: 0;
+  top: 20px;
   position: absolute;
   opacity: 0;
 `;
@@ -59,6 +66,13 @@ export const CustomOption = styled.span<{ selected: boolean }>`
   line-height: 30px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  background-color: ${(props) => (props.selected ? theme.lightBlue : "transparent")};
-  `;
+  background-color: ${(props) => (props.selected ? theme.black : "transparent")};
+`;
+
+export const ButtonContainer = styled.div`
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+`;
 

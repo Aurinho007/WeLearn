@@ -19,24 +19,17 @@ import Loader from "../../components/Loader";
 import ROUTES from "../../constants/routesConstants";
 import ErrorCard from "../../components/ErrorCard/index";
 
-
-/**
- * o ID deve ser unico apenas no contexo da sala
- * Falta o parâmetro isDone
- */
-
 const Classroom = () => {
+  const location = useLocation();
   const { isTeacher, isStudent } = useUser();
   const { showToast } = useToast();
   const navigate = useNavigate();
-
-  const location = useLocation();
-  const { room }: { room: IClassroom } = location.state || {};
-
+  
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>();
   const [questionnaries, setQuestionnaries] = useState<IQuestionnarie[]>();
-
+  const { room }: { room: IClassroom } = location.state;
+  
   useEffect(() => {
     getAllQuestionnaries(room.id, sucessCallback, errorCallback);
   }, []);

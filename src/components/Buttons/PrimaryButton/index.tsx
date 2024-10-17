@@ -8,7 +8,7 @@ const PrimaryButton = (props: IButton): React.JSX.Element => {
   const [isActive, setIsActive] = useState<boolean>(true);
 
   return (
-    <Container>
+    <Container style={props}>
       <Button style={props} onClick={() => handleClick(isActive, setIsActive, onClick)}>
         <Text>{text}</Text>
       </Button>

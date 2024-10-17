@@ -1,17 +1,17 @@
 import { styled } from "styled-components";
+import IButton from "./interface";
 import fonts from "../../../assets/fonts/fonts";
 import theme from "../../../assets/theme";
-import IButton from "./interface";
 
-export const Container = styled.div`
-  width: 100%;
+export const Container = styled.div<{style: IButton}>`
+  width: ${props => props.style.width ?? "100%" };
   height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-export const Button = styled.button<{style: IButton}>`
+export const Button = styled.button`
   width: 100%;
   height: 3rem;
   font-family: ${fonts.roboto};
