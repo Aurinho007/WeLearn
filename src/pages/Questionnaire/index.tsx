@@ -141,7 +141,7 @@ const Questionnaire = () => {
                 return (
                   <Line key={index}>
                     <Item>
-                      {item.id}
+                      {index+1}
                     </Item>
                     <Item>
                       Múltipla escolha

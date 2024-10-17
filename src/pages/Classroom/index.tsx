@@ -157,7 +157,7 @@ const Classroom = () => {
                   return (
                     <QuestionaryCard
                       key={index}
-                      title={"Questionário " + item.id}
+                      title={"Questionário " + (index+1)}
                       description={item.nome}
                       onClick={() => handleClickQuestionnarie(item)}
                       isDone={item.isDone}

@@ -73,7 +73,7 @@ function App() {
           />
           <Route
             path={ROUTES.ANSWER_QUESTIONNARIE}
-            element={<Layout children={<AnswerQuestionnarie />} />}
+            element={<AnswerQuestionnarie />}
           />
         </Routes>
       </Router>
