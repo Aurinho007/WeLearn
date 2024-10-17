@@ -46,6 +46,11 @@ const AnswerQuestionnarie = () => {
     setLoading(false);
     setQuestions(response);
     setCurrentQuestion(response[currentNumberQuestion]);
+
+    if(response.length === 0){
+      showToast("Esse questionário ainda não possui perguntas", "info");
+      navigate(ROUTES.CLASSROOM, { state: { room } });
+    }
   };
 
   const errorCallback = (error: string) => {
@@ -58,7 +63,7 @@ const AnswerQuestionnarie = () => {
       showToast("Selecione uma alternativa", "info");
       return;
     }
-    
+
     const answareObj = { idQuestao: currentQuestion?.id, resposta: selected };
     setAnswers(prev => prev?.concat([answareObj]));
     setShowAnswer(true);
