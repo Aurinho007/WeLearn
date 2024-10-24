@@ -5,10 +5,15 @@ import anaPic from "../../assets/images/devs/ana 1.svg";
 import aureoPic from "../../assets/images/devs/image 9.svg";
 import cavasPic from "../../assets/images/devs/cavas 1.svg";
 import rabelloPic from "../../assets/images/devs/rabello 1.svg";
-import prof from "../../assets/images/devs/prof.svg";
 import img from "../../assets/images/online-test.svg";
+import { useUser } from "../../contexts/UserContext";
 
 const About = () => {
+
+  const { user } = useUser();
+
+  const vitorOccupation = user.nome.toLowerCase().includes("rabello") ? "Vagabundo" : "Dev";
+
   return (
     <>
       <PageHeader title="Quem somos?" />
@@ -23,7 +28,7 @@ const About = () => {
               alunos do Centro Universitário de Brasília
             </Text>
             <Text>
-              O <i><b>WeLearn</b> </i>tem como objetivo  revolucionar a
+              O <i><b>WeLearn</b></i> tem como objetivo  revolucionar a
               experiência de aprendizado, combinando gamificação,
               análise de dados e motivação
             </Text>
@@ -31,13 +36,6 @@ const About = () => {
         </ContentContainer>
         <PageHeader title="Nosso Time" />
         <CardsContainer>
-          <DevCard
-            name="Sérgio Cozzetti"
-            description="Product Owner"
-            picture={prof}
-            link1="https://www.linkedin.com/in/s%C3%A9rgio-cozzetti-bertoldi-de-souza-7aa83917/"
-            link2="https://www.instagram.com/sergiocozzetti/"
-          />
           <DevCard
             name="Ana Luiza"
             description="Scrum Master"
@@ -47,21 +45,21 @@ const About = () => {
           />
           <DevCard
             name="Áureo Rodrigues"
-            description="Developer"
+            description="Dev & PO"
             picture={aureoPic}
             link1="https://www.linkedin.com/in/%C3%A1ureo-rodrigues-916249206/"
             link2="https://www.instagram.com/aureo.rdg/"
           />
           <DevCard
             name="Felipe Cavalcante"
-            description="Developer"
+            description="Dev"
             picture={cavasPic}
             link1="https://www.linkedin.com/in/felipe-cavalcante-mc/"
             link2="https://www.instagram.com/fe.cavalcanteee/"
           />
           <DevCard
             name="Vitor Rabello"
-            description="Developer"
+            description={vitorOccupation}
             picture={rabelloPic}
             link1="https://www.linkedin.com/in/vitor-mendes-9b732a222/"
             link2="https://www.instagram.com/vitor.rabello/"
