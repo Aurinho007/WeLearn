@@ -24,13 +24,18 @@ const Classroom = () => {
   const { isTeacher, isStudent } = useUser();
   const { showToast } = useToast();
   const navigate = useNavigate();
-  
+
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>();
   const [questionnaries, setQuestionnaries] = useState<IQuestionnarie[]>();
-  const { room }: { room: IClassroom } = location.state;
-  
+
+  const { room }: { room: IClassroom } = location.state || {};
+
   useEffect(() => {
+    if (!room) {
+      navigate(ROUTES.HOME);
+      return;
+    }
     getAllQuestionnaries(room.id, sucessCallback, errorCallback);
   }, []);
 
@@ -75,6 +80,10 @@ const Classroom = () => {
     if (isTeacher()) {
       navigate(ROUTES.QUESTIONNARIE, { state: { questionnaire, room } });
     } else {
+      if (questionnaire.isDone) {
+        showToast("Você já fez este questionário", "info");
+        return;
+      }
       navigate(ROUTES.ANSWER_QUESTIONNARIE, { state: { questionnaire, room } });
     }
   };
@@ -150,7 +159,7 @@ const Classroom = () => {
                   return (
                     <QuestionaryCard
                       key={index}
-                      title={"Questionário " + (index+1)}
+                      title={"Questionário " + (index + 1)}
                       description={item.nome}
                       onClick={() => handleClickQuestionnarie(item)}
                       isDone={item.isDone}

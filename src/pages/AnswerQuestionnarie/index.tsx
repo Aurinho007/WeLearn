@@ -36,6 +36,11 @@ const AnswerQuestionnarie = () => {
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
 
   useEffect(() => {
+    if (!questionnaire || !questionnaire) {
+      navigate(ROUTES.HOME);
+      return;
+    }
+
     const init = async () => {
       await getQuestions(questionnaire.id, successCallback, errorCallback);
     };
@@ -47,7 +52,7 @@ const AnswerQuestionnarie = () => {
     setQuestions(response);
     setCurrentQuestion(response[currentNumberQuestion]);
 
-    if(response.length === 0){
+    if (response.length === 0) {
       showToast("Esse questionário ainda não possui perguntas", "info");
       navigate(ROUTES.CLASSROOM, { state: { room } });
     }
@@ -59,7 +64,7 @@ const AnswerQuestionnarie = () => {
   };
 
   const answerQuestion = () => {
-    if(!selected) {
+    if (!selected) {
       showToast("Selecione uma alternativa", "info");
       return;
     }
@@ -71,7 +76,7 @@ const AnswerQuestionnarie = () => {
 
   const goToNextQuestion = () => {
 
-    if(questions.length === currentNumberQuestion + 1){
+    if (questions.length === currentNumberQuestion + 1) {
       alert("Parabéns!\nVocê finalizou mais um questionário.");
       navigate(ROUTES.GO_BACK);
     }
@@ -111,7 +116,7 @@ const AnswerQuestionnarie = () => {
 
   const defineColor = (option: string) => {
 
-    if(!showAnswer) return "";
+    if (!showAnswer) return "";
 
     if (option.toLowerCase() === currentQuestion?.alternativaCorreta.toLowerCase()) {
       return theme.lightBlue;

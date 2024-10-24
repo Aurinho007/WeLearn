@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import IClassroom from "../../interfaces/Classroom";
 import PageHeader from "../../components/PageHeader";
 import IQuestionnarie from "../../interfaces/Questionnarie";
@@ -12,11 +12,11 @@ import IQuestion from "../../interfaces/Question";
 import Loader from "../../components/Loader";
 import empyQuestion from "./constants";
 import { useToast } from "../../contexts/ToastContext";
+import ROUTES from "../../constants/routesConstants";
 
 const Questionnaire = () => {
-
   const location = useLocation();
-  const { room, questionnaire }: { room: IClassroom, questionnaire: IQuestionnarie } = location.state || {};
+  const navigate = useNavigate();
 
   const [showModal, setShowModal] = useState<boolean>(false);
   const [modalType, setModalType] = useState<"new" | "edit" | "view">("new");
@@ -28,7 +28,14 @@ const Questionnaire = () => {
 
   const { showToast } = useToast();
 
+  const { room, questionnaire }: { room: IClassroom, questionnaire: IQuestionnarie } = location.state || {};
+
   useEffect(() => {
+    if(!room || !questionnaire){
+      navigate(ROUTES.HOME);
+      return;
+    }
+
     getQuestions(questionnaire.id, getSuccesCallback, getErrorCallback);
   }, []);
 
@@ -141,7 +148,7 @@ const Questionnaire = () => {
                 return (
                   <Line key={index}>
                     <Item>
-                      {index+1}
+                      {index + 1}
                     </Item>
                     <Item>
                       Múltipla escolha

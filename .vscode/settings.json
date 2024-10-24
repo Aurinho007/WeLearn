@@ -1,5 +1,7 @@
 {
   "editor.tabSize": 2,
   "javascript.preferences.quoteStyle": "auto",
-  "typescript.preferences.quoteStyle": "auto"
+  "typescript.preferences.quoteStyle": "auto",
+  "editor.fontFamily": "'Fira Code', 'monospace', monospace",
+  "editor.fontLigatures": true
 }
