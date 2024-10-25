@@ -17,4 +17,5 @@ export interface IUserContextType {
   isTeacher: () => boolean;
   isStudent: () => boolean;
   logout: () => void;
+  expendWeCoins: (price: number) => boolean
 }

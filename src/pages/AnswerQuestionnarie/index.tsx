@@ -8,7 +8,7 @@ import { getQuestions } from "../../service/question";
 import ROUTES from "../../constants/routesConstants";
 import { useToast } from "../../contexts/ToastContext";
 import Loader from "../../components/Loader";
-import { ButtonContainer, Container, CustomOption, Option, Options, OptionLabel, QuestionTitle, Statement, OptionContainer } from "./styles";
+import { ButtonContainer, Container, CustomOption, Option, Options, OptionLabel, QuestionTitle, Statement, OptionContainer, AuxButtons } from "./styles";
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import TerciaryButton from "../../components/Buttons/TerciaryButton";
 import theme from "../../assets/theme";
@@ -30,9 +30,9 @@ const AnswerQuestionnarie = () => {
 
   const [currentQuestion, setCurrentQuestion] = useState<IQuestion>();
   const [currentNumberQuestion, setCurrentNumberQuestion] = useState<number>(0);
-  const [answers, setAnswers] = useState<AnswerType[]>([]);
   const [selected, setSelected] = useState<string>();
 
+  const [answers, setAnswers] = useState<AnswerType[]>([]);
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
 
   useEffect(() => {
@@ -61,6 +61,12 @@ const AnswerQuestionnarie = () => {
   const errorCallback = (error: string) => {
     navigate(ROUTES.GO_BACK);
     showToast(error, "error");
+  };
+
+  const jumpQuestion = () => {
+    const answareObj = { idQuestao: currentQuestion?.id, resposta: "-" };
+    setAnswers(prev => prev?.concat([answareObj]));
+    setShowAnswer(true);
   };
 
   const answerQuestion = () => {
@@ -212,6 +218,27 @@ const AnswerQuestionnarie = () => {
             </OptionLabel>
           </OptionContainer>
         </Options>
+
+        {
+          !showAnswer &&
+          <AuxButtons>
+            <TerciaryButton
+              text="Dica"
+              Fsize={1.2}
+              colored={false}
+              onClick={() => alert("Em breve!")}
+              tip="A dica custa 50 WeCoins"
+            />
+
+            <TerciaryButton
+              text="Não sei"
+              Fsize={1.2}
+              colored={false}
+              onClick={jumpQuestion}
+              tip="Você também ganha XP e WeCoins por não saber uma questão"
+            />
+          </AuxButtons>
+        }
 
         <ButtonContainer>
 

@@ -17,7 +17,8 @@ const UserContext = createContext<IUserContextType>({
   isLogged: () => false,
   isTeacher: () => false,
   isStudent: () => false,
-  logout: () => null
+  logout: () => null,
+  expendWeCoins: () => false,
 });
 
 export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
@@ -41,8 +42,17 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setUser(initialUserState);
   };
 
+  const expendWeCoins = (price: number): boolean => {
+    if(user.weCoin < price) {
+      return false;
+    }
+
+    user.weCoin -= price;
+    return true;
+  };
+
   return (
-    <UserContext.Provider value={{ user, setUser, isLogged, isTeacher, isStudent, logout}}>
+    <UserContext.Provider value={{ user, setUser, isLogged, isTeacher, isStudent, logout, expendWeCoins}}>
       {children}
     </UserContext.Provider>
   );

@@ -69,6 +69,13 @@ export const CustomOption = styled.span<{ selected: boolean }>`
   background-color: ${(props) => (props.selected ? theme.black : "transparent")};
 `;
 
+export const AuxButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  justify-content: center;
+`;
+
 export const ButtonContainer = styled.div`
   width: 50%;
   display: flex;
