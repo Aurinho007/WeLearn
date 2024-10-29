@@ -12,10 +12,15 @@ import { ButtonContainer, Container, CustomOption, Option, Options, OptionLabel,
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import TerciaryButton from "../../components/Buttons/TerciaryButton";
 import theme from "../../assets/theme";
+import { answerQuestionnarie } from "../../service/answerQuestionnarie";
 
-type AnswerType = {
+export type AnswerType = {
   idQuestao?: number,
   resposta?: string
+}
+
+type Option = {
+  option: "A" | "B" | "C" | "D";
 }
 
 const AnswerQuestionnarie = () => {
@@ -34,6 +39,13 @@ const AnswerQuestionnarie = () => {
 
   const [answers, setAnswers] = useState<AnswerType[]>([]);
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
+
+  const alternatives: Option[] = [
+    { option: "A" },
+    { option: "B" },
+    { option: "C" },
+    { option: "D" },
+  ];
 
   useEffect(() => {
     if (!questionnaire || !questionnaire) {
@@ -81,18 +93,24 @@ const AnswerQuestionnarie = () => {
   };
 
   const goToNextQuestion = () => {
-
     if (questions.length === currentNumberQuestion + 1) {
-      alert("Parabéns!\nVocê finalizou mais um questionário.");
-      navigate(ROUTES.GO_BACK);
+      answerQuestionnarie(questionnaire.id, answers, answerSuccessCallback, answerErrorCallback);
     }
-
+    
     const newNumberQuestion = currentNumberQuestion + 1;
     setCurrentQuestion(questions[newNumberQuestion] as IQuestion);
     setCurrentNumberQuestion(newNumberQuestion);
     setSelected(undefined);
     setShowAnswer(false);
-    console.log(answers);
+  };
+
+  const answerSuccessCallback = () => {
+    alert("Parabéns!\nVocê finalizou mais um questionário.");
+    navigate(ROUTES.GO_BACK);
+  };
+
+  const answerErrorCallback = (error: string) => {
+    showToast(error, "error");
   };
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -121,7 +139,6 @@ const AnswerQuestionnarie = () => {
   };
 
   const defineColor = (option: string) => {
-
     if (!showAnswer) return "";
 
     if (option.toLowerCase() === currentQuestion?.alternativaCorreta.toLowerCase()) {
@@ -154,69 +171,34 @@ const AnswerQuestionnarie = () => {
         </Statement>
 
         <Options>
-          <OptionContainer
-            color={defineColor("A")}
-          >
-            <OptionLabel>
-              <CustomOption selected={selected === "A"}>A</CustomOption>
-              <Option
-                disabled={showAnswer}
-                type="radio"
-                value="A"
-                checked={selected === "A"}
-                onChange={handleOptionChange}
-              />
-              {currentQuestion?.alternativaA}
-            </OptionLabel>
-          </OptionContainer>
+          {
+            alternatives.map(item => {
+              return (<>
+                <OptionContainer
+                  color={defineColor(item.option)}
+                  onClick={() => {
+                    if (!showAnswer) {
+                      handleOptionChange({ target: { value: item.option } } as React.ChangeEvent<HTMLInputElement>);
+                    }
+                  }}
+                >
+                  <OptionLabel>
+                    <CustomOption selected={selected === item.option}>{item.option}</CustomOption>
+                    <Option
+                      disabled={showAnswer}
+                      type="radio"
+                      value={item.option}
+                      checked={selected === item.option}
+                      onChange={handleOptionChange}
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                    {currentQuestion?.alternativaA}
+                  </OptionLabel>
+                </OptionContainer>
+              </>);
+            })
 
-          <OptionContainer
-            color={defineColor("B")}
-          >
-            <OptionLabel>
-              <CustomOption selected={selected === "B"}>B</CustomOption>
-              <Option
-                disabled={showAnswer}
-                type="radio"
-                value="B"
-                checked={selected === "B"}
-                onChange={handleOptionChange}
-              />
-              {currentQuestion?.alternativaB}
-            </OptionLabel>
-          </OptionContainer>
-
-          <OptionContainer
-            color={defineColor("C")}
-          >
-            <OptionLabel>
-              <CustomOption selected={selected === "C"}>C</CustomOption>
-              <Option
-                disabled={showAnswer}
-                type="radio"
-                value="C"
-                checked={selected === "C"}
-                onChange={handleOptionChange}
-              />
-              {currentQuestion?.alternativaC}
-            </OptionLabel>
-          </OptionContainer>
-
-          <OptionContainer
-            color={defineColor("D")}
-          >
-            <OptionLabel>
-              <CustomOption selected={selected === "D"}>D</CustomOption>
-              <Option
-                disabled={showAnswer}
-                type="radio"
-                value="D"
-                checked={selected === "D"}
-                onChange={handleOptionChange}
-              />
-              {currentQuestion?.alternativaD}
-            </OptionLabel>
-          </OptionContainer>
+          }
         </Options>
 
         {

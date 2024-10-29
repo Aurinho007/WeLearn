@@ -35,6 +35,7 @@ export const OptionContainer = styled.div<{ color: string }>`
   margin: 5px 0;
   border-radius: 10px;
   background-color: ${props => props.color};
+  cursor: pointer;
 `;
 
 export const OptionLabel = styled.p`
@@ -66,6 +67,7 @@ export const CustomOption = styled.span<{ selected: boolean }>`
   line-height: 30px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  color: ${(props) => (props.selected ? theme.white : theme.black)};
   background-color: ${(props) => (props.selected ? theme.black : "transparent")};
 `;
 
