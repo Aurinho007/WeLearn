@@ -8,16 +8,19 @@ import SecondaryButton from "../Buttons/SecondaryButton/index.tsx";
 import ROUTES from "../../constants/routesConstants.ts";
 
 const Header = () => {
-  const navigate = useNavigate();
-  const { isLogged } = useUser();
+  const navigate = useNavigate();  
+  const { isMobile, isLogged } = useUser();
+
 
   return (
     <Container>
       <Logo />
-      <Nav />
       {
         isLogged() ?
-          <ProfileCard /> :
+          <>
+            <Nav />
+            { !isMobile && <ProfileCard />}
+          </> :
           <SecondaryButton
             Fsize={1.1}
             onClick={() => navigate(ROUTES.LOGIN)}

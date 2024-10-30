@@ -1,19 +1,56 @@
+import { useState, useEffect, useRef } from "react";
 import ROUTES from "../../../../constants/routesConstants.ts";
 import {
-  NavConteiner,
+  NavContainer,
   NavItem,
-  NavSeparator
+  NavSeparator,
+  HamburgerIcon,
+  MobileMenu
 } from "./styles.ts";
+import { useUser } from "../../../../contexts/UserContext.tsx";
 
 const Nav = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null); // Define o tipo de `menuRef` como HTMLDivElement
+
+  const { isMobile } = useUser();
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Fecha o menu ao clicar fora dele
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <NavConteiner>
-      <NavItem to={ROUTES.HOME}> Home </NavItem>
-      <NavSeparator> • </NavSeparator>
-      <NavItem to={ROUTES.MY_CLASSROOMS}> Salas </NavItem>
-      <NavSeparator> • </NavSeparator>
-      <NavItem to={ROUTES.ABOUT}> Sobre </NavItem>
-    </NavConteiner>
+    <NavContainer>
+      <HamburgerIcon onClick={toggleMenu}>
+        &#9776;
+      </HamburgerIcon>
+      <MobileMenu ref={menuRef} isOpen={isMenuOpen}>
+        <NavItem onClick={() => setIsMenuOpen(false)} to={ROUTES.HOME}> Home </NavItem>
+        <NavSeparator> • </NavSeparator>
+        <NavItem onClick={() => setIsMenuOpen(false)} to={ROUTES.MY_CLASSROOMS}> Salas </NavItem>
+        <NavSeparator> • </NavSeparator>
+        <NavItem onClick={() => setIsMenuOpen(false)} to={ROUTES.ABOUT}> Sobre </NavItem>
+        {isMobile && (
+          <>
+            <NavItem onClick={() => setIsMenuOpen(false)} to={ROUTES.PROFILE}>
+              Meu perfil
+            </NavItem>
+          </>
+        )}
+      </MobileMenu>
+    </NavContainer>
   );
 };
 

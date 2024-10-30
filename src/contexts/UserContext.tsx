@@ -13,6 +13,7 @@ const initialUserState: IUser = {
 
 const UserContext = createContext<IUserContextType>({
   user: initialUserState,
+  isMobile: false,
   setUser: () => null,
   isLogged: () => false,
   isTeacher: () => false,
@@ -26,6 +27,17 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const localUser = getUser();
     return localUser ?? initialUserState;
   });
+
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     saveUser(user);
@@ -43,7 +55,7 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   const expendWeCoins = (price: number): boolean => {
-    if(user.weCoin < price) {
+    if (user.weCoin < price) {
       return false;
     }
 
@@ -52,7 +64,7 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, setUser, isLogged, isTeacher, isStudent, logout, expendWeCoins}}>
+    <UserContext.Provider value={{ user, isMobile, setUser, isLogged, isTeacher, isStudent, logout, expendWeCoins }}>
       {children}
     </UserContext.Provider>
   );

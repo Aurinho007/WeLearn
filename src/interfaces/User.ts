@@ -12,6 +12,7 @@ export interface IUserLoginData {
 }
 export interface IUserContextType {
   user: IUser;
+  isMobile: boolean,
   setUser: React.Dispatch<React.SetStateAction<IUser>>;
   isLogged: () => boolean;
   isTeacher: () => boolean;

@@ -95,8 +95,9 @@ const AnswerQuestionnarie = () => {
   const goToNextQuestion = () => {
     if (questions.length === currentNumberQuestion + 1) {
       answerQuestionnarie(questionnaire.id, answers, answerSuccessCallback, answerErrorCallback);
+      return;
     }
-    
+
     const newNumberQuestion = currentNumberQuestion + 1;
     setCurrentQuestion(questions[newNumberQuestion] as IQuestion);
     setCurrentNumberQuestion(newNumberQuestion);
@@ -110,6 +111,7 @@ const AnswerQuestionnarie = () => {
   };
 
   const answerErrorCallback = (error: string) => {
+    console.log(error);
     showToast(error, "error");
   };
 
@@ -192,7 +194,7 @@ const AnswerQuestionnarie = () => {
                       onChange={handleOptionChange}
                       onClick={(e) => e.stopPropagation()}
                     />
-                    {currentQuestion?.alternativaA}
+                    {currentQuestion?.[`alternativa${item.option}`]}
                   </OptionLabel>
                 </OptionContainer>
               </>);
