@@ -13,19 +13,24 @@ export const Container = styled.div`
   min-width: 315px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 810px){
+    margin-bottom: 30px;
+    max-width: 100%;
+  }
 `;
 
 export const IconContainer = styled.div`
   padding: 0 20px 0 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const Icon = styled.img`
   height: 70px;
+
+  @media (max-width: 700px){
+    height: 50px;  
+  }
 `;
 
 export const ContentContainer = styled.div`
@@ -37,11 +42,14 @@ export const TitleContainer = styled.div`
   padding-bottom: 8px;
 `;
 
-
 export const Title = styled.p`
 font-family: ${fonts.montserrat};
 font-weight: 600;
 font-size: 1.6rem;
+
+  @media (max-width: 500px){
+    font-size: 1.2rem;
+  }
 `;
 
 export const TextContainer = styled.div`
@@ -54,5 +62,9 @@ font-family: ${fonts.montserrat};
 font-size: 1.3rem;
 font-weight: 500;
 color: ${theme.grey};
+
+  @media (max-width: 500px){
+    font-size: 1rem;
+  }
 `;
 

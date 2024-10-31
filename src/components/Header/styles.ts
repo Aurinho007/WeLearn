@@ -13,7 +13,7 @@ export const Container = styled.div`
   height: 80px;
   padding: 0 20px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 810px) {
     padding: 10px 0;
   }
 `;
@@ -28,7 +28,7 @@ export const Title = styled(Link)`
   color: ${theme.black};
   justify-self: left;
 
-  @media (max-width: 768px) {
+  @media (max-width: 810px) {
     font-size: 2rem;
   }
 

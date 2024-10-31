@@ -1,14 +1,14 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { useUser } from "../../contexts/UserContext.tsx";
 import Logo from "../Logo/index.tsx";
 import {  Content, Description, Title } from "./styles.ts";
 
 const Baseboard = () => {
-
   const { isMobile } = useUser();
 
+  if (isMobile) return;
+
   return (
-    <Content isMobile={isMobile}>
+    <Content>
       <Title>
         <Logo />
       </Title>

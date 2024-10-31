@@ -45,18 +45,18 @@ const Home = () => {
           <MainPhrase>
             O Futuro da<br></br><Bolded>Educação</Bolded> Começa<br></br>Aqui!
           </MainPhrase>
-          <NavContainer>
-            {renderIsLoggedButton()}
-            <TerciaryButton
-              Fsize={1.1}
-              onClick={() => navigate(ROUTES.ABOUT)}
-              colored={false}
-              text="Saiba Mais"
-            />
-          </NavContainer>
         </LeftContentContainer>
         <Image src={studingGirl} />
       </MainView>
+      <NavContainer>
+        {renderIsLoggedButton()}
+        <TerciaryButton
+          Fsize={1.1}
+          onClick={() => navigate(ROUTES.ABOUT)}
+          colored={false}
+          text="Saiba Mais"
+        />
+      </NavContainer>
       <HomeCardList />
     </>
   );

@@ -27,7 +27,6 @@ const HomeCard = (props: IHomeCard) => {
           <Text>{text}</Text>
         </TextContainer>
       </ContentContainer>
-      
     </Container>
   );
 };

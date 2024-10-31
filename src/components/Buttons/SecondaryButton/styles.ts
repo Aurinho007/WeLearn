@@ -7,7 +7,7 @@ export const Container = styled.div`
   width: auto;
   height: auto;
   justify-content: center;
-  `;
+`;
 
 export const Button = styled.button<{style: ISecondaryButton}>`
   border-radius: 6px;
@@ -26,5 +26,11 @@ export const Text = styled.p<{style: ISecondaryButton}>`
   font-family: ${props => fonts[props.style.Ffamily]};
   font-weight: ${props => props.style.Fweight};
   font-size: ${props => props.style.Fsize}rem;
-  padding: 4px ${props => props.style.width ? 0 : "22px"}
+  padding: 4px ${props => props.style.width ? 0 : "22px"};
+  white-space: nowrap;
+  
+  @media (max-width: 810px) {
+    font-size: .8rem;
+
+  }
 `;

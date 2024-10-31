@@ -53,4 +53,9 @@ export const Text = styled.p<{style: ISecondaryButton}>`
   color: ${(props) => (props.style.colored ? theme.blue : theme.black)};
   font-size: ${(props) => props.style.Fsize}rem;
   padding: 6px 25px;
+  white-space: nowrap;
+
+  @media (max-width: 810px) {
+    font-size: .8rem;
+  }
 `;

@@ -26,7 +26,7 @@ export const NavItem = styled(Link)`
     text-decoration: underline;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 810px) {
     font-size: 1.2rem;
     margin: 10px 0;
   }

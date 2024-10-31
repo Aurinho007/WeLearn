@@ -6,6 +6,12 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  justify-self: center;
-  align-self: center;
+
+  @media (max-width: 810px){
+    justify-content: center;
+  }
+  
+  @media (min-width: 810px){
+    margin-top: 80px;
+  }
 `;
