@@ -13,7 +13,7 @@ const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null); // Define o tipo de `menuRef` como HTMLDivElement
 
-  const { isMobile } = useUser();
+  const { isLogged, isMobile } = useUser();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -44,8 +44,8 @@ const Nav = () => {
         <NavItem onClick={() => setIsMenuOpen(false)} to={ROUTES.ABOUT}> Sobre </NavItem>
         {isMobile && (
           <>
-            <NavItem onClick={() => setIsMenuOpen(false)} to={ROUTES.PROFILE}>
-              Meu perfil
+            <NavItem onClick={() => setIsMenuOpen(false)} to={isLogged() ? ROUTES.PROFILE : ROUTES.LOGIN}>
+              {isLogged() ? "Meu perfil" : "Entrar"}
             </NavItem>
           </>
         )}
