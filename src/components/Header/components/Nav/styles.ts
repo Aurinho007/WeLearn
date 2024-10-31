@@ -72,5 +72,14 @@ export const MobileMenu = styled.div<{ isOpen: boolean }>`
     top: 70px;
     right: 0;
     padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px -10px rgba(0,0,0,0.25);
+
+
+    & > *:last-child {
+      border-top: 3px solid ${theme.blue}; 
+      padding-top: 15px;
+    }
   }
 `;
+

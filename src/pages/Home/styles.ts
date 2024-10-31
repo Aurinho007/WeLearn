@@ -60,7 +60,8 @@ export const NavContainer = styled.div`
   padding-bottom: 25px;
 
   @media (max-width: 850px) {
-    margin-top: 2rem;
+    margin-top: .5rem;
+    margin-bottom: 30px;
   }
 
   @media (min-width: 810px){
