@@ -6,14 +6,16 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-`;
+  `;
 
 export const ImageContainer = styled.div`
-  margin-right: -40px;
+
 `;
 
 export const Image = styled.img`
+  object-fit: cover;
   height: 250px;
+  width: 150px;
 `;
 
 export const ContentContainer = styled.div`

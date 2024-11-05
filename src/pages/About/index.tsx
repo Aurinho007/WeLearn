@@ -9,9 +9,7 @@ import img from "../../assets/images/online-test.svg";
 import { useUser } from "../../contexts/UserContext";
 
 const About = () => {
-
   const { user } = useUser();
-
   const vitorOccupation = user.nome.toLowerCase().includes("rabello") ? "Vagabundo" : "Dev";
 
   return (
@@ -20,17 +18,14 @@ const About = () => {
       <Container>
         <ContentContainer>
           <Image src={img} />
-
           <TextContainer>
             <Text>
-              Uma plataforma colaborativa e
-              gamificada de aprendizado desenvolvida por quatro
+              Uma plataforma colaborativa e gamificada de aprendizado desenvolvida por quatro
               alunos do Centro Universitário de Brasília
             </Text>
             <Text>
-              O <i><b>WeLearn</b></i> tem como objetivo  revolucionar a
-              experiência de aprendizado, combinando gamificação,
-              análise de dados e motivação
+              O <i><b>WeLearn</b></i> tem como objetivo revolucionar a experiência de aprendizado,
+              combinando gamificação, análise de dados e motivação
             </Text>
           </TextContainer>
         </ContentContainer>

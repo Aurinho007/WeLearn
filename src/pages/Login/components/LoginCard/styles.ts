@@ -10,6 +10,10 @@ export const Container = styled.div`
   position: absolute;
   z-index: 1;
   right: 0;
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 export const Content = styled.div`
@@ -17,10 +21,18 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+
+  @media (max-width: 480px) {
+    padding: 30px 30px; 
+  }
 `;
 
 export const Division = styled.div`
   flex-grow: 1;
+
+  @media (max-width: 480px) {
+    flex-grow: 1;
+  }
 `;
 
 export const Header = styled.div`
@@ -46,6 +58,11 @@ export const Form = styled.div`
 
 export const Item = styled.div`
   height: 120px;
+
+  @media (max-width: 480px) {
+    height: 100px;
+  }
+  
 `;
 
 export const Label = styled.p`
@@ -63,6 +80,10 @@ export const TextInput = styled.input`
   border-radius: 10px;
   font-family: ${Fonts.montserrat};
   font-size: 1.2rem;
+
+  @media (max-width: 480px) {
+    font-size: 1rem
+  }
 `;
 
 export const PasswordLabelContainer = styled.div`
@@ -83,7 +104,11 @@ export const ForgetPassword = styled.p`
 
   &:hover {
     text-decoration: underline;
-    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem
+  }
 `;
 
 export const RememberMe = styled.div`
@@ -97,6 +122,11 @@ export const CheckBox = styled.input`
   width: 25px;
   height: 25px;
   margin-right: 15px;
+
+  @media (max-width: 480px) {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 export const RememberMeLabel = styled.p`
@@ -104,7 +134,11 @@ export const RememberMeLabel = styled.p`
   font-weight: 500;
   color: ${theme.grey};
   font-size: 1.2rem;
-    cursor: pointer;
+  cursor: pointer;
+
+  @media (max-width: 480px) {
+    font-size: 1rem
+  }
 `;
 
 export const Buttons = styled.div`

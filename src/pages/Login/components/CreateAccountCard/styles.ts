@@ -10,6 +10,10 @@ export const Container = styled.div`
   position: absolute;
   z-index: 1;
   left: 0;
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 export const Content = styled.div`
@@ -17,6 +21,10 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+
+  @media (max-width: 480px) {
+    padding: 30px 30px; 
+  }
 `;
 
 export const Division = styled.div`
@@ -63,6 +71,10 @@ export const TextInput = styled.input`
   border-radius: 10px;
   font-family: ${Fonts.montserrat};
   font-size: 1.2rem;
+
+  @media (max-width: 480px) {
+    font-size: 1rem
+  }
 `;
 
 export const DropDown = styled.select`
@@ -73,7 +85,11 @@ export const DropDown = styled.select`
   border-radius: 10px;
   font-family: ${Fonts.montserrat};
   font-size: 1.2rem;
-  color: ${theme.black}
+  color: ${theme.black};
+
+  @media (max-width: 480px) {
+    font-size: 1rem
+  }
 `;
 
 export const PasswordLabelContainer = styled.div`

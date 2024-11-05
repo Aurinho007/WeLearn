@@ -16,6 +16,10 @@ export const Container = styled.div`
   @media (max-width: 810px) {
     padding: 10px 0;
   }
+
+  @media (max-width: 480px) {
+    height: 60px;
+  }
 `;
 
 export const Title = styled(Link)`

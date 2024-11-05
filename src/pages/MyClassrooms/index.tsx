@@ -6,7 +6,7 @@ import { useUser } from "../../contexts/UserContext";
 import Loader from "../../components/Loader";
 import IClassroom from "../../interfaces/Classroom";
 import { createClassroom, entryClassroom, getClassroom } from "../../service/classroom";
-import { ButtonContainer, ClassrommCardContainer } from "./styles";
+import { ButtonContainer, ClassroomCardContainer } from "./styles";
 import ErroCard from "../../components/ErrorCard/index";
 import ROUTES from "../../constants/routesConstants";
 import ClassroomAction from "./components/ClasroomAction";
@@ -94,11 +94,11 @@ const Classrooms = () => {
         />
       );
     }
-
-    if (error) {
+    console.log(error);
+    if (error || !classrooms.current) {
       return (
         <ErroCard
-          text={error}
+          text={error ? error : "Algo deu errado"}
           buttonText="Recarregar"
           onClick={() => window.location.reload()}
         />
@@ -130,7 +130,7 @@ const Classrooms = () => {
 
   if (loading) return <Loader height={130} width={130} />;
 
-  if (error || classrooms.current.length === 0) return renderErrorMessage();
+  if (error || !classrooms.current || classrooms.current.length === 0) return renderErrorMessage();
 
   return (
     <>
@@ -141,9 +141,9 @@ const Classrooms = () => {
           handleEnterClassroom={handleEnterClassroom}
         />
       </ButtonContainer>
-      <ClassrommCardContainer>
+      <ClassroomCardContainer>
         {
-          classrooms.current.map((room, index) => {
+          classrooms.current && classrooms.current.map((room, index) => {
             return (
               <ClassroomCard
                 key={index}
@@ -157,7 +157,7 @@ const Classrooms = () => {
             );
           })
         }
-      </ClassrommCardContainer>
+      </ClassroomCardContainer>
     </>
   );
 };

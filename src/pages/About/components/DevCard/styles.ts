@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Fonts from "../../../../assets/fonts/fonts";
 import theme from "../../../../assets/theme";
+import { handleClick } from '../../../../components/Buttons/utils';
 
 export const CardFront = styled.div`
   padding: 15px 20px;
@@ -18,7 +19,6 @@ export const CardFront = styled.div`
   width: 120px;
   height: 180px;
   background-color: ${theme.lightWhite};
-
 `;
 
 export const CardBack = styled.div`
@@ -42,7 +42,6 @@ export const CardBack = styled.div`
 `;
 
 export const Container = styled.div`
-  perspective: 1000px;
   width: 110px;
   margin: 0 40px;
   

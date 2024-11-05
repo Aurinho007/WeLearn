@@ -19,7 +19,7 @@ export const doRequest = async (
     ...(method !== "GET" && { body: JSON.stringify(params) })
   });
 
-  if (response.ok === false) {
+  if (!response.ok) {
     const errorData = await response.json();
     if (errorData.error === "Erro na verificação do token") {
       errorData.error = EXPIRED_TOKEN_ERROR;
