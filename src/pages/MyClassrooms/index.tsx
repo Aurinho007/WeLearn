@@ -23,6 +23,11 @@ const Classrooms = () => {
   const [error, setError] = useState("");
 
   const successCallback = (response: IClassroom[]) => {
+    response.forEach(item => {
+      if(item.percentualConcluido == null){
+        item.percentualConcluido = 0;
+      }
+    });
     classrooms.current = response;
     setLoading(false);
   };

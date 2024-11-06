@@ -13,8 +13,8 @@ const ErrorCard = (props: ErrorCardTyoe): JSX.Element => {
 
   const { logout } = useUser();
   const navigate = useNavigate();
-  
-  if(text == EXPIRED_TOKEN_ERROR){
+
+  if (text == EXPIRED_TOKEN_ERROR) {
     buttonText = "Logar novamente";
     onClick = () => {
       logout();
@@ -30,14 +30,17 @@ const ErrorCard = (props: ErrorCardTyoe): JSX.Element => {
       <ContentContainer>
         <Title>Ops...</Title>
         <Text>{text}</Text>
-        <SecondaryButton
-          Ffamily="montserrat"
-          Fsize={1}
-          Fweight={500}
-          onClick={onClick}
-          outside="blue"
-          text={buttonText}
-        />
+        {
+          onClick && buttonText &&
+          <SecondaryButton
+            Ffamily="montserrat"
+            Fsize={1}
+            Fweight={500}
+            onClick={onClick}
+            outside="blue"
+            text={buttonText}
+          />
+        }
       </ContentContainer>
     </Container>
   );

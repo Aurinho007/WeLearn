@@ -78,7 +78,7 @@ const Classroom = () => {
 
   const handleClickQuestionnarie = (questionnaire: IQuestionnarie) => {
     if (isTeacher()) {
-      navigate(ROUTES.QUESTIONNARIE, { state: { questionnaire, room }});
+      navigate(ROUTES.QUESTIONNARIE, { state: { questionnaire, room } });
     } else {
       if (questionnaire.isDone) {
         showToast("Você já fez este questionário", "info");
@@ -140,19 +140,20 @@ const Classroom = () => {
 
           </HeaderRight>
           {
-            room.percentualConcluido &&
+            room.percentualConcluido != null &&
             <ConclusionBar
               conclusionPercent={room.percentualConcluido}
               height={30}
             />
+
           }
           <QuestionaryContainer>
             {
               questionnaries?.length === 0 || !questionnaries ?
                 <ErrorCard
-                  buttonText="Adicionar questionário"
-                  onClick={handleClickCreateQuestionnarie}
                   text="Esta sala ainda não possui questionários"
+                  buttonText={isTeacher() ? "Adicionar questionário" : ""}
+                  onClick={isTeacher() ? handleClickCreateQuestionnarie : () => {}}
                 />
                 :
                 questionnaries.map((item, index) => {

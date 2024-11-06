@@ -58,7 +58,7 @@ const ClassroomCard = (props: ClassroomCardProps) => {
         }
       </DataContainer>
       {
-        conclusionPercent &&
+        conclusionPercent != null &&
         <ConclusionBar
           conclusionPercent={conclusionPercent}
           height={18}
