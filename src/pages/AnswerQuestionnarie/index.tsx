@@ -48,8 +48,9 @@ const AnswerQuestionnarie = () => {
   ];
 
   useEffect(() => {
-    if (!questionnaire || !questionnaire) {
+    if (!questionnaire) {
       navigate(ROUTES.HOME);
+
       return;
     }
 
@@ -66,7 +67,7 @@ const AnswerQuestionnarie = () => {
 
     if (response.length === 0) {
       showToast("Esse questionário ainda não possui perguntas", "info");
-      navigate(ROUTES.CLASSROOM, { state: { room } });
+      navigate(ROUTES.CLASSROOM, { state: { room }, replace: true });
     }
   };
 

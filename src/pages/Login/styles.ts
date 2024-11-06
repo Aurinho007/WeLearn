@@ -8,7 +8,7 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const Box = styled.div`
+export const Box = styled.div<{isMobile: boolean}>`
   display: flex;
   flex-direction: column;
   position: relative;

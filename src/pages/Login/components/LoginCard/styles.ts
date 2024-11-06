@@ -10,9 +10,10 @@ export const Container = styled.div`
   position: absolute;
   z-index: 1;
   right: 0;
-
+  
   @media (max-width: 480px) {
     width: 100%;
+    height: auto;
   }
 `;
 
@@ -28,10 +29,12 @@ export const Content = styled.div`
 `;
 
 export const Division = styled.div`
-  flex-grow: 1;
+  @media (min-width: 480px) {
+    flex-grow: 1;
+  }
 
   @media (max-width: 480px) {
-    flex-grow: 1;
+    margin-bottom: 35px;
   }
 `;
 

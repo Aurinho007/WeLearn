@@ -78,13 +78,13 @@ const Classroom = () => {
 
   const handleClickQuestionnarie = (questionnaire: IQuestionnarie) => {
     if (isTeacher()) {
-      navigate(ROUTES.QUESTIONNARIE, { state: { questionnaire, room } });
+      navigate(ROUTES.QUESTIONNARIE, { state: { questionnaire, room }});
     } else {
       if (questionnaire.isDone) {
         showToast("Você já fez este questionário", "info");
         return;
       }
-      navigate(ROUTES.ANSWER_QUESTIONNARIE, { state: { questionnaire, room } });
+      navigate(ROUTES.ANSWER_QUESTIONNARIE, { state: { questionnaire, room }, replace: true });
     }
   };
 
