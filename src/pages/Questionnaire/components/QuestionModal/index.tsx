@@ -28,7 +28,7 @@ const QuestionModal = (props: NewQuestionModalProps) => {
   const [alternativeD, setAlternativeD] = useState<string>(question.alternativaD);
 
   const viewOnly: boolean = modalType === "view";
-  
+
   const { showToast } = useToast();
 
   useEffect(() => {
@@ -40,6 +40,17 @@ const QuestionModal = (props: NewQuestionModalProps) => {
     setAlternativeB(question.alternativaB);
     setAlternativeC(question.alternativaC);
     setAlternativeD(question.alternativaD);
+
+    if (modalType === "new") {
+      setStatement("");
+      setCorrect("");
+      setTip("");
+      setDificulty("");
+      setAlternativeA("");
+      setAlternativeB("");
+      setAlternativeC("");
+      setAlternativeD("");
+    }
   }, [showModal]);
 
   const handleChangeStatement = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,7 +97,7 @@ const QuestionModal = (props: NewQuestionModalProps) => {
     setShowModal(false);
   };
 
-  const addQuestion =  (): void => { 
+  const addQuestion = (): void => {
 
     if (!statement) {
       showToast("Digite um enunciado", "info");
@@ -134,7 +145,7 @@ const QuestionModal = (props: NewQuestionModalProps) => {
       alternativaD: alternativeD,
     };
 
-    if(modalType === "edit"){
+    if (modalType === "edit") {
       updateQuestion(newQuestion, updateSuccessCallBack, updateErrorCallback);
       window.location.reload();
       setShowModal(false);
