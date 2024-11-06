@@ -1,134 +1,85 @@
 import { useEffect, useState } from "react";
 import { ButtonGroup, Container, DropDown, Input, Label, Modal, QContainer, QuestionContainer, Title } from "./styles";
 import PrimaryButton from "../../../../components/Buttons/PrimaryButton";
-import SecondaryButton from "../../../../components/Buttons/SecondaryButton/index";
+import SecondaryButton from "../../../../components/Buttons/SecondaryButton";
 import { createQuestion, updateQuestion } from "../../../../service/question";
 import QuestionDTO from "../../../../dtos/question";
 import { useToast } from "../../../../contexts/ToastContext";
 import IQuestion from "../../../../interfaces/Question";
 
 type NewQuestionModalProps = {
-  questionnaireId: number,
-  showModal: boolean,
-  setShowModal: React.Dispatch<React.SetStateAction<boolean>>,
-  modalType: "new" | "view" | "edit",
-  question: IQuestion,
-}
+  questionnaireId: number;
+  showModal: boolean;
+  setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  modalType: "new" | "view" | "edit";
+  question: IQuestion;
+};
 
-const QuestionModal = (props: NewQuestionModalProps) => {
-  const { showModal, setShowModal, questionnaireId, question, modalType } = props;
+type Fields = {
+  statement: string;
+  correct: string;
+  tip: string;
+  dificulty: string;
+  alternativeA: string;
+  alternativeB: string;
+  alternativeC: string;
+  alternativeD: string;
+};
 
-  const [statement, setStatement] = useState<string>(question.enunciado);
-  const [correct, setCorrect] = useState<string>(question.alternativaCorreta);
-  const [tip, setTip] = useState<string>(question.dica);
-  const [dificulty, setDificulty] = useState<string>(question.dificuldade);
-  const [alternativeA, setAlternativeA] = useState<string>(question.alternativaA);
-  const [alternativeB, setAlternativeB] = useState<string>(question.alternativaB);
-  const [alternativeC, setAlternativeC] = useState<string>(question.alternativaC);
-  const [alternativeD, setAlternativeD] = useState<string>(question.alternativaD);
-
-  const viewOnly: boolean = modalType === "view";
-
+const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, modalType }: NewQuestionModalProps) => {
   const { showToast } = useToast();
+  const viewOnly = modalType === "view";
+
+  const [fields, setFields] = useState<Fields>({
+    statement: "",
+    correct: "",
+    tip: "",
+    dificulty: "",
+    alternativeA: "",
+    alternativeB: "",
+    alternativeC: "",
+    alternativeD: "",
+  });
 
   useEffect(() => {
-    setStatement(question.enunciado);
-    setCorrect(question.alternativaCorreta);
-    setTip(question.dica);
-    setDificulty(question.dificuldade);
-    setAlternativeA(question.alternativaA);
-    setAlternativeB(question.alternativaB);
-    setAlternativeC(question.alternativaC);
-    setAlternativeD(question.alternativaD);
-
-    if (modalType === "new") {
-      setStatement("");
-      setCorrect("");
-      setTip("");
-      setDificulty("");
-      setAlternativeA("");
-      setAlternativeB("");
-      setAlternativeC("");
-      setAlternativeD("");
-    }
+    setFields({
+      statement: question.enunciado || "",
+      correct: question.alternativaCorreta || "",
+      tip: question.dica || "",
+      dificulty: question.dificuldade || "",
+      alternativeA: question.alternativaA || "",
+      alternativeB: question.alternativaB || "",
+      alternativeC: question.alternativaC || "",
+      alternativeD: question.alternativaD || "",
+    });
+    if (modalType === "new") resetFields();
   }, [showModal]);
 
-  const handleChangeStatement = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setStatement(event.target.value);
-  };
+  const resetFields = () =>
+    setFields({
+      statement: "",
+      correct: "",
+      tip: "",
+      dificulty: "",
+      alternativeA: "",
+      alternativeB: "",
+      alternativeC: "",
+      alternativeD: "",
+    });
 
-  const handleChangeCorrect = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setCorrect(event.target.value);
-  };
-
-  const handleChangeTip = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTip(event.target.value);
-  };
-
-  const handleChangeDificulty = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setDificulty(event.target.value);
-  };
-
-  const handleChangeAlternativeA = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAlternativeA(event.target.value);
-  };
-
-  const handleChangeAlternativeB = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAlternativeB(event.target.value);
-  };
-
-  const handleChangeAlternativeC = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAlternativeC(event.target.value);
-  };
-
-  const handleChangeAlternativeD = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAlternativeD(event.target.value);
-  };
+  const handleFieldChange = (field: keyof Fields) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+    setFields((prev) => ({ ...prev, [field]: event.target.value }));
 
   const handleCancelButton = () => {
-    setStatement("");
-    setCorrect("");
-    setTip("");
-    setDificulty("");
-    setAlternativeA("");
-    setAlternativeB("");
-    setAlternativeC("");
-    setAlternativeD("");
+    resetFields();
     setShowModal(false);
   };
 
-  const addQuestion = (): void => {
+  const addOrUpdateQuestion = () => {
+    const { statement, correct, tip, dificulty, alternativeA, alternativeB, alternativeC, alternativeD } = fields;
 
-    if (!statement) {
-      showToast("Digite um enunciado", "info");
-      return;
-    }
-    if (!tip) {
-      showToast("Digite uma dica", "info");
-      return;
-    }
-    if (!dificulty) {
-      showToast("Selecione um dificuldade", "info");
-      return;
-    }
-    if (!correct) {
-      showToast("Selecione a alternativa correta", "info");
-      return;
-    }
-    if (!alternativeA) {
-      showToast("Digite a alternativa A", "info");
-      return;
-    }
-    if (!alternativeB) {
-      showToast("Digite a alternativa B", "info");
-      return;
-    }
-    if (!alternativeC) {
-      showToast("Digite a alternativa C", "info");
-      return;
-    }
-    if (!alternativeD) {
-      showToast("Digite a alternativa D", "info");
+    if (!statement || !tip || !dificulty || !correct || !alternativeA || !alternativeB || !alternativeC || !alternativeD) {
+      showToast("Todos os campos devem ser preenchidos", "info");
       return;
     }
 
@@ -145,70 +96,48 @@ const QuestionModal = (props: NewQuestionModalProps) => {
       alternativaD: alternativeD,
     };
 
+    const successCallback = () => {
+      showToast(`Questão ${modalType === "edit" ? "editada" : "criada"}`, "success");
+      location.reload();
+    };
+
+    const errorCallback = (error: string) => showToast(error, "error");
+
     if (modalType === "edit") {
-      updateQuestion(newQuestion, updateSuccessCallBack, updateErrorCallback);
-      window.location.reload();
-      setShowModal(false);
+      updateQuestion(newQuestion, successCallback, errorCallback);
     } else {
-      createQuestion(newQuestion, createSuccessCallBack, createErrorCallback);
+      createQuestion(newQuestion, successCallback, errorCallback);
     }
 
+    setShowModal(false);
   };
-
-  const createSuccessCallBack = () => {
-    showToast("Questão criada", "success");
-    location.reload();
-  };
-
-  const createErrorCallback = (error: string) => {
-    showToast(error, "error");
-  };
-
-  const updateSuccessCallBack = () => {
-    showToast("Questão criada", "success");
-    location.reload();
-  };
-
-  const updateErrorCallback = (error: string) => {
-    showToast(error, "error");
-  };
-
 
   const handleCloseModal = (event: React.MouseEvent) => {
-    if (event.target === event.currentTarget) {
-      setShowModal(false);
-    }
+    if (event.target === event.currentTarget) setShowModal(false);
   };
 
-  if (!showModal) {
-    return;
-  }
+  if (!showModal) return null;
 
   return (
     <Container onClick={handleCloseModal}>
       <Modal onClick={(e) => e.stopPropagation()}>
-        <Title>
-          {
-            modalType === "new" ? "Nova questão" : modalType === "view" ? `Questão ${question?.id}` : "Editar questão"
-          }
-        </Title>
+        <Title>{modalType === "new" ? "Nova questão" : modalType === "view" ? `Questão ${question?.id}` : "Editar questão"}</Title>
         <QContainer>
           <QuestionContainer>
             <Label>Enunciado</Label>
             <Input
               placeholder="Quem descobriu o Brasil?"
-              value={statement}
-              onChange={handleChangeStatement}
+              value={fields.statement}
+              onChange={handleFieldChange("statement")}
               disabled={viewOnly}
             />
           </QuestionContainer>
-
           <QuestionContainer>
             <Label>Dica</Label>
             <Input
               placeholder="Foi um português"
-              value={tip}
-              onChange={handleChangeTip}
+              value={fields.tip}
+              onChange={handleFieldChange("tip")}
               disabled={viewOnly}
             />
           </QuestionContainer>
@@ -216,8 +145,8 @@ const QuestionModal = (props: NewQuestionModalProps) => {
           <div style={{ display: "flex", flexDirection: "row" }}>
             <QuestionContainer>
               <Label>Alternativa correta</Label>
-              <DropDown placeholder="Selecionar" value={correct} onChange={handleChangeCorrect} disabled={viewOnly}>
-                <option value="" disabled selected>Selecione uma opção</option>
+              <DropDown value={fields.correct} onChange={handleFieldChange("correct")} disabled={viewOnly}>
+                <option value="" disabled>Selecione uma opção</option>
                 <option value="a">A</option>
                 <option value="b">B</option>
                 <option value="c">C</option>
@@ -227,83 +156,49 @@ const QuestionModal = (props: NewQuestionModalProps) => {
 
             <QuestionContainer style={{ marginLeft: "36px" }}>
               <Label>Dificuldade</Label>
-              <DropDown placeholder="Selecionar" value={dificulty} onChange={handleChangeDificulty} disabled={viewOnly}>
-                <option value="" disabled selected>Selecione uma opção</option>
+              <DropDown value={fields.dificulty} onChange={handleFieldChange("dificulty")} disabled={viewOnly}>
+                <option value="" disabled>Selecione uma opção</option>
                 <option value="Fácil">Fácil</option>
-                <option value='Médio'>Médio</option>
+                <option value="Médio">Médio</option>
                 <option value="Difícil">Difícil</option>
               </DropDown>
             </QuestionContainer>
           </div>
 
-          <QuestionContainer>
-            <Label>Alternativa A</Label>
-            <Input
-              value={alternativeA}
-              placeholder="Santos Dumont"
-              onChange={handleChangeAlternativeA}
-              disabled={viewOnly}
-            />
-          </QuestionContainer>
-
-          <QuestionContainer>
-            <Label>Alternativa B</Label>
-            <Input
-              value={alternativeB}
-              placeholder="Algostinho Carrara"
-              onChange={handleChangeAlternativeB}
-              disabled={viewOnly}
-            />
-          </QuestionContainer>
-
-          <QuestionContainer>
-            <Label>Alternativa C</Label>
-            <Input
-              value={alternativeC}
-              placeholder="Pedro Cabral"
-              onChange={handleChangeAlternativeC}
-              disabled={viewOnly}
-            />
-          </QuestionContainer>
-
-          <QuestionContainer>
-            <Label>Alternativa D</Label>
-            <Input
-              value={alternativeD}
-              placeholder="Silvio Santos"
-              onChange={handleChangeAlternativeD}
-              disabled={viewOnly}
-            />
-          </QuestionContainer>
-          <div style={{ marginBottom: 40 }}></div>
-
+          {(["A", "B", "C", "D"] as const).map((alt) => (
+            <QuestionContainer key={alt}>
+              <Label>Alternativa {alt}</Label>
+              <Input
+                placeholder={`Alternativa ${alt}`}
+                value={fields[`alternative${alt}` as keyof Fields]}
+                onChange={handleFieldChange(`alternative${alt}` as keyof Fields)}
+                disabled={viewOnly}
+              />
+            </QuestionContainer>
+          ))}
         </QContainer>
 
         <ButtonGroup>
           <SecondaryButton
-            Ffamily="roboto"
-            Fsize={1.45}
-            Fweight={500}
-            outside="blue"
             text={modalType === "view" ? "Voltar" : "Cancelar"}
             onClick={handleCancelButton}
             width="100%"
+            outside={"blue"}
+            Ffamily="roboto"
+            Fweight={500}
+            Fsize={1.45}
           />
 
-          <div style={{ marginBottom: 16 }}></div>
-          {
-            modalType !== "view" &&
-            <PrimaryButton
-              text={modalType === "new" ? "Adicionar" : "Editar"}
-              onClick={addQuestion}
-            />
+          {modalType !== "view" &&
+            <>
+              <div style={{ height: 20 }}></div>
+              <PrimaryButton text={modalType === "new" ? "Adicionar" : "Editar"} onClick={addOrUpdateQuestion} />
+            </>
           }
         </ButtonGroup>
-
       </Modal>
     </Container>
   );
-
 };
 
 export default QuestionModal;

@@ -78,5 +78,6 @@ export const DropDown = styled.select`
 
 export const ButtonGroup = styled.div`
   display: flex;
-  flex-direction: column
+  flex-direction: column;
+  margin-top: 20px;
 `;
