@@ -67,6 +67,6 @@ export const Title = styled.p`
 
 export const Text = styled.p`
   font-family: ${Fonts.montserrat};
-  font-weight: 400;
-  font-size: 1rem;
+  font-weight: 500;
+  font-size: 1.2rem;
 `;

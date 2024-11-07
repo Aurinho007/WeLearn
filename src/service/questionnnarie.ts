@@ -3,7 +3,9 @@ import IQuestionnarie from "../interfaces/Questionnarie";
 import { BASE_URL, doRequest } from "./api";
 
 const GET_QUESTIONNARIES_URL = `${BASE_URL}/questionaries/`;
-const CREATE_QUESTIONNARIE_URL = `${BASE_URL}/questionaries`;
+const CREATE_QUESTIONNARIE_URL = `${BASE_URL}/questionaries/`;
+const RELEASE_QUESTIONNARIE_URL = `${BASE_URL}/questionaries/release/`;
+
 
 
 export const getAllQuestionnaries = (idClassroom: number, successCallback: (questionnaries: IQuestionnarie[]) => void, errorCallback: (error: string) => void) => {
@@ -12,8 +14,14 @@ export const getAllQuestionnaries = (idClassroom: number, successCallback: (ques
     .catch(error => errorCallback(error.message));
 };
 
-export const createQuestionnarie = (questionnaire: CreateQuestionnarieDTO,successCallback: () => void, errorCallback: (error: string) => void) => {
+export const createQuestionnarie = (questionnaire: CreateQuestionnarieDTO, successCallback: () => void, errorCallback: (error: string) => void) => {
   doRequest(CREATE_QUESTIONNARIE_URL, "POST", questionnaire)
+    .then(_ => successCallback())
+    .catch(error => errorCallback(error.message));
+};
+
+export const releaseQuestionnarie = (idQuestionnarie: number, successCallback: () => void, errorCallback: (error: string) => void) => {
+  doRequest(RELEASE_QUESTIONNARIE_URL+idQuestionnarie, "PUT")
     .then(_ => successCallback())
     .catch(error => errorCallback(error.message));
 };

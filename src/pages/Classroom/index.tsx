@@ -41,7 +41,12 @@ const Classroom = () => {
 
   const sucessCallback = (response: IQuestionnarie[]) => {
     setLoading(false);
-    setQuestionnaries(response);
+    response.map((item, index) => {
+      if (!item.liberado && isStudent()) {
+        response.splice(index, 1);
+      }
+    });
+    setQuestionnaries(response.reverse());
   };
 
   const errorCallback = (error: string) => {
@@ -140,7 +145,7 @@ const Classroom = () => {
 
           </HeaderRight>
           {
-            room.percentualConcluido != null &&
+            room.percentualConcluido != null && isStudent() &&
             <ConclusionBar
               conclusionPercent={room.percentualConcluido}
               height={30}
@@ -153,14 +158,14 @@ const Classroom = () => {
                 <ErrorCard
                   text="Esta sala ainda não possui questionários"
                   buttonText={isTeacher() ? "Adicionar questionário" : ""}
-                  onClick={isTeacher() ? handleClickCreateQuestionnarie : () => {}}
+                  onClick={isTeacher() ? handleClickCreateQuestionnarie : () => { }}
                 />
                 :
                 questionnaries.map((item, index) => {
                   return (
                     <QuestionaryCard
                       key={index}
-                      title={"Questionário " + (index + 1)}
+                      title={"Questionário " + ((index - questionnaries.length)*-1)}
                       description={item.nome}
                       onClick={() => handleClickQuestionnarie(item)}
                       isDone={item.isDone}

@@ -13,6 +13,7 @@ import Loader from "../../components/Loader";
 import empyQuestion from "./constants";
 import { useToast } from "../../contexts/ToastContext";
 import ROUTES from "../../constants/routesConstants";
+import { releaseQuestionnarie } from '../../service/questionnnarie';
 
 const Questionnaire = () => {
   const location = useLocation();
@@ -31,7 +32,7 @@ const Questionnaire = () => {
   const { room, questionnaire }: { room: IClassroom, questionnaire: IQuestionnarie } = location.state || {};
 
   useEffect(() => {
-    if(!room || !questionnaire){
+    if (!room || !questionnaire) {
       navigate(ROUTES.HOME);
       return;
     }
@@ -84,6 +85,26 @@ const Questionnaire = () => {
     showToast(error, "error");
   };
 
+  const release = () => {
+
+    // if(questions.length < 3 || !questions){
+    //   showToast("É necessário pelo menos 3 questões para o envio", "error");
+    //   return;
+    // }
+
+    const confirmRelease = confirm("Confirma o envio para os alunos?\n(Não pode ser desfeito)");
+    if (confirmRelease) releaseQuestionnarie(questionnaire.id, releaseQuestionSucessCallback, releaseQuestionErrorCallback);
+  };
+
+  const releaseQuestionSucessCallback = () => {
+    showToast("Questionário liberado com sucesso", "success");
+    questionnaire.liberado = true;
+  };
+
+  const releaseQuestionErrorCallback = (error: string) => {
+    showToast(error, "error");
+  };
+
   if (error) {
     return (
       <ErroCard
@@ -94,8 +115,44 @@ const Questionnaire = () => {
     );
   }
 
-  if (loading) return <Loader height={130} width={130} />;
+  const renderActionButtons = () => {
+    if (questionnaire.liberado) {
+      return (
+        <SecondaryButton
+          Ffamily="montserrat"
+          Fsize={1}
+          Fweight={400}
+          outside="blue"
+          text="Dashboard"
+          onClick={() => alert("Em breve!")}
+        />
+      );
+    }
 
+    return (
+      <>
+        <SecondaryButton
+          Ffamily="montserrat"
+          Fsize={1}
+          Fweight={400}
+          outside="blue"
+          text="Enviar questionário para alunos"
+          onClick={release}
+        />
+        <SecondaryButton
+          Ffamily="montserrat"
+          Fsize={1}
+          Fweight={400}
+          outside="black"
+          text="Adicionar Questão"
+          onClick={createQuestion}
+        />
+      </>
+    );
+  };
+
+  console.log(questionnaire.liberado)
+  if (loading) return <Loader height={130} width={130} />;
 
   return (
     <>
@@ -109,22 +166,7 @@ const Questionnaire = () => {
         <QuestionsHeader>
           <Title>Questões</Title>
           <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-            <SecondaryButton
-              Ffamily="montserrat"
-              Fsize={1}
-              Fweight={400}
-              outside="blue"
-              text="Dashboard"
-              onClick={() => alert("Em breve!")}
-            />
-            <SecondaryButton
-              Ffamily="montserrat"
-              Fsize={1}
-              Fweight={400}
-              outside="black"
-              text="Adicionar Questão"
-              onClick={createQuestion}
-            />
+            {renderActionButtons()}
           </div>
 
         </QuestionsHeader>
