@@ -12,7 +12,7 @@ const Login = () => {
 
   return (
     <Container>
-      <Box isMobile={isMobile}>
+      <Box>
         {
           isMobile ?
             <>

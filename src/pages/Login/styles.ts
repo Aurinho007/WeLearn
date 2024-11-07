@@ -8,7 +8,7 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const Box = styled.div<{isMobile: boolean}>`
+export const Box = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -16,8 +16,10 @@ export const Box = styled.div<{isMobile: boolean}>`
   width: 1200px;
   box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.1);
   border-radius: 20px;
-
+  
   @media (max-width: 480px) {
-    border-radius: 10px;
+    box-shadow: none;
+    background-color: transparent;
+    margin-top: -150px;
   }
 `;
