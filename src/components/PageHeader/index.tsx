@@ -14,7 +14,7 @@ const PageHeader = ({ title, subTitle, hasBackButton }: PageHeaderProps) => {
         <BackButton src={arrowBack} onClick={() => navigate(ROUTES.GO_BACK)} />
       }
       <TitleContainer>
-        <Title>
+        <Title hasBackButton={hasBackButton ?? false}>
           {title}
         </Title>
         <SubTitle>
