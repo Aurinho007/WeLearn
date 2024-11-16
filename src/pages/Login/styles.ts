@@ -7,6 +7,11 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: -50px;
+
+  @media (max-width: 480px) {
+   align-items: flex-start;
+   margin-top: -10px;
+  }
 `;
 
 export const Box = styled.div`
@@ -21,6 +26,5 @@ export const Box = styled.div`
   @media (max-width: 480px) {
     box-shadow: none;
     background-color: transparent;
-    margin-top: -150px;
   }
 `;

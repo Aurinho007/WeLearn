@@ -3,9 +3,9 @@ import fonts from "../../assets/fonts/fonts";
 import theme from "../../assets/theme";
 
 export const Content = styled.div`
-    width: 100vw;
     height: 100px;
-    position: fixed;
+    width: 100%;
+    position: absolute;
     bottom: 0;
     left: 0;
     display: flex;
@@ -22,7 +22,7 @@ export const Description = styled.p`
     font-family: ${fonts.montserrat};
     font-weight: 500;
     font-size: 1rem;
-    position: fixed;
     bottom: 10px;
+    line-height: 35px;
     color: ${theme.black};
 `;
