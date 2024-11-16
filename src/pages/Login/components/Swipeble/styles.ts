@@ -36,8 +36,8 @@ export const Logo = styled.p`
 export const PhraseContainer = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 3.4rem;
-  line-height: 4rem;
+  font-size: 2.5rem;
+  line-height: 3rem;
   letter-spacing: -.12rem;
   padding-top: 15%;
 `;
@@ -57,7 +57,7 @@ export const BoldedText = styled.p`
 
 export const ImageContainer = styled.div`
   width: 100%;
-  height: 300px;
+  height: 200px;
   display: flex;
 `;
 

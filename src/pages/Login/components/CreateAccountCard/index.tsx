@@ -184,8 +184,8 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
             <Divider />
             <TextBtn>Já possui uma conta?</TextBtn>
             <TerciaryButton
-              text="Faça Login"
-              Fsize={1.3}
+              text="Faça login"
+              Fsize={1.1}
               colored
               onClick={() => changeCard()}
             />

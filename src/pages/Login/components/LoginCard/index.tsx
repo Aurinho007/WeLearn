@@ -177,7 +177,7 @@ const LoginCard = (props: LoginCardProps) => {
             <TextBtn>Não possui uma conta?</TextBtn>
             <TerciaryButton
               text="Criar conta"
-              Fsize={1.3}
+              Fsize={1.1}
               colored
               onClick={changeCard}
             />

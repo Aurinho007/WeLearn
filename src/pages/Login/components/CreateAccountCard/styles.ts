@@ -38,40 +38,41 @@ export const Header = styled.div`
 export const Title = styled.p`
   font-family: ${Fonts.roboto};
   font-weight: 600;
-  font-size: 2.2rem;
+  font-size: 1.7rem;
   letter-spacing: -1px;
 `;
 
 export const SubTitle = styled.p`
   font-family: ${Fonts.montserrat};
   font-weight: 500;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: ${theme.grey};
   line-height: 30px;
+  margin-bottom: 20px;
 `;
 
 export const Form = styled.div`
 `;
 
 export const Item = styled.div`
-  height: 100px;
+  height: 80px;
 `;
 
 export const Label = styled.p`
   font-family: ${Fonts.montserrat};
   font-weight: 600;
-  font-size: 1.2rem;
-  line-height: 40px;
+  font-size: 1rem;
+  line-height: 30px;
 `;
 
 export const TextInput = styled.input`
   width: 100%;
   background-color: transparent;
-  height: 2.4rem;
+  height: 2rem;
   border: solid 2px ${theme.black};
   border-radius: 10px;
   font-family: ${Fonts.montserrat};
-  font-size: 1.2rem;
+  font-size: 1rem;
 
   @media (max-width: 480px) {
     font-size: 1rem
@@ -81,16 +82,12 @@ export const TextInput = styled.input`
 export const DropDown = styled.select`
   width: 100%;
   background-color: transparent;
-  height: 2.8rem;
+  height: 2.3rem;
   border: solid 2px ${theme.black};
   border-radius: 10px;
   font-family: ${Fonts.montserrat};
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: ${theme.black};
-
-  @media (max-width: 480px) {
-    font-size: 1rem
-  }
 `;
 
 export const PasswordLabelContainer = styled.div`
@@ -135,6 +132,6 @@ export const Divider = styled.div`
 export const TextBtn = styled.p`
   font-family: ${Fonts.montserrat};
   font-weight: 500;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: ${theme.grey};
 `;

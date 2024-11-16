@@ -6,14 +6,15 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: -50px;
 `;
 
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 750px;
-  width: 1200px;
+  height: 600px;
+  width: 1000px;
   box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.1);
   border-radius: 20px;
   
