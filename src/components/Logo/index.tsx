@@ -1,5 +1,5 @@
 import ROUTES from "../../constants/routesConstants";
-import logo from "../../assets/images/Logo.png";
+import logo from "../../assets/images/Logo.svg";
 import { Image } from "./styles";
 import { useNavigate } from "react-router-dom";
 
