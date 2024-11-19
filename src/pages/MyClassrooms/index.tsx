@@ -99,7 +99,6 @@ const Classrooms = () => {
         />
       );
     }
-    console.log(error);
     if (error || !classrooms.current) {
       return (
         <ErroCard

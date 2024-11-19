@@ -151,7 +151,6 @@ const Questionnaire = () => {
     );
   };
 
-  console.log(questionnaire.liberado)
   if (loading) return <Loader height={130} width={130} />;
 
   return (

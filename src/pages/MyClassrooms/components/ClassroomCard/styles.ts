@@ -9,11 +9,19 @@ export const Card = styled.div`
   border-left: solid 5px ${theme.blue};
   border-radius: 0 8px 8px 0;
   padding: 0 16px;
-  width: 20%;
-  min-width: 300px;
+  width: 15%;
+  min-width: 270px;
   color: ${theme.black};
   box-shadow: 0px 4px 15px -10px rgba(0,0,0,0.25);
   cursor: pointer;
+
+  transition: ease-in-out 500ms;
+
+  &:hover {  
+    transform: scale(1.08);
+    box-shadow: 0px 6px 20px -5px rgba(0,0,0,0.25);  
+   }  
+
 `;
 
 export const TitleContainer = styled.div`

@@ -112,7 +112,6 @@ const AnswerQuestionnarie = () => {
   };
 
   const answerErrorCallback = (error: string) => {
-    console.log(error);
     showToast(error, "error");
   };
 

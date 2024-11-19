@@ -3,23 +3,31 @@ import theme from "../../../../assets/theme";
 import Fonts from "../../../../assets/fonts/fonts";
 
 export const Container = styled.div`
-display: flex;
+  display: flex;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100svw;
-  height: 100svh;
-  align-items: center;
+  width: 100vw;
   justify-content: center;
   background-color: rgba(0,0,0,.7);
+
+  @media (min-width: 760px) {
+    height: 100vh;
+  }
 `;
 
 export const Modal = styled.div`
+  margin-top: 20px;
   background-color: ${theme.lightWhite};
   padding: 20px 50px;
   border-radius: 20px;
   border: solid 5px ${theme.blue};
-  z-index:999
+  width: 70%;
+  z-index: 999;
+
+  @media (min-width: 770px) {
+    height: 630px;
+  }
 `;
 
 export const Title = styled.div`
@@ -32,7 +40,21 @@ export const Title = styled.div`
 
 export const QContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
+
+export const SideContainer = styled.div`
+  width: 48%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+   
 `;
 
 export const QuestionContainer = styled.div`
@@ -79,5 +101,7 @@ export const DropDown = styled.select`
 export const ButtonGroup = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
+  margin-top: 40px;
+  width: 250px;
+
 `;

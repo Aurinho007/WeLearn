@@ -34,7 +34,7 @@ export const TextContainer = styled.div`
 export const Text = styled.p`
   font-family: ${Fonts.montserrat};
   color: ${theme.grey};
-  font-weight: 600;
+  font-weight: 400;
   font-size: 1.5rem;
   margin-bottom: 40px;
 

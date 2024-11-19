@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ButtonContainer = styled.div`
   margin-bottom: 16px;
-  margin-left: 75px;
+  /* margin-left: 75px; */
 
   @media (max-width: 768px) {
     margin-left: 0;
@@ -12,10 +12,8 @@ export const ButtonContainer = styled.div`
 
 export const ClassroomCardContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 350px);
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 25px;
-  justify-items: center;
-  justify-content: center;
   width: 100%;
 
   @media (max-width: 1200px) {

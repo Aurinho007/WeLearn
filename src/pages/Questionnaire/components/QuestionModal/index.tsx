@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ButtonGroup, Container, DropDown, Input, Label, Modal, QContainer, QuestionContainer, Title } from "./styles";
+import { ButtonGroup, Container, DropDown, Input, Label, Modal, QContainer, QuestionContainer, SideContainer, Title } from "./styles";
 import PrimaryButton from "../../../../components/Buttons/PrimaryButton";
 import SecondaryButton from "../../../../components/Buttons/SecondaryButton";
 import { createQuestion, updateQuestion } from "../../../../service/question";
@@ -123,26 +123,27 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
       <Modal onClick={(e) => e.stopPropagation()}>
         <Title>{modalType === "new" ? "Nova questão" : modalType === "view" ? `Questão ${question?.id}` : "Editar questão"}</Title>
         <QContainer>
-          <QuestionContainer>
-            <Label>Enunciado</Label>
-            <Input
-              placeholder="Quem descobriu o Brasil?"
-              value={fields.statement}
-              onChange={handleFieldChange("statement")}
-              disabled={viewOnly}
-            />
-          </QuestionContainer>
-          <QuestionContainer>
-            <Label>Dica</Label>
-            <Input
-              placeholder="Foi um português"
-              value={fields.tip}
-              onChange={handleFieldChange("tip")}
-              disabled={viewOnly}
-            />
-          </QuestionContainer>
+          <SideContainer>
+            <QuestionContainer>
+              <Label>Enunciado</Label>
+              <Input
+                placeholder="Quem descobriu o Brasil?"
+                value={fields.statement}
+                onChange={handleFieldChange("statement")}
+                disabled={viewOnly}
+              />
+            </QuestionContainer>
+            <QuestionContainer>
+              <Label>Dica</Label>
+              <Input
+                placeholder="Foi um português"
+                value={fields.tip}
+                onChange={handleFieldChange("tip")}
+                disabled={viewOnly}
+              />
+            </QuestionContainer>
 
-          <div style={{ display: "flex", flexDirection: "row" }}>
+
             <QuestionContainer>
               <Label>Alternativa correta</Label>
               <DropDown value={fields.correct} onChange={handleFieldChange("correct")} disabled={viewOnly}>
@@ -154,7 +155,7 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
               </DropDown>
             </QuestionContainer>
 
-            <QuestionContainer style={{ marginLeft: "36px" }}>
+            <QuestionContainer>
               <Label>Dificuldade</Label>
               <DropDown value={fields.dificulty} onChange={handleFieldChange("dificulty")} disabled={viewOnly}>
                 <option value="" disabled>Selecione uma opção</option>
@@ -163,39 +164,43 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
                 <option value="Difícil">Difícil</option>
               </DropDown>
             </QuestionContainer>
-          </div>
+          </SideContainer>
 
-          {(["A", "B", "C", "D"] as const).map((alt) => (
-            <QuestionContainer key={alt}>
-              <Label>Alternativa {alt}</Label>
-              <Input
-                placeholder={`Alternativa ${alt}`}
-                value={fields[`alternative${alt}` as keyof Fields]}
-                onChange={handleFieldChange(`alternative${alt}` as keyof Fields)}
-                disabled={viewOnly}
-              />
-            </QuestionContainer>
-          ))}
+          <SideContainer>
+            {(["A", "B", "C", "D"] as const).map((alt) => (
+              <QuestionContainer key={alt}>
+                <Label>Alternativa {alt}</Label>
+                <Input
+                  placeholder={`Alternativa ${alt}`}
+                  value={fields[`alternative${alt}` as keyof Fields]}
+                  onChange={handleFieldChange(`alternative${alt}` as keyof Fields)}
+                  disabled={viewOnly}
+                />
+              </QuestionContainer>
+            ))}
+          </SideContainer>
         </QContainer>
 
-        <ButtonGroup>
-          <SecondaryButton
-            text={modalType === "view" ? "Voltar" : "Cancelar"}
-            onClick={handleCancelButton}
-            width="100%"
-            outside={"blue"}
-            Ffamily="roboto"
-            Fweight={500}
-            Fsize={1.45}
-          />
+        <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+          <ButtonGroup>
+            <SecondaryButton
+              text={modalType === "view" ? "Voltar" : "Cancelar"}
+              onClick={handleCancelButton}
+              width="100%"
+              outside={"blue"}
+              Ffamily="roboto"
+              Fweight={500}
+              Fsize={1.45}
+            />
 
-          {modalType !== "view" &&
-            <>
-              <div style={{ height: 20 }}></div>
-              <PrimaryButton text={modalType === "new" ? "Adicionar" : "Editar"} onClick={addOrUpdateQuestion} />
-            </>
-          }
-        </ButtonGroup>
+            {modalType !== "view" &&
+              <>
+                <div style={{ height: 20 }}></div>
+                <PrimaryButton text={modalType === "new" ? "Adicionar" : "Editar"} onClick={addOrUpdateQuestion} />
+              </>
+            }
+          </ButtonGroup>
+        </div>
       </Modal>
     </Container>
   );
