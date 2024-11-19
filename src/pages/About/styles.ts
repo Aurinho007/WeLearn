@@ -46,6 +46,7 @@ export const Text = styled.p`
 export const Image = styled.img`
   height: 250px;
   margin-right: 80px;
+  object-fit: cover;
 
   @media (max-width: 768px) {
     margin-right: 0;

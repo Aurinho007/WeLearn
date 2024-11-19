@@ -18,11 +18,10 @@ const Layout = ({ children }: { children: JSX.Element }) => {
   return (
     <>
       {children}
-      <Baseboard />
+      {/* <Baseboard /> */}
     </>
   );
 };
-
 
 function App() {
   return (
