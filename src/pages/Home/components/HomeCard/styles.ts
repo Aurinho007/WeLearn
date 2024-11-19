@@ -14,6 +14,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  transition: ease-in-out 500ms;
+
+  &:hover {
+    transform: scale(1.08);
+  box-shadow: 0px 6px 20px -5px rgba(0,0,0,0.25);
+  }
 
   @media (max-width: 810px){
     margin-bottom: 30px;
