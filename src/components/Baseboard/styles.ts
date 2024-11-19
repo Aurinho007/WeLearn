@@ -11,7 +11,8 @@ export const Content = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: ${theme.lightBlue};
+    background-color: ${theme.white};
+    border-top: solid 5px ${theme.blue};
 `;
 
 export const Title = styled.div`

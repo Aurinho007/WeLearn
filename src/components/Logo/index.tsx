@@ -1,8 +1,13 @@
 import ROUTES from "../../constants/routesConstants";
-import Title from "./styles";
+import logo from "../../assets/images/Logo.png";
+import { Image } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 const Logo = () => {
-  return <Title to={ROUTES.HOME}>WeLearn</Title>;
+
+  const navigate = useNavigate();
+
+  return <Image src={logo} onClick={() => navigate(ROUTES.HOME)}/>;
 };
 
 export default Logo;
