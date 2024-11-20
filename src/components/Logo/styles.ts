@@ -21,7 +21,7 @@ export const T = styled.p`
 export const BT = styled.p`
   color: ${theme.blue};
   z-index: 1;
-  transform: rotate(-20deg);
+  transform: rotate(-15deg);
   margin-left: -8px;
 `;
 
