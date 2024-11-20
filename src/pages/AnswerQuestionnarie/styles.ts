@@ -44,7 +44,8 @@ export const Options = styled.div`
 `;
 
 export const OptionContainer = styled.div<{ color: string }>`
-  margin: 5px 0;
+  margin: 30px 0;
+  padding: 10px 10px;
   border-radius: 10px;
   background-color: ${props => props.color};
   cursor: pointer;
@@ -60,7 +61,6 @@ export const OptionLabel = styled.p`
   padding: 2px;
   line-height: 1.5rem;
   text-align: left;
-  padding-bottom: 40px;
 
   @media (max-width: 810px) {
     font-size: 1rem;
@@ -79,8 +79,8 @@ export const Option = styled.input`
 export const CustomOption = styled.span<{ selected: boolean }>`
 display: flex;
   margin-right: 10px;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border: 2px solid ${theme.black};
   border-radius: 50%;
   text-align: center;
@@ -94,7 +94,7 @@ display: flex;
   font-size: 1rem;
 
   @media (max-width: 810px) {
-    width: 40px;
+    width: 20px;
     height: 20px;
   }
 `;
@@ -110,6 +110,6 @@ export const ButtonContainer = styled.div`
   width: 50%;
   display: flex;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 20px;
 `;
 
