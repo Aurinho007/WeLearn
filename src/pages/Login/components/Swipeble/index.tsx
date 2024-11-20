@@ -1,13 +1,11 @@
 import {
   Container,
-  Logo,
   PhraseContainer,
   Text,
   BoldedText,
   ImageContainer,
   Image,
   Content,
-  LogoContainer,
 } from "./styles";
 import readingBoy from "../../../../assets/images/reading-boy.svg";
 
@@ -21,10 +19,6 @@ const Swipeable = (props: SwipeableProps) => {
   return (
     <Container isLogin={isLogin}>
       <Content>
-        <LogoContainer>
-          <Logo>WeLearn</Logo>
-        </LogoContainer>
-
         <PhraseContainer>
           <Text>Estude como</Text>
           <BoldedText>Sempre,</BoldedText>

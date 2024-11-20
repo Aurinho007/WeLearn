@@ -26,7 +26,7 @@ export const QuestionsHeader = styled.div<{break: boolean}>`
 `;
 
 export const Title = styled.div`
-  font-family: ${Fonts.roboto};
+  font-family: ${Fonts.poppins};
   font-weight: 500;
   font-size: 2rem;
 

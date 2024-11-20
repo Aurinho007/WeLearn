@@ -31,7 +31,7 @@ export const Modal = styled.div`
 `;
 
 export const Title = styled.div`
-  font-family: ${Fonts.roboto};
+  font-family: ${Fonts.poppins};
   font-weight: 500;
   font-size: 2rem;
   padding-bottom: 10px;

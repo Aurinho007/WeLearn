@@ -36,7 +36,7 @@ export const Header = styled.div`
 `;
 
 export const Title = styled.p`
-  font-family: ${Fonts.roboto};
+  font-family: ${Fonts.poppins};
   font-weight: 600;
   font-size: 1.7rem;
   letter-spacing: -1px;

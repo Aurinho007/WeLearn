@@ -48,7 +48,7 @@ export const Button = styled.button<{style: ISecondaryButton}>`
 
 export const Text = styled.p<{style: ISecondaryButton}>`
   color: ${theme.black};
-  font-family: ${(props) => (props.style.colored ? fonts.roboto : fonts.montserrat)};
+  font-family: ${(props) => (props.style.colored ? fonts.poppins : fonts.montserrat)};
   font-weight: ${(props) => (props.style.colored ? 600 : 500)};
   color: ${(props) => (props.style.colored ? theme.blue : theme.black)};
   font-size: ${(props) => props.style.Fsize}rem;

@@ -1,6 +1,8 @@
-import { styled } from "styled-components";
+import { styled, keyframes } from "styled-components";
 import fonts from "../../../../assets/fonts/fonts";
 import theme from "../../../../assets/theme";
+
+
 
 export const Card = styled.div`
   display: flex;
@@ -14,18 +16,16 @@ export const Card = styled.div`
   color: ${theme.black};
   box-shadow: 0px 4px 15px -10px rgba(0,0,0,0.25);
   cursor: pointer;
+  transition: ease 500ms;
 
-  transition: ease-in-out 500ms;
 
   &:hover {  
-    transform: scale(1.08);
+    transform: scale(1.1);
     box-shadow: 0px 6px 20px -5px rgba(0,0,0,0.25);  
-    border: solid 5px ${theme.blue};
-    border-radius: 8px
-
+    border-radius: 8px;
    }  
-
 `;
+
 
 export const TitleContainer = styled.div`
   display: flex;
@@ -34,7 +34,7 @@ export const TitleContainer = styled.div`
 `;
 
 export const Title = styled.p`
-  font-family: ${fonts.roboto};
+  font-family: ${fonts.poppins};
   font-weight: 500;
   line-height: 1.2rem;
   font-size: 1.3rem;

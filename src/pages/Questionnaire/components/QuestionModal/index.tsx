@@ -188,7 +188,7 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
               onClick={handleCancelButton}
               width="100%"
               outside={"blue"}
-              Ffamily="roboto"
+              Ffamily="poppins"
               Fweight={500}
               Fsize={1.45}
             />

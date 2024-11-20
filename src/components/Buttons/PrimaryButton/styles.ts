@@ -7,14 +7,12 @@ export const Container = styled.div<{style: IButton}>`
   width: ${props => props.style.width ?? "100%" };
   height: auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const Button = styled.button`
   width: 100%;
   height: 2.5rem;
-  font-family: ${fonts.roboto};
+  font-family: ${fonts.poppins};
   font-weight: 600;
   font-size: 1.2rem;
   color: ${theme.white};
@@ -22,6 +20,10 @@ export const Button = styled.button`
   border: none;
   background-color: ${theme.blue};
   cursor: pointer;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 
   &:active{
     filter: brightness(0.9);

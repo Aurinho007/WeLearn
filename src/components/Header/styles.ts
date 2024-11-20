@@ -24,7 +24,7 @@ export const Container = styled.div`
 
 export const Title = styled(Link)`
   text-decoration: none;
-  font-family: ${fonts.roboto};
+  font-family: ${fonts.poppins};
   font-style: italic;
   font-weight: 800;
   font-size: 2.5rem;

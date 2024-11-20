@@ -19,20 +19,6 @@ export const Content = styled.div`
   padding: 30px 40px;
 `;
 
-export const LogoContainer = styled.div`
-  border-bottom: solid 6px ${theme.white};
-  height: 30px;
-  padding-bottom: 20px;
-`;
-
-export const Logo = styled.p`
-  font-family: ${fonts.roboto};
-  font-weight: 900;
-  font-style: italic;
-  font-size: 2rem;
-  letter-spacing: -1px; 
-`;
-
 export const PhraseContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -43,15 +29,15 @@ export const PhraseContainer = styled.div`
 `;
 
 export const Text = styled.p`
-  font-family: ${fonts.roboto};
+  font-family: ${fonts.poppins};
   color: ${theme.black};
-  font-weight: 300;
+  font-weight: 400;
 `;
 
 export const BoldedText = styled.p`
-  font-family: ${fonts.roboto};
+  font-family: ${fonts.poppins};
   font-weight: 600;
-  font-style: italic;
+  /* font-style: italic; */
   color: ${theme.white};
 `;
 

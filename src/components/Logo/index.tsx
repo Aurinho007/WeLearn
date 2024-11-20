@@ -1,13 +1,19 @@
 import ROUTES from "../../constants/routesConstants";
-import logo from "../../assets/images/Logo.svg";
-import { Image } from "./styles";
+import { BT, Container, T, DT } from "./styles";
 import { useNavigate } from "react-router-dom";
 
 const Logo = () => {
 
   const navigate = useNavigate();
 
-  return <Image src={logo} onClick={() => navigate(ROUTES.HOME)}/>;
+  return (
+
+    <Container onClick={() => navigate(ROUTES.HOME)}>
+      <T>W</T>
+      <BT>e</BT>
+      <T>L</T>
+      <DT>earn</DT>
+    </Container>);
 };
 
 export default Logo;

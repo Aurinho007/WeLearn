@@ -1,8 +1,8 @@
 import "./fonts.css";
 
 const Fonts = {
-  roboto: "'Roboto', sans-serif",
-  montserrat: "'Montserrat', sans-serif"
+  montserrat: "'Montserrat', sans-serif",
+  poppins: "'Poppins', sans-serif"
 };
 
 export default Fonts;
