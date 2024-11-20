@@ -29,10 +29,10 @@ export const LeftContentContainer = styled.div`
 
 export const MainPhrase = styled.span`
   font-family: ${Fonts.montserrat};
-  font-weight: 600;
-  font-size: 3.8rem;
+  font-weight: 700;
+  font-size: 3.5rem;
   line-height: 4.5rem;
-  letter-spacing: 3px;
+  letter-spacing: -1px;
   text-align: left;
 
   @media (max-width: 850px) {

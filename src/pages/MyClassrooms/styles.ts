@@ -14,7 +14,6 @@ export const ClassroomCardContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 25px;
-  width: 100%;
 
   @media (max-width: 1200px) {
     grid-template-columns: repeat(3, 1fr); /* Três colunas em telas menores */
@@ -25,6 +24,9 @@ export const ClassroomCardContainer = styled.div`
   }
 
   @media (max-width: 600px) {
-    grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 `;

@@ -20,6 +20,9 @@ export const Card = styled.div`
   &:hover {  
     transform: scale(1.08);
     box-shadow: 0px 6px 20px -5px rgba(0,0,0,0.25);  
+    border: solid 5px ${theme.blue};
+    border-radius: 8px
+
    }  
 
 `;

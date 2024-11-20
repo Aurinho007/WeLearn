@@ -1,6 +1,6 @@
 import { getUser } from "../controllers/userController";
 
-export const BASE_URL = "http://localhost:3001/api";
+export const BASE_URL = "http://192.168.68.109:3001/api";
 export const EXPIRED_TOKEN_ERROR = "Token expirado";
 
 export const doRequest = async (

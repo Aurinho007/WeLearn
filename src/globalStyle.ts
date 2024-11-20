@@ -67,5 +67,7 @@ export const GlobalStyles = createGlobalStyle`
     color: ${theme.black};
     line-height: 1;
     overflow-x: hidden;
+    /* background: linear-gradient(to top, rgba(84, 200, 236, .5), rgba(247, 247, 255, 1) 60%); */
+
   }
 `;

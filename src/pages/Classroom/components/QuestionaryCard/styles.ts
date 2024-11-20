@@ -10,10 +10,10 @@ const Card = styled.div`
   height: 70px;
   border-radius: 8px;
   padding: 8px 16px;
-  width: 500px;
   color: ${theme.black};
   cursor: pointer;
   margin-bottom: 15px;
+  width: 90%;
 `;
 
 const TitleContainer = styled.div`

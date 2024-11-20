@@ -1,5 +1,4 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import Ranking from "./components/Ranking";
 import { ClassroomContainer, Left, LeftHeader, Right, Title, QuestionaryContainer, HeaderRight } from "./styles";
 import { useUser } from "../../contexts/UserContext";
 import ConclusionBar from "../../components/ConclusionBar";
@@ -18,10 +17,11 @@ import ErroCard from "../../components/ErrorCard/index";
 import Loader from "../../components/Loader";
 import ROUTES from "../../constants/routesConstants";
 import ErrorCard from "../../components/ErrorCard/index";
+import Ranking from './components/Ranking/index';
 
 const Classroom = () => {
   const location = useLocation();
-  const { isTeacher, isStudent } = useUser();
+  const { isTeacher, isStudent, isMobile } = useUser();
   const { showToast } = useToast();
   const navigate = useNavigate();
 
@@ -112,7 +112,7 @@ const Classroom = () => {
         <Left>
           <LeftHeader>
             {
-              isStudent() &&
+              isStudent() && !isMobile &&
               <RankingIcon
                 size={100}
                 elo={room.elo as string}
@@ -124,7 +124,8 @@ const Classroom = () => {
               elo={room.elo as string}
             />
           </LeftHeader>
-          <Ranking />
+          { !isMobile && <Ranking />}
+          
         </Left>
 
         <Right>
@@ -176,6 +177,13 @@ const Classroom = () => {
           </QuestionaryContainer>
 
 
+          { isMobile && <>
+            <Title>
+              Ranking
+            </Title>
+            <Ranking />
+          </>
+          }
         </Right>
       </ClassroomContainer>
     </>
