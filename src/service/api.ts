@@ -1,6 +1,8 @@
 import { getUser } from "../controllers/userController";
 
-export const BASE_URL = "http://192.168.68.109:3001/api";
+export const BASE_URL = process.env.REACT_APP_API_URL;
+
+console.log("aaaa", BASE_URL);
 export const EXPIRED_TOKEN_ERROR = "Token expirado";
 
 export const doRequest = async (

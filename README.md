@@ -22,20 +22,24 @@ Bem-vindo ao WeLearn - uma plataforma colaborativa e gamificada de aprendizado d
 ## Teste na sua máquina!
 
 ### Configurando do Backend
-`git clone  https://github.com/Felipecmc/weLearn-api.git`
+Clone o prpjeto: `git clone  https://github.com/Felipecmc/weLearn-api.git`
 
-`cd weLearn-api`
+Acesse o projeto pelo terminal: `cd weLearn-api`
 
-`npm install`
+instale as dependências: `npm install`
 
-`npm start`
+rode o projeto: `npm start`
 
 
 ### Configurando o Frontend (este projeto)
-`git clone  https://github.com/Aurinho007/WeLearn.git`
+Clone o prpjeto: `git clone  https://github.com/Aurinho007/WeLearn.git`
 
-`cd WeLearn`
+Acesse o projeto pelo terminal: `cd WeLearn`
 
-`npm install` ou `yarn install`
+Abra o VsCode: `code .`
 
-`npm start` ou `yarn start`
+Crie o arquivo `.env.local` e insira o link da api local do WeLearn: `REACT_APP_API_URL=http://localhost:3001/api`
+
+instale as dependências: `npm install` ou `yarn install`
+
+rode o projeto: `npm start` ou `yarn start`
