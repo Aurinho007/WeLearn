@@ -56,6 +56,6 @@ export const Text = styled.p<{style: ISecondaryButton}>`
   white-space: nowrap;
 
   @media (max-width: 810px) {
-    font-size: .8rem;
+    font-size: 1rem;
   }
 `;

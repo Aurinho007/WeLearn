@@ -14,8 +14,12 @@ export const QuestionTitle = styled.p`
   font-family: ${Fonts.montserrat};
   font-size: 1.2rem;
   font-weight: 400;
-  width: 50%;
+  width: 60%;
   text-align: left;
+
+  @media (max-width: 810px) {
+    font-size: 1rem;
+  }
 `;
 
 export const Statement = styled.p`
@@ -23,11 +27,19 @@ export const Statement = styled.p`
   font-weight: 600;
   font-size: 1.4rem;
   margin-top: 5px;
-  width: 50%;
+  width: 60%;
+  margin-bottom: 30px;
+  text-align: left;
+
+  @media (max-width: 810px) {
+    font-size: 1.2rem;
+  }
+
 `;
 
 export const Options = styled.div`
-  width: 50%;
+  width: 70%;
+  min-width: 300px;
   margin-top: 20px;
 `;
 
@@ -40,35 +52,51 @@ export const OptionContainer = styled.div<{ color: string }>`
 
 export const OptionLabel = styled.p`
   position: relative;
-  line-height: 4;
+  display: flex;
+  flex-direction: row;
   font-family: ${Fonts.montserrat};
   font-size: 1.2rem;
   font-weight: 500;
   padding: 2px;
+  line-height: 1.5rem;
+  text-align: left;
+  padding-bottom: 40px;
+
+  @media (max-width: 810px) {
+    font-size: 1rem;
+  }
 `;
 
 export const Option = styled.input`
+  position: absolute;
   width: 35px;
   height: 35px;
   left: 0;
-  top: 20px;
-  position: absolute;
+  top: 0;
   opacity: 0;
 `;
 
 export const CustomOption = styled.span<{ selected: boolean }>`
-  display: inline-block;
+display: flex;
   margin-right: 10px;
   width: 30px;
   height: 30px;
   border: 2px solid ${theme.black};
   border-radius: 50%;
   text-align: center;
+  justify-content: center;
+  align-items: center;
   line-height: 30px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   color: ${(props) => (props.selected ? theme.white : theme.black)};
   background-color: ${(props) => (props.selected ? theme.black : "transparent")};
+  font-size: 1rem;
+
+  @media (max-width: 810px) {
+    width: 40px;
+    height: 20px;
+  }
 `;
 
 export const AuxButtons = styled.div`

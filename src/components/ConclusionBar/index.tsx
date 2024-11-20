@@ -7,7 +7,7 @@ const ConclusionBar = (props: ConclusionBarProps) => {
   return (
     <Bar height={height}>
       <FillBar conclusionPercent={conclusionPercent} />
-      <PercentNumber>{conclusionPercent}%</PercentNumber>
+      <PercentNumber>{conclusionPercent.toFixed(0)}%</PercentNumber>
     </Bar>
 
   );
