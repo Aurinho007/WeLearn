@@ -14,6 +14,12 @@ const Card = styled.div`
   cursor: pointer;
   margin-bottom: 15px;
   width: 90%;
+  transition: ease 500ms;
+
+  &:hover {  
+    transform: scale(1.05);
+    box-shadow: 0px 6px 20px -3px rgba(0,0,0,0.25);  
+   } 
 `;
 
 const TitleContainer = styled.div`

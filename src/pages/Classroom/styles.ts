@@ -46,15 +46,16 @@ export const HeaderRight = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
   margin-bottom: 10px;
-  width: 100%;
+  @media (min-width: 768px){
+    gap: 50px;
+  }
 `;
 
 export const Title = styled.p`
   font-family: ${Fonts.poppins};
   font-weight: 500;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
 
   
   @media (max-width: 768px) {

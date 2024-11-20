@@ -1,4 +1,4 @@
-import { styled, keyframes } from "styled-components";
+import { styled } from "styled-components";
 import fonts from "../../../../assets/fonts/fonts";
 import theme from "../../../../assets/theme";
 
