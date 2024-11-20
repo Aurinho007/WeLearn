@@ -6,7 +6,7 @@ import ErroCard from "../../components/ErrorCard/index";
 import { Container, Dropdown, DropdownItem, Header, HeaderItem, Item, ItemAction, Line, QuestionsHeader, Separator, TableContainer, Title } from "./styles";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
 import QuestionModal from "./components/QuestionModal";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { delQuestion, getQuestions } from "../../service/question";
 import IQuestion from "../../interfaces/Question";
 import Loader from "../../components/Loader";
@@ -14,6 +14,7 @@ import empyQuestion from "./constants";
 import { useToast } from "../../contexts/ToastContext";
 import ROUTES from "../../constants/routesConstants";
 import { releaseQuestionnarie } from '../../service/questionnnarie';
+import { useUser } from "../../contexts/UserContext";
 
 const Questionnaire = () => {
   const location = useLocation();
@@ -23,11 +24,15 @@ const Questionnaire = () => {
   const [modalType, setModalType] = useState<"new" | "edit" | "view">("new");
   const [question, setQuestion] = useState<IQuestion>(empyQuestion);
 
+  const optionsRef = useRef<HTMLDivElement>(null);
+  const [showOptions, setShowOptions] = useState(false);
+
   const [questions, setQuestions] = useState<IQuestion[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
   const { showToast } = useToast();
+  const { isMobile } = useUser();
 
   const { room, questionnaire }: { room: IClassroom, questionnaire: IQuestionnarie } = location.state || {};
 
@@ -39,6 +44,18 @@ const Questionnaire = () => {
 
     getQuestions(questionnaire.id, getSuccesCallback, getErrorCallback);
   }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (optionsRef.current && !optionsRef.current.contains(event.target as Node)) {
+        setShowOptions(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
 
   const getSuccesCallback = (response: IQuestion[]) => {
     setQuestions(response);
@@ -60,6 +77,7 @@ const Questionnaire = () => {
     setModalType("view");
     setQuestion(currentQuestion);
     setShowModal(true);
+    setShowOptions(false);
   };
 
   const editQuestion = (question: IQuestion) => {
@@ -67,6 +85,7 @@ const Questionnaire = () => {
     setModalType("edit");
     setQuestion(currentQuestion);
     setShowModal(true);
+    setShowOptions(false);
   };
 
   const deleteQuestion = (id: number) => {
@@ -74,6 +93,7 @@ const Questionnaire = () => {
     if (confirmDelete) {
       delQuestion(id, delQuestionSucessCallback, delQuestionErrorCallback);
     }
+    setShowOptions(false);
   };
 
   const delQuestionSucessCallback = () => {
@@ -87,10 +107,10 @@ const Questionnaire = () => {
 
   const release = () => {
 
-    // if(questions.length < 3 || !questions){
-    //   showToast("É necessário pelo menos 3 questões para o envio", "error");
-    //   return;
-    // }
+    if(questions.length < 1 || !questions){
+      showToast("É necessário pelo menos uma questão para o envio", "error");
+      return;
+    }
 
     const confirmRelease = confirm("Confirma o envio para os alunos?\n(Não pode ser desfeito)");
     if (confirmRelease) releaseQuestionnarie(questionnaire.id, releaseQuestionSucessCallback, releaseQuestionErrorCallback);
@@ -136,7 +156,7 @@ const Questionnaire = () => {
           Fsize={1}
           Fweight={400}
           outside="blue"
-          text="Enviar questionário para alunos"
+          text="Enviar p/ alunos"
           onClick={release}
         />
         <SecondaryButton
@@ -151,18 +171,26 @@ const Questionnaire = () => {
     );
   };
 
+  const getQuestionResume = (question: string) => {
+    if( isMobile ) {
+      return question.substring(0, 10).concat("...");
+    } else {
+      return question.substring(0, 40).concat(`${question.length < 40 ? "" : "..."}`);
+    }
+  }
+
   if (loading) return <Loader height={130} width={130} />;
 
   return (
     <>
       <PageHeader
         title={room.nomeSala}
-        subTitle={`Questionário ${questionnaire.id}`}
+        subTitle={`${questionnaire.nome}`}
         hasBackButton
       />
 
       <Container>
-        <QuestionsHeader>
+        <QuestionsHeader break={questionnaire.liberado}>
           <Title>Questões</Title>
           <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
             {renderActionButtons()}
@@ -175,7 +203,7 @@ const Questionnaire = () => {
             <>
               <Header>
                 <HeaderItem>Questão</HeaderItem>
-                <HeaderItem>Tipo</HeaderItem>
+                <HeaderItem>Resumo</HeaderItem>
                 <HeaderItem>Dificuldade</HeaderItem>
               </Header>
               <Separator />
@@ -187,17 +215,17 @@ const Questionnaire = () => {
             questions && questions.length > 0 ?
               questions.map((item, index) => {
                 return (
-                  <Line key={index}>
+                  <Line showOptions={showOptions} key={index} onClick={() => isMobile ? setShowOptions(true) : null} >
                     <Item>
                       {index + 1}
                     </Item>
                     <Item>
-                      Múltipla escolha
+                      {getQuestionResume(item.enunciado)}
                     </Item>
                     <Item>
                       {item.dificuldade}
                     </Item>
-                    <ItemAction>
+                    <ItemAction ref={optionsRef} >
                       <span className="action-dots">...</span>
                       <Dropdown className="dropdown">
                         <DropdownItem onClick={() => editQuestion(item)}>Editar</DropdownItem>
