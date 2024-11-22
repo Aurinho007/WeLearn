@@ -4,6 +4,7 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import { UserProvider } from "./contexts/UserContext";
 import { ToastProvider } from "./contexts/ToastContext";
+import { ModalProvider } from "./contexts/ModalContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,7 +14,9 @@ root.render(
   <React.StrictMode>
     <UserProvider>
       <ToastProvider>
-        <App />
+        <ModalProvider>
+          <App />
+        </ModalProvider>
       </ToastProvider>
     </UserProvider>
   </React.StrictMode>

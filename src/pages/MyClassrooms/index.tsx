@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ClassroomCard from "./components/ClassroomCard";
 import PageHeader from "../../components/PageHeader";
@@ -12,11 +12,13 @@ import ROUTES from "../../constants/routesConstants";
 import ClassroomAction from "./components/ClasroomAction";
 import { CreateClassroomDto, EntryClassroomDto } from "../../dtos/classroom";
 import { useToast } from "../../contexts/ToastContext";
+import { ModalContext } from "../../contexts/ModalContext";
 
 const Classrooms = () => {
   const navigate = useNavigate();
   const { isLogged, isTeacher, isStudent } = useUser();
   const { showToast } = useToast();
+  const modal = useContext(ModalContext);
 
   const classrooms = useRef<IClassroom[]>([]);
   const [loading, setLoading] = useState(true);
@@ -24,7 +26,7 @@ const Classrooms = () => {
 
   const successCallback = (response: IClassroom[]) => {
     response.forEach(item => {
-      if(item.percentualConcluido == null){
+      if (item.percentualConcluido == null) {
         item.percentualConcluido = 0;
       }
     });
@@ -49,10 +51,21 @@ const Classrooms = () => {
     navigate(ROUTES.CLASSROOM, { state: { room } });
   };
 
-  const handleCreateClassroom = () => {
-    const className = prompt("Digite o nome da sala:");
+  const handleCreateClassroom = async () => {
+    let className: string | null = null;
+
+    if (modal) {
+      className = await modal.showModal({
+        title: "Qual será o nome da sala?",
+        subTitle: 'Use o nome da turma também',
+        placeholder: 'Matemática - 5º ano B',
+        buttonText: 'Adicionar',
+      });
+
+    }
 
     if (!className) return;
+    
 
     const classroomName: CreateClassroomDto = {
       nome: className as string
@@ -65,10 +78,21 @@ const Classrooms = () => {
     );
   };
 
-  const handleEnterClassroom = () => {
-    const classId = parseInt(prompt("Digite o Código da sala:") as string);
+  const handleEnterClassroom = async () => {
+    let classId: string | number | null = null;
+
+    if (modal) {
+      classId = await modal.showModal({
+        title: "Qual é o código da sala?",
+        placeholder: '0000',
+        buttonText: 'Entar',
+      });
+
+    }
 
     if (!classId) return;
+
+    classId = parseInt(classId);
 
     const classroomId: EntryClassroomDto = {
       idSala: classId as number
