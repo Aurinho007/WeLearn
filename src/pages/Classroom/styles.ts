@@ -37,8 +37,6 @@ export const Right = styled.div`
 
   @media (max-width: 768px) {
     margin-left: 0;
-    margin-bottom: 40px;
-
   }
 `;
 

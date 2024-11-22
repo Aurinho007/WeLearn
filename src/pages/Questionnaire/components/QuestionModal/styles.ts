@@ -10,6 +10,7 @@ export const Container = styled.div`
   width: 100vw;
   justify-content: center;
   background-color: rgba(0,0,0,.7);
+  z-index: 999;
 
   @media (min-width: 760px) {
     height: 100vh;

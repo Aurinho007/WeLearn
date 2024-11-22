@@ -8,6 +8,10 @@ export const Container = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 810px) {
+    margin-bottom: 50px;
+  }
 `;
 
 export const QuestionTitle = styled.p`
@@ -33,6 +37,8 @@ export const Statement = styled.p`
 
   @media (max-width: 810px) {
     font-size: 1.2rem;
+    width: 90%;
+    margin-bottom: 0;
   }
 
 `;
@@ -41,6 +47,10 @@ export const Options = styled.div`
   width: 70%;
   min-width: 300px;
   margin-top: 20px;
+
+  @media (max-width: 810px) {
+    width: 90%;
+  }
 `;
 
 export const OptionContainer = styled.div<{ color: string }>`
@@ -49,10 +59,12 @@ export const OptionContainer = styled.div<{ color: string }>`
   border-radius: 10px;
   background-color: ${props => props.color};
   cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: start;
 `;
 
 export const OptionLabel = styled.p`
-  position: relative;
   display: flex;
   flex-direction: row;
   font-family: ${Fonts.montserrat};
@@ -68,16 +80,13 @@ export const OptionLabel = styled.p`
 `;
 
 export const Option = styled.input`
-  position: absolute;
-  width: 35px;
-  height: 35px;
-  left: 0;
-  top: 0;
   opacity: 0;
 `;
 
 export const CustomOption = styled.span<{ selected: boolean }>`
-display: flex;
+ position: absolute;
+  left: 5px;
+  display: flex;
   margin-right: 10px;
   width: 20px;
   height: 20px;
@@ -86,9 +95,8 @@ display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
-  line-height: 30px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.5s ease;
   color: ${(props) => (props.selected ? theme.white : theme.black)};
   background-color: ${(props) => (props.selected ? theme.black : "transparent")};
   font-size: 1rem;

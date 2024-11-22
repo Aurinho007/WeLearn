@@ -1,3 +1,4 @@
+import MobileButton from "../../../../components/Buttons/mobileButton";
 import SecondaryButton from "../../../../components/Buttons/SecondaryButton";
 import { useUser } from "../../../../contexts/UserContext";
 
@@ -8,10 +9,15 @@ type ClassroomActionProps = {
 
 const ClassroomAction = (props: ClassroomActionProps) => {
   const { handleCreateClassroom, handleEnterClassroom} = props;
-  const { isStudent } = useUser(); 
+  const { isStudent, isMobile } = useUser(); 
 
   const renderActionButton = () => {
     if (isStudent()) {
+
+      if (isMobile){
+        return <MobileButton label="Entrar em uma sala" onClick={handleEnterClassroom} />;
+      }
+
       return (
         <SecondaryButton
           Ffamily="montserrat"
@@ -22,6 +28,11 @@ const ClassroomAction = (props: ClassroomActionProps) => {
           onClick={handleEnterClassroom}
         />
       );
+    }
+
+    if (isMobile) {
+      return <MobileButton label="Adicionar sala" onClick={handleCreateClassroom} />;
+      
     }
 
     return (

@@ -18,6 +18,7 @@ import Loader from "../../components/Loader";
 import ROUTES from "../../constants/routesConstants";
 import ErrorCard from "../../components/ErrorCard/index";
 import Ranking from './components/Ranking/index';
+import MobileButton from "../../components/Buttons/mobileButton";
 
 const Classroom = () => {
   const location = useLocation();
@@ -124,8 +125,8 @@ const Classroom = () => {
               elo={room.elo as string}
             />
           </LeftHeader>
-          { !isMobile && <Ranking />}
-          
+          {!isMobile && <Ranking />}
+
         </Left>
 
         <Right>
@@ -133,15 +134,22 @@ const Classroom = () => {
             <Title>
               Questionários
             </Title>
-            {isTeacher() &&
-              <SecondaryButton
-                Ffamily="montserrat"
-                Fsize={1}
-                Fweight={400}
-                onClick={handleClickCreateQuestionnarie}
-                outside="blue"
-                text="Adicionar"
-              />
+            {isTeacher() ?
+              isMobile ?
+                <MobileButton
+                  label="Adicionar questionário"
+                  onClick={handleClickCreateQuestionnarie}
+                />
+                :
+                <SecondaryButton
+                  Ffamily="montserrat"
+                  Fsize={1}
+                  Fweight={400}
+                  onClick={handleClickCreateQuestionnarie}
+                  outside="blue"
+                  text="Adicionar"
+                />
+              : <></>
             }
 
           </HeaderRight>
@@ -166,7 +174,7 @@ const Classroom = () => {
                   return (
                     <QuestionaryCard
                       key={index}
-                      title={"Questionário " + ((index - questionnaries.length)*-1)}
+                      title={"Questionário " + ((index - questionnaries.length) * -1)}
                       description={item.nome}
                       onClick={() => handleClickQuestionnarie(item)}
                       isDone={item.isDone}
@@ -177,7 +185,7 @@ const Classroom = () => {
           </QuestionaryContainer>
 
 
-          { isMobile && <>
+          {isMobile && <>
             <Title>
               Ranking
             </Title>

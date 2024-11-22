@@ -15,6 +15,7 @@ import { useToast } from "../../contexts/ToastContext";
 import ROUTES from "../../constants/routesConstants";
 import { releaseQuestionnarie } from '../../service/questionnnarie';
 import { useUser } from "../../contexts/UserContext";
+import MobileButton from "../../components/Buttons/mobileButton";
 
 const Questionnaire = () => {
   const location = useLocation();
@@ -107,7 +108,7 @@ const Questionnaire = () => {
 
   const release = () => {
 
-    if(questions.length < 1 || !questions){
+    if (questions.length < 1 || !questions) {
       showToast("É necessário pelo menos uma questão para o envio", "error");
       return;
     }
@@ -136,6 +137,36 @@ const Questionnaire = () => {
   }
 
   const renderActionButtons = () => {
+
+    if (isMobile) {
+      if (questionnaire.liberado) {
+        return (
+          <MobileButton
+            label="Acessar Dashboard"
+            onClick={() => alert("Em breve!")}
+          />);
+      }
+
+      return (
+        <>
+          <MobileButton
+            label="Enviar para alunos"
+            onClick={release}
+          />
+          <SecondaryButton
+            Ffamily="montserrat"
+            Fsize={1}
+            Fweight={400}
+            outside="blue"
+            text="Adicionar Questão"
+            onClick={createQuestion}
+          />
+        </>
+      );
+
+    }
+
+
     if (questionnaire.liberado) {
       return (
         <SecondaryButton
@@ -172,7 +203,7 @@ const Questionnaire = () => {
   };
 
   const getQuestionResume = (question: string) => {
-    if( isMobile ) {
+    if (isMobile) {
       return question.substring(0, 10).concat("...");
     } else {
       return question.substring(0, 40).concat(`${question.length < 40 ? "" : "..."}`);
@@ -190,12 +221,9 @@ const Questionnaire = () => {
       />
 
       <Container>
-        <QuestionsHeader break={questionnaire.liberado}>
+        <QuestionsHeader>
           <Title>Questões</Title>
-          <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-            {renderActionButtons()}
-          </div>
-
+          {renderActionButtons()}
         </QuestionsHeader>
 
         <TableContainer>

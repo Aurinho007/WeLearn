@@ -45,15 +45,19 @@ export const NavSeparator = styled.p`
   }
 `;
 
-export const HamburgerIcon = styled.div`
+export const HamburgerIcon = styled.div<{ isOpen: boolean }>`
   display: none;
   font-size: 2.5rem;
   cursor: pointer;
+
+  transition: ease 500ms;
 
   @media (max-width: 768px) {
     display: block;
     color: ${theme.black};
     margin-right: 20px;
+    transform: ${props => props.isOpen ? "rotate(90deg)" : ""};
+
   }
 `;
 
@@ -74,7 +78,6 @@ export const MobileMenu = styled.div<{ isOpen: boolean }>`
     padding: 10px 20px;
     border-radius: 8px;
     box-shadow: 0px 4px 15px -10px rgba(0,0,0,0.25);
-
 
     & > *:last-child {
       border-top: 3px solid ${theme.blue}; 

@@ -15,10 +15,6 @@ const Nav = () => {
 
   const { isLogged, isMobile } = useUser();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   // Fecha o menu ao clicar fora dele
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -33,7 +29,7 @@ const Nav = () => {
 
   return (
     <NavContainer>
-      <HamburgerIcon onClick={toggleMenu}>
+      <HamburgerIcon onClick={() => setIsMenuOpen(!isMenuOpen)} isOpen={isMenuOpen}>
         &#9776;
       </HamburgerIcon>
       <MobileMenu ref={menuRef} isOpen={isMenuOpen}>

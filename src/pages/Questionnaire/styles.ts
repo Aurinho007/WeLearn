@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Fonts from "../../assets/fonts/fonts";
 import theme from "../../assets/theme";
-import { handleClick } from '../../components/Buttons/utils';
 
 export const Container = styled.div`
   display: flex;
@@ -14,15 +13,11 @@ export const Container = styled.div`
   }
 `;
 
-export const QuestionsHeader = styled.div<{break: boolean}>`
+export const QuestionsHeader = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-
-  @media (max-width: 768px) {
-    flex-direction: ${props => props.break ? "row" : "column"};
-  }
 `;
 
 export const Title = styled.div`

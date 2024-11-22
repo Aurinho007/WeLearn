@@ -25,7 +25,7 @@ export const Button = styled.button`
   align-items: center;
   display: flex;
 
-  &:active{
+  &:active {
     filter: brightness(0.9);
   }
 `;
