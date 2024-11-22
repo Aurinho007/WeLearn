@@ -23,6 +23,7 @@ export const QuestionTitle = styled.p`
 
   @media (max-width: 810px) {
     font-size: 1rem;
+    width: 90%;
   }
 `;
 
@@ -38,9 +39,14 @@ export const Statement = styled.p`
   @media (max-width: 810px) {
     font-size: 1.2rem;
     width: 90%;
-    margin-bottom: 0;
   }
+`;
 
+export const AuxButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  justify-content: center;
 `;
 
 export const Options = styled.div`
@@ -49,7 +55,8 @@ export const Options = styled.div`
   margin-top: 20px;
 
   @media (max-width: 810px) {
-    width: 90%;
+    width: 100%;
+    margin-top: 0;
   }
 `;
 
@@ -107,12 +114,6 @@ export const CustomOption = styled.span<{ selected: boolean }>`
   }
 `;
 
-export const AuxButtons = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 50%;
-  justify-content: center;
-`;
 
 export const ButtonContainer = styled.div`
   width: 50%;

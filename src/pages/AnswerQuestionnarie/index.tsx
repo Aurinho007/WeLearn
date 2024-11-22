@@ -13,6 +13,8 @@ import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import TerciaryButton from "../../components/Buttons/TerciaryButton";
 import theme from "../../assets/theme";
 import { answerQuestionnarie } from "../../service/answerQuestionnarie";
+import { useUser } from "../../contexts/UserContext";
+import MobileButton from "../../components/Buttons/mobileButton";
 
 export type AnswerType = {
   idQuestao?: number,
@@ -27,6 +29,7 @@ const AnswerQuestionnarie = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { showToast } = useToast();
+  const { isMobile } = useUser();
 
   const { room, questionnaire }: { room: IClassroom, questionnaire: IQuestionnarie } = location.state || {};
 
@@ -120,6 +123,16 @@ const AnswerQuestionnarie = () => {
   };
 
   const renderAnswerQuestionButton = () => {
+
+    if (isMobile) {
+      return (
+        <MobileButton
+          onClick={answerQuestion}
+          label="Responder"
+        />
+      );
+    }
+
     return (
       <PrimaryButton
         width="200px"
@@ -130,6 +143,16 @@ const AnswerQuestionnarie = () => {
   };
 
   const renderNextQuestionButton = () => {
+
+    if (isMobile) {
+      return (
+        <MobileButton
+          onClick={goToNextQuestion}
+          label="Próxima >"
+        />
+      );
+    }
+
     return (
       <TerciaryButton
         Fsize={1.3}
@@ -154,6 +177,28 @@ const AnswerQuestionnarie = () => {
     return "";
   };
 
+  const renderAuxButtons = () => {
+    return (
+      <AuxButtons>
+        <TerciaryButton
+          text="Dica"
+          Fsize={1.2}
+          colored={false}
+          onClick={() => alert("Em breve!")}
+          tip="A dica custa 50 WeCoins"
+        />
+
+        <TerciaryButton
+          text="Não sei"
+          Fsize={1.2}
+          colored={false}
+          onClick={jumpQuestion}
+          tip="Você também ganha XP e WeCoins por não saber uma questão"
+        />
+      </AuxButtons>
+    );
+  };
+
   if (loading) return <Loader height={120} width={120} />;
 
   return (
@@ -171,6 +216,11 @@ const AnswerQuestionnarie = () => {
         <Statement>
           {currentQuestion?.enunciado}
         </Statement>
+
+        {
+          !showAnswer && isMobile &&
+          renderAuxButtons()
+        }
 
         <Options>
           {
@@ -204,24 +254,8 @@ const AnswerQuestionnarie = () => {
         </Options>
 
         {
-          !showAnswer &&
-          <AuxButtons>
-            <TerciaryButton
-              text="Dica"
-              Fsize={1.2}
-              colored={false}
-              onClick={() => alert("Em breve!")}
-              tip="A dica custa 50 WeCoins"
-            />
-
-            <TerciaryButton
-              text="Não sei"
-              Fsize={1.2}
-              colored={false}
-              onClick={jumpQuestion}
-              tip="Você também ganha XP e WeCoins por não saber uma questão"
-            />
-          </AuxButtons>
+          !showAnswer && !isMobile &&
+          renderAuxButtons()
         }
 
         <ButtonContainer>

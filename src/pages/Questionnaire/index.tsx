@@ -223,7 +223,9 @@ const Questionnaire = () => {
       <Container>
         <QuestionsHeader>
           <Title>Questões</Title>
-          {renderActionButtons()}
+          <div style={{display: "flex", gap: 30}}>
+            {renderActionButtons()}
+          </div>
         </QuestionsHeader>
 
         <TableContainer>

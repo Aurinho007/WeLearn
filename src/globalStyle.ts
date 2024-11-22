@@ -52,7 +52,7 @@ export const GlobalStyles = createGlobalStyle`
   /* Configurações de root e largura */
   #root {
     width: 100vw;
-    max-width: 1820px;
+    max-width: 1400px;
     padding: 0 8%;
     overflow-x: hidden;
     overflow-y: hidden;

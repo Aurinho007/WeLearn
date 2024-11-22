@@ -190,7 +190,7 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
               outside={"blue"}
               Ffamily="poppins"
               Fweight={500}
-              Fsize={1.45}
+              Fsize={1}
             />
 
             {modalType !== "view" &&
