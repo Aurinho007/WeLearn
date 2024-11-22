@@ -15,6 +15,7 @@ const Card = styled.div`
   margin-bottom: 15px;
   width: 90%;
   transition: ease 500ms;
+  min-width: 300px;
 
   &:hover {  
     transform: scale(1.05);
