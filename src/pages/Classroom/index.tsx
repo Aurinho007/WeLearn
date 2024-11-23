@@ -11,7 +11,7 @@ import IClassroom from "../../interfaces/Classroom";
 import { CreateQuestionnarieDTO } from "../../dtos/questionnarie";
 import { useToast } from "../../contexts/ToastContext";
 import { createQuestionnarie, getAllQuestionnaries } from "../../service/questionnnarie";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import IQuestionnarie from "../../interfaces/Questionnarie";
 import ErroCard from "../../components/ErrorCard/index";
 import Loader from "../../components/Loader";
@@ -19,6 +19,7 @@ import ROUTES from "../../constants/routesConstants";
 import ErrorCard from "../../components/ErrorCard/index";
 import Ranking from './components/Ranking/index';
 import MobileButton from "../../components/Buttons/mobileButton";
+import { ModalContext } from "../../contexts/ModalContext";
 
 const Classroom = () => {
   const location = useLocation();
@@ -29,6 +30,8 @@ const Classroom = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>();
   const [questionnaries, setQuestionnaries] = useState<IQuestionnarie[]>();
+  const modal = useContext(ModalContext);
+
 
   const { room }: { room: IClassroom } = location.state || {};
 
@@ -56,11 +59,20 @@ const Classroom = () => {
   };
 
 
-  const handleClickCreateQuestionnarie = () => {
-    const name = prompt("Digite a descrição do questionário:\n\nExemplo: História do Brasil");
+  const handleClickCreateQuestionnarie = async () => {
+    let name: string | null = null;
+
+    if (modal) {
+      name = await modal.showModal({
+        title: "Digite o tema do questionário",
+        subTitle: "",
+        placeholder: "História do Brasil",
+        buttonText: "Adicionar",
+      });
+
+    }
 
     if (!name) {
-      showToast("Digite o nome da sala", "info");
       return;
     }
 

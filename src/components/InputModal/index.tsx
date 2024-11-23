@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import SecondaryButton from "../Buttons/SecondaryButton";
-import { ButtonContainer, Container, Input, Modal, SubTitle, Title } from "./styles";
+import { ButtonContainer, CancelBtn, ConfirmBtn, Container, Input, Modal, SubTitle, Title } from "./styles";
 
 export interface InputModalProps {
   title: string
@@ -37,22 +37,13 @@ const InputModal = (props: InputModalProps) => {
 
         <ButtonContainer>
 
-          <SecondaryButton
-            Ffamily="montserrat"
-            Fsize={20}
-            Fweight={500}
-            onClick={handleCancel}
-            outside="blue"
-            text="Cancelar"
-            width="100%"
-          />
+          <CancelBtn onClick={handleCancel}>
+            Cancelar
+          </CancelBtn>
 
-          <PrimaryButton
-            onClick={handleConfirm}
-            text={buttonText}
-            width="80%"
-          />
-
+          <ConfirmBtn onClick={handleConfirm}>
+            {buttonText}
+          </ConfirmBtn>
         </ButtonContainer>
 
       </Modal>

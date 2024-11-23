@@ -58,9 +58,47 @@ export const Input = styled.input`
 
 export const ButtonContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 10px;
   width: 100%;
+`;
+
+export const ConfirmBtn = styled.button`
+  font-family: ${Fonts.poppins};
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: ${theme.white};
+  border-radius: 8px;
+  border: none;
+  background-color: ${theme.blue};
+  cursor: pointer;
+  padding: 3px 20px;
+  min-width: 150px;
+
+
+  &:active {
+    filter: brightness(0.9);
+  }
+`;
+
+export const CancelBtn = styled.button`
+  border-radius: 6px;
+  background-color: transparent;
+  border: solid 2.8px ${theme.blue};
+  cursor: pointer;
+  color: ${theme.black};
+  font-family: ${Fonts.poppins};
+  font-weight: 500;
+  font-size: 1rem;
+  white-space: nowrap;
+  padding: 3px 20px;
+  min-width: 150px;
+
+
+
+  &:active{
+    filter: brightness(0.8);
+  }
 `;

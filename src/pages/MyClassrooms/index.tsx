@@ -57,9 +57,9 @@ const Classrooms = () => {
     if (modal) {
       className = await modal.showModal({
         title: "Qual será o nome da sala?",
-        subTitle: 'Use o nome da turma também',
-        placeholder: 'Matemática - 5º ano B',
-        buttonText: 'Adicionar',
+        subTitle: "Use o nome da turma também",
+        placeholder: "Matemática - 5º ano B",
+        buttonText: "Adicionar",
       });
 
     }
@@ -84,8 +84,8 @@ const Classrooms = () => {
     if (modal) {
       classId = await modal.showModal({
         title: "Qual é o código da sala?",
-        placeholder: '0000',
-        buttonText: 'Entar',
+        placeholder: "0000",
+        buttonText: "Entrar",
       });
 
     }
