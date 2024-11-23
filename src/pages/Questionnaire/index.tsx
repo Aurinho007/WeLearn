@@ -10,12 +10,12 @@ import { useEffect, useRef, useState } from "react";
 import { delQuestion, getQuestions } from "../../service/question";
 import IQuestion from "../../interfaces/Question";
 import Loader from "../../components/Loader";
-import empyQuestion from "./constants";
 import { useToast } from "../../contexts/ToastContext";
 import ROUTES from "../../constants/routesConstants";
 import { releaseQuestionnarie } from '../../service/questionnnarie';
 import { useUser } from "../../contexts/UserContext";
 import MobileButton from "../../components/Buttons/mobileButton";
+import emptyQuestion from "./constants";
 
 const Questionnaire = () => {
   const location = useLocation();
@@ -23,7 +23,7 @@ const Questionnaire = () => {
 
   const [showModal, setShowModal] = useState<boolean>(false);
   const [modalType, setModalType] = useState<"new" | "edit" | "view">("new");
-  const [question, setQuestion] = useState<IQuestion>(empyQuestion);
+  const [question, setQuestion] = useState<IQuestion>(emptyQuestion);
 
   const optionsRef = useRef<HTMLDivElement>(null);
   const [showOptions, setShowOptions] = useState(false);
@@ -143,7 +143,7 @@ const Questionnaire = () => {
         return (
           <MobileButton
             label="Acessar Dashboard"
-            onClick={() => alert("Em breve!")}
+            onClick={() => navigate(ROUTES.DASHBOARD, { state: {room, questionnaire} } )}
           />);
       }
 
@@ -175,7 +175,7 @@ const Questionnaire = () => {
           Fweight={400}
           outside="blue"
           text="Dashboard"
-          onClick={() => alert("Em breve!")}
+          onClick={() => navigate(ROUTES.DASHBOARD, { state: {room, questionnaire} } )}
         />
       );
     }
@@ -210,7 +210,7 @@ const Questionnaire = () => {
     }
   }
 
-  if (loading) return <Loader height={130} width={130} />;
+  if (loading) return <Loader size={100} />;
 
   return (
     <>

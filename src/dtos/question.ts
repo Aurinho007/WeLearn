@@ -1,6 +1,6 @@
 type QuestionDTO = {
-  idQuestionario: number
   id: number
+  idQuestionario: number
   enunciado: string
   dica: string
   dificuldade: string

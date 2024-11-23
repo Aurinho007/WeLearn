@@ -116,7 +116,7 @@ const Classroom = () => {
     );
   }
 
-  if (loading) return <Loader height={130} width={130} />;
+  if (loading) return <Loader size={130} />;
 
   return (
     <>

@@ -19,7 +19,7 @@ export const QuestionTitle = styled.p`
   font-size: 1.2rem;
   font-weight: 400;
   width: 60%;
-  text-align: left;
+  text-align: center;
 
   @media (max-width: 810px) {
     font-size: 1rem;
@@ -34,7 +34,7 @@ export const Statement = styled.p`
   margin-top: 5px;
   width: 60%;
   margin-bottom: 30px;
-  text-align: left;
+  text-align: center;
 
   @media (max-width: 810px) {
     font-size: 1.2rem;
@@ -50,9 +50,10 @@ export const AuxButtons = styled.div`
 `;
 
 export const Options = styled.div`
-  width: 70%;
+  width: 50%;
   min-width: 300px;
   margin-top: 20px;
+
 
   @media (max-width: 810px) {
     width: 100%;
@@ -68,7 +69,8 @@ export const OptionContainer = styled.div<{ color: string }>`
   cursor: pointer;
   position: relative;
   display: flex;
-  align-items: start;
+  align-items: center;
+
 `;
 
 export const OptionLabel = styled.p`

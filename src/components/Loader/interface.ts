@@ -1,6 +1,5 @@
 interface LoaderProps {
-  height: number,
-  width: number
+  size: number,
 }
 
 export default LoaderProps;

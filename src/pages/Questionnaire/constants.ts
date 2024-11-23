@@ -1,4 +1,8 @@
-const empyQuestion = {
+import IQuestion from "../../interfaces/Question";
+
+const emptyQuestion: IQuestion = {
+  idInQuestionarie: 0,
+  idProfessor: 0,
   id: 0,
   enunciado: "",
   dica: "",
@@ -10,4 +14,4 @@ const empyQuestion = {
   alternativaD: "",
 };
 
-export default empyQuestion;
+export default emptyQuestion;

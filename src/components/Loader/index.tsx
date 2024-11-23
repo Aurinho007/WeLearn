@@ -4,15 +4,15 @@ import LoaderProps from "./interface";
 import { Container, LoaderContainer } from "./styles";
 
 const Loader = (props: LoaderProps) => {
-  const { height, width } = props;
+  const { size } = props;
 
   return (
     <Container>
       <LoaderContainer>
         <Triangle
           visible={true}
-          height={height}
-          width={width}
+          height={size}
+          width={size}
           color={theme.blue}
           ariaLabel="triangle-loading"
         />

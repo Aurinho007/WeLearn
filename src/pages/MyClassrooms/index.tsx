@@ -156,7 +156,7 @@ const Classrooms = () => {
 
   };
 
-  if (loading) return <Loader height={130} width={130} />;
+  if (loading) return <Loader size={130} />;
 
   if (error || !classrooms.current || classrooms.current.length === 0) return renderErrorMessage();
 

@@ -1,4 +1,6 @@
 interface IQuestion {
+  idInQuestionarie: number
+  idProfessor: number
   id: number
   enunciado: string
   dica: string

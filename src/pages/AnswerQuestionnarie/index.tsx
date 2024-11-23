@@ -98,7 +98,7 @@ const AnswerQuestionnarie = () => {
 
   const goToNextQuestion = () => {
     if (questions.length === currentNumberQuestion + 1) {
-      answerQuestionnarie(questionnaire.id, answers, answerSuccessCallback, answerErrorCallback);
+      answerQuestionnarie(room.id, questionnaire.id, answers, answerSuccessCallback, answerErrorCallback);
       return;
     }
 
@@ -199,7 +199,7 @@ const AnswerQuestionnarie = () => {
     );
   };
 
-  if (loading) return <Loader height={120} width={120} />;
+  if (loading) return <Loader size={120} />;
 
   return (
     <>
