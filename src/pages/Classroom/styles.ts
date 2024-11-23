@@ -64,9 +64,9 @@ export const Title = styled.p`
 `;
 
 export const QuestionaryContainer = styled.div`
-  height: 430px;
+  height: 480px;
   overflow-y: visible;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
 
   @media (max-width: 768px) {
     height: auto;
