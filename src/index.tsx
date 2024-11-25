@@ -5,6 +5,7 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import { UserProvider } from "./contexts/UserContext";
 import { ToastProvider } from "./contexts/ToastContext";
 import { ModalProvider } from "./contexts/ModalContext";
+import { Analytics } from "@vercel/analytics/react"
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -15,6 +16,8 @@ root.render(
     <UserProvider>
       <ToastProvider>
         <ModalProvider>
+          <Analytics>
+          </Analytics>
           <App />
         </ModalProvider>
       </ToastProvider>
