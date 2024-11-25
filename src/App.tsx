@@ -1,7 +1,6 @@
 import { GlobalStyles } from "./globalStyle.ts";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import Baseboard from "./components/Baseboard";
 import Home from "./pages/Home/index";
 import Login from "./pages/Login/index";
 import Profile from "./pages/Profile";

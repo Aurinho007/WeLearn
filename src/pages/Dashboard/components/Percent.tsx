@@ -37,19 +37,22 @@ const Percent = (props: PercentProps) => {
     {
       name: `Acertos`,
       value: percent?.percents.correct || 0,
-      color: theme.lightBlue
+      color: theme.lightBlue,
+      id: 1
     },
     {
       name: "Erros",
       value: percent?.percents.wrong || 0,
-      color: theme.toast.error
+      color: theme.toast.error,
+      id: 2
     },
     {
       name: "Abstenções",
       value: percent?.percents.dontKnow || 0,
-      color: theme.grey
+      color: theme.grey,
+      id: 3
     }
-  ]
+  ];
 
   if (loadingPercent) return <p>Carregando...</p>;
   if (errorPercent) return <h1>{errorPercent}</h1>;
@@ -62,6 +65,12 @@ const Percent = (props: PercentProps) => {
           data: data.map((item) => item.name),
         },
       ]}
+      yAxis={[
+        {
+          scaleType: 'linear',
+          valueFormatter: (value) => `${value}%`,
+        },
+      ]}
       series={[
         {
           data: data.map((item) => item.value),
@@ -72,8 +81,6 @@ const Percent = (props: PercentProps) => {
       height={150}
     />
   );
-
-
 };
 
 export default Percent;

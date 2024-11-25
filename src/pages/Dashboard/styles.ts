@@ -34,16 +34,22 @@ export const DashboardGroup = styled.div`
 }
 `;
 
-export const AverageContainer = styled.div`
-  background-color: ${theme.white};
-  border: solid 3px ${theme.blue};
-  border-radius: 8px;
+export const DashContainer = styled.div`
+
 `;
 
-export const PercentContainer = styled.div`
+export const Dash = styled.div`
   background-color: ${theme.white};
   border: solid 3px ${theme.blue};
   border-radius: 8px;
+  padding: 10px;
+`;
+
+export const DashTitle = styled.p`
+  font-family: ${Fonts.montserrat};
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.7rem;
 `;
 
 
