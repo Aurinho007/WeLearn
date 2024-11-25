@@ -7,7 +7,7 @@ export const Container = styled.div`
   background-color: ${theme.white};
   border-radius: 10px;
   padding: 15px 20px;
-  height: 80px;
+  height: 90px;
   width: 100%;
   max-width: 25%;
   min-width: 315px;
@@ -66,7 +66,7 @@ export const TextContainer = styled.div`
 export const Text = styled.p`
 font-family: ${fonts.montserrat};
 font-size: 1.3rem;
-font-weight: 500;
+font-weight: 400;
 color: ${theme.grey};
 
   @media (max-width: 500px){

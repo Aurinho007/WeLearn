@@ -11,14 +11,14 @@ const HomeCardList = () => {
         text={CARD_CONTENT.DASHBOARD_CARD.TEXT}
       />
       <HomeCard
-        icon={CARD_CONTENT.MOTIVATION_CARD.ICON}
-        title={CARD_CONTENT.MOTIVATION_CARD.TITLE}
-        text={CARD_CONTENT.MOTIVATION_CARD.TEXT}
-      />
-      <HomeCard
         icon={CARD_CONTENT.LIGHT_CARD.ICON}
         title={CARD_CONTENT.LIGHT_CARD.TITLE}
         text={CARD_CONTENT.LIGHT_CARD.TEXT}
+      />
+      <HomeCard
+        icon={CARD_CONTENT.MOTIVATION_CARD.ICON}
+        title={CARD_CONTENT.MOTIVATION_CARD.TITLE}
+        text={CARD_CONTENT.MOTIVATION_CARD.TEXT}
       />
     </Container>
   );

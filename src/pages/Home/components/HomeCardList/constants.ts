@@ -1,4 +1,9 @@
 const CARD_CONTENT = {
+  LIGHT_CARD: {
+    TITLE: "Inovação com IA",
+    TEXT: "Um jeito inovador de ensinar usando IA!",
+    ICON: "light"
+  },
   DASHBOARD_CARD: {
     TITLE: "Dashboard",
     TEXT: "Gráficos para análise do professor!",
@@ -8,13 +13,7 @@ const CARD_CONTENT = {
     TITLE: "Motivação",
     TEXT: "Alunos motivados a aprender e estudar!",
     ICON: "hand"
-  },
-  LIGHT_CARD: {
-    TITLE: "Inovação",
-    TEXT: "Um jeito inovador de ensinar e aprender!",
-    ICON: "light"
-  },
-
+  }
 };
 
 export default CARD_CONTENT;
