@@ -141,7 +141,7 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
         <Division>
           <Form>
             <Item>
-              <Label>Nome</Label>
+              <Label>Nome completo</Label>
               <TextInput
                 type="text"
                 placeholder="  digite seu nome"
