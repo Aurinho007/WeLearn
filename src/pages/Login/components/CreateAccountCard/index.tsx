@@ -79,12 +79,12 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
 
   const validateForm = (): boolean => {
     if (!isValidName(name)) {
-      showToast("Digite um nome válido", "error");
+      showToast("Digite um nome válido", "info");
       return false;
     }
 
     if (!isValidEmail(email)) {
-      showToast("Email inválido", "error");
+      showToast("Digite um e-mail válido", "info");
       return false;
     }
 
@@ -93,8 +93,8 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
       return false;
     }
 
-    if (!isValidPassword(password)) {
-      showToast("Senha inválida", "error");
+    if (password.length < 6){
+      showToast("A senha deve conter pelo menos seis dígitos", "info");
       return false;
     }
 
