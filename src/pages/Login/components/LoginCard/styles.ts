@@ -120,6 +120,10 @@ export const RememberMe = styled.div`
   align-items: center;
   margin-top: -25px;
   margin-bottom: 25px;
+
+  @media (max-width: 480px) {
+    margin-top: 0;
+  }
 `;
 
 export const CheckBox = styled.input`

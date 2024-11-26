@@ -30,6 +30,7 @@ import { login } from "../../../../service/auth";
 import { isValidEmail } from "../../utils";
 import { deleteUserLoginData, getUserLoginData, saveUserLoginData } from "../../../../controllers/userController";
 import ROUTES from "../../../../constants/routesConstants";
+import Loader from "../../../../components/Loader";
 
 type LoginCardProps = {
   isLogin: boolean;
@@ -45,6 +46,7 @@ const LoginCard = (props: LoginCardProps) => {
   const [email, setEmail] = useState<string>(savedUser?.email ?? "");
   const [password, setPassword] = useState<string>(savedUser?.password ?? "");
   const [saveUser, setSaveUser] = useState<boolean>(!!savedUser);
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (isLogged()) {
@@ -83,6 +85,7 @@ const LoginCard = (props: LoginCardProps) => {
   };
 
   const succesCallback = (user: IUser) => {
+    setLoading(false);
     setUser(user);
     setRememberMe();
     clearInputs();
@@ -91,6 +94,7 @@ const LoginCard = (props: LoginCardProps) => {
   };
 
   const errorCallback = (error: string) => {
+    setLoading(false);
     showToast(error, "error");
   };
 
@@ -124,8 +128,10 @@ const LoginCard = (props: LoginCardProps) => {
       senha: password
     };
 
+    setLoading(true);
     login(user, succesCallback, errorCallback);
   };
+
 
   return (
     <Container onKeyDown={(event) => event.key === "Enter" && isLogin && handleClickLoginButton()} tabIndex={0}>
@@ -172,7 +178,10 @@ const LoginCard = (props: LoginCardProps) => {
 
         <Division>
           <Buttons>
-            <PrimaryButton text="Entrar" onClick={handleClickLoginButton} />
+            <PrimaryButton
+              text={loading ? "Carregando..." : "Entrar"}
+              onClick={handleClickLoginButton}
+            />
             <Divider />
             <TextBtn>Não possui uma conta?</TextBtn>
             <TerciaryButton
