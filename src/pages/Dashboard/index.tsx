@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import PageHeader from "../../components/PageHeader";
-import IClassroom from "../../interfaces/Classroom";
+import { IClassroom } from "../../interfaces/Classroom";
 import IQuestionnarie from "../../interfaces/Questionnarie";
 import { DashContainer, Container, DashboardGroup, Dash, DashTitle } from "./styles";
 import Percent from "./components/Percent";

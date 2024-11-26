@@ -5,3 +5,4 @@ export type CreateClassroomDto = {
 export type EntryClassroomDto = {
   idSala: number
 }
+

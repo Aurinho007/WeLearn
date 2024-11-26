@@ -1,4 +1,4 @@
-interface IClassroom {
+export interface IClassroom {
   id: number,
   nomeSala: string,
   nomeProfessor: string,
@@ -6,4 +6,13 @@ interface IClassroom {
   percentualConcluido?: number
 }
 
-export default IClassroom;
+export interface IRanking  {
+  ranking: IRankingItem[]
+}
+
+interface IRankingItem {
+  position: number,
+  name: string,
+  elo: string
+}
+

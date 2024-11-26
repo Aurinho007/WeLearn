@@ -1,5 +1,5 @@
 import { CreateClassroomDto, EntryClassroomDto } from "../dtos/classroom";
-import IClassroom from "../interfaces/Classroom";
+import { IClassroom, IRanking } from "../interfaces/Classroom";
 import { BASE_URL, doRequest } from "./api";
 
 const GET_CLASSROOM_URL = `${BASE_URL}/rooms`;
@@ -26,8 +26,8 @@ export const entryClassroom = (classroomId: EntryClassroomDto, successCallback: 
     .catch(error => errorCallback(error.message));
 };
 
-export const getRanking = (classroomId: number, successCallback: (classroom: IClassroom[]) => void, errorCallback: (error: string) => void) => {
+export const getRanking = (classroomId: number, successCallback: (classroom: IRanking) => void, errorCallback: (error: string) => void) => {
   doRequest(GET_RANKING+classroomId, "GET")
-    .then(response => successCallback(response as IClassroom[]))
+    .then(response => successCallback(response as IRanking))
     .catch(error => errorCallback(error.message));
 };

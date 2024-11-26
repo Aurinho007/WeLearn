@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import IClassroom from "../../interfaces/Classroom";
+import { IClassroom } from "../../interfaces/Classroom";
 import IQuestionnarie from "../../interfaces/Questionnarie";
 import PageHeader from "../../components/PageHeader";
 import IQuestion from "../../interfaces/Question";

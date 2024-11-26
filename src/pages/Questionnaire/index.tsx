@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import IClassroom from "../../interfaces/Classroom";
+import { IClassroom } from "../../interfaces/Classroom";
 import PageHeader from "../../components/PageHeader";
 import IQuestionnarie from "../../interfaces/Questionnarie";
 import ErroCard from "../../components/ErrorCard/index";

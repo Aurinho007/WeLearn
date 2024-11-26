@@ -4,7 +4,7 @@ import ClassroomCard from "./components/ClassroomCard";
 import PageHeader from "../../components/PageHeader";
 import { useUser } from "../../contexts/UserContext";
 import Loader from "../../components/Loader";
-import IClassroom from "../../interfaces/Classroom";
+import { IClassroom } from "../../interfaces/Classroom";
 import { createClassroom, entryClassroom, getClassroom } from "../../service/classroom";
 import { ButtonContainer, ClassroomCardContainer } from "./styles";
 import ErroCard from "../../components/ErrorCard/index";

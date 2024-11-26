@@ -7,7 +7,7 @@ import ClassroomDataCard from "./components/ClassroomDataCard";
 import QuestionaryCard from "./components/QuestionaryCard";
 import RankingIcon from "../../components/RankingIcon";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
-import IClassroom from "../../interfaces/Classroom";
+import { IClassroom } from "../../interfaces/Classroom";
 import { CreateQuestionnarieDTO } from "../../dtos/questionnarie";
 import { useToast } from "../../contexts/ToastContext";
 import { createQuestionnarie, getAllQuestionnaries } from "../../service/questionnnarie";
@@ -137,7 +137,7 @@ const Classroom = () => {
               elo={room.elo as string}
             />
           </LeftHeader>
-          {!isMobile && <Ranking />}
+          {!isMobile && <Ranking id={room.id} />}
 
         </Left>
 
@@ -201,7 +201,7 @@ const Classroom = () => {
             <Title>
               Ranking
             </Title>
-            <Ranking />
+            <Ranking  id={room.id} />
           </>
           }
         </Right>

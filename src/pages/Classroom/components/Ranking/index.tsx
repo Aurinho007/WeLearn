@@ -1,36 +1,34 @@
+import { useEffect, useState } from "react";
 import RankingIcon from "../../../../components/RankingIcon";
+import { IRanking } from "../../../../interfaces/Classroom";
 import { Container, Header, HeaderItem, Item, Line, Separator, IconWrapper } from "./styles";
+import { getRanking } from "../../../../service/classroom";
 
-const Ranking = () => {
+const Ranking = ({ id }: { id: number }) => {
 
-  const mockLines = [
-    {
-      position: 1,
-      name: "Áureo Rodrigues de Farias",
-      elo: "diamante"
-    },
-    {
-      position: 2,
-      name: "João Silva Costa",
-      elo: "diamante"
-    },
-    {
-      position: 3,
-      name: "Maria Oliveira",
-      elo: "ouro"
-    },
-    {
-      position: 4,
-      name: "Carlos Pereira silva",
-      elo: "prata"
-    },
-    {
-      position: 5,
-      name: "Eduardo santos",
-      elo: "prata"
-    },
-  ];
+  const [ranking, setRanking] = useState<IRanking>();
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string>("");
 
+  useEffect(() => {
+
+    async function init() {
+      getRanking(id, sucessCallback, errorCallback);
+    }
+
+    init();
+  }, []);
+
+  const sucessCallback = (response: IRanking) => {
+    setRanking(response);
+    setError("");
+    setLoading(false);
+  };
+
+  const errorCallback = (error: string) => {
+    setError(error);
+    setLoading(false);
+  };
 
   const getShortName = (fullName: string): string => {
     const nameParts = fullName.trim().split(" ");
@@ -40,6 +38,10 @@ const Ranking = () => {
     return `${firstName} ${lastName}`;
 
   };
+
+  if (loading) return;
+  if (error) return;
+  if (!ranking) return;
 
   return (
     <Container>
@@ -52,22 +54,26 @@ const Ranking = () => {
       <Separator />
 
       {
-        mockLines.map((item, index) => {
-          return (
-            <Line key={index}>
-              <Item>
-                {item.position}º
-              </Item>
-              <Item>
-                {getShortName(item.name)}
-              </Item>
-              <IconWrapper>
-                <RankingIcon elo={item.elo} size={35} />
-              </IconWrapper>
-            </Line>
+        ranking.ranking.length > 0 ?
 
-          );
-        })
+          ranking.ranking.map((item, index) => {
+            return (
+              <Line key={index}>
+                <Item>
+                  {item.position}º
+                </Item>
+                <Item>
+                  {getShortName(item.name)}
+                </Item>
+                <IconWrapper>
+                  <RankingIcon elo={item.elo} size={35} />
+                </IconWrapper>
+              </Line>
+
+            )
+          })
+          :
+          <Item>Sem alunos na sala</Item>
       }
     </Container>
   );
