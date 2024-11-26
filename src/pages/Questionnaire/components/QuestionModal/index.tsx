@@ -148,10 +148,10 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
               <Label>Alternativa correta</Label>
               <DropDown value={fields.correct} onChange={handleFieldChange("correct")} disabled={viewOnly}>
                 <option value="" disabled>Selecione uma opção</option>
-                <option value="a">A</option>
-                <option value="b">B</option>
-                <option value="c">C</option>
-                <option value="d">D</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
               </DropDown>
             </QuestionContainer>
 
