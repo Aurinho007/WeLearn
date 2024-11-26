@@ -35,7 +35,7 @@ export const MainPhrase = styled.span`
   letter-spacing: -1px;
   text-align: left;
 
-  @media (max-width: 850px) {
+  @media (max-width: 1420px) {
     font-size: 3rem;
     line-height: 3rem;
     letter-spacing: 2px;
@@ -75,7 +75,7 @@ export const Image = styled.img`
   height: 360px;
   margin: 0 150px;
 
-  @media (max-width: 850px) {
+  @media (max-width: 1420px) {
     height: 280px;
     margin: 20px 0;
   }
