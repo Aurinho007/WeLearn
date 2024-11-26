@@ -78,7 +78,7 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
   const addOrUpdateQuestion = () => {
     const { statement, correct, tip, dificulty, alternativeA, alternativeB, alternativeC, alternativeD } = fields;
 
-    if (!statement || !tip || !dificulty || !correct || !alternativeA || !alternativeB || !alternativeC || !alternativeD) {
+    if (!statement || !dificulty || !correct || !alternativeA || !alternativeB || !alternativeC || !alternativeD) {
       showToast("Todos os campos devem ser preenchidos", "info");
       return;
     }
@@ -134,7 +134,7 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
               />
             </QuestionContainer>
             <QuestionContainer>
-              <Label>Dica</Label>
+              <Label>Dica (opcional, mas recomendado)</Label>
               <Input
                 placeholder="Foi um português"
                 value={fields.tip}

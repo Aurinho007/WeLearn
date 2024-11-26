@@ -180,13 +180,16 @@ const AnswerQuestionnarie = () => {
   const renderAuxButtons = () => {
     return (
       <AuxButtons>
-        <TerciaryButton
-          text="Dica"
-          Fsize={1.2}
-          colored={false}
-          onClick={() => alert("Em breve!")}
-          tip="A dica custa 50 WeCoins"
-        />
+        {
+          currentQuestion?.dica &&
+          <TerciaryButton
+            text="Dica"
+            Fsize={1.2}
+            colored={false}
+            onClick={() => alert("Em breve!")}
+            tip="A dica custa 50 WeCoins"
+          />
+        }
 
         <TerciaryButton
           text="Não sei"
