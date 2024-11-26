@@ -15,6 +15,7 @@ const Card = styled.div`
   margin-bottom: 15px;
   width: 90%;
   min-width: 300px;
+
 `;
 
 const TitleContainer = styled.div`
