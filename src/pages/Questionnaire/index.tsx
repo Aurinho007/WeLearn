@@ -3,7 +3,20 @@ import IClassroom from "../../interfaces/Classroom";
 import PageHeader from "../../components/PageHeader";
 import IQuestionnarie from "../../interfaces/Questionnarie";
 import ErroCard from "../../components/ErrorCard/index";
-import { Container, Dropdown, DropdownItem, Header, HeaderItem, Item, ItemAction, Line, QuestionsHeader, Separator, TableContainer, Title } from "./styles";
+import {
+  Container,
+  Dropdown,
+  DropdownItem,
+  Header,
+  HeaderItem,
+  Item,
+  ItemAction,
+  Line,
+  QuestionsHeader,
+  Separator,
+  TableContainer,
+  Title
+} from "./styles";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
 import QuestionModal from "./components/QuestionModal";
 import { useEffect, useRef, useState } from "react";
@@ -12,7 +25,7 @@ import IQuestion from "../../interfaces/Question";
 import Loader from "../../components/Loader";
 import { useToast } from "../../contexts/ToastContext";
 import ROUTES from "../../constants/routesConstants";
-import { releaseQuestionnarie } from '../../service/questionnnarie';
+import { releaseQuestionnarie } from "../../service/questionnnarie";
 import { useUser } from "../../contexts/UserContext";
 import MobileButton from "../../components/Buttons/mobileButton";
 import emptyQuestion from "./constants";
@@ -26,7 +39,7 @@ const Questionnaire = () => {
   const [question, setQuestion] = useState<IQuestion>(emptyQuestion);
 
   const optionsRef = useRef<HTMLDivElement>(null);
-  const [showOptions, setShowOptions] = useState(false);
+  const [showOptionsIndex, setShowOptionsIndex] = useState<number | null>(null);
 
   const [questions, setQuestions] = useState<IQuestion[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -35,7 +48,7 @@ const Questionnaire = () => {
   const { showToast } = useToast();
   const { isMobile } = useUser();
 
-  const { room, questionnaire }: { room: IClassroom, questionnaire: IQuestionnarie } = location.state || {};
+  const { room, questionnaire }: { room: IClassroom; questionnaire: IQuestionnarie } = location.state || {};
 
   useEffect(() => {
     if (!room || !questionnaire) {
@@ -43,20 +56,21 @@ const Questionnaire = () => {
       return;
     }
 
+    setLoading(true);
+    setError("");
     getQuestions(questionnaire.id, getSuccesCallback, getErrorCallback);
   }, []);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (optionsRef.current && !optionsRef.current.contains(event.target as Node)) {
-        setShowOptions(false);
+        setShowOptionsIndex(null);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
 
   const getSuccesCallback = (response: IQuestion[]) => {
     setQuestions(response);
@@ -74,19 +88,17 @@ const Questionnaire = () => {
   };
 
   const viewQuestion = (question: IQuestion) => {
-    const currentQuestion = question;
     setModalType("view");
-    setQuestion(currentQuestion);
+    setQuestion(question);
     setShowModal(true);
-    setShowOptions(false);
+    setShowOptionsIndex(null);
   };
 
   const editQuestion = (question: IQuestion) => {
-    const currentQuestion = question;
     setModalType("edit");
-    setQuestion(currentQuestion);
+    setQuestion(question);
     setShowModal(true);
-    setShowOptions(false);
+    setShowOptionsIndex(null);
   };
 
   const deleteQuestion = (id: number) => {
@@ -94,7 +106,7 @@ const Questionnaire = () => {
     if (confirmDelete) {
       delQuestion(id, delQuestionSucessCallback, delQuestionErrorCallback);
     }
-    setShowOptions(false);
+    setShowOptionsIndex(null);
   };
 
   const delQuestionSucessCallback = () => {
@@ -107,14 +119,14 @@ const Questionnaire = () => {
   };
 
   const release = () => {
-
-    if (questions.length < 1 || !questions) {
+    if (questions.length === 0 || !questions) {
       showToast("É necessário pelo menos uma questão para o envio", "error");
       return;
     }
 
     const confirmRelease = confirm("Confirma o envio para os alunos?\n(Não pode ser desfeito)");
-    if (confirmRelease) releaseQuestionnarie(questionnaire.id, releaseQuestionSucessCallback, releaseQuestionErrorCallback);
+    if (confirmRelease)
+      releaseQuestionnarie(questionnaire.id, releaseQuestionSucessCallback, releaseQuestionErrorCallback);
   };
 
   const releaseQuestionSucessCallback = () => {
@@ -126,33 +138,20 @@ const Questionnaire = () => {
     showToast(error, "error");
   };
 
-  if (error) {
-    return (
-      <ErroCard
-        text={error}
-        buttonText="Recarregar"
-        onClick={() => window.location.reload()}
-      />
-    );
-  }
-
   const renderActionButtons = () => {
-
     if (isMobile) {
       if (questionnaire.liberado) {
         return (
           <MobileButton
             label="Acessar Dashboard"
-            onClick={() => navigate(ROUTES.DASHBOARD, { state: {room, questionnaire} } )}
-          />);
+            onClick={() => navigate(ROUTES.DASHBOARD, { state: { room, questionnaire } })}
+          />
+        );
       }
 
       return (
         <>
-          <MobileButton
-            label="Enviar para alunos"
-            onClick={release}
-          />
+          <MobileButton label="Enviar para alunos" onClick={release} />
           <SecondaryButton
             Ffamily="montserrat"
             Fsize={1}
@@ -163,9 +162,7 @@ const Questionnaire = () => {
           />
         </>
       );
-
     }
-
 
     if (questionnaire.liberado) {
       return (
@@ -175,7 +172,7 @@ const Questionnaire = () => {
           Fweight={400}
           outside="blue"
           text="Dashboard"
-          onClick={() => navigate(ROUTES.DASHBOARD, { state: {room, questionnaire} } )}
+          onClick={() => navigate(ROUTES.DASHBOARD, { state: { room, questionnaire } })}
         />
       );
     }
@@ -208,28 +205,28 @@ const Questionnaire = () => {
     } else {
       return question.substring(0, 40).concat(`${question.length < 40 ? "" : "..."}`);
     }
-  }
+  };
 
   if (loading) return <Loader size={100} />;
 
+  if (error) {
+    return (
+      <ErroCard text={error} buttonText="Recarregar" onClick={() => window.location.reload()} />
+    );
+  }
+
   return (
     <>
-      <PageHeader
-        title={room.nomeSala}
-        subTitle={`${questionnaire.nome}`}
-        hasBackButton
-      />
+      <PageHeader title={room.nomeSala} subTitle={`${questionnaire.nome}`} hasBackButton />
 
       <Container>
         <QuestionsHeader>
           <Title>Questões</Title>
-          <div style={{display: "flex", gap: 30}}>
-            {renderActionButtons()}
-          </div>
+          <div style={{ display: "flex", gap: 30 }}>{renderActionButtons()}</div>
         </QuestionsHeader>
 
         <TableContainer>
-          {questions && questions.length > 0 &&
+          {questions && questions.length > 0 && (
             <>
               <Header>
                 <HeaderItem>Questão</HeaderItem>
@@ -238,45 +235,39 @@ const Questionnaire = () => {
               </Header>
               <Separator />
             </>
+          )}
 
-          }
-
-          {
-            questions && questions.length > 0 ?
-              questions.map((item, index) => {
-                return (
-                  <Line showOptions={showOptions} key={index} onClick={() => isMobile ? setShowOptions(true) : null} >
-                    <Item>
-                      {index + 1}
-                    </Item>
-                    <Item>
-                      {getQuestionResume(item.enunciado)}
-                    </Item>
-                    <Item>
-                      {item.dificuldade}
-                    </Item>
-                    <ItemAction ref={optionsRef} >
-                      <span className="action-dots">...</span>
-                      <Dropdown className="dropdown">
-                        <DropdownItem onClick={() => editQuestion(item)}>Editar</DropdownItem>
-                        <DropdownItem onClick={() => viewQuestion(item)}>Ver</DropdownItem>
-                        <DropdownItem onClick={() => deleteQuestion(item.id)}>Apagar</DropdownItem>
-                      </Dropdown>
-                    </ItemAction>
-                  </Line>
-                );
-              })
-              :
-              <>
-                <ErroCard
-                  text="Parece que esta sala ainda não tem questões"
-                  buttonText="Adicionar questão"
-                  onClick={createQuestion}
-                />
-              </>
-          }
-
-
+          {questions && questions.length !== 0 ? (
+            questions.map((item, index) => {
+              return (
+                <Line
+                  showOptions={showOptionsIndex === index}
+                  key={index}
+                  onClick={() =>
+                    setShowOptionsIndex(showOptionsIndex === index ? null : index)
+                  }
+                >
+                  <Item>{index + 1}</Item>
+                  <Item>{getQuestionResume(item.enunciado)}</Item>
+                  <Item>{item.dificuldade}</Item>
+                  <ItemAction ref={optionsRef}>
+                    <span className="action-dots">...</span>
+                    <Dropdown className="dropdown">
+                      <DropdownItem onClick={() => editQuestion(item)}>Editar</DropdownItem>
+                      <DropdownItem onClick={() => viewQuestion(item)}>Ver</DropdownItem>
+                      <DropdownItem onClick={() => deleteQuestion(item.id)}>Apagar</DropdownItem>
+                    </Dropdown>
+                  </ItemAction>
+                </Line>
+              );
+            })
+          ) : (
+            <ErroCard
+              text="Parece que esta sala ainda não tem questões"
+              buttonText="Adicionar questão"
+              onClick={createQuestion}
+            />
+          )}
         </TableContainer>
         <QuestionModal
           showModal={showModal}

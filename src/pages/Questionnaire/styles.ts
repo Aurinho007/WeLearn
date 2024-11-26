@@ -77,10 +77,9 @@ export const Line = styled.div<{showOptions: boolean}>`
     background-color: ${theme.lightBlue};
   }
 
-  & .dropdown {
+   & .dropdown {
     display: ${props => props.showOptions ? "block" : "none"};
-    /* display: block; */
-  }
+  } 
 `;
 
 export const Item = styled.p`
@@ -106,10 +105,6 @@ export const ItemAction = styled.div`
   transform: rotate(90deg);
   z-index: 999;
   
-  &:hover .dropdown {
-    display: block;
-  }
-
   @media (max-width: 768px){
     right: -10px;
   }

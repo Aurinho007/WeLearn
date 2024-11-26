@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useToast } from "../../../../contexts/ToastContext";
 import PrimaryButton from "../../../../components/Buttons/PrimaryButton";
 import TerciaryButton from "../../../../components/Buttons/TerciaryButton";
-import { isValidEmail, isValidName, isValidPassword, isValidProfileType } from "../../utils";
+import { isValidEmail, isValidName, isValidProfileType } from "../../utils";
 import { createAccount } from "../../../../service/auth";
 import { CreateAccountDto } from "../../../../dtos/auth";
 import {
@@ -162,8 +162,8 @@ const CreateAccountCard = (props: CreateAccountCardProps) => {
               <Label>Tipo de perfil</Label>
               <DropDown value={profileType} onChange={handleChangeProfileType}>
                 <option value="" disabled selected>Selecione uma opção</option>
-                <option value="aluno">Aluno</option>
-                <option value="professor">Professor</option>
+                <option value="Aluno">Aluno</option>
+                <option value="Professor">Professor</option>
               </DropDown>
             </Item>
             <Item>
