@@ -31,6 +31,7 @@ export const IconContainer = styled.div`
 `;
 
 export const Icon = styled.img`
+object-fit: cover;
   height: 70px;
 
   @media (max-width: 700px){
