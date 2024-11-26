@@ -21,8 +21,7 @@ export const T = styled.p`
 export const BT = styled.p`
   color: ${theme.blue};
   z-index: 1;
-  margin-left: -5px;
-  margin-bottom: -4px
+  margin-left: -5px
 `;
 
 export const DT = styled.p`
