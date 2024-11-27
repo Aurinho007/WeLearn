@@ -171,7 +171,7 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
               <QuestionContainer key={alt}>
                 <Label>Alternativa {alt}</Label>
                 <Input
-                  placeholder={`Alternativa ${alt}`}
+                  placeholder={fields.correct == alt ? : "Alternativa correta" : "Alternativa"}
                   value={fields[`alternative${alt}` as keyof Fields]}
                   onChange={handleFieldChange(`alternative${alt}` as keyof Fields)}
                   disabled={viewOnly}
