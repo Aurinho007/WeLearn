@@ -5,8 +5,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  flex-wrap: wrap;
 
+  @media (max-width: 1270px){
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 80px;
+  }
+  
   @media (max-width: 810px){
     justify-content: center;
   }

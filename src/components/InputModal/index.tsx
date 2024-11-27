@@ -1,6 +1,4 @@
 import { useState } from "react";
-import PrimaryButton from "../Buttons/PrimaryButton";
-import SecondaryButton from "../Buttons/SecondaryButton";
 import { ButtonContainer, CancelBtn, ConfirmBtn, Container, Input, Modal, SubTitle, Title } from "./styles";
 
 export interface InputModalProps {
