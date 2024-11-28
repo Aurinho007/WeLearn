@@ -36,11 +36,12 @@ const Average = (props: AverageProps) => {
 
   const data = [
     {
-      label: ` ${average?.average.toFixed(2).replace(".", ",") || 0} de 10`,
+      label: ` ${average?.average.toFixed(1).replace(".", ",") || 0} de 10`,
       value: average?.average || 0,
       color: theme.lightBlue
     },
     {
+      label: `restante\npara nota 10`,
       value: 10 - (average?.average || 0),
       color: theme.grey
     },
