@@ -18,6 +18,7 @@ export const QuestionsHeader = styled.div`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  align-items: center;
 `;
 
 export const Title = styled.div`

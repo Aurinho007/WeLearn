@@ -1,4 +1,4 @@
-type QuestionDTO = {
+export type QuestionDTO = {
   id: number
   idQuestionario: number
   enunciado: string
@@ -11,4 +11,7 @@ type QuestionDTO = {
   alternativaD: string
 }
 
-export default QuestionDTO;
+export type GenerateQuestionDTO = {
+  subject: string
+  difficulty: string
+}

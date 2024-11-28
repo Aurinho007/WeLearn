@@ -3,7 +3,7 @@ import { ButtonGroup, Container, DropDown, Input, Label, Modal, QContainer, Ques
 import PrimaryButton from "../../../../components/Buttons/PrimaryButton";
 import SecondaryButton from "../../../../components/Buttons/SecondaryButton";
 import { createQuestion, updateQuestion } from "../../../../service/question";
-import QuestionDTO from "../../../../dtos/question";
+import { QuestionDTO } from "../../../../dtos/question";
 import { useToast } from "../../../../contexts/ToastContext";
 import IQuestion from "../../../../interfaces/Question";
 
@@ -52,7 +52,6 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
       alternativeC: question.alternativaC || "",
       alternativeD: question.alternativaD || "",
     });
-    if (modalType === "new") resetFields();
   }, [showModal]);
 
   const resetFields = () =>

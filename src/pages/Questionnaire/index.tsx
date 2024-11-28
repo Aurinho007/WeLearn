@@ -83,6 +83,7 @@ const Questionnaire = () => {
   };
 
   const createQuestion = () => {
+    setQuestion({} as IQuestion);
     setModalType("new");
     setShowModal(true);
   };
@@ -155,7 +156,7 @@ const Questionnaire = () => {
           <SecondaryButton
             Ffamily="montserrat"
             Fsize={1}
-            Fweight={400}
+            Fweight={500}
             outside="blue"
             text="Adicionar Questão"
             onClick={createQuestion}

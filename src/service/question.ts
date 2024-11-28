@@ -1,4 +1,4 @@
-import QuestionDTO from "../dtos/question";
+import { GenerateQuestionDTO, QuestionDTO } from "../dtos/question";
 import IQuestion from "../interfaces/Question";
 import { BASE_URL, doRequest } from "./api";
 
@@ -6,6 +6,9 @@ const GET_QUESTIONS_URL = `${BASE_URL}/questionaries/questions/`;
 const CREATE_QUESTION_URL = `${BASE_URL}/questionaries/questions`;
 const UPDATE_QUESTION_URL = `${BASE_URL}/questionaries/questions`;
 const DELETE_QUESTION_URL = `${BASE_URL}/questionaries/questions/`;
+
+const GENERATE_QUESTION_URL = `${BASE_URL}/questionaries/questions/generate/`;
+
 
 export const getQuestions = async (idQuestionnarie: number, successCallback: (questions: IQuestion[]) => void, errorCallback: (error: string) => void) => {
   doRequest(GET_QUESTIONS_URL+idQuestionnarie, "GET")
@@ -30,3 +33,11 @@ export const delQuestion = async (questionId: number, successCallback: () => voi
     .then(_ => successCallback())
     .catch(error => errorCallback(error.message));
 };
+
+export const generateQuestion = async (params: GenerateQuestionDTO, successCallback: (question: IQuestion) => void, errorCallback: (error: string) => void) => {
+  doRequest(GENERATE_QUESTION_URL, "GET", params)
+    .then(response => successCallback(response as IQuestion))
+    .catch(error => errorCallback(error.message));
+};
+
+
