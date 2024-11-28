@@ -5,7 +5,7 @@ import LoaderProps from "./interface";
 export const Container = styled.div<{style: LoaderProps}>`
   display: flex;
   position: ${props => props.style.fullScreen ? "absolute" : ""};
-  z-index: 999;
+  z-index: 99999;
   top: 0;
   left: 0;
   justify-content: center;
