@@ -24,11 +24,16 @@ const fadeOut = keyframes`
 export const Container = styled.div`
   position: absolute;
   display: flex;
-  top: 0; 
+  top: 10px; 
   right: 8%;
   justify-content: center;
   z-index: 9999;
-  margin-top: 10px;
+
+  @media (max-width: 800px){
+    right: 0;
+    left: 0;
+    top: 0;
+  }
 `;
 
 export const Card = styled.div<{ color: string }>`
@@ -38,7 +43,7 @@ export const Card = styled.div<{ color: string }>`
   border-radius: 8px;
   background-color: ${theme.white};
   border: solid 2px ${theme.black};
-  padding: 16px 26px 16px 12px;
+  padding: 16px;
   min-width: 250px;
   background-color: ${props => theme.toast[props.color as ToastType]};
 
@@ -49,11 +54,22 @@ export const Card = styled.div<{ color: string }>`
   &.exit {
     animation: ${fadeOut} .5s forwards; 
   }
+
+  @media (max-width: 800px){
+   border-radius: 0;
+   border: none;
+   border-bottom: solid 2px ${theme.black};
+   width: 100%;
+  }
 `;
 
 export const Icon = styled.img`
   width: 40px;
   margin-right: 12px;
+
+  @media (max-width: 800px){
+    width: 25px;
+  }
 `;
 
 export const Content = styled.div``;
@@ -63,10 +79,18 @@ export const Title = styled.p`
   font-weight: 600;
   font-size: 1.4rem;
   margin-bottom: 6px;
+
+  @media (max-width: 800px){
+    font-size: 1rem;
+  }
 `;
 
 export const Text = styled.p`
   font-family: ${Fonts.montserrat};
   font-weight: 500;
   font-size: 1.2rem;
+
+  @media (max-width: 800px){
+    font-size: 1rem;
+  }
 `;
