@@ -3,6 +3,7 @@ import theme from "../../../assets/theme";
 import { IAverage } from "../../../interfaces/Dashboard";
 import { getAverage } from "../../../service/dashboard";
 import { PieChart } from "@mui/x-charts";
+import Loader from "../../../components/Loader";
 
 type AverageProps = {
   id: number
@@ -45,7 +46,7 @@ const Average = (props: AverageProps) => {
     },
   ];
 
-  if (loadingAverage) return <p>Carregando...</p>;
+  if (loadingAverage) return <Loader size={80}/>;
   if (errorAverage) return <h1>{errorAverage}</h1>;
 
   return (

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getPerStudent } from "../../../service/dashboard";
 import { IPerStudent } from "../../../interfaces/Dashboard";
+import Loader from "../../../components/Loader";
 
 type PerStudentProps = {
   id: number;
@@ -30,7 +31,7 @@ const PerStudent = (props: PerStudentProps) => {
     setLoadingPerStudent(false);
   };
 
-  if (loadingPerStudent) return <p>Carregando...</p>;
+  if (loadingPerStudent)  return <Loader size={80}/>;
   if (errorPerStudent) return <h1>{errorPerStudent}</h1>;
 
   return (

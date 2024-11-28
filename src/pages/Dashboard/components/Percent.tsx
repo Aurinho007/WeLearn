@@ -3,6 +3,7 @@ import { IDashboardPercent } from "../../../interfaces/Dashboard";
 import theme from "../../../assets/theme";
 import { getPercent } from "../../../service/dashboard";
 import { BarChart } from '@mui/x-charts/BarChart';
+import Loader from "../../../components/Loader";
 
 type PercentProps = {
   id: number
@@ -54,7 +55,7 @@ const Percent = (props: PercentProps) => {
     }
   ];
 
-  if (loadingPercent) return <p>Carregando...</p>;
+  if (loadingPercent)  return <Loader size={80}/>;
   if (errorPercent) return <h1>{errorPercent}</h1>;
 
   return (
