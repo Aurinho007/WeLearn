@@ -14,7 +14,7 @@ const ProfileCard = () => {
   const { user, isStudent } = useUser();
 
   return (
-    <ProfileConteiner to={ROUTES.PROFILE}>
+    <ProfileConteiner to={ROUTES.PROFILE} isStudent={isStudent()}>
       {
         isStudent() &&
         <WeCoinContainer>
@@ -23,7 +23,7 @@ const ProfileCard = () => {
         </WeCoinContainer>
       }
       <ImageContainer>
-        <Image src={defaultProfilePic} />
+        <Image src={defaultProfilePic} isStudent={isStudent()}/>
       </ImageContainer>
     </ProfileConteiner>
   );

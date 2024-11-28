@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import fonts from "../../../../assets/fonts/fonts";
 import theme from "../../../../assets/theme";
 
-export const ProfileConteiner = styled(Link)`
+export const ProfileConteiner = styled(Link)<{isStudent: boolean}>`
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -11,7 +11,7 @@ export const ProfileConteiner = styled(Link)`
     flex-direction: row;
     text-decoration: none; 
     color: ${theme.black};
-    border: ${theme.black} solid 1.8px;
+    border: ${props => props.isStudent ? `${theme.black} solid 1.8px` : ""};
     border-radius: 10px;
     padding: 3px 0;
 `;
@@ -39,6 +39,6 @@ export const ImageContainer = styled.div`
     margin: 3px 10px;
 `;
 
-export const Image = styled.img`
-    width: 2.1rem;
+export const Image = styled.img<{isStudent: boolean}>`
+    width: ${props => props.isStudent ? "2.1rem" : "2.5rem"};
 `;
