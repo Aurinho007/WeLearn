@@ -7,8 +7,8 @@ const Loader = (props: LoaderProps) => {
   const { size } = props;
 
   return (
-    <Container>
-      <LoaderContainer>
+    <Container style={props}>
+      <LoaderContainer style={props}>
         <Triangle
           visible={true}
           height={size}

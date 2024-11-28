@@ -3,6 +3,7 @@ import RankingIcon from "../../../../components/RankingIcon";
 import { IRanking } from "../../../../interfaces/Classroom";
 import { Container, Header, HeaderItem, Item, Line, Separator, IconWrapper } from "./styles";
 import { getRanking } from "../../../../service/classroom";
+import Loader from "../../../../components/Loader";
 
 const Ranking = ({ id }: { id: number }) => {
 
@@ -40,7 +41,7 @@ const Ranking = ({ id }: { id: number }) => {
   };
 
   const renderRanking = () => {
-    if (loading) return; // component loader
+    if (loading) return <Loader size={100} />;
 
     if (error) return <p>Algo deu errado no carregamento do ranking</p>;
     if (!ranking) return;

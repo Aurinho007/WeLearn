@@ -202,7 +202,7 @@ const AnswerQuestionnarie = () => {
     );
   };
 
-  if (loading) return <Loader size={120} />;
+  if (loading) return <Loader size={120} fullScreen />;
 
   return (
     <>

@@ -207,7 +207,7 @@ const Questionnaire = () => {
     }
   };
 
-  if (loading) return <Loader size={100} />;
+  if (loading) return <Loader size={100} fullScreen/>;
 
   if (error) {
     return (

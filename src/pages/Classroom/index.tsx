@@ -118,7 +118,7 @@ const Classroom = () => {
     );
   }
 
-  if (loading) return <Loader size={130} />;
+  if (loading) return <Loader size={130} fullScreen/>;
 
   return (
     <>
