@@ -6,7 +6,7 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  `;
+`;
 
 export const ImageContainer = styled.div`
 
@@ -16,16 +16,27 @@ export const Image = styled.img`
   object-fit: cover;
   height: 250px;
   width: 150px;
+
+  @media (max-width: 830px){
+    height: 180px;
+    width: 100px;
+  }
+
 `;
 
 export const ContentContainer = styled.div`
   width: 300px;
 `;
+
 export const Title = styled.p`
   font-size: 2rem;
   font-family: ${Fonts.montserrat};
   font-weight: 700;
   margin-bottom: 5px;
+
+  @media (max-width: 830px){
+    font-size: 1.4rem;
+  }
 `;
 
 export const Text = styled.p`
@@ -33,4 +44,8 @@ export const Text = styled.p`
   font-family: ${Fonts.montserrat};
   font-weight: 500;
   margin-bottom: 20px;
+
+  @media (max-width: 830px){
+    font-size: 1rem;
+  }
 `;

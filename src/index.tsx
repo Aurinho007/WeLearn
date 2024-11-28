@@ -26,3 +26,9 @@ root.render(
 );
 
 serviceWorkerRegistration.register();
+
+
+// Modal pro confirm
+// Modal pro alert
+// Dashboard
+// Comrar dica

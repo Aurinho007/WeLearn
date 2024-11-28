@@ -32,6 +32,8 @@ const Classroom = () => {
   const [questionnaries, setQuestionnaries] = useState<IQuestionnarie[]>();
   const modal = useContext(ModalContext);
 
+  const [request, setRequest] = useState<boolean>(false);
+
 
   const { room }: { room: IClassroom } = location.state || {};
 
@@ -41,7 +43,7 @@ const Classroom = () => {
       return;
     }
     getAllQuestionnaries(room.id, sucessCallback, errorCallback);
-  }, []);
+  }, [request]);
 
   const sucessCallback = (response: IQuestionnarie[]) => {
     setLoading(false);
@@ -83,7 +85,7 @@ const Classroom = () => {
 
     const sucessCallback = () => {
       showToast("Questionário criado com sucesso!", "success");
-      window.location.reload();
+      setRequest(prev => !prev);
     };
 
     const errorCallback = (error: string) => {
@@ -178,7 +180,7 @@ const Classroom = () => {
               questionnaries?.length === 0 || !questionnaries ?
                 <ErrorCard
                   text="Esta sala ainda não possui questionários"
-                  buttonText={isTeacher() ? "Adicionar questionário" : ""}
+                  buttonText={isTeacher() ? "Adicionar" : ""}
                   onClick={isTeacher() ? handleClickCreateQuestionnarie : () => { }}
                 />
                 :

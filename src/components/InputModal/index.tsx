@@ -27,6 +27,7 @@ const InputModal = (props: InputModalProps) => {
         <Title>{title}</Title>
         <SubTitle>{subTitle}</SubTitle>
         <Input
+          autoFocus
           type="text"
           placeholder={placeholder}
           value={input}

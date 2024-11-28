@@ -67,11 +67,10 @@ export const QuestionaryContainer = styled.div`
   height: 480px;
   overflow-y: visible;
   overflow-x: hidden;
-  padding: 5px;
+  /* padding: 5px; */
 
   @media (max-width: 768px) {
     height: auto;
-    width: 100%;
     overflow: none;
     margin-bottom: 40px;
   }

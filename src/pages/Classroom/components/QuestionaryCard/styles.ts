@@ -13,9 +13,6 @@ const Card = styled.div`
   color: ${theme.black};
   cursor: pointer;
   margin-bottom: 15px;
-  width: 90%;
-  min-width: 300px;
-
 `;
 
 const TitleContainer = styled.div`

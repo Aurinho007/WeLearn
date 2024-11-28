@@ -39,9 +39,36 @@ const Ranking = ({ id }: { id: number }) => {
 
   };
 
-  if (loading) return;
-  if (error) return;
-  if (!ranking) return;
+  const renderRanking = () => {
+    if (loading) return; // component loader
+
+    if (error) return <p>Algo deu errado no carregamento do ranking</p>;
+    if (!ranking) return;
+
+    return (
+      ranking.ranking.length > 0 ?
+
+        ranking.ranking.slice(0, 5).map((item, index) => {
+          return (
+            <Line key={index}>
+              <Item>
+                {item.position}º
+              </Item>
+              <Item>
+                {getShortName(item.name)}
+              </Item>
+              <IconWrapper>
+                <RankingIcon elo={item.elo} size={35} />
+              </IconWrapper>
+            </Line>
+
+          );
+        })
+        :
+        <Item>Sem alunos na sala</Item>
+    );
+  };
+
 
   return (
     <Container>
@@ -53,28 +80,7 @@ const Ranking = ({ id }: { id: number }) => {
 
       <Separator />
 
-      {
-        ranking.ranking.length > 0 ?
-
-          ranking.ranking.map((item, index) => {
-            return (
-              <Line key={index}>
-                <Item>
-                  {item.position}º
-                </Item>
-                <Item>
-                  {getShortName(item.name)}
-                </Item>
-                <IconWrapper>
-                  <RankingIcon elo={item.elo} size={35} />
-                </IconWrapper>
-              </Line>
-
-            )
-          })
-          :
-          <Item>Sem alunos na sala</Item>
-      }
+      {renderRanking()}
     </Container>
   );
 };

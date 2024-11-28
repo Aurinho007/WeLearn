@@ -3,11 +3,6 @@ import ISecondaryButton from "./interface";
 import fonts from "../../../assets/fonts/fonts";
 import theme from "../../../assets/theme";
 
-export const Container = styled.div`
-  width: auto;
-  height: auto;
-  justify-content: center;
-`;
 
 export const Button = styled.button<{style: ISecondaryButton}>`
   border-radius: 6px;
@@ -15,22 +10,19 @@ export const Button = styled.button<{style: ISecondaryButton}>`
   border: solid 2.8px ${props => theme[props.style.outside]};
   cursor: pointer;
   width: ${props => props.style.width};
-  
-  &:active{
-    filter: brightness(0.8);
-  }
-`;
+  text-align: center;
 
-export const Text = styled.p<{style: ISecondaryButton}>`
   color: ${theme.black};
   font-family: ${props => fonts[props.style.Ffamily]};
   font-weight: ${props => props.style.Fweight};
   font-size: ${props => props.style.Fsize}rem;
   padding: 4px ${props => props.style.width ? 0 : "22px"};
-  white-space: nowrap;
   
+  &:active{
+    filter: brightness(0.8);
+  }
+
   @media (max-width: 810px) {
     font-size: .8rem;
-
   }
 `;
