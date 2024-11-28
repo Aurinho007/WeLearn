@@ -81,7 +81,7 @@ export const Title = styled.p`
   margin-bottom: 6px;
 
   @media (max-width: 800px){
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 `;
 
