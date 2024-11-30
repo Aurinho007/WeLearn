@@ -90,21 +90,10 @@ const Questionnaire = () => {
       navigate(ROUTES.HOME);
       return;
     }
-
+    
     setLoading(true);
     setError("");
     getQuestions(questionnaire.id, getSuccesCallback, getErrorCallback);
-  }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (optionsRef.current && !optionsRef.current.contains(event.target as Node)) {
-        setShowOptionsIndex(null);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const getSuccesCallback = (response: IQuestion[]) => {
