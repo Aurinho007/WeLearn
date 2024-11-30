@@ -68,11 +68,16 @@ const Questionnaire = () => {
   const [showIaModal, setShowIaModal] = useState(false);
   const [loadingIA, setLoadingIA] = useState(false);
 
-
   const [fieldsIA, setFieldsIA] = useState<GenerateQuestionDTO>({
     subject: "",
     difficulty: ""
   });
+
+  const resetFieldsIA = () =>
+    setFieldsIA({
+      subject: "",
+      difficulty: ""
+    });
 
 
   const handleFieldIAChange = (field: keyof GenerateQuestionDTO) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
@@ -144,6 +149,7 @@ const Questionnaire = () => {
       setLoadingIA(false);
       setModalType("new");
       setShowModal(true);
+      resetFieldsIA();
     };
 
     const errorCallback = (error: string) => {
@@ -151,6 +157,7 @@ const Questionnaire = () => {
       setShowIaModal(false);
       createQuestionNormally();
       showToast(error, "error");
+      resetFieldsIA();
     };
 
     if (!fieldsIA.subject || !fieldsIA.difficulty) {
@@ -294,9 +301,9 @@ const Questionnaire = () => {
 
   const renderIaModal = () => {
 
-    if (loadingIA) 
-      return <Loader size={100}  fullScreen/>;
-      
+    if (loadingIA)
+      return <Loader size={100} fullScreen />;
+
     return (
       <IaContainer visible={showIaModal}>
         <IaModal>
