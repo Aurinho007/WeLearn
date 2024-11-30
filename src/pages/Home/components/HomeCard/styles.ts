@@ -7,9 +7,9 @@ export const Container = styled.div`
   background-color: ${theme.white};
   border-radius: 10px;
   padding: 16px;
-  width: 100%;
+  /* width: 100%; */
   max-width: 25%;
-  min-width: 315px;
+  /* min-width: 300px; */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -21,12 +21,12 @@ export const Container = styled.div`
   }
 
   @media (max-width: 1270px){
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     max-width: 50%;
   }
 
   @media (max-width: 810px){
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     max-width: 100%;
   }
 `;
