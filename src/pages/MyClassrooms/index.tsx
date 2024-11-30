@@ -24,6 +24,17 @@ const Classrooms = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const [request, setRequest] = useState(false);
+
+  useEffect(() => {
+    if (isLogged()) {
+      setLoading(true);
+      getClassroom(successCallback, errorCallback);
+    } else {
+      setLoading(false);
+    }
+  }, [request]);
+
   const successCallback = (response: IClassroom[]) => {
     response.forEach(item => {
       if (item.percentualConcluido == null) {
@@ -38,14 +49,6 @@ const Classrooms = () => {
     setError(error);
     setLoading(false);
   };
-
-  useEffect(() => {
-    if (isLogged()) {
-      getClassroom(successCallback, errorCallback);
-    } else {
-      setLoading(false);
-    }
-  }, []);
 
   const navigateToClassroom = (room: IClassroom) => {
     navigate(ROUTES.CLASSROOM, { state: { room } });
@@ -70,6 +73,8 @@ const Classrooms = () => {
     const classroomName: CreateClassroomDto = {
       nome: className as string
     };
+
+    setRequest(prev => !prev);
 
     createClassroom(
       classroomName,
@@ -106,10 +111,12 @@ const Classrooms = () => {
   };
 
   const actionRoomSucessCallback = () => {
-    window.location.reload();
+    setRequest(prev => !prev);
+    setLoading(false);
   };
 
   const actionRoomErrorCallback = (error: string) => {
+    setLoading(false);
     showToast(error, "error");
   };
 
