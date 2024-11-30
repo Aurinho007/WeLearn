@@ -13,6 +13,8 @@ type NewQuestionModalProps = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   modalType: "new" | "view" | "edit";
   question: IQuestion;
+  sending: boolean;
+  setSending: React.Dispatch<React.SetStateAction<boolean>>
 };
 
 type Fields = {
@@ -26,7 +28,7 @@ type Fields = {
   alternativeD: string;
 };
 
-const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, modalType }: NewQuestionModalProps) => {
+const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, modalType, sending, setSending }: NewQuestionModalProps) => {
   const { showToast } = useToast();
   const viewOnly = modalType === "view";
 
@@ -82,6 +84,8 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
       return;
     }
 
+    setSending(true);
+
     const newQuestion: QuestionDTO = {
       idQuestionario: questionnaireId,
       id: question.id,
@@ -96,11 +100,15 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
     };
 
     const successCallback = () => {
+      setSending(false);
       showToast(`Questão ${modalType === "edit" ? "editada" : "criada"}`, "success");
       location.reload();
     };
 
-    const errorCallback = (error: string) => showToast(error, "error");
+    const errorCallback = (error: string) => {
+      setSending(false);
+      showToast(error, "error");
+    };
 
     if (modalType === "edit") {
       updateQuestion(newQuestion, successCallback, errorCallback);

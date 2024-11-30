@@ -1,3 +1,4 @@
+import { IAnswerQuestionnarie } from "../interfaces/Questionnarie";
 import { AnswerType } from "../pages/AnswerQuestionnarie";
 import { BASE_URL, doRequest } from "./api";
 
@@ -7,11 +8,11 @@ export const answerQuestionnarie = (
   idRoom: number,
   idQuestionnarie: number,
   answers: AnswerType[],
-  successCallback: () => void,
+  successCallback: (response: IAnswerQuestionnarie) => void,
   errorCallback: (error: string) => void
 ) => {
   doRequest(ANSWER_QUESTIONNARIE_URL + idRoom +"/"+ idQuestionnarie, "POST", answers)
-    .then(_ => successCallback())
+    .then(response => successCallback(response as IAnswerQuestionnarie))
     .catch(error => errorCallback(error.message));
 };
 

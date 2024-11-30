@@ -12,6 +12,7 @@ const Card = styled.div`
   padding: 8px 16px;
   color: ${theme.black};
   cursor: pointer;
+  min-width: 230px;
   margin-bottom: 15px;
 `;
 

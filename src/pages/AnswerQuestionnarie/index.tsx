@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IClassroom } from "../../interfaces/Classroom";
-import IQuestionnarie from "../../interfaces/Questionnarie";
+import IQuestionnarie, { IAnswerQuestionnarie } from "../../interfaces/Questionnarie";
 import PageHeader from "../../components/PageHeader";
 import IQuestion from "../../interfaces/Question";
 import { getQuestions } from "../../service/question";
 import ROUTES from "../../constants/routesConstants";
 import { useToast } from "../../contexts/ToastContext";
 import Loader from "../../components/Loader";
-import { ButtonContainer, Container, CustomOption, Option, Options, OptionLabel, QuestionTitle, Statement, OptionContainer, AuxButtons } from "./styles";
+import { ButtonContainer, Container, CustomOption, Option, Options, OptionLabel, QuestionTitle, Statement, OptionContainer, AuxButtons, AlertContainer, Alert, AlertTitle, AlertSubTitle, AlertLine, AlertTextKey, AlertTextValue, AlertBtn } from "./styles";
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import TerciaryButton from "../../components/Buttons/TerciaryButton";
 import theme from "../../assets/theme";
 import { answerQuestionnarie } from "../../service/answerQuestionnarie";
 import { useUser } from "../../contexts/UserContext";
 import MobileButton from "../../components/Buttons/mobileButton";
+import SecondaryButton from "../../components/Buttons/SecondaryButton";
 
 export type AnswerType = {
   idQuestao?: number,
@@ -29,7 +30,7 @@ const AnswerQuestionnarie = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { showToast } = useToast();
-  const { isMobile } = useUser();
+  const { isMobile, setUser, user } = useUser();
 
   const { room, questionnaire }: { room: IClassroom, questionnaire: IQuestionnarie } = location.state || {};
 
@@ -42,6 +43,14 @@ const AnswerQuestionnarie = () => {
 
   const [answers, setAnswers] = useState<AnswerType[]>([]);
   const [showAnswer, setShowAnswer] = useState<boolean>(false);
+
+  const [visible, setVisible] = useState<boolean>(false);
+  const [nota, setNota] = useState<number>(0);
+  const [xp, setXp] = useState<number>(0);
+  const [weCoin, setWeCoin] = useState<number>(0);
+
+  const [sending, setSending] = useState(false);
+
 
   const alternatives: Option[] = [
     { option: "A" },
@@ -98,6 +107,7 @@ const AnswerQuestionnarie = () => {
 
   const goToNextQuestion = () => {
     if (questions.length === currentNumberQuestion + 1) {
+      setSending(true);
       answerQuestionnarie(room.id, questionnaire.id, answers, answerSuccessCallback, answerErrorCallback);
       return;
     }
@@ -109,9 +119,23 @@ const AnswerQuestionnarie = () => {
     setShowAnswer(false);
   };
 
-  const answerSuccessCallback = () => {
-    alert("Parabéns!\nVocê finalizou mais um questionário.");
-    navigate(ROUTES.GO_BACK);
+  const finish = () => {
+    setVisible(false);
+    navigate(ROUTES.GO_BACK); 
+  };
+
+  const answerSuccessCallback = (response: IAnswerQuestionnarie) => {
+    setSending(false);
+    setUser({
+      ...user,
+      weCoin: response.weCoin + user.weCoin,
+      xp: response.xp + user.xp,
+    });
+
+    setXp(response.xp);
+    setNota(response.nota);
+    setWeCoin(response.weCoin);
+    setVisible(true);
   };
 
   const answerErrorCallback = (error: string) => {
@@ -202,7 +226,7 @@ const AnswerQuestionnarie = () => {
     );
   };
 
-  if (loading) return <Loader size={120} fullScreen />;
+  if (loading || sending) return <Loader size={120} fullScreen />;
 
   return (
     <>
@@ -270,6 +294,56 @@ const AnswerQuestionnarie = () => {
 
         </ButtonContainer>
       </Container>
+
+      <AlertContainer visible={visible}>
+        <Alert>
+          <AlertTitle>
+            Parabéns!
+          </AlertTitle>
+          <AlertSubTitle>
+            Você finalizou mais um questionário
+          </AlertSubTitle>
+
+          <AlertLine>
+            <AlertTextKey>
+              Nota:
+            </AlertTextKey>
+            <AlertTextValue>
+              {nota}
+            </AlertTextValue>
+          </AlertLine>
+
+          <AlertLine>
+            <AlertTextKey>
+              WeCoins:
+            </AlertTextKey>
+            <AlertTextValue>
+              {weCoin}
+            </AlertTextValue>
+          </AlertLine>
+
+          <AlertLine>
+            <AlertTextKey>
+              Xp:
+            </AlertTextKey>
+            <AlertTextValue>
+              {xp}
+            </AlertTextValue>
+          </AlertLine>
+
+          <AlertBtn>
+            <SecondaryButton
+              Ffamily="montserrat"
+              Fsize={1.3}
+              Fweight={400}
+              onClick={finish}
+              outside="blue"
+              text="Ok"
+            />
+          </AlertBtn>
+
+        </Alert>
+      </AlertContainer>
 
 
     </>

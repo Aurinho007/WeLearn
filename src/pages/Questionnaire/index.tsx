@@ -48,6 +48,8 @@ const Questionnaire = () => {
   const { showToast } = useToast();
   const { isMobile } = useUser();
 
+  const [sending, setSending] = useState(false);
+
   const { room, questionnaire }: { room: IClassroom; questionnaire: IQuestionnarie } = location.state || {};
 
   useEffect(() => {
@@ -74,11 +76,13 @@ const Questionnaire = () => {
 
   const getSuccesCallback = (response: IQuestion[]) => {
     setQuestions(response);
+    setSending(false);
     setLoading(false);
   };
 
   const getErrorCallback = (error: string) => {
     setError(error);
+    setSending(false);
     setLoading(false);
   };
 
@@ -103,7 +107,7 @@ const Questionnaire = () => {
   };
 
   const deleteQuestion = (id: number) => {
-    const confirmDelete = confirm("Apagar questão?");
+    const confirmDelete = confirm("Apagar questão?\n(Não pode ser desfeito)");
     if (confirmDelete) {
       delQuestion(id, delQuestionSucessCallback, delQuestionErrorCallback);
     }
@@ -208,7 +212,7 @@ const Questionnaire = () => {
     }
   };
 
-  if (loading) return <Loader size={100} fullScreen/>;
+  if (loading || sending) return <Loader size={100} fullScreen/>;
 
   if (error) {
     return (
@@ -276,6 +280,8 @@ const Questionnaire = () => {
           questionnaireId={questionnaire.id}
           modalType={modalType}
           question={question}
+          sending={sending}
+          setSending={setSending}
         />
       </Container>
     </>

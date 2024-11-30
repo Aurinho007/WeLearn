@@ -33,6 +33,7 @@ const Classroom = () => {
   const modal = useContext(ModalContext);
 
   const [request, setRequest] = useState<boolean>(false);
+  const [sending, setSending] = useState(false);
 
 
   const { room }: { room: IClassroom } = location.state || {};
@@ -83,12 +84,16 @@ const Classroom = () => {
       idSala: room.id
     };
 
+    setSending(true);
+
     const sucessCallback = () => {
+      setSending(false);
       showToast("Questionário criado com sucesso!", "success");
       setRequest(prev => !prev);
     };
 
     const errorCallback = (error: string) => {
+      setSending(false);
       showToast(error, "error");
     };
 
@@ -104,7 +109,7 @@ const Classroom = () => {
         showToast("Você já fez este questionário", "info");
         return;
       }
-      navigate(ROUTES.ANSWER_QUESTIONNARIE, { state: { questionnaire, room }, replace: true });
+      navigate(ROUTES.ANSWER_QUESTIONNARIE, { state: { questionnaire, room }});
     }
   };
 
@@ -118,7 +123,7 @@ const Classroom = () => {
     );
   }
 
-  if (loading) return <Loader size={130} fullScreen/>;
+  if (loading || sending) return <Loader size={130} fullScreen />;
 
   return (
     <>
@@ -203,7 +208,7 @@ const Classroom = () => {
             <Title>
               Ranking
             </Title>
-            <Ranking  id={room.id} />
+            <Ranking id={room.id} />
           </>
           }
         </Right>

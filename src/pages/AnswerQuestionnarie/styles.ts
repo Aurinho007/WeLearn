@@ -124,3 +124,68 @@ export const ButtonContainer = styled.div`
   margin-top: 20px;
 `;
 
+export const AlertContainer = styled.div<{visible: boolean}>`
+  display: ${props => props.visible ? "flex" : "none"};
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,.5);
+  z-index: 999;
+`;
+
+export const Alert = styled.div`
+  max-width: 450px;
+  width: 80%;
+  padding: 20px;
+  background-color: ${theme.lightWhite};
+  border: solid ${theme.blue} 4px;
+  border-radius: 10px;
+  margin-top: -200px;
+`;
+
+export const AlertTitle = styled.p`
+  font-size: 1.4rem;
+  font-family: ${Fonts.poppins};
+  font-weight: 500;
+  margin-bottom: 3px;
+`;
+
+export const AlertSubTitle = styled.p`
+  font-size: 1.1rem;
+  font-family: ${Fonts.poppins};
+  font-weight: 300;
+  color: ${theme.grey};
+  margin-bottom: 15px;
+`;
+
+export const AlertLine = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+`;
+
+
+export const AlertTextKey = styled.p`
+  font-size: 1rem;
+  font-family: ${Fonts.montserrat};
+  font-weight: 500;
+`;
+
+export const AlertTextValue = styled.p`
+  font-size: 1rem;
+  color: ${theme.grey};
+  font-family: ${Fonts.montserrat};
+  font-weight: 400;
+  margin-left: 10px;
+`;
+
+export const AlertBtn = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+`;
