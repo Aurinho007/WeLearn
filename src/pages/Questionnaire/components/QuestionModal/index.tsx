@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ButtonGroup, Container, DropDown, Input, Label, Modal, QContainer, QuestionContainer, SideContainer, Title } from "./styles";
+import { ButtonGroup, Container, DropDown, Label, Modal, QContainer, QuestionContainer, SideContainer, TextArea, Title } from "./styles";
 import PrimaryButton from "../../../../components/Buttons/PrimaryButton";
 import SecondaryButton from "../../../../components/Buttons/SecondaryButton";
 import { createQuestion, updateQuestion } from "../../../../service/question";
@@ -67,7 +67,7 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
       alternativeD: "",
     });
 
-  const handleFieldChange = (field: keyof Fields) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+  const handleFieldChange = (field: keyof Fields) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setFields((prev) => ({ ...prev, [field]: event.target.value }));
 
   const handleCancelButton = () => {
@@ -132,7 +132,7 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
           <SideContainer>
             <QuestionContainer>
               <Label>Enunciado</Label>
-              <Input
+              <TextArea
                 placeholder="Quem descobriu o Brasil?"
                 value={fields.statement}
                 onChange={handleFieldChange("statement")}
@@ -141,7 +141,7 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
             </QuestionContainer>
             <QuestionContainer>
               <Label>Dica (opcional, mas recomendado)</Label>
-              <Input
+              <TextArea
                 placeholder="Foi um português"
                 value={fields.tip}
                 onChange={handleFieldChange("tip")}
@@ -176,7 +176,7 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
             {(["A", "B", "C", "D"] as const).map((alt) => (
               <QuestionContainer key={alt}>
                 <Label>Alternativa {alt}</Label>
-                <Input
+                <TextArea
                   placeholder={fields.correct == alt ? "Alternativa correta" : "Alternativa"}
                   value={fields[`alternative${alt}` as keyof Fields]}
                   onChange={handleFieldChange(`alternative${alt}` as keyof Fields)}

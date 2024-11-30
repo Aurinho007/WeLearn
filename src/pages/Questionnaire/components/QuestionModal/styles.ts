@@ -4,37 +4,36 @@ import Fonts from "../../../../assets/fonts/fonts";
 
 export const Container = styled.div`
   display: flex;
-  position: absolute;
+  position: fixed; 
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
   justify-content: center;
-  background-color: rgba(0,0,0,.7);
-  z-index: 999;
-
-  @media (min-width: 760px) {
-    height: 100vh;
-  }
+  align-items: center; 
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 99999;
+  overflow: auto; 
 `;
 
-export const Modal = styled.div`
-  margin-top: 20px;
-  background-color: ${theme.lightWhite};
-  padding: 20px 50px;
-  border-radius: 20px;
-  border: solid 5px ${theme.blue};
-  width: 70%;
-  z-index: 999;
 
-  @media (min-width: 770px) {
-    height: 630px;
-  }
+export const Modal = styled.div`
+  background-color: ${theme.lightWhite};
+  padding: 20px;
+  border-radius: 15px;
+  border: solid 5px ${theme.blue};
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh; 
+  overflow-y: auto; 
+  box-sizing: border-box;
+  margin: auto; 
 `;
 
 export const Title = styled.div`
   font-family: ${Fonts.poppins};
   font-weight: 500;
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding-bottom: 10px;
   text-align: center;
 `;
@@ -64,24 +63,27 @@ export const QuestionContainer = styled.div`
 
 export const Label = styled.p`
   font-family: ${Fonts.montserrat};
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 600;
 `;
 
-export const Input = styled.input`
+export const TextArea = styled.textarea`
   width: 100%;
+  resize: vertical;
   border: none;
   outline: none;
   background: none;
-  padding: 0;
-  margin: 0;
-  box-shadow: none;
-  height: 30px;
   border-bottom: solid 4px ${theme.blue};
-  margin-top: 12px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-family: ${Fonts.montserrat};
+  margin-top: 12px;
+  overflow-wrap: break-word;
+
+  &:disabled {
+    color: ${theme.grey};
+  }
 `;
+
 
 export const DropDown = styled.select`
   border: none;
@@ -92,7 +94,7 @@ export const DropDown = styled.select`
   box-shadow: none;
   border: solid 3px ${theme.blue};
   margin-top: 12px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-family: ${Fonts.montserrat};
   padding: 8px 6px;
   border-radius: 8px;
