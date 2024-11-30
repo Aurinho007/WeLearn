@@ -27,7 +27,7 @@ export const Container = styled.div`
   top: 10px; 
   right: 8%;
   justify-content: center;
-  z-index: 9999;
+  z-index: 99999999;
 
   @media (max-width: 800px){
     right: 0;

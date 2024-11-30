@@ -135,3 +135,125 @@ export const DropdownItem = styled.div`
   }
 `;
 
+export const AlertContainer = styled.div<{visible: boolean}>`
+  display: ${props => props.visible ? "flex" : "none"};
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,.5);
+  z-index: 999;
+`;
+
+export const Alert = styled.div`
+  max-width: 450px;
+  width: 80%;
+  padding: 20px;
+  background-color: ${theme.lightWhite};
+  border: solid ${theme.blue} 4px;
+  border-radius: 10px;
+  margin-top: -200px;
+`;
+
+export const AlertTitle = styled.p`
+  font-size: 1.4rem;
+  font-family: ${Fonts.poppins};
+  font-weight: 500;
+  margin-bottom: 3px;
+`;
+
+export const AlertSubTitle = styled.p`
+  font-size: 1rem;
+  font-family: ${Fonts.poppins};
+  font-weight: 300;
+  color: ${theme.grey};
+  margin-bottom: 15px;
+`;
+
+export const AlertBtn = styled.div`
+  gap: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+`;
+
+
+export const IaContainer = styled.div<{visible: boolean}>`
+  display: ${props => props.visible ? "flex" : "none"};
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,.5);
+  z-index: 999;
+`;
+
+export const IaModal = styled.div`
+  max-width: 450px;
+  width: 80%;
+  padding: 20px;
+  background-color: ${theme.lightWhite};
+  border: solid ${theme.blue} 4px;
+  border-radius: 10px;
+  margin-top: -200px;
+`;
+
+export const FieldIaContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 30px;
+`;
+
+export const LabelIa = styled.p`
+  font-family: ${Fonts.montserrat};
+  font-size: 1.2rem;
+  font-weight: 500;
+`;
+
+export const InputIa = styled.input`
+  width: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  height: 30px;
+  border-bottom: solid 4px ${theme.blue};
+  margin-top: 5px;
+  font-size: 1rem;
+  font-family: ${Fonts.montserrat};
+`;
+
+export const DropDownIa = styled.select`
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  border: solid 3px ${theme.blue};
+  margin-top: 12px;
+  font-size: 1.2rem;
+  font-family: ${Fonts.montserrat};
+  padding: 8px 6px;
+  border-radius: 8px;
+`;
+
+export const IaBtn = styled.div`
+  gap: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+`;

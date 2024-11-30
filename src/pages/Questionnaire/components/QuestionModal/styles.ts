@@ -66,7 +66,6 @@ export const Label = styled.p`
   font-family: ${Fonts.montserrat};
   font-size: 1.3rem;
   font-weight: 600;
-
 `;
 
 export const Input = styled.input`
@@ -104,5 +103,4 @@ export const ButtonGroup = styled.div`
   flex-direction: column;
   margin-top: 40px;
   width: 250px;
-
 `;

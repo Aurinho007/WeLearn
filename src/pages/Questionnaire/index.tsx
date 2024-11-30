@@ -4,13 +4,25 @@ import PageHeader from "../../components/PageHeader";
 import IQuestionnarie from "../../interfaces/Questionnarie";
 import ErroCard from "../../components/ErrorCard/index";
 import {
+  Alert,
+  AlertBtn,
+  AlertContainer,
+  AlertSubTitle,
+  AlertTitle,
   Container,
   Dropdown,
+  DropDownIa,
   DropdownItem,
+  FieldIaContainer,
   Header,
   HeaderItem,
+  IaBtn,
+  IaContainer,
+  IaModal,
+  InputIa,
   Item,
   ItemAction,
+  LabelIa,
   Line,
   QuestionsHeader,
   Separator,
@@ -20,7 +32,7 @@ import {
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
 import QuestionModal from "./components/QuestionModal";
 import { useEffect, useRef, useState } from "react";
-import { delQuestion, getQuestions } from "../../service/question";
+import { delQuestion, generateQuestion, getQuestions } from "../../service/question";
 import IQuestion from "../../interfaces/Question";
 import Loader from "../../components/Loader";
 import { useToast } from "../../contexts/ToastContext";
@@ -29,6 +41,7 @@ import { releaseQuestionnarie } from "../../service/questionnnarie";
 import { useUser } from "../../contexts/UserContext";
 import MobileButton from "../../components/Buttons/mobileButton";
 import emptyQuestion from "./constants";
+import { GenerateQuestionDTO, QuestionDTO } from "../../dtos/question";
 
 const Questionnaire = () => {
   const location = useLocation();
@@ -49,6 +62,21 @@ const Questionnaire = () => {
   const { isMobile } = useUser();
 
   const [sending, setSending] = useState(false);
+
+  const [showSelectTypeModal, setShowSelectTypeModal] = useState(false);
+
+  const [showIaModal, setShowIaModal] = useState(false);
+  const [loadingIA, setLoadingIA] = useState(false);
+
+
+  const [fieldsIA, setFieldsIA] = useState<GenerateQuestionDTO>({
+    subject: "",
+    difficulty: ""
+  });
+
+
+  const handleFieldIAChange = (field: keyof GenerateQuestionDTO) => (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+    setFieldsIA((prev) => ({ ...prev, [field]: event.target.value }));
 
   const { room, questionnaire }: { room: IClassroom; questionnaire: IQuestionnarie } = location.state || {};
 
@@ -87,9 +115,61 @@ const Questionnaire = () => {
   };
 
   const createQuestion = () => {
+    setShowSelectTypeModal(true);
+  };
+
+  const createQuestionNormally = () => {
+    setShowSelectTypeModal(false);
     setQuestion({} as IQuestion);
     setModalType("new");
     setShowModal(true);
+  };
+
+  const createQuestionIA = async () => {
+    const successCallback = (response: QuestionDTO) => {
+      setQuestion({
+        idInQuestionarie: 0,
+        idProfessor: 0,
+        id: 0,
+        enunciado: response.enunciado,
+        dica: response.dica,
+        dificuldade: response.dificuldade,
+        alternativaCorreta: response.alternativaCorreta,
+        alternativaA: response.alternativaA,
+        alternativaB: response.alternativaB,
+        alternativaC: response.alternativaC,
+        alternativaD: response.alternativaD,
+      });
+      setShowIaModal(false);
+      setLoadingIA(false);
+      setModalType("new");
+      setShowModal(true);
+    };
+
+    const errorCallback = (error: string) => {
+      setLoadingIA(false);
+      setShowIaModal(false);
+      createQuestionNormally();
+      showToast(error, "error");
+    };
+
+    if (!fieldsIA.subject || !fieldsIA.difficulty) {
+      showToast("Preencha todos os campos", "info");
+      return;
+    }
+
+    setLoadingIA(true);
+    await generateQuestion(fieldsIA, successCallback, errorCallback);
+  };
+
+  const openIaModal = () => {
+    setShowSelectTypeModal(false);
+    setShowIaModal(true);
+  };
+
+  const closeIaModal = () => {
+    setShowIaModal(false);
+    setShowSelectTypeModal(true);
   };
 
   const viewQuestion = (question: IQuestion) => {
@@ -212,7 +292,100 @@ const Questionnaire = () => {
     }
   };
 
-  if (loading || sending) return <Loader size={100} fullScreen/>;
+  const renderIaModal = () => {
+
+    if (loadingIA) {
+      return (
+        <IaContainer visible={showIaModal}>
+          <IaModal>
+            <Loader size={100} />
+          </IaModal>
+        </IaContainer>
+      );
+    }
+
+    return (
+      <IaContainer visible={showIaModal}>
+        <IaModal>
+
+          <FieldIaContainer>
+            <LabelIa>Assunto da questão</LabelIa>
+            <InputIa
+              placeholder="Substantivos compostos"
+              value={fieldsIA.subject}
+              onChange={handleFieldIAChange("subject")}
+            />
+          </FieldIaContainer>
+
+          <FieldIaContainer>
+            <LabelIa>Dificuldade</LabelIa>
+            <DropDownIa value={fieldsIA.difficulty} onChange={handleFieldIAChange("difficulty")}>
+              <option value="" disabled>Selecione uma opção</option>
+              <option value="Fácil">Fácil</option>
+              <option value="Médio">Médio</option>
+              <option value="Difícil">Difícil</option>
+            </DropDownIa>
+          </FieldIaContainer>
+
+          <IaBtn>
+            <SecondaryButton
+              Ffamily="montserrat"
+              Fsize={1}
+              Fweight={400}
+              onClick={closeIaModal}
+              outside="black"
+              text="Cancelar"
+            />
+            <SecondaryButton
+              Ffamily="montserrat"
+              Fsize={1}
+              Fweight={400}
+              onClick={createQuestionIA}
+              outside="blue"
+              text="Gerar questão"
+            />
+          </IaBtn>
+
+        </IaModal>
+      </IaContainer>
+
+    );
+  };
+
+  const renderAlert = () => {
+    return (
+      <AlertContainer visible={showSelectTypeModal}>
+        <Alert>
+          <AlertTitle>
+            Usar inteligência artificial?
+          </AlertTitle>
+          <AlertSubTitle>
+            Uma maneira mais rápida e prática de criar uma questão
+          </AlertSubTitle>
+          <AlertBtn>
+            <SecondaryButton
+              Ffamily="montserrat"
+              Fsize={1}
+              Fweight={400}
+              onClick={createQuestionNormally}
+              outside="black"
+              text="Agora não"
+            />
+            <SecondaryButton
+              Ffamily="montserrat"
+              Fsize={1}
+              Fweight={400}
+              onClick={openIaModal}
+              outside="blue"
+              text="Usar IA"
+            />
+          </AlertBtn>
+        </Alert>
+      </AlertContainer>
+    );
+  };
+
+  if (loading || sending) return <Loader size={100} fullScreen />;
 
   if (error) {
     return (
@@ -280,10 +453,13 @@ const Questionnaire = () => {
           questionnaireId={questionnaire.id}
           modalType={modalType}
           question={question}
-          sending={sending}
           setSending={setSending}
         />
       </Container>
+
+      {renderAlert()}
+      {renderIaModal()}
+
     </>
   );
 };

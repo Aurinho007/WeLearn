@@ -6,7 +6,6 @@ const GET_QUESTIONS_URL = `${BASE_URL}/questionaries/questions/`;
 const CREATE_QUESTION_URL = `${BASE_URL}/questionaries/questions`;
 const UPDATE_QUESTION_URL = `${BASE_URL}/questionaries/questions`;
 const DELETE_QUESTION_URL = `${BASE_URL}/questionaries/questions/`;
-
 const GENERATE_QUESTION_URL = `${BASE_URL}/questionaries/questions/generate/`;
 
 
@@ -18,25 +17,25 @@ export const getQuestions = async (idQuestionnarie: number, successCallback: (qu
 
 export const createQuestion = async (question: QuestionDTO, successCallback: () => void, errorCallback: (error: string) => void) => {
   doRequest(CREATE_QUESTION_URL, "POST", question)
-    .then(_ => successCallback())
+    .then(() => successCallback())
     .catch(error => errorCallback(error.message));
 };
 
 export const updateQuestion = async (question: QuestionDTO, successCallback: () => void, errorCallback: (error: string) => void) => {
   doRequest(UPDATE_QUESTION_URL, "PUT", question)
-    .then(_ => successCallback())
+    .then(() => successCallback())
     .catch(error => errorCallback(error.message));
 };
 
 export const delQuestion = async (questionId: number, successCallback: () => void, errorCallback: (error: string) => void) => {
   doRequest(DELETE_QUESTION_URL+questionId, "DELETE")
-    .then(_ => successCallback())
+    .then(() => successCallback())
     .catch(error => errorCallback(error.message));
 };
 
-export const generateQuestion = async (params: GenerateQuestionDTO, successCallback: (question: IQuestion) => void, errorCallback: (error: string) => void) => {
-  doRequest(GENERATE_QUESTION_URL, "GET", params)
-    .then(response => successCallback(response as IQuestion))
+export const generateQuestion = async (params: GenerateQuestionDTO, successCallback: (question: QuestionDTO) => void, errorCallback: (error: string) => void) => {
+  doRequest(GENERATE_QUESTION_URL, "POST", params)
+    .then(response => successCallback(response as QuestionDTO))
     .catch(error => errorCallback(error.message));
 };
 

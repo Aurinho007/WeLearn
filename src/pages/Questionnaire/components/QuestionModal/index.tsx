@@ -13,7 +13,6 @@ type NewQuestionModalProps = {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   modalType: "new" | "view" | "edit";
   question: IQuestion;
-  sending: boolean;
   setSending: React.Dispatch<React.SetStateAction<boolean>>
 };
 
@@ -28,7 +27,7 @@ type Fields = {
   alternativeD: string;
 };
 
-const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, modalType, sending, setSending }: NewQuestionModalProps) => {
+const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, modalType, setSending }: NewQuestionModalProps) => {
   const { showToast } = useToast();
   const viewOnly = modalType === "view";
 
