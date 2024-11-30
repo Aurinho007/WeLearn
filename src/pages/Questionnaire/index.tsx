@@ -294,16 +294,9 @@ const Questionnaire = () => {
 
   const renderIaModal = () => {
 
-    if (loadingIA) {
-      return (
-        <IaContainer visible={showIaModal}>
-          <IaModal>
-            <Loader size={100} />
-          </IaModal>
-        </IaContainer>
-      );
-    }
-
+    if (loadingIA) 
+      return <Loader size={100}  fullScreen/>;
+      
     return (
       <IaContainer visible={showIaModal}>
         <IaModal>
