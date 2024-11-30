@@ -13,7 +13,7 @@ const Toast = (props: IToast): JSX.Element => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setAnimationClass("exit");
-    }, 3500);
+    }, 3000);
     return () => clearTimeout(timer);
   }, []);
 

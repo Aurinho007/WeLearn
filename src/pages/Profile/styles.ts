@@ -5,19 +5,13 @@ import Fonts from "../../assets/fonts/fonts";
 export const Container = styled.div`
   display: flex;
   justify-content: center;  
-  width: 100%;
-`;
-
-export const Card = styled.div`
-  display: flex;
+  width: 90%;
   flex-direction: column;
   align-items: center;
-  margin: 70px 0;
-  border-radius: 8px;
-  border: solid 3px ${theme.blue};
-  box-shadow: 6px 6px 15px -5px rgba(0,0,0,0.25);
-  padding: 0 40px;
+  justify-self: center;
+  max-width: 400px;
 `;
+
 
 export const ProfileImg = styled.img`
   width: 90px;

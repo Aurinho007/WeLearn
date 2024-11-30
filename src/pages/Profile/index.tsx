@@ -2,7 +2,7 @@ import PageHeader from "../../components/PageHeader";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../contexts/UserContext";
 import { useToast } from "../../contexts/ToastContext";
-import { Container, Card, ProfileImg, UserDataContainer, UserName, UserEmail, LineData, LineLabel, LineValue, T, ButtonContainer } from "./styles";
+import { Container, ProfileImg, UserDataContainer, UserName, UserEmail, LineData, LineLabel, LineValue, T, ButtonContainer } from "./styles";
 import defaultProfilePic from "../../assets/images/default-profile-pic.svg";
 import TerciaryButton from "../../components/Buttons/TerciaryButton";
 import ROUTES from "../../constants/routesConstants";
@@ -19,9 +19,9 @@ const Profile = () => {
   };
 
   return (
-    <Container>
-      <Card>
-        <PageHeader title="Meu Perfil" />
+    <>
+      <PageHeader title="Meu Perfil" hasBackButton />
+      <Container>
         <ProfileImg src={defaultProfilePic} />
         <UserDataContainer>
           <UserName>{user.nome}</UserName>
@@ -53,8 +53,9 @@ const Profile = () => {
           />
         </ButtonContainer>
 
-      </Card>
-    </Container>
+      </Container>
+    </>
+
   );
 
 };
