@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IClassroom } from "../../interfaces/Classroom";
 import IQuestionnarie, { IAnswerQuestionnarie } from "../../interfaces/Questionnarie";
@@ -16,6 +16,7 @@ import { answerQuestionnarie } from "../../service/answerQuestionnarie";
 import { useUser } from "../../contexts/UserContext";
 import MobileButton from "../../components/Buttons/mobileButton";
 import SecondaryButton from "../../components/Buttons/SecondaryButton";
+import { useWeCoin } from "../../service/weCoin";
 
 export type AnswerType = {
   idQuestao?: number,
@@ -25,6 +26,18 @@ export type AnswerType = {
 type Option = {
   option: "A" | "B" | "C" | "D";
 }
+
+type Price = {
+  Fácil: number,
+  Médio: number,
+  Difícil: number
+}
+
+const tipPrice: Price = {
+  Fácil: 100,
+  Médio: 250,
+  Difícil: 400
+};
 
 const AnswerQuestionnarie = () => {
   const location = useLocation();
@@ -51,6 +64,12 @@ const AnswerQuestionnarie = () => {
 
   const [sending, setSending] = useState(false);
 
+  const [weCoinModalVisible, setWeCoinModalVisible] = useState(false);
+  const [loadingBuy, setLoadingBuy] = useState(false);
+
+  const boughtTips = useRef<number[]>([]);
+
+  const [showTipModal, setShowTipModal] = useState(false);
 
   const alternatives: Option[] = [
     { option: "A" },
@@ -121,7 +140,7 @@ const AnswerQuestionnarie = () => {
 
   const finish = () => {
     setVisible(false);
-    navigate(ROUTES.GO_BACK); 
+    navigate(ROUTES.GO_BACK);
   };
 
   const answerSuccessCallback = (response: IAnswerQuestionnarie) => {
@@ -144,6 +163,36 @@ const AnswerQuestionnarie = () => {
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelected(event.target.value);
+  };
+
+  const buyTip = () => {
+
+    const successCallback = () => {
+      setLoadingBuy(false);
+      setWeCoinModalVisible(false);
+      boughtTips.current.push(currentQuestion?.id as number);
+      setShowTipModal(true);
+    };
+
+    const errorCallback = (error: string) => {
+      setLoadingBuy(false);
+      setWeCoinModalVisible(false);
+      showToast(error, "error");
+    };
+
+    setLoadingBuy(true);
+    useWeCoin(currentQuestion?.id as number, successCallback, errorCallback);
+
+  };
+
+  const showTip = () => {
+    if (boughtTips.current.includes(currentQuestion?.id as number)) {
+      setShowTipModal(true);
+      return;
+    }
+    
+    setWeCoinModalVisible(true);
+
   };
 
   const renderAnswerQuestionButton = () => {
@@ -210,7 +259,7 @@ const AnswerQuestionnarie = () => {
             text="Dica"
             Fsize={1.2}
             colored={false}
-            onClick={() => alert("Em breve!")}
+            onClick={showTip}
             tip="compre dicas usando suas WeCoins"
           />
         }
@@ -226,7 +275,71 @@ const AnswerQuestionnarie = () => {
     );
   };
 
-  if (loading || sending) return <Loader size={120} fullScreen />;
+  const renderBuyModal = () => {
+    return (
+      <AlertContainer visible={weCoinModalVisible}>
+        <Alert>
+          <AlertTitle>
+            Confirma a compra da dica?
+          </AlertTitle>
+          <AlertSubTitle>
+            {`Você irá usar ${tipPrice[currentQuestion?.dificuldade as keyof Price]} WeCoins`}
+          </AlertSubTitle>
+
+          <AlertBtn>
+            <SecondaryButton
+              Ffamily="montserrat"
+              Fsize={1}
+              Fweight={500}
+              onClick={() => setWeCoinModalVisible(false)}
+              outside="black"
+              text="Cancelar"
+            />
+
+            <SecondaryButton
+              Ffamily="montserrat"
+              Fsize={1}
+              Fweight={500}
+              onClick={buyTip}
+              outside="blue"
+              text="Comprar"
+            />
+          </AlertBtn>
+        </Alert>
+      </AlertContainer>
+    );
+
+  };
+
+  const renderTipModal = () => {
+    return (
+      <AlertContainer visible={showTipModal}>
+        <Alert>
+          <AlertTitle>
+            Dica
+          </AlertTitle>
+          <AlertSubTitle>
+            {currentQuestion?.dica}
+          </AlertSubTitle>
+
+          <AlertBtn>
+            <SecondaryButton
+              Ffamily="montserrat"
+              Fsize={1}
+              Fweight={500}
+              onClick={() => setShowTipModal(false)}
+              outside="black"
+              text="Ok"
+            />
+          </AlertBtn>
+        </Alert>
+      </AlertContainer>
+    );
+
+  };
+
+
+  if (loading || sending || loadingBuy) return <Loader size={120} fullScreen />;
 
   return (
     <>
@@ -294,6 +407,9 @@ const AnswerQuestionnarie = () => {
 
         </ButtonContainer>
       </Container>
+
+      {renderBuyModal()}
+      {renderTipModal()}
 
       <AlertContainer visible={visible}>
         <Alert>
