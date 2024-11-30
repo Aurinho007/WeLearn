@@ -211,7 +211,7 @@ const AnswerQuestionnarie = () => {
             Fsize={1.2}
             colored={false}
             onClick={() => alert("Em breve!")}
-            tip="A dica custa 50 WeCoins"
+            tip="compre dicas usando suas WeCoins"
           />
         }
 

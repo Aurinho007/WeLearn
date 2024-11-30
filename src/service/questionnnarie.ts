@@ -6,8 +6,6 @@ const GET_QUESTIONNARIES_URL = `${BASE_URL}/questionaries/`;
 const CREATE_QUESTIONNARIE_URL = `${BASE_URL}/questionaries/`;
 const RELEASE_QUESTIONNARIE_URL = `${BASE_URL}/questionaries/release/`;
 
-
-
 export const getAllQuestionnaries = (idClassroom: number, successCallback: (questionnaries: IQuestionnarie[]) => void, errorCallback: (error: string) => void) => {
   doRequest(GET_QUESTIONNARIES_URL+idClassroom, "GET")
     .then(response => successCallback(response as IQuestionnarie[]))
