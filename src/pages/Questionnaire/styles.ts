@@ -118,7 +118,7 @@ export const Dropdown = styled.div`
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 10px;
-  z-index: 999;
+  z-index: 999999;
   transform: rotate(-90deg);
 
 `;
@@ -128,6 +128,8 @@ export const DropdownItem = styled.div`
   cursor: pointer;
   font-size: 1.2rem;
   border-radius: 10px;
+  z-index: 999999;
+
   
   
   &:hover {
