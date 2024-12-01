@@ -300,7 +300,7 @@ const Questionnaire = () => {
           <FieldIaContainer>
             <LabelIa>Assunto da questão</LabelIa>
             <InputIa
-              placeholder="Substantivos compostos"
+              placeholder="História do Brasil"
               value={fieldsIA.subject}
               onChange={handleFieldIAChange("subject")}
             />

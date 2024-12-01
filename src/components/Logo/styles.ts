@@ -22,6 +22,32 @@ export const BT = styled.p`
   color: ${theme.blue};
   z-index: 1;
   margin-left: -8px;
+
+  animation: spin-fade 10s infinite;
+
+  @keyframes spin-fade {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(0deg);
+    }
+    30% {
+      transform: rotate(720deg); /* Gira rapidamente */
+    }
+    50% {
+      transform: rotate(720deg);
+    }
+    70% {
+      transform: rotate(1440deg); /* Gira novamente mais rápido */
+    }
+    90% {
+      transform: rotate(1440deg);
+    }
+    100% {
+      transform: rotate(1440deg);
+    }
+  }
 `;
 
 export const DT = styled.p`
