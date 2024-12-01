@@ -41,7 +41,7 @@ const Average = (props: AverageProps) => {
       color: theme.lightBlue
     },
     {
-      label: `restante\npara nota 10`,
+      label: `Restante\npara nota 10`,
       value: 10 - (average?.average || 0),
       color: theme.grey
     },

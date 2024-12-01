@@ -75,6 +75,7 @@ const Percent = (props: PercentProps) => {
       series={[
         {
           data: data.map((item) => item.value),
+          valueFormatter: (value) => `${value}%`,
           color: theme.lightBlue,
         },
       ]}
