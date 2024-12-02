@@ -21,11 +21,11 @@ const About = () => {
           <TextContainer>
             <Text>
               Uma plataforma colaborativa e gamificada de aprendizado desenvolvida por quatro
-              alunos do Centro Universitário de Brasília
+              alunos do Centro Universitário de Brasília.
             </Text>
             <Text>
-              O <i><b>WeLearn</b></i> tem como objetivo revolucionar a experiência de aprendizado,
-              combinando gamificação, análise de dados e motivação
+              O WeLearn tem como objetivo revolucionar a experiência de aprendizado,
+              combinando <b>inteligência artificial</b>, gamificação, análise de dados e motivação.
             </Text>
           </TextContainer>
         </ContentContainer>
