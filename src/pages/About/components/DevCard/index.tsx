@@ -1,4 +1,4 @@
-import { Container, Desc, Img, Name, CardFront } from "./styles";
+import { Desc, Img, Name, CardFront } from "./styles";
 
 interface DevCardProps {
   picture: string;
@@ -9,13 +9,11 @@ interface DevCardProps {
 const DevCard = (props: DevCardProps) => {
   const { picture, name, description } = props;
   return (
-    <Container>
-      <CardFront>
-        <Img src={picture} />
-        <Name>{name}</Name>
-        <Desc>{description}</Desc>
-      </CardFront>
-    </Container>
+    <CardFront>
+      <Img src={picture} />
+      <Name>{name}</Name>
+      <Desc>{description}</Desc>
+    </CardFront>
   );
 };
 

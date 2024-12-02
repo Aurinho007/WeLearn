@@ -15,7 +15,7 @@ export const ContentContainer = styled.div`
   align-items: center;
   margin-bottom: 20px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     flex-direction: column;
     text-align: center;
   }
@@ -48,7 +48,7 @@ export const Image = styled.img`
   margin-right: 80px;
   object-fit: cover;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1100px) {
     margin-right: 0;
     margin-bottom: 20px;
   }
@@ -56,5 +56,15 @@ export const Image = styled.img`
 
 export const CardsContainer = styled.div`
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+
+  @media (max-width: 800px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
 `;
 

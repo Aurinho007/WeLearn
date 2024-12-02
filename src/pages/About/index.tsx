@@ -29,7 +29,7 @@ const About = () => {
             </Text>
           </TextContainer>
         </ContentContainer>
-        {/* <PageHeader title="Nosso Time" />
+        <PageHeader title="Nosso Time" />
         <CardsContainer>
           <DevCard
             name="Ana Luiza"
@@ -53,7 +53,7 @@ const About = () => {
             description={vitorOccupation}
             picture={rabelloPic}
           />
-        </CardsContainer>  */}
+        </CardsContainer> 
       </Container>
     </>
   );
