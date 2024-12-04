@@ -3,9 +3,19 @@ import { Link } from "react-router-dom";
 import fonts from "../../assets/fonts/fonts";
 import theme from "../../assets/theme";
 
+
+export const Space = styled.div`
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  background-color: ${theme.lightWhite};
+  z-index: -1;
+`;
+
 export const Container = styled.div`
   border-bottom: ${theme.blue} 5px solid; 
-  width: 85%;
+  width: 84%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -14,6 +24,8 @@ export const Container = styled.div`
   background-color: ${theme.lightWhite};
   position: fixed;
   z-index: 999;
+  /* left: 0; */
+  justify-self: center;
 
   @media (max-width: 810px) {
     padding: 10px 0;

@@ -27,7 +27,6 @@ function App() {
       <GlobalStyles />
       <Router>
         <Header />
-        <div style={{height: "90px"}}></div>
         <Routes>
           <Route
             path={ROUTES.HOME} index
