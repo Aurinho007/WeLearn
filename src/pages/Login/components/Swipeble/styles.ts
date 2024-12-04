@@ -10,7 +10,7 @@ export const Container = styled.div<{ isLogin: boolean}>`
   height: 100%;
   position: absolute;
   border-radius: 20px;
-  z-index: 999;
+  z-index: 99;
   left: ${props => props.isLogin ? 0 : "50%"}; 
   right: ${props => !props.isLogin ? 0 : "50%"}; 
   transition: left 1s ease, right 1s ease; 
