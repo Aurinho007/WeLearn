@@ -16,6 +16,8 @@ import AnswerQuestionnarie from "./pages/AnswerQuestionnarie/index.tsx";
 const Layout = ({ children }: { children: JSX.Element }) => {
   return (
     <>
+      <div style={{height: "90px"}}></div>
+
       {children}
       {/* <Baseboard /> */}
     </>

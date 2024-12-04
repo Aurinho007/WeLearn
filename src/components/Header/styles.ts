@@ -5,12 +5,14 @@ import theme from "../../assets/theme";
 
 export const Container = styled.div`
   border-bottom: ${theme.blue} 5px solid; 
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   height: 80px;
+  background-color: ${theme.lightWhite};
+  position: fixed;
 
   @media (max-width: 810px) {
     padding: 10px 0;
