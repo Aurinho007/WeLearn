@@ -5,7 +5,7 @@ import theme from "../../assets/theme";
 
 export const Container = styled.div`
   border-bottom: ${theme.blue} 5px solid; 
-  width: 80%;
+  width: 85%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
