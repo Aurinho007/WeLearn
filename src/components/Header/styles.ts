@@ -13,6 +13,7 @@ export const Container = styled.div`
   height: 80px;
   background-color: ${theme.lightWhite};
   position: fixed;
+  z-index: 99;
 
   @media (max-width: 810px) {
     padding: 10px 0;
