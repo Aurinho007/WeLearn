@@ -40,3 +40,7 @@ type Question = {
   dificuldadeSelecionada: string,
   dificuldadeCalculada: string
 }
+
+export interface IReport {
+  report: string
+}

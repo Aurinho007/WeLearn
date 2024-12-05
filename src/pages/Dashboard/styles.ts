@@ -5,12 +5,14 @@ import theme from "../../assets/theme";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
   height: 10px;
   gap: 30px;
+  justify-self: center;
+  max-width: 785px;
+  height: auto;
 
   @media (max-width: 810px) {
-
+    max-width: 376px;
   }
 `;
 
@@ -31,7 +33,7 @@ export const DashboardGroup = styled.div`
 
   @media (max-width: 810px) {
     flex-direction: column;
-}
+  }
 `;
 
 export const DashContainer = styled.div`
@@ -49,6 +51,13 @@ export const DashTitle = styled.p`
   font-family: ${Fonts.montserrat};
   font-size: 1.4rem;
   font-weight: 500;
+  line-height: 1.7rem;
+`;
+
+export const Sub = styled.span`
+  font-family: ${Fonts.montserrat};
+  font-size: 1.2rem;
+  font-weight: 300;
   line-height: 1.7rem;
 `;
 

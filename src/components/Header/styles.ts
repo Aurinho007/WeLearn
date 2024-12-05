@@ -27,10 +27,6 @@ export const Container = styled.div`
   /* left: 0; */
   justify-self: center;
 
-  @media (max-width: 810px) {
-    padding: 10px 0;
-  }
-
   @media (max-width: 480px) {
     height: 50px;
   }

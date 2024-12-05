@@ -3,9 +3,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import PageHeader from "../../components/PageHeader";
 import { IClassroom } from "../../interfaces/Classroom";
 import IQuestionnarie from "../../interfaces/Questionnarie";
-import { DashContainer, Container, DashboardGroup, Dash, DashTitle } from "./styles";
+import { DashContainer, Container, DashboardGroup, Dash, DashTitle, Sub } from "./styles";
 import Percent from "./components/Percent";
 import Average from "./components/Average";
+import Report from "./components/Report";
 import PerStudent from "./components/PerStudent";
 import ROUTES from "../../constants/routesConstants";
 
@@ -17,12 +18,12 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!room || !questionnaire) {
-      navigate(ROUTES.HOME); 
+      navigate(ROUTES.HOME);
     }
   }, [room, questionnaire, navigate]);
 
   if (!room || !questionnaire) {
-    return null; 
+    return null;
   }
 
   return (
@@ -45,6 +46,14 @@ const Dashboard = () => {
             <DashTitle>Acertos, erros e abstenções</DashTitle>
             <Dash>
               <Percent id={questionnaire.id} />
+            </Dash>
+          </DashContainer>
+        </DashboardGroup>
+        <DashboardGroup>
+          <DashContainer>
+            <DashTitle>WeBright - <Sub>IA do WeLearn</Sub> </DashTitle>
+            <Dash>
+              <Report id={questionnaire.id} />
             </Dash>
           </DashContainer>
         </DashboardGroup>
