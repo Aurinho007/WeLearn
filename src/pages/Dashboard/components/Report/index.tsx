@@ -34,7 +34,7 @@ const Report = (props: AverageProps) => {
   });
 
   if (loading) return <Loader size={80} />;
-  if (error) return <Text>Ops... Algo deu errado: {error}</Text>;
+  if (error) return <Text>{error}</Text>;
 
   return (
     <Text>
