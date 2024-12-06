@@ -127,7 +127,7 @@ const QuestionModal = ({ showModal, setShowModal, questionnaireId, question, mod
   return (
     <Container onClick={handleCloseModal}>
       <Modal onClick={(e) => e.stopPropagation()}>
-        <Title>{modalType === "new" ? "Nova questão" : modalType === "view" ? `Questão ${question?.id}` : "Editar questão"}</Title>
+        <Title>{modalType === "new" ? "Nova questão" : modalType === "view" ? `Questão ${question?.idInQuestionarie}` : "Editar questão"}</Title>
         <QContainer>
           <SideContainer>
             <QuestionContainer>
