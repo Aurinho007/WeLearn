@@ -172,6 +172,10 @@ const AnswerQuestionnarie = () => {
       setWeCoinModalVisible(false);
       boughtTips.current.push(currentQuestion?.id as number);
       setShowTipModal(true);
+      setUser({
+        ...user,
+        weCoin: user.weCoin - tipPrice[currentQuestion?.dificuldade as keyof Price]
+      })
     };
 
     const errorCallback = (error: string) => {
