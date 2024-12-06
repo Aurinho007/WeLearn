@@ -220,7 +220,7 @@ const Questionnaire = () => {
   };
 
   const navigateToDashboard = () => {
-    navigate(ROUTES.DASHBOARD, { state: { room, questionnaire } });
+    navigate(ROUTES.DASHBOARD, { state: { room, questionnaire, questions } });
   };
 
   const renderActionButtons = () => {

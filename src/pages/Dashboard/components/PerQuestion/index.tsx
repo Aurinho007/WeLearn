@@ -5,18 +5,24 @@ import { Header, Title, Drop, Dash, ItemContainer, Value, Label, BtnContainer, D
 import { IQuestionInfo, IQuestionInfoResponse } from "../../../../interfaces/Dashboard";
 import { getQuestionInfo } from "../../../../service/dashboard";
 import Loader from "../../../../components/Loader";
+import IQuestion from "../../../../interfaces/Question";
+import QuestionModal from "../../../Questionnaire/components/QuestionModal";
 
 type PerQuestionProps = {
   id: number
+  questions: IQuestion[]
 }
 
-const PerQuestion = ({ id }: PerQuestionProps) => {
+const PerQuestion = (props: PerQuestionProps) => {
+  const { id, questions } = props;
 
   const [questionInfo, setQuestionInfo] = useState<IQuestionInfo[]>();
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>();
 
   const [current, setCurrent] = useState<IQuestionInfo>();
+
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     async function init() {
@@ -43,7 +49,7 @@ const PerQuestion = ({ id }: PerQuestionProps) => {
     );
     setCurrent(selectedQuestion);
   };
-  
+
 
   if (error) {
     return (
@@ -159,12 +165,21 @@ const PerQuestion = ({ id }: PerQuestionProps) => {
         <BtnContainer>
           <TerciaryButton
             Fsize={1}
-            onClick={() => { }}
+            onClick={() => setShowModal(true)}
             text="Ver questão"
             colored={false}
           />
         </BtnContainer>
       </Dash>
+
+      <QuestionModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        questionnaireId={id}
+        modalType={"view"}
+        question={questions.find(item => item.idInQuestionarie === current?.questao) as IQuestion}
+        setSending={setShowModal} //gambi
+      />
     </Container>
   );
 

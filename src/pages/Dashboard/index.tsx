@@ -7,15 +7,15 @@ import { DashContainer, Container, DashboardGroup, Dash, DashTitle, Sub } from "
 import Percent from "./components/Percent";
 import Average from "./components/Average";
 import Report from "./components/Report";
-import PerStudent from "./components/PerStudent";
 import ROUTES from "../../constants/routesConstants";
 import PerQuestion from "./components/PerQuestion";
+import IQuestion from "../../interfaces/Question";
 
 const Dashboard = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { room, questionnaire }: { room: IClassroom; questionnaire: IQuestionnarie } = location.state || {};
+  const { room, questionnaire, questions }: { room: IClassroom; questionnaire: IQuestionnarie, questions: IQuestion[] } = location.state || {};
 
   useEffect(() => {
     if (!room || !questionnaire) {
@@ -51,7 +51,7 @@ const Dashboard = () => {
           </DashContainer>
         </DashboardGroup>
         <DashboardGroup>
-          <PerQuestion id={questionnaire.id} />
+          <PerQuestion id={questionnaire.id} questions={questions}/>
         </DashboardGroup>
         <DashboardGroup>
           <DashContainer>
