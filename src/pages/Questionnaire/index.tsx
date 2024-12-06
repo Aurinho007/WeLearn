@@ -220,11 +220,6 @@ const Questionnaire = () => {
   };
 
   const navigateToDashboard = () => {
-    if (false) {
-      showToast("Disponível somente na versão de computador", "info");
-      return;
-    }
-
     navigate(ROUTES.DASHBOARD, { state: { room, questionnaire } });
   };
 
