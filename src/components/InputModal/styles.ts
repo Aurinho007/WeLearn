@@ -3,7 +3,7 @@ import theme from "../../assets/theme";
 import Fonts from "../../assets/fonts/fonts";
 
 export const Container = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;

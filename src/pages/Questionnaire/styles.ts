@@ -139,7 +139,7 @@ export const DropdownItem = styled.div`
 
 export const AlertContainer = styled.div<{visible: boolean}>`
   display: ${props => props.visible ? "flex" : "none"};
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
@@ -187,7 +187,7 @@ export const AlertBtn = styled.div`
 
 export const IaContainer = styled.div<{visible: boolean}>`
   display: ${props => props.visible ? "flex" : "none"};
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
