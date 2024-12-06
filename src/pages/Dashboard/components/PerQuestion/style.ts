@@ -36,7 +36,7 @@ export const Dash = styled.div`
   background-color: ${theme.white};
   border: solid 3px ${theme.blue};
   border-radius: 8px;
-  padding: 10px;
+  padding: 15px;
 `;
 
 export const DataContainer = styled.div`
@@ -52,6 +52,7 @@ export const ItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-items: center;
 `;
 
 export const Value = styled.p`

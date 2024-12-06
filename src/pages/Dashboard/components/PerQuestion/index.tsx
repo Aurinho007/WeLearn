@@ -37,9 +37,13 @@ const PerQuestion = ({ id }: PerQuestionProps) => {
     setLoading(false);
   };
 
-  const onChangeQuestion = () => {
-
+  const onChangeQuestion = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedQuestion = questionInfo?.find(
+      (item) => item.questao === parseInt(event.target.value)
+    );
+    setCurrent(selectedQuestion);
   };
+  
 
   if (error) {
     return (
