@@ -26,19 +26,20 @@ export interface IAverage {
   average: number
 }
 
-export interface IQuestionInfo {
-  info: Question[]
+export interface IQuestionInfoResponse {
+  info: IQuestionInfo[]
 }
 
-type Question = {
+export type IQuestionInfo = {
+  abstencao: number,
+  acertos: number,
+  dificuldadeCalculada: string
+  dificuldadeSelecionada: string,
+  erros: number,
+  maisErrada: string,
   questao: number,
   taxaAcerto: number,
   totalRespostas: number,
-  acertos: number,
-  erros: number,
-  abstencao: number,
-  dificuldadeSelecionada: string,
-  dificuldadeCalculada: string
 }
 
 export interface IReport {

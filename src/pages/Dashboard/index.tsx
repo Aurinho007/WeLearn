@@ -9,6 +9,7 @@ import Average from "./components/Average";
 import Report from "./components/Report";
 import PerStudent from "./components/PerStudent";
 import ROUTES from "../../constants/routesConstants";
+import PerQuestion from "./components/PerQuestion";
 
 const Dashboard = () => {
   const location = useLocation();
@@ -50,15 +51,15 @@ const Dashboard = () => {
           </DashContainer>
         </DashboardGroup>
         <DashboardGroup>
+          <PerQuestion id={questionnaire.id} />
+        </DashboardGroup>
+        <DashboardGroup>
           <DashContainer>
             <DashTitle>WeBright - <Sub>IA do WeLearn</Sub> </DashTitle>
             <Dash>
               <Report id={questionnaire.id} />
             </Dash>
           </DashContainer>
-        </DashboardGroup>
-        <DashboardGroup>
-          <PerStudent id={questionnaire.id} />
         </DashboardGroup>
       </Container>
     </>

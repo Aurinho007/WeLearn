@@ -8,7 +8,7 @@ export const Container = styled.div`
   height: 10px;
   gap: 30px;
   justify-self: center;
-  max-width: 785px;
+  max-width: 780px;
   height: auto;
 
   @media (max-width: 810px) {
@@ -31,7 +31,7 @@ export const DashboardGroup = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 810px) {
+  @media (max-width: 768px) {
     flex-direction: column;
   }
 `;

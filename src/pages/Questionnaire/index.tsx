@@ -219,13 +219,22 @@ const Questionnaire = () => {
     showToast(error, "error");
   };
 
+  const navigateToDashboard = () => {
+    if (isMobile) {
+      showToast("Disponível somente na versão de computador", "info");
+      return;
+    }
+
+    navigate(ROUTES.DASHBOARD, { state: { room, questionnaire } });
+  };
+
   const renderActionButtons = () => {
     if (isMobile) {
       if (questionnaire.liberado) {
         return (
           <MobileButton
             label="Acessar Dashboard"
-            onClick={() => navigate(ROUTES.DASHBOARD, { state: { room, questionnaire } })}
+            onClick={navigateToDashboard}
           />
         );
       }
@@ -253,7 +262,7 @@ const Questionnaire = () => {
           Fweight={400}
           outside="blue"
           text="Dashboard"
-          onClick={() => navigate(ROUTES.DASHBOARD, { state: { room, questionnaire } })}
+          onClick={navigateToDashboard}
         />
       );
     }

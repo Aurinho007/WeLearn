@@ -55,7 +55,7 @@ const Percent = (props: PercentProps) => {
     }
   ];
 
-  if (loadingPercent)  return <Loader size={80}/>;
+  if (loadingPercent) return <Loader size={80} />;
   if (errorPercent) return <h1>{errorPercent}</h1>;
 
   return (

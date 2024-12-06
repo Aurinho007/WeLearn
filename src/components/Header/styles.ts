@@ -24,12 +24,8 @@ export const Container = styled.div`
   background-color: ${theme.lightWhite};
   position: fixed;
   z-index: 999;
-  /* left: 0; */
   justify-self: center;
 
-  @media (max-width: 480px) {
-    height: 50px;
-  }
 `;
 
 export const Title = styled(Link)`

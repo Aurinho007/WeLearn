@@ -1,10 +1,10 @@
-import { IAverage, IDashboardPercent, IPerStudent, IQuestionInfo, IReport } from "../interfaces/Dashboard";
+import { IAverage, IDashboardPercent, IPerStudent, IQuestionInfoResponse, IReport } from "../interfaces/Dashboard";
 import { BASE_URL, doRequest } from "./api";
 
 const GET_PERCENT = `${BASE_URL}/questionaries/dashboard/percent/`;
 const GET_AVERAGE = `${BASE_URL}/questionaries/dashboard/average/`;
 const GET_REPORT = `${BASE_URL}/questionaries/dashboard/report/`;
-const GET_QUESTION_INFO = `${BASE_URL}/questionaries/dashboard/questionInfo`;
+const GET_QUESTION_INFO = `${BASE_URL}/questionaries/dashboard/questionInfo/`;
 const GET_PER_STUDENT = `${BASE_URL}/questionaries/dashboard/perStudent/`;
 
 
@@ -28,9 +28,9 @@ export const getReport = async (idQuestionnarie: number, successCallback: (perce
 };
 
 
-export const getQuestionInfo = async (idQuestionnarie: number, successCallback: (percents: IQuestionInfo) => void, errorCallback: (error: string) => void) => {
+export const getQuestionInfo = async (idQuestionnarie: number, successCallback: (percents: IQuestionInfoResponse) => void, errorCallback: (error: string) => void) => {
   await doRequest(GET_QUESTION_INFO+idQuestionnarie, "GET")
-    .then(response => successCallback(response as IQuestionInfo ))
+    .then(response => successCallback(response as IQuestionInfoResponse ))
     .catch(error => errorCallback(error.message));
 };
 
