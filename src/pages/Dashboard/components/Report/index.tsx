@@ -5,15 +5,16 @@ import Loader from "../../../../components/Loader";
 import { Text } from "./styles";
 
 type AverageProps = {
-  id: number
-}
+  id: number;
+};
 
 const Report = (props: AverageProps) => {
   const { id } = props;
 
-  const [report, setReport] = useState<string>();
+  const [report, setReport] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>();
+  const [displayedText, setDisplayedText] = useState<string>("");
 
   const sucessCallback = (response: IReport) => {
     setReport(response.report);
@@ -31,15 +32,26 @@ const Report = (props: AverageProps) => {
     }
 
     init();
-  });
+  }, [id]);
+
+  useEffect(() => {
+    if (!loading && report) {
+      let index = 0;
+      const interval = setInterval(() => {
+        setDisplayedText((prev) => prev + report[index]);
+        index++;
+        if (index === report.length -1) {
+          clearInterval(interval); 
+        }
+      }, 10);
+      return () => clearInterval(interval); 
+    }
+  }, [report, loading]);
 
   if (loading) return <Loader size={80} />;
   if (error) return <Text>{error}</Text>;
 
-  return (
-    <Text>
-      {report}
-    </Text>);
+  return <Text>{displayedText}</Text>;
 };
 
 export default Report;
