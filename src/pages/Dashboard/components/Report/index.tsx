@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getReport } from "../../../../service/dashboard";
 import { IReport } from "../../../../interfaces/Dashboard";
 import Loader from "../../../../components/Loader";
-import { Text } from "./styles";
+import { Container, InvisibleText, Text } from "./styles";
 
 type AverageProps = {
   id: number;
@@ -40,18 +40,24 @@ const Report = (props: AverageProps) => {
       const interval = setInterval(() => {
         setDisplayedText((prev) => prev + report[index]);
         index++;
-        if (index === report.length -1) {
-          clearInterval(interval); 
+        if (index === report.length - 1) {
+          clearInterval(interval);
         }
       }, 10);
-      return () => clearInterval(interval); 
+      return () => clearInterval(interval);
     }
   }, [report, loading]);
 
   if (loading) return <Loader size={80} />;
   if (error) return <Text>{error}</Text>;
 
-  return <Text>{displayedText}</Text>;
+
+  return (
+    <Container>
+      <Text>{displayedText}</Text>
+      <InvisibleText>{report}</InvisibleText>
+    </Container>
+  )
 };
 
 export default Report;
