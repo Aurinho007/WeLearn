@@ -56,7 +56,7 @@ export const TitleContainer = styled.div`
 export const Title = styled.p`
 font-family: ${fonts.montserrat};
 font-weight: 600;
-font-size: 1.6rem;
+font-size: 1.4rem;
 
   @media (max-width: 500px){
     font-size: 1.2rem;
