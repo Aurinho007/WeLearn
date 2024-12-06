@@ -36,7 +36,7 @@ const Report = (props: AverageProps) => {
 
   useEffect(() => {
     if (!loading && report) {
-      let index = 0;
+      let index = -1;
       const interval = setInterval(() => {
         setDisplayedText((prev) => prev + report[index]);
         index++;
