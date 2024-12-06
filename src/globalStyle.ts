@@ -69,9 +69,6 @@ export const GlobalStyles = createGlobalStyle`
     color: ${theme.black};
     line-height: 1;
     overflow-x: hidden;
-
-    @media (max-width: 810px) {
-      margin-bottom: 100px;
-    }
+    margin-bottom: 100px;
   }
 `;

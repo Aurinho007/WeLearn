@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import ROUTES from "./constants/routesConstants.ts";
 import Questionnaire from "./pages/Questionnaire/index.tsx";
 import AnswerQuestionnarie from "./pages/AnswerQuestionnarie/index.tsx";
+import ScrollToTop from "./ScrollToTop.tsx";
 
 const Layout = ({ children }: { children: JSX.Element }) => {
   return (
@@ -26,6 +27,7 @@ function App() {
     <>
       <GlobalStyles />
       <Router>
+        <ScrollToTop />
         <Header />
         <Routes>
           <Route
