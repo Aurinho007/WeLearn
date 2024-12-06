@@ -220,7 +220,7 @@ const Questionnaire = () => {
   };
 
   const navigateToDashboard = () => {
-    if (isMobile) {
+    if (false) {
       showToast("Disponível somente na versão de computador", "info");
       return;
     }
