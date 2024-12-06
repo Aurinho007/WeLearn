@@ -108,18 +108,26 @@ const PerQuestion = ({ id }: PerQuestionProps) => {
           </ItemContainer>
           <ItemContainer>
             <Value>
-              {current?.erros.toFixed(1)}%
+              {current?.acertos}
             </Value>
             <Label>
-              Taxa de erro
+              Acertos
             </Label>
           </ItemContainer>
           <ItemContainer>
             <Value>
-              {current?.abstencao.toFixed(1)}%
+              {current?.erros}
             </Value>
             <Label>
-              Taxa de abstenção
+              Erros
+            </Label>
+          </ItemContainer>
+          <ItemContainer>
+            <Value>
+              {current?.abstencao}
+            </Value>
+            <Label>
+              Abstenções
             </Label>
           </ItemContainer>
           <ItemContainer>

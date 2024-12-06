@@ -45,7 +45,8 @@ export const DataContainer = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  gap: 30px;
+  row-gap: 10px;
+  column-gap: 30px;
 `;
 
 export const ItemContainer = styled.div`
