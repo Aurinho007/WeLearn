@@ -24,6 +24,17 @@ const ClassroomCard = (props: ClassroomCardProps) => {
 
   const { isStudent } = useUser();
 
+  const formatName = (name: string) => {
+    const splitName = name.split(" ");
+    
+    if(splitName.length === 1) {
+      return name;
+    }
+
+
+    return `${splitName[0]} ${splitName[1]}`;
+  };
+
   return (
     <Card onClick={onClick}>
       <TitleContainer>
@@ -39,7 +50,7 @@ const ClassroomCard = (props: ClassroomCardProps) => {
       <DataContainer>
         <Line>
           <Description>Professor</Description>
-          <Value>{teacherName.split(" ")[0] +" "+teacherName.split(" ")[1]}</Value>
+          <Value>{formatName(teacherName)}</Value>
         </Line>
         <Line>
           <Description>Código</Description>
