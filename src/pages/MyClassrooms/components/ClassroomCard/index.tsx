@@ -39,7 +39,7 @@ const ClassroomCard = (props: ClassroomCardProps) => {
       <DataContainer>
         <Line>
           <Description>Professor</Description>
-          <Value>{teacherName}</Value>
+          <Value>{teacherName.split(" ")[0] +" "+teacherName.split(" ")[1]}</Value>
         </Line>
         <Line>
           <Description>Código</Description>
